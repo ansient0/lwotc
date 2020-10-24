@@ -18,7 +18,7 @@ var private name ExtractKnowledgeMarkSourceEffectName, ExtractKnowledgeMarkTarge
 var config array<name> CHOSEN_SUMMON_RNF_DATA;
 
 var const string ChosenSummonContextDesc;
-
+var config WeaponDamageValue OWMYKNEE_DAMAGE;
 static function array<X2DataTemplate> CreateTemplates()
 {
 	local array<X2DataTemplate> Templates;
@@ -39,6 +39,9 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(CreateSecondaryDaze());
 	Templates.AddItem(CreateFollowerDefeatedEscape());
 
+	Templates.AddItem(OwMyknee());
+
+	
 	return Templates;
 }
 
@@ -1302,6 +1305,72 @@ static function name GetReinforcementGroupName(int AlertLevel)
 	return GroupName;
 }
 
+	static function X2AbilityTemplate OwMyknee()
+{
+	local X2AbilityTemplate                 Template;	
+	local X2AbilityCost_Ammo                AmmoCost;
+	local X2AbilityCost_ActionPoints        ActionPointCost;
+	local array<name>                       SkipExclusions;
+	local X2Effect_Knockback				KnockbackEffect;
+	local X2Effect_ApplyWeaponDamage		WeaponDamageEffect;
+	// Macro to do localisation and stuffs
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'OwMyknee');
+
+	// Icon Properties
+	Template.bDontDisplayInAbilitySummary = true;
+	Template.IconImage ="img:///UILibrary_PerkIcons.UIPerk_unknown";
+	Template.ShotHUDPriority = class'UIUtilities_Tactical'.const.STANDARD_SHOT_PRIORITY;
+	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_AlwaysShow;
+	Template.AbilitySourceName = 'eAbilitySource_Standard';                                       // color of the icon
+	// Activated by a button press; additionally, tells the AI this is an activatable
+	Template.AbilityTriggers.AddItem(default.PlayerInputTrigger);
+	Template.bShowActivation = true;
+
+	Template.AddShooterEffectExclusions(SkipExclusions);
+
+	WeaponDamageEffect = new class'X2Effect_ApplyWeaponDamage';
+	WeaponDamageEffect.EffectDamageValue=default.OWMYKNEE_DAMAGE;
+	Template.AddShooterEffect(WeaponDamageEffect);
+
+
+	Template.AbilityTargetStyle = default.SelfTarget;
+	Template.DefaultSourceItemSlot = eInvSlot_PrimaryWeapon;
+
+	KnockbackEffect = new class'X2Effect_Knockback';
+	KnockbackEffect.KnockbackDistance = 2;
+	Template.AddTargetEffect(KnockbackEffect);
+
+	// Action Point
+	ActionPointCost = new class'X2AbilityCost_ActionPoints';
+	ActionPointCost.iNumPoints = 1;
+	ActionPointCost.bConsumeAllPoints = true;
+	Template.AbilityCosts.AddItem(ActionPointCost);	
+
+
+	// Damage Effect
+
+	// Hit Calculation (Different weapons now have different calculations for range)
+	Template.AbilityToHitCalc = default.DeadEye;
+
+	// MAKE IT LIVE!
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+	Template.BuildInterruptGameStateFn = TypicalAbility_BuildInterruptGameState;
+
+	Template.bDisplayInUITooltip = false;
+	Template.bDisplayInUITacticalText = false;
+
+	Template.SuperConcealmentLoss = class'X2AbilityTemplateManager'.default.SuperConcealmentStandardShotLoss;
+	Template.ChosenActivationIncreasePerUse = class'X2AbilityTemplateManager'.default.StandardShotChosenActivationIncreasePerUse;
+	Template.LostSpawnIncreasePerUse = class'X2AbilityTemplateManager'.default.StandardShotLostSpawnIncreasePerUse;
+	Template.CustomFireAnim = '';
+	Template.bSkipFireAction = true;
+	Template.bFrameEvenWhenUnitIsHidden = true;
+	Template.BuildVisualizationFn = TypicalAbility_BuildVisualization;
+
+	return Template;	
+}
+
+
 defaultproperties
 {
 	ExtractKnowledgeMarkSourceEffectName="ExtractKnowledgeMarkSourceEffect"
@@ -1309,3 +1378,4 @@ defaultproperties
 
 	ChosenSummonContextDesc="ChosenSummonContext"
 }
+

@@ -91,6 +91,7 @@ var config int AdvMECArcher_Micromissiles_Range;
 
 var config WeaponDamageValue LWDRONEM1_DRONEWEAPON_BASEDAMAGE;
 var config WeaponDamageValue LWDRONEM2_DRONEWEAPON_BASEDAMAGE;
+var config WeaponDamageValue LWDRONEM9_DRONEWEAPON_BASEDAMAGE;
 
 var config int LWDRONE_DRONEWEAPON_ISOUNDRANGE;
 var config int LWDRONE_DRONEWEAPON_IENVIRONMENTDAMAGE;
@@ -164,6 +165,7 @@ static function array<X2DataTemplate> CreateTemplates()
 
 	Templates.AddItem(CreateTemplate_LWDrone_WPN('LWDroneM1_WPN'));
 	Templates.AddItem(CreateTemplate_LWDrone_WPN('LWDroneM2_WPN'));
+	Templates.AddItem(CreateTemplate_LWDroneM9_WPN());
 	
 	Templates.AddItem(CreateTemplate_LWDroneRepair_WPN('LWDroneRepairM1_WPN'));
 	Templates.AddItem(CreateTemplate_LWDroneRepair_WPN('LWDroneRepairM2_WPN'));
@@ -176,7 +178,9 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(CreateTemplate_AdvElite_WPN('AdvCommando_WPN'));
 	Templates.AddItem(CreateTemplate_AdvElite_WPN('AdvGeneralM1_WPN'));
 	Templates.AddItem(CreateTemplate_AdvElite_WPN('AdvGeneralM2_WPN'));
+	
 
+	
 	return Templates;
 }
 
@@ -430,15 +434,20 @@ static function X2DataTemplate CreateTemplate_Naja_WPN(name TemplateName)
 	if (TemplateName == 'NajaM1_WPN' || TemplateName == 'NajaM2_WPN' || TemplateName == 'NajaM3_WPN')
 	{
 		Template.Abilities.AddItem('DamnGoodGround');
+		Template.Abilities.AddItem('SnapShot');
+		Template.Abilities.AddItem('LongWatch'); 
+		Template.Abilities.AddItem('LW_WeaponHandling'); 
 	}
 	if (TemplateName == 'NajaM2_WPN' || TemplateName == 'NajaM3_WPN')
 	{
 		Template.Abilities.AddItem('Executioner_LW'); //weapon perk
-		Template.Abilities.AddItem('LongWatch'); // weapon perk
+		Template.Abilities.AddItem('LW_Concentration'); 
+
 	}
 	if (TemplateName == 'NajaM3_WPN')
 	{
 		//Template.Abilities.AddItem('DeathfromAbove_LW');
+		Template.Abilities.AddItem('ReadyForAnything');
 	}
 
 	// This all the resources; sounds, animations, models, physics, the works.
@@ -562,15 +571,25 @@ static function X2DataTemplate CreateTemplate_AdvGunner_WPN(name TemplateName)
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
 	Template.Abilities.AddItem('AreaSuppression');
+	Template.Abilities.AddItem('SaturationFire');
+	Template.Abilities.AddItem('EverVigilant');
 
 	if (TemplateName == 'AdvGunnerM2_WPN' || TemplateName == 'AdvGunnerM3_WPN')
 	{
 		Template.Abilities.AddItem('LockedOn');
+		Template.Abilities.AddItem('Mayhem');
+		Template.Abilities.AddItem('Lockdown');
+		Template.Abilities.AddItem('CombatAwareness');
+		Template.Abilities.AddItem('LW_Predator');
+
+
 	}
 	if (TemplateName == 'AdvGunnerM3_WPN')
 	{
 		Template.Abilities.AddItem('TraverseFire');
 		Template.Abilities.AddItem('CoveringFire');
+		Template.Abilities.AddItem('DangerZone');
+		Template.Abilities.AddItem('CoolUnderPressure');
 	}
 	
 	// This all the resources; sounds, animations, models, physics, the works.
@@ -603,7 +622,7 @@ static function X2DataTemplate CreateTemplate_AdvSentry_WPN(name TemplateName)
 	Template.RemoveTemplateAvailablility(Template.BITFIELD_GAMEAREA_Multiplayer); //invalidates multiplayer availability
 
 	Template.RangeAccuracy = class'X2Item_DefaultWeapons'.default.FLAT_CONVENTIONAL_RANGE;
-    Template.iClipSize = class'X2Item_DefaultWeapons'.default.ASSAULTRIFLE_MAGNETIC_ICLIPSIZE; 
+    Template.iClipSize = 5; 
 
     Template.iSoundRange = class'X2Item_DefaultWeapons'.default.ASSAULTRIFLE_MAGNETIC_ISOUNDRANGE;
 	if (TemplateName == 'AdvSentryM1_WPN')
@@ -626,15 +645,21 @@ static function X2DataTemplate CreateTemplate_AdvSentry_WPN(name TemplateName)
 	if (TemplateName == 'AdvSentryM2_WPN')
 	{
 		Template.Abilities.AddItem('CoolUnderPressure');
-		Template.Abilities.AddItem('Sentinel');
+		Template.Abilities.AddItem('Sentinel_LW');
 		Template.Abilities.AddItem('CoveringFire');
+
 	}
 
 	if (TemplateName == 'AdvSentryM3_WPN')
 	{
 		Template.Abilities.AddItem('CoolUnderPressure');
-		Template.Abilities.AddItem('Sentinel_LW');
+		Template.Abilities.AddItem('RapidReaction');
 		Template.Abilities.AddItem('CoveringFire');
+		Template.Abilities.AddItem('LW_Predator');
+		Template.Abilities.AddItem('LW_Overkill');
+		Template.Abilities.AddItem('LW_ShootingSharp');
+		Template.Abilities.AddItem('MindShield');
+
 	}
 
 	Template.GameArchetype = "WP_AssaultRifle_MG.WP_AssaultRifle_MG_Advent";
@@ -991,6 +1016,46 @@ static function X2DataTemplate CreateTemplate_LWDrone_WPN(name TemplateName)
 	return Template;
 }
 
+static function X2DataTemplate CreateTemplate_LWDroneM9_WPN()
+{
+	local X2WeaponTemplate Template;
+
+	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'LWDroneM9_WPN');
+	
+	Template.WeaponPanelImage = "_ConventionalRifle";                       // used by the UI. Probably determines iconview of the weapon.
+	Template.ItemCat = 'weapon';
+	Template.WeaponCat = 'rifle';
+	Template.WeaponTech = 'magnetic';
+	Template.strImage = "img:///UILibrary_LWAlienPack.LWAdventDrone_ArcWeapon";
+	Template.RemoveTemplateAvailablility(Template.BITFIELD_GAMEAREA_Multiplayer); //invalidates multiplayer availability
+
+	Template.BaseDamage = default.LWDRONEM9_DRONEWEAPON_BASEDAMAGE;
+
+	Template.iRange = default.LWDRONE_DRONEWEAPON_RANGE;
+	Template.iSoundRange = default.LWDRONE_DRONEWEAPON_ISOUNDRANGE;
+	Template.iEnvironmentDamage = default.LWDRONE_DRONEWEAPON_IENVIRONMENTDAMAGE;
+	Template.iIdealRange = default.LWDRONE_IDEALRANGE;
+	Template.RangeAccuracy = class'X2Item_SMGWeapon'.default.MIDSHORT_CONVENTIONAL_RANGE;
+
+	Template.iClipSize = 99;
+	Template.InfiniteAmmo = true;
+	
+	Template.InventorySlot = eInvSlot_PrimaryWeapon;
+	Template.Abilities.AddItem('LWDroneShock');
+
+	// This all the resources; sounds, animations, models, physics, the works.
+	Template.GameArchetype = "LWDroneWeapon.Archetypes.WP_DroneBeam";
+
+	Template.iPhysicsImpulse = 5;
+
+	Template.CanBeBuilt = false;
+	Template.TradingPostValue = 30;
+
+	return Template;
+}
+
+
+	
 static function X2DataTemplate CreateTemplate_LWDroneRepair_WPN(name TemplateName)
 {
 	local X2WeaponTemplate Template;
@@ -1081,7 +1146,7 @@ static function X2DataTemplate CreateTemplate_AdvElite_WPN(name TemplateName)
 	Template.RemoveTemplateAvailablility(Template.BITFIELD_GAMEAREA_Multiplayer); //invalidates multiplayer availability
 
 	Template.RangeAccuracy = class'X2Item_DefaultWeapons'.default.FLAT_CONVENTIONAL_RANGE;
-    Template.iClipSize = class'X2Item_DefaultWeapons'.default.ASSAULTRIFLE_MAGNETIC_ICLIPSIZE; 
+    Template.iClipSize = 5; 
 
     Template.iSoundRange = class'X2Item_DefaultWeapons'.default.ASSAULTRIFLE_MAGNETIC_ISOUNDRANGE;
 	

@@ -42,6 +42,8 @@ var config int SCANNING_PROTOCOL_INITIAL_CHARGES;
 
 static function UpdateAbilities(X2AbilityTemplate Template, int Difficulty)
 {
+	local X2Effect_DamageImmunity DamageImmunity;
+	local X2Effect TempEffect;
     // Override the FinalizeHitChance calculation for abilities that use standard aim
     if (ClassIsChildOf(Template.AbilityToHitCalc.Class, class'X2AbilityToHitCalc_StandardAim'))
     {
@@ -65,10 +67,12 @@ static function UpdateAbilities(X2AbilityTemplate Template, int Difficulty)
 			break;
 		case 'Bayonet':
 			UpdateBayonet(Template);
+			MakeAbilityNonTurnEnding(Template);
 			break;
 		//I probably could just update it in the Alienpack, but it doesn't recognize the cooldown class there
 		case 'BayonetCharge':
 			UpdateBayonetCharge(Template);
+			MakeAbilityNonTurnEnding(Template);
 			break;
 		case 'ChosenImmuneMelee':
 			ReplaceWithDamageReductionMelee(Template);
@@ -78,6 +82,7 @@ static function UpdateAbilities(X2AbilityTemplate Template, int Difficulty)
 			break;
 		case 'PoisonSpit':
 			AddImmuneConditionToPoisonSpit(Template);
+			MakeFreeAction(Template);
 			break;
 		case 'AdvPurifierFlamethrower':
 			UpdatePurifierFlamethrower(Template);
@@ -115,6 +120,46 @@ static function UpdateAbilities(X2AbilityTemplate Template, int Difficulty)
 		case 'KingGetOverHere':
 			MakeAbilitiesUnusableOnLost(Template);
 			break;
+		case 'ScanningProtocol':
+			MakeFreeAction(Template);
+			AddInitialScanningCharges(Template);
+			break;
+		case 'MarkTarget':
+		case 'PsiReanimation':
+		case 'MassReanimation_LW':
+		case 'Mindspin':
+		case 'MassMindspin':
+			MakeFreeAction(Template);
+			break;
+		case 'KillSiredZombies':
+			Template.AssociatedPlayTiming = SPT_AfterParallel;
+		break;
+		case 'mindshield':
+		Template.IconImage = "img:///UILibrary_XPACK_Common.PerkIcons.UIPerk_mindshield";
+			foreach Template.AbilityTargetEffects( TempEffect )
+			{
+				if ( X2Effect_DamageImmunity(TempEffect) != none )
+				{
+					DamageImmunity = X2Effect_DamageImmunity(TempEffect);
+					DamageImmunity.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage,true,,Template.AbilitySourceName);
+				}
+			}
+		break;
+		case 'HazmatVestBonus':
+				Template.IconImage = "img:///UILibrary_PerkIcons.UIPerk_item_flamesealant";
+				foreach Template.AbilityTargetEffects( TempEffect )
+					{
+						if ( X2Effect_DamageImmunity(TempEffect) != none )
+						{
+							DamageImmunity = X2Effect_DamageImmunity(TempEffect);
+							DamageImmunity.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage,true,,Template.AbilitySourceName);
+						}
+					}
+		break;
+		
+		case 'BigDamnPunch':
+					MakeAbilityNonTurnEnding(Template);
+		break;
 		default:
 			break;
 
@@ -550,6 +595,10 @@ static function UpdatePurifierFlamethrower(X2AbilityTemplate Template)
 	Template.bAffectNeighboringTiles = true;
 	Template.bFragileDamageOnly = true;
 
+
+	Template.AddMultiTargetEffect(class'X2Ability_LW_TechnicalAbilitySet'.static.CreateNapalmXPanicEffect());
+
+
 	// For vanilla targeting
 	// Template.ActionFireClass = class'X2Action_Fire_Flamethrower';
 	Template.PostActivationEvents.AddItem('FlamethrowerActivated');
@@ -748,7 +797,10 @@ static function MakeAbilitiesUnusableOnLost(X2AbilityTemplate Template)
 	Template.AbilityTargetConditions.AddItem(Condition);
 }
 
-	
+static function AddInitialScanningCharges(X2AbilityTemplate Template)
+{
+	Template.AbilityCharges.InitialCharges = default.SCANNING_PROTOCOL_INITIAL_CHARGES;
+}
 defaultproperties
 {
 	AbilityTemplateModFn=UpdateAbilities

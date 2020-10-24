@@ -66,7 +66,7 @@ var config array<PlotObjectiveMod> PlotObjectiveMods;
 // This is used in FinalizeUnitAbilitiesForInit() to patch existing
 // abilities for non-XCOM units.
 var config array<name> PrimaryWeaponAbilities;
-
+var config array<name> SecondaryWeaponAbilities;
 // Configurable list of parcels to remove from the game.
 var config array<String> ParcelsToRemove;
 var bool bDebugPodJobs;
@@ -140,12 +140,21 @@ static event InstallNewCampaign(XComGameState StartState)
 /// </summary>
 static event OnPostTemplatesCreated()
 {
+	local XcomContentManager    Content;
+
 	`Log(">>>> LW_Overhaul OnPostTemplates");
 	class'LWTemplateMods_Utilities'.static.UpdateTemplates();
 	UpdateWeaponAttachmentsForCoilgun();
 	UpdateFirstMissionTemplate();
 	AddObjectivesToParcels();
 	UpdateChosenActivities();
+
+	Content = `CONTENT;
+	Content.BuildPerkPackageCache();
+	Content.CachePerkContent('Perk_Jail');
+	Content.CachePerkContent('Perk_BlazingStorm');
+	Content.CachePerkContent('Perk_MassJail');
+
 }
 
 /// <summary>
@@ -1236,6 +1245,11 @@ static function FinalizeUnitAbilitiesForInit(XComGameState_Unit UnitState, out a
 		{
 			`LWTrace(" >>> Binding ability '" $ SetupData[i].TemplateName $ "' to primary weapon for unit " $ UnitState.GetMyTemplateName());
 			SetupData[i].SourceWeaponRef = UnitState.GetPrimaryWeapon().GetReference();
+		}
+		if (default.SecondaryWeaponAbilities.Find(SetupData[i].TemplateName) != INDEX_NONE && SetupData[i].SourceWeaponRef.ObjectID == 0)
+		{
+			`LWTrace(" >>> Binding ability '" $ SetupData[i].TemplateName $ "' to Secondary weapon for unit " $ UnitState.GetMyTemplateName());
+			SetupData[i].SourceWeaponRef = UnitState.GetSecondaryWeapon().GetReference();
 		}
 	}
 

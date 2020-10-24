@@ -345,6 +345,7 @@ static function X2AbilityTemplate CloseCombatSpecialistAttack()
 	local X2Condition_Visibility						TargetVisibilityCondition;
 	local X2AbilityCost_Ammo							AmmoCost;
 	local X2AbilityTarget_Single_CCS					SingleTarget;
+	local X2Condition_NotItsOwnTurn 					NotItsOwnTurnCondition;
 	//local X2AbilityCooldown								Cooldown;	
 
 	`CREATE_X2ABILITY_TEMPLATE(Template, 'CloseCombatSpecialistAttack');
@@ -360,6 +361,9 @@ static function X2AbilityTemplate CloseCombatSpecialistAttack()
 	ToHitCalc.bReactionFire = true;
 	Template.AbilityToHitCalc = ToHitCalc;
 	 
+	NotItsOwnTurnCondition = new class'X2Condition_NotItsOwnTurn';
+	Template.AbilityShooterConditions.AddItem(NotItsOwnTurnCondition);
+
 	//Cooldown = new class'X2AbilityCooldown';
 	//Cooldown.iNumTurns = 1;
     //Template.AbilityCooldown = Cooldown;

@@ -391,7 +391,7 @@ static function X2AbilityTemplate CreateDroneShockAbility()
 	local X2Condition_Visibility            VisibilityCondition;
 	local X2AbilityTarget_Single            SingleTarget;
 	local array<name>                       SkipExclusions;
-
+	local X2Effect_Knockback				KnockbackEffect;
 	`CREATE_X2ABILITY_TEMPLATE(Template, 'LWDroneShock');
 	Template.IconImage = "img:///UILibrary_PerkIcons.UIPerk_lightningfield";
 	Template.Hostility = eHostility_Offensive;
@@ -417,6 +417,11 @@ static function X2AbilityTemplate CreateDroneShockAbility()
 	SingleTarget = new class'X2AbilityTarget_Single';
 	SingleTarget.OnlyIncludeTargetsInsideWeaponRange = true;
 	Template.AbilityTargetStyle = SingleTarget;
+
+
+	KnockbackEffect = new class'X2Effect_Knockback';
+	KnockbackEffect.KnockbackDistance = 10;
+	Template.AddTargetEffect(KnockbackEffect);
 
 	// Action Point
 	ActionPointCost = new class'X2AbilityCost_ActionPoints';

@@ -75,6 +75,13 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(CreateTemplate_AdvGeneric('AdvScout'));
 	Templates.AddItem(CreateTemplate_AdvGeneric('AdvVanguard'));
 
+	Templates.AddItem(CreateTemplate_Shoggoth());
+	Templates.AddItem(CreateTemplate_AdvTrooperShoggothM3());
+	Templates.AddItem(AnnihilationDrone());
+
+	
+
+
 	return Templates;
 }
 
@@ -402,6 +409,7 @@ static function X2CharacterTemplate CreateTemplate_Naja(name TemplateName)
 	{
 		CharTemplate.Abilities.AddItem('DepthPerception'); //character perk
 	}
+	CharTemplate.Abilities.AddItem('LW_SurvivalInstinct');
 
 	CharTemplate.AddTemplateAvailablility(CharTemplate.BITFIELD_GAMEAREA_Multiplayer); // Allow in MP!
 	CharTemplate.MPPointValue = CharTemplate.XpKillscore * 10;
@@ -501,7 +509,7 @@ static function X2CharacterTemplate CreateTemplate_Sidewinder(name TemplateName)
 	switch(TemplateName)
 	{
 		case 'SidewinderM1':
-			CharTemplate.strBehaviorTree = "LWSidewinderRoot"; // new config behavior tree parsing means we could use the group instead
+			CharTemplate.strBehaviorTree = "LWSidewinderHitAndRunRoot"; // new config behavior tree parsing means we could use the group instead
 			break;
 		case 'SidewinderM2':
 		case 'SidewinderM3':
@@ -513,10 +521,15 @@ static function X2CharacterTemplate CreateTemplate_Sidewinder(name TemplateName)
 	{
 		case 'SidewinderM3':
 			CharTemplate.Abilities.AddItem('Infighter');
+			CharTemplate.Abilities.AddItem('LW_Overkill');
+			CharTemplate.Abilities.AddItem('Executioner_LW');
 		case 'SidewinderM2':
-			CharTemplate.Abilities.AddItem('HitandSlither');
+			CharTemplate.Abilities.AddItem('HardTarget');
+			CharTemplate.Abilities.AddItem('LW_Predator');
 		case 'SidewinderM1':
+			CharTemplate.Abilities.AddItem('HitandSlither');
 			CharTemplate.Abilities.AddItem('Shadowstep');
+			CharTemplate.Abilities.AddItem('LW_SurvivalInstinct');
 		default:
 		break;
 	}
@@ -600,7 +613,14 @@ static function X2CharacterTemplate CreateTemplate_ArchonM2_LW()
 
 	CharTemplate.Abilities.AddItem('FrenzyDamageListener');
 	CharTemplate.Abilities.AddItem('BlazingPinionsStage1');
+	CharTemplate.Abilities.AddItem('Bladestorm');
+	CharTemplate.Abilities.AddItem('CloseCombatSpecialist');
+	CharTemplate.Abilities.AddItem('GrazingFire');
+	CharTemplate.Abilities.AddItem('Concentration');
 	CharTemplate.Abilities.AddItem('LightningReflexes_LW');
+	CharTemplate.Abilities.AddItem('Evasive');
+	CharTemplate.Abilities.AddItem('HardTarget');
+
 	// WOTC abilities
 	CharTemplate.Abilities.AddItem('DarkEventAbility_Barrier');
 
@@ -671,6 +691,7 @@ static function X2CharacterTemplate CreateTemplate_SectoidM2_LW()  // I have big
 	CharTemplate.Abilities.AddItem('MassReanimation_LW');
 	// WOTC abilities
 	CharTemplate.Abilities.AddItem('DarkEventAbility_Barrier');
+	CharTemplate.Abilities.AddItem('Alphamikefoxtrot');
 
 	// OTHERS?
 
@@ -854,6 +875,7 @@ static function X2CharacterTemplate CreateTemplate_AdvGunner(name TemplateName)
 	CharTemplate.bIsSoldier = false;
 
 	CharTemplate.Abilities.AddItem('HunkerDown');
+	
 	// WOTC abilities
 	CharTemplate.Abilities.AddItem('DarkEventAbility_SealedArmor');
 	CharTemplate.Abilities.AddItem('DarkEventAbility_UndyingLoyalty');
@@ -964,6 +986,13 @@ static function X2CharacterTemplate CreateTemplate_AdvSentry(name TemplateName)
 
 	CharTemplate.Abilities.AddItem('ReadyForAnything');
 	CharTemplate.Abilities.AddItem('HunkerDown');
+	CharTemplate.Abilities.Additem('GrazingFire');
+	CharTemplate.Abilities.Additem('LW_Concentration');
+	CharTemplate.Abilities.Additem('EverVigilant');
+
+
+	
+
 	// WOTC abilities
 	CharTemplate.Abilities.AddItem('DarkEventAbility_SealedArmor');
 	CharTemplate.Abilities.AddItem('DarkEventAbility_UndyingLoyalty');
@@ -971,7 +1000,9 @@ static function X2CharacterTemplate CreateTemplate_AdvSentry(name TemplateName)
 	CharTemplate.Abilities.AddItem('DarkEventAbility_Counterattack');
 
 	if (TemplateName == 'AdvSentryM3')
-		CharTemplate.Abilities.AddItem('TacticalSense');
+		{
+			CharTemplate.Abilities.AddItem('TacticalSense');
+		}
 
 	CharTemplate.SightedNarrativeMoments.AddItem(XComNarrativeMoment'X2NarrativeMoments.TACTICAL.AlienSitings.T_Central_AlienSightings_AdvTrooperM1');
 
@@ -1069,17 +1100,28 @@ static function X2CharacterTemplate CreateTemplate_AdvGrenadier(name TemplateNam
 
 	CharTemplate.bAllowSpawnFromATT = true;
 
-    CharTemplate.Abilities.AddItem('HunkerDown');
+	CharTemplate.Abilities.AddItem('HunkerDown');
+	CharTemplate.Abilities.AddItem('Salvo');
+	CharTemplate.Abilities.AddItem('CoupDegrace2');
+
 	// WOTC abilities
 	CharTemplate.Abilities.AddItem('DarkEventAbility_SealedArmor');
 	CharTemplate.Abilities.AddItem('DarkEventAbility_UndyingLoyalty');
 	CharTemplate.Abilities.AddItem('DarkEventAbility_Barrier');
 	CharTemplate.Abilities.AddItem('DarkEventAbility_Counterattack');
 
+	CharTemplate.Abilities.AddItem('LW_WatchThemRun');
 	if (TemplateName == 'AdvGrenadierM3')
 	{
-		CharTemplate.Abilities.AddItem('Salvo');
+		CharTemplate.Abilities.AddItem('LW_watchThemRun');
+	}
+	if (TemplateName == 'AdvGrenadierM3')
+	{
 		CharTemplate.Abilities.AddItem('BiggestBooms');
+		CharTemplate.Abilities.AddItem('VolatileMix');
+		CharTemplate.Abilities.AddItem('HeavyFrags');
+		CharTemplate.Abilities.AddItem('RapidReaction');
+		CharTemplate.Abilities.AddItem('CoolUnderPressure');
 	}
 
 	CharTemplate.SightedNarrativeMoments.AddItem(XComNarrativeMoment'X2NarrativeMoments.TACTICAL.AlienSitings.T_Central_AlienSightings_AdvTrooperM1');
@@ -1178,8 +1220,26 @@ static function X2CharacterTemplate CreateTemplate_AdvRocketeer(name TemplateNam
 	CharTemplate.Abilities.AddItem('DarkEventAbility_Barrier');
 	CharTemplate.Abilities.AddItem('DarkEventAbility_Counterattack');
 
+	CharTemplate.Abilities.AddItem('BiggestBooms');
+	CharTemplate.Abilities.AddItem('TandemWarheads');
+	CharTemplate.Abilities.AddItem('Salvo');
+	CharTemplate.Abilities.AddItem('JavelinRockets');
+	CharTemplate.Abilities.AddItem('CombatEngineer');
+
+	if (TemplateName == 'AdvRocketeerM2')
+	{
+		CharTemplate.Abilities.AddItem('ReadyForAnything');
+		CharTemplate.Abilities.AddItem('Formidable');
+	}
+
+
 	if (TemplateName == 'AdvRocketeerM3')
-		CharTemplate.Abilities.AddItem('BiggestBooms');
+	{
+		CharTemplate.Abilities.AddItem('ReadyForAnything');
+		CharTemplate.Abilities.AddItem('Formidable');
+		CharTemplate.Abilities.AddItem('Sentinel_LW');
+		CharTemplate.Abilities.AddItem('CoolUnderPressure');
+	}
 
 	CharTemplate.SightedNarrativeMoments.AddItem(XComNarrativeMoment'X2NarrativeMoments.TACTICAL.AlienSitings.T_Central_AlienSightings_AdvTrooperM1');
 
@@ -1384,6 +1444,8 @@ static function X2CharacterTemplate CreateTemplate_Drone(name TemplateName)
 		Loot.LootTableName = 'LWDroneM2_VultureLoot';  
 	CharTemplate.VultureLoot.LootReferences.AddItem(Loot);
 
+	if(TemplateName == 'LWDroneM2')
+	CharTemplate.Abilities.AddItem('Infighter');
 
 	//NEW CINEMATIC?
 
@@ -1423,6 +1485,8 @@ static function X2CharacterTemplate CreateTemplate_Drone(name TemplateName)
 
 	CharTemplate.Abilities.AddItem('LWDroneMeleeStun');
 	CharTemplate.Abilities.AddItem('RobotImmunities');
+	CharTemplate.Abilities.AddItem('huntersinstinct');
+
 	// WOTC abilities
 	CharTemplate.Abilities.AddItem('DarkEventAbility_Barrier');
 	//CharTemplate.Abilities.AddItem('FireOnDeath');
@@ -1630,6 +1694,10 @@ static function X2CharacterTemplate CreateTemplate_AdvGeneric(name TemplateName)
 			LootTimed.LootTableName='AdvTrooperM2_TimedLoot';
 			LootVulture.LootTableName='AdvTrooperM2_VultureLoot';
 			CharTemplate.Abilities.AddItem('TacticalSense');
+			CharTemplate.Abilities.AddItem('CyclicFire');
+			CharTemplate.Abilities.AddItem('Executioner_LW');
+			CharTemplate.Abilities.AddItem('CoupDeGrace2');
+
 			break;
 
 		case 'AdvSergeantM2':
@@ -1639,6 +1707,12 @@ static function X2CharacterTemplate CreateTemplate_AdvGeneric(name TemplateName)
 			LootVulture.LootTableName='AdvTrooperM3_VultureLoot';
 			CharTemplate.Abilities.AddItem('TacticalSense');
 			CharTemplate.Abilities.AddItem('LockedOn');				// Weapon?
+			CharTemplate.Abilities.AddItem('CyclicFire');
+			CharTemplate.Abilities.AddItem('Executioner_LW');
+			CharTemplate.Abilities.AddItem('CoupDeGrace2');
+			CharTemplate.Abilities.AddItem('CombatEngineer');
+			CharTemplate.Abilities.AddItem('LW_OverKill');
+
 			break;
 
 		case 'AdvGeneralM1':
@@ -1680,6 +1754,12 @@ static function X2CharacterTemplate CreateTemplate_AdvGeneric(name TemplateName)
 			LootVulture.LootTableName='AdvTrooperM1_VultureLoot';
 			CharTemplate.Abilities.AddItem('Shadowstep');
 			CharTemplate.Abilities.AddItem('LoneWolf');
+			CharTemplate.Abilities.AddItem('TacticalSense');
+			CharTemplate.Abilities.AddItem('PrimaryReturnFire');
+			CharTemplate.Abilities.AddItem('Infighter');
+			CharTemplate.Abilities.AddItem('Formidable');
+			CharTemplate.Abilities.AddItem('ChosenKineticPlating');
+			CharTemplate.Abilities.AddItem('ChosenRegenerate');
 			break;
 
 		case 'AdvVanguard':
@@ -1690,6 +1770,11 @@ static function X2CharacterTemplate CreateTemplate_AdvGeneric(name TemplateName)
 			CharTemplate.Abilities.AddItem('CloseCombatSpecialist');	// weapon?
 			CharTemplate.Abilities.AddItem('CloseAndPersonal');			// weapon?
 			CharTemplate.Abilities.AddItem('WillToSurvive');
+			CharTemplate.Abilities.AddItem('CoolUnderPressure');
+			CharTemplate.Abilities.AddItem('LightningReflexes_LW');
+			CharTemplate.Abilities.AddItem('LW_SurvivalInstinct');
+
+			// weapon?
 			// Run and Gun, SUppression
 			break;
 
@@ -1703,6 +1788,18 @@ static function X2CharacterTemplate CreateTemplate_AdvGeneric(name TemplateName)
 			CharTemplate.Abilities.AddItem('LowProfile');
 			CharTemplate.Abilities.AddItem('HardTarget');
 			CharTemplate.Abilities.AddItem('LoneWolf');
+			CharTemplate.Abilities.AddItem('TacticalSense');
+			CharTemplate.Abilities.AddItem('PrimaryReturnFire');
+			CharTemplate.Abilities.AddItem('Infighter');
+			CharTemplate.Abilities.AddItem('Formidable');
+			CharTemplate.Abilities.AddItem('CoolUnderPressure');
+			CharTemplate.Abilities.AddItem('ChosenKineticPlating');
+			CharTemplate.Abilities.AddItem('IronSkin');
+			CharTemplate.Abilities.AddItem('Readyforanything');
+			CharTemplate.Abilities.AddItem('WillToSurvive');
+			CharTemplate.Abilities.AddItem('LW_ApexPredator');
+			CharTemplate.Abilities.AddItem('LW_SurvivalInstinct');
+			CharTemplate.Abilities.AddItem('ChosenRegenerate');
 			break;
 
 		case 'AdvShockTroop':
@@ -1713,6 +1810,13 @@ static function X2CharacterTemplate CreateTemplate_AdvGeneric(name TemplateName)
 			CharTemplate.Abilities.AddItem('Aggression');
 			CharTemplate.Abilities.AddItem('BringEmOn');
 			CharTemplate.Abilities.AddItem('Executioner_LW');
+			CharTemplate.Abilities.AddItem('RapidFire');
+			CharTemplate.Abilities.AddItem('LW_Impulse');
+			CharTemplate.Abilities.AddItem('LW_Predator');
+			CharTemplate.Abilities.AddItem('LockedOn');
+			CharTemplate.Abilities.AddItem('LW_ApexPredator');
+
+
 			break;
 
 		default:
@@ -1760,10 +1864,234 @@ static function X2CharacterTemplate CreateTemplate_AdvGeneric(name TemplateName)
 	return CharTemplate;
 }
 
+static function X2CharacterTemplate CreateTemplate_AdvTrooperShoggothM3()
+{
+	local X2CharacterTemplate CharTemplate;
+	local LootReference Loot;
+
+	`CREATE_X2CHARACTER_TEMPLATE(CharTemplate, 'AdvTrooperShoggothM2');
+	CharTemplate.CharacterGroupName = 'AdventTrooper';
+	
+	CharTemplate.DefaultLoadout='AdvTrooperM2_Loadout';
+	CharTemplate.BehaviorClass=class'XGAIBehavior';
+	CharTemplate.strPawnArchetypes.AddItem("GameUnit_AdvTrooper.ARC_GameUnit_AdvTrooperM3_M");
+	CharTemplate.strPawnArchetypes.AddItem("GameUnit_AdvTrooper.ARC_GameUnit_AdvTrooperM3_F");
+	
+	Loot.ForceLevel=0;
+	Loot.LootTableName='AdvTrooperM3_BaseLoot';
+	CharTemplate.Loot.LootReferences.AddItem(Loot);
+
+	// Timed Loot
+	Loot.ForceLevel = 0;
+	Loot.LootTableName = 'AdvTrooperM3_TimedLoot';
+	CharTemplate.TimedLoot.LootReferences.AddItem(Loot);
+	Loot.LootTableName = 'AdvTrooperM3_VultureLoot';
+	CharTemplate.VultureLoot.LootReferences.AddItem(Loot);
+
+	CharTemplate.strMatineePackages.AddItem("CIN_Advent");
+	CharTemplate.RevealMatineePrefix = "CIN_Advent_Trooper";
+	CharTemplate.GetRevealMatineePrefixFn = GetAdventMatineePrefix;
+
+	CharTemplate.UnitSize = 1;
+
+	// Traversal Rules
+	CharTemplate.bCanUse_eTraversal_Normal = true;
+	CharTemplate.bCanUse_eTraversal_ClimbOver = true;
+	CharTemplate.bCanUse_eTraversal_ClimbOnto = true;
+	CharTemplate.bCanUse_eTraversal_ClimbLadder = true;
+	CharTemplate.bCanUse_eTraversal_DropDown = true;
+	CharTemplate.bCanUse_eTraversal_Grapple = false;
+	CharTemplate.bCanUse_eTraversal_Landing = true;
+	CharTemplate.bCanUse_eTraversal_BreakWindow = true;
+	CharTemplate.bCanUse_eTraversal_KickDoor = true;
+	CharTemplate.bCanUse_eTraversal_JumpUp = false;
+	CharTemplate.bCanUse_eTraversal_WallClimb = false;
+	CharTemplate.bCanUse_eTraversal_BreakWall = false;
+	CharTemplate.bAppearanceDefinesPawn = false;    
+	CharTemplate.bSetGenderAlways = true;
+	CharTemplate.bCanTakeCover = true;
+
+	CharTemplate.bIsAlien = false;
+	CharTemplate.bIsAdvent = true;
+	CharTemplate.bIsCivilian = false;
+	CharTemplate.bIsPsionic = false;
+	CharTemplate.bIsRobotic = false;
+	CharTemplate.bIsSoldier = false;
+
+	CharTemplate.bCanBeTerrorist = false;
+	CharTemplate.bCanBeCriticallyWounded = false;
+	CharTemplate.bIsAfraidOfFire = true;
+
+	CharTemplate.Abilities.AddItem('ChangeForm_Shoggoth');
+	CharTemplate.Abilities.AddItem('HunkerDown');
+	CharTemplate.Abilities.AddItem('LightEmUp');
+	CharTemplate.Abilities.AddItem('LW_AimAssist');
+	CharTemplate.Abilities.AddItem('Formidable');
 
 
+	CharTemplate.strHackIconImage = "UILibrary_Common.TargetIcons.Hack_captain_icon";
+	CharTemplate.strTargetIconImage = class'UIUtilities_Image'.const.TargetIcon_Advent;
+
+	return CharTemplate;
+}
+
+static function X2CharacterTemplate CreateTemplate_Shoggoth()
+{
+	local X2CharacterTemplate CharTemplate;
+	local LootReference Loot;
+
+	`CREATE_X2CHARACTER_TEMPLATE(CharTemplate, 'Shoggoth');
+	CharTemplate.CharacterGroupName = 'Faceless';
+	CharTemplate.DefaultLoadout='Faceless_Loadout';
+	CharTemplate.BehaviorClass=class'XGAIBehavior';
+	CharTemplate.strBehaviorTree = "Faceless_Shoggoth::CharacterRoot";
+
+	CharTemplate.strPawnArchetypes.AddItem("BetterFaceless.ARC_GameUnit_Shoggoth");
+	Loot.ForceLevel=0;
+	Loot.LootTableName='Faceless_BaseLoot';
+	CharTemplate.Loot.LootReferences.AddItem(Loot);
+
+	// Timed Loot
+	Loot.ForceLevel = 0;
+	Loot.LootTableName = 'Faceless_TimedLoot';
+	CharTemplate.TimedLoot.LootReferences.AddItem(Loot);
+	Loot.LootTableName = 'Faceless_VultureLoot';
+	CharTemplate.VultureLoot.LootReferences.AddItem(Loot);
+
+	CharTemplate.strMatineePackages.AddItem("CIN_Faceless");
+
+	CharTemplate.UnitSize = 1;
+	CharTemplate.UnitHeight = 4; //Faceless is tall
+
+	// Traversal Rules
+	CharTemplate.bCanUse_eTraversal_Normal = true;
+	CharTemplate.bCanUse_eTraversal_ClimbOver = true;
+	CharTemplate.bCanUse_eTraversal_ClimbOnto = true;
+	CharTemplate.bCanUse_eTraversal_ClimbLadder = false;
+	CharTemplate.bCanUse_eTraversal_DropDown = true;
+	CharTemplate.bCanUse_eTraversal_Grapple = false;
+	CharTemplate.bCanUse_eTraversal_Landing = true;
+	CharTemplate.bCanUse_eTraversal_BreakWindow = true;
+	CharTemplate.bCanUse_eTraversal_KickDoor = true;
+	CharTemplate.bCanUse_eTraversal_JumpUp = true;
+	CharTemplate.bCanUse_eTraversal_WallClimb = false;
+	CharTemplate.bCanUse_eTraversal_BreakWall = false;
+	CharTemplate.bAppearanceDefinesPawn = false;    
+	CharTemplate.bCanTakeCover = false;
+
+	CharTemplate.bIsAlien = true;
+	CharTemplate.bIsAdvent = false;
+	CharTemplate.bIsCivilian = false;
+	CharTemplate.bIsPsionic = false;
+	CharTemplate.bIsRobotic = false;
+	CharTemplate.bIsSoldier = false;
+	CharTemplate.bIsMeleeOnly = true;
+
+	CharTemplate.bCanBeTerrorist = false;
+	CharTemplate.bCanBeCriticallyWounded = false;
+	CharTemplate.bIsAfraidOfFire = true;
+
+	CharTemplate.bAllowSpawnFromATT = false;
+
+	CharTemplate.AddTemplateAvailablility(CharTemplate.BITFIELD_GAMEAREA_Multiplayer); // Allow in MP!
+	CharTemplate.MPPointValue = CharTemplate.XpKillscore * 10;
+	CharTemplate.strScamperBT = "ScamperRoot_NoCover";
+
+	CharTemplate.Abilities.AddItem('FacelessInit');
+	CharTemplate.Abilities.AddItem('ShoggothClaws');
+
+	CharTemplate.strTargetIconImage = class'UIUtilities_Image'.const.TargetIcon_Alien;
+
+	return CharTemplate;
+}
 
 
+static function X2CharacterTemplate AnnihilationDrone()
+{
+	local X2CharacterTemplate CharTemplate;
+	local LootReference Loot;
+
+	`CREATE_X2CHARACTER_TEMPLATE(CharTemplate, 'AnnihilationDrone');
+	CharTemplate.CharacterGroupName = 'AdventDrone';
+
+	CharTemplate.DefaultLoadout='LWDroneM9_Loadout';
+
+	CharTemplate.BehaviorClass=class'XGAIBehavior';
+
+
+	CharTemplate.strPawnArchetypes.AddItem("LWDrone.Archetypes.ARC_GameUnit_DroneM3"); 
+
+	Loot.ForceLevel=0;
+	Loot.LootTableName='LWDroneM1_BaseLoot';			// Both leave a drone corpse
+	CharTemplate.Loot.LootReferences.AddItem(Loot);
+
+	// Timed Loot
+	Loot.ForceLevel = 0;
+	Loot.LootTableName = 'LWDroneM2_TimedLoot';
+	CharTemplate.TimedLoot.LootReferences.AddItem(Loot);
+
+
+	Loot.LootTableName = 'LWDroneM2_VultureLoot';  
+	CharTemplate.VultureLoot.LootReferences.AddItem(Loot);
+
+	CharTemplate.Abilities.AddItem('Infighter');
+
+	//NEW CINEMATIC?
+
+	CharTemplate.UnitSize = 1;
+
+	CharTemplate.bCanUse_eTraversal_Normal = true;
+	CharTemplate.bCanUse_eTraversal_ClimbOver = false;
+	CharTemplate.bCanUse_eTraversal_ClimbOnto = false;
+	CharTemplate.bCanUse_eTraversal_ClimbLadder = false;
+	CharTemplate.bCanUse_eTraversal_DropDown = false;
+	CharTemplate.bCanUse_eTraversal_Grapple = false;
+	CharTemplate.bCanUse_eTraversal_Landing = true;
+	CharTemplate.bCanUse_eTraversal_BreakWindow = true;
+	CharTemplate.bCanUse_eTraversal_KickDoor = true;
+	CharTemplate.bCanUse_eTraversal_JumpUp = false;
+	CharTemplate.bCanUse_eTraversal_WallClimb = false;
+	CharTemplate.bCanUse_eTraversal_BreakWall = false;
+	CharTemplate.bCanUse_eTraversal_Launch = true;
+	CharTemplate.bCanUse_eTraversal_Flying = true;
+	CharTemplate.bCanUse_eTraversal_Land = true;
+	CharTemplate.bAppearanceDefinesPawn = false;    
+	CharTemplate.bCanTakeCover = false;
+
+	CharTemplate.bIsAlien = false;
+	CharTemplate.bIsAdvent = true;
+	CharTemplate.bIsCivilian = false;
+	CharTemplate.bIsPsionic = false;
+	CharTemplate.bIsRobotic = true;
+	CharTemplate.bIsSoldier = false;
+
+	CharTemplate.bCanBeTerrorist = false;
+	CharTemplate.bCanBeCriticallyWounded = false;
+	CharTemplate.bIsAfraidOfFire = false;
+
+	CharTemplate.bAllowSpawnFromATT = false;  // If true, this unit can be spawned from an Advent Troop Transport
+	CharTemplate.bWeakAgainstTechLikeRobot = true;
+
+	CharTemplate.Abilities.AddItem('RobotImmunities');
+	CharTemplate.Abilities.AddItem('huntersinstinct');
+
+	// WOTC abilities
+	CharTemplate.Abilities.AddItem('DarkEventAbility_Barrier');
+	//CharTemplate.Abilities.AddItem('FireOnDeath');
+
+	CharTemplate.AddTemplateAvailablility(CharTemplate.BITFIELD_GAMEAREA_Multiplayer); // Allow in MP!
+	CharTemplate.MPPointValue = CharTemplate.XpKillscore * 10;
+	CharTemplate.strBehaviorTree = "LWDroneRoot"; // new config behavior tree parsing means we could use the group instead
+	CharTemplate.strScamperBT = "ScamperRoot_NoCover";
+
+	//TODO: (ID 507) investigate possibilities for adding first-sighting narrative moment for new unit
+	//CharTemplate.SightedNarrativeMoments.AddItem(XComNarrativeMoment'X2NarrativeMoments.TACTICAL.AlienSitings.T_Central_AlienSightings_Muton');
+
+	CharTemplate.strHackIconImage = "UILibrary_Common.TargetIcons.Hack_robot_icon";
+	CharTemplate.strTargetIconImage = class'UIUtilities_Image'.const.TargetIcon_Advent;  
+
+	return CharTemplate;
+}
 
 
 

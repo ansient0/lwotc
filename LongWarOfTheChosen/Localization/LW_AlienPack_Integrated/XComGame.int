@@ -330,10 +330,10 @@ strCharacterName="Superheavy MEC"
 ;;;;;;;;;;;;;;;;;;;;;;;;;; DroneM1-2 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 [LWDroneM1 X2CharacterTemplate]
-strCharacterName="ADVENT Surveillance Drone"
+strCharacterName="AMAZON pain delivery"
 
 [LWDroneM2 X2CharacterTemplate]
-strCharacterName="ADVENT Hunter Drone"
+strCharacterName="AMAZON torture delivery"
 
 [LWDroneM1_WPN X2WeaponTemplate]
 FriendlyName="Drone Shock"
@@ -426,3 +426,179 @@ strCharacterName="ADVENT General"
 
 [AdvGeneralM2_WPN X2WeaponTemplate]
 FriendlyName="ADVENT Mag Rifle"
+
+[ZerkerReaction X2AbilityTemplate]
+LocFriendlyName="REEEEEEEEEEEEEE"
+LocLongDescription="The Berserker's adrenaline glands make him a terrifying enemy, capable of rapid attacks."
+LocHelpText="REEEEEEEEEEEEEE."
+LocFlyOverText="Berserker Rush"
+
+[LidReaction X2AbilityTemplate]
+LocFriendlyName="Will of the Swarm"
+LocLongDescription="The lid moves now when taking damage btw."
+LocHelpText="Spawns Chryssalids."
+LocFlyOverText="Will of the Swarm"
+
+[AdvTrooperShoggothM2 X2CharacterTemplate]
+strCharacterName="Advanced Mall Ninja"
+
+[Shoggoth X2CharacterTemplate]
+strCharacterName="DerBK's Shoggoth, God of Anal Discomfort" 
+strAcquiredText="SUPRISE MOTHERFUCKER" 
+
+;Place localized text in this file
+
+[PurgePriest X2CharacterTemplate]
+strCharacterName="Claus's ADVENT Purge Priest"
+strAcquiredText="ADVENT Purge Priests are often deployed alongside Purification squads against the Lost to increase morale amongst the alien forces"
+
+[PurgeBishop X2CharacterTemplate]
+strCharacterName="Claus's ADVENT Purge Bishop"
+strAcquiredText="ADVENT Purge Bishops lead purification squads into lost cities"
+
+[ExaltedPurgePriest X2CharacterTemplate]
+strCharacterName="Claus's ADVENT Exalted Purge Bishop"
+strAcquiredText="The most powerful of the ADVENT Purge Priest forces are capable of immobilizing large swarms of Lost all by themselves before wiping them out in a single strike with a psionic storm of fire"
+
+[ExaltedPurgeArchbishop X2CharacterTemplate]
+strCharacterName="Claus's ADVENT Exalted Purge Archbishop"
+strAcquiredText="The leaders of the Purge Priesthood have honed their psionic power over fire to such an extent that they can burn materials into a molten sludge which they can weaponize to bring down any enemy"
+
+[PurgeGun X2WeaponTemplate]
+FriendlyName="ADVENT Purge Gun"
+FriendlyNamePlural="ADVENT Purge Guns"
+BriefSummary="Purge Priests use powerful short range heat guns designed to burn the Lost to cinders"
+TacticalText="<Bullet/> Firing the primary weapon always ends the soldier's turn\n<Bullet/>"
+
+[ExaltedPurgeGun X2WeaponTemplate]
+FriendlyName="ADVENT Plasma Purge Gun"
+FriendlyNamePlural="ADVENT Plasma Purge Guns"
+BriefSummary="The Plasma Purge gun's beam burns with an even stronger intensity allowing it to melt the thickest armor plating"
+TacticalText="<Bullet/> Firing the primary weapon always ends the soldier's turn\n<Bullet/>"
+
+[ExaltedPurgeGunArchbishop X2WeaponTemplate]
+FriendlyName="ADVENT Plasma Purge Gun"
+FriendlyNamePlural="ADVENT Plasma Purge Guns"
+BriefSummary="The Plasma Purge gun's beam burns with an even stronger intensity allowing it to melt the thickest armor plating"
+TacticalText="<Bullet/> Firing the primary weapon always ends the soldier's turn\n<Bullet/>"
+
+[BlazingGauntlet X2WeaponTemplate]
+FriendlyName="Blazing Gauntlet"
+FriendlyNamePlural="Blazing Gauntlets"
+BriefSummary="The Exalted Bishop's Blazing Gauntlet allows him to control a much larger ammount of fire"
+TacticalText="<Bullet/> Firing the primary weapon always ends the soldier's turn\n<Bullet/>"
+
+[LavaGloves X2WeaponTemplate]
+FriendlyName="Melting Gauntlets"
+FriendlyNamePlural="Melting Gauntlets"
+BriefSummary="The Exalted Purge Archbishop's supremely powerful Melting Gauntlets allow him to concentrated heat to such a degree that they can melt any material"
+TacticalText="<Bullet/> Firing the primary weapon always ends the soldier's turn\n<Bullet/>"
+
+[MeltingProjector X2WeaponTemplate]
+FriendlyName="Melting Projector"
+FriendlyNamePlural="Melting Projectors"
+BriefSummary="The Exalted Purge Archbishop's Melting Projector blasts his surroundings with melting material which forms at their feet"
+TacticalText="<Bullet/> Firing the primary weapon always ends the soldier's turn\n<Bullet/>"
+
+[ScorchingTouch X2WeaponTemplate]
+FriendlyName="Scorching Claws"
+FriendlyNamePlural="Scorching Claws"
+BriefSummary="The claws outfitted at the finger tips of the Purge Archbishop can generate intense burst of heat at a frightening speed allowing them to retaliate to melee attacks with a burning touch that can even melt armor"
+TacticalText="<Bullet/> Firing the primary weapon always ends the soldier's turn\n<Bullet/>"
+
+[PurgeVolt X2AbilityTemplate]
+LocFriendlyName="Purging Bolt"
+LocLongDescription="Purge Priests can fire a burning bolt of flame which jumps between targets setting them ablaze"
+LocHelpText="A bolt of heat which can jump between targets dealing 5 damage to each and setting them on fire"
+LocFlyOverText="Purging Bolt"
+
+[PurgeCascade X2AbilityTemplate]
+LocFriendlyName="Purge Cascade"
+LocLongDescription="The Exalted Purge Archbishop's Purging Bolt can jump between 6 targets"
+LocHelpText="A bolt of heat which can jump between targets dealing 5 damage to each and setting them on fire"
+LocFlyOverText="Purging Cascade"
+
+[PurgeFocus X2AbilityTemplate]
+LocFriendlyName="Purge Focus"
+LocLongDescription="Intense focus allows Purge Priests to create and command flame with their psionic powers and equipment, Purge Bolt hits up to 2 targets total"
+LocHelpText="Allows Purging Bolt to hit 2 targets total"
+LocFlyOverText="Purge Focus"
+
+[PurgingFocus X2AbilityTemplate]
+LocFriendlyName="Purging Focus"
+LocLongDescription="Intense focus allows Purge Priests to create and command flame with their psionic powers and equipment, Purge Bolt hits up to 3 targets total"
+LocHelpText="Allows Purging Bolt to hit 3 targets total"
+LocFlyOverText="Purging Focus"
+
+[BlazingFocus X2AbilityTemplate]
+LocFriendlyName="Blazing Focus"
+LocLongDescription="Intense focus allows Purge Bishops to create and command flame with their psionic powers and equipment, Purge Bolt hits up to 4 targets total"
+LocHelpText="Allows Purging Bolt to hit 4 targets total"
+LocFlyOverText="Blazing Focus"
+
+[ExaltedFocus X2AbilityTemplate]
+LocFriendlyName="Exalted Focus"
+LocLongDescription="Intense focus allows Exalted Purge Bishops to create and command flame with their psionic powers and equipment, Purge Bolt hits up to 5 targets total"
+LocHelpText="Allows Purging Bolt to hit 5 targets total"
+LocFlyOverText="Exalted Focus"
+
+[ApocalypticFocus X2AbilityTemplate]
+LocFriendlyName="Apocalyptic Focus"
+LocLongDescription="The maximum focus a Purge Priest can achieve, achieving such focus is what allows Exalted Purge Bishops to become Exalted Purge Archbishops, Purge Bolt hits up to 6 targets total"
+LocHelpText="Allows Purging Bolt to hit 6 targets total"
+LocFlyOverText="Apocalyptic Focus"
+
+[BlazingStorm X2AbilityTemplate]
+LocFriendlyName="Blazing Storm"
+LocLongDescription="Exalted Purge Bishops fire a monstruously large field of fire"
+LocHelpText="A cone shaped storm of fire which deals 6 damage and shreds 3 armor"
+LocFlyOverText="Blazing Storm"
+
+[MeltingStream X2AbilityTemplate]
+LocFriendlyName="Melting Stream"
+LocLongDescription="Exalted Purge Archbishops launch a narrow torrent of molten sludge"
+LocHelpText="A narrow cone shaped stream of fire which deals 8 damage and shreds 6 armor"
+LocFlyOverText="Melting Stream"
+
+[PlasmaResistance X2AbilityTemplate]
+LocFriendlyName="Plasma Resistance"
+LocLongDescription="Exalted Purge Archbishops are surrounded by heat strong enough to destabilize incoming plasma projectiles, reducing their effectiveness"
+LocHelpText="Reduces damage from Xcom Plasma weapons"
+LocFlyOverText="Plasma Resistance"
+
+[MeltingAura X2AbilityTemplate]
+LocFriendlyName="Melting Aura"
+LocLongDescription="Exalted Purge Archbishops launch molten material at anyone that approaches them, dealing up to 5 damage and shredding 2 armor"
+LocHelpText="Attacks on any enemies that enter or attack from melee range, dealing up to 5 damage and shredding 2 armor"
+LocFlyOverText="Melting Aura"
+
+[ScorchingTouch X2AbilityTemplate]
+LocFriendlyName="Scorching Touch"
+LocLongDescription="Exalted Purge Archbishops retaliate when struck in melee range, dealing up to 5 damage which ignores up to 8 armor and shreds 1 armor"
+LocHelpText="The Exalted Purge Archbishop retaliates against those that attack him in melee range with a burning touch dealing up to 5 damage which ignores up to 8 armor and shreds 1 armor"
+LocFlyOverText="Scorching Touch"
+
+[Jail X2AbilityTemplate]
+LocFriendlyName="Jail"
+LocLongDescription="Purge Bishops can utilize their psionic powers to create a cage around a target immobilizing them"
+LocHelpText="Immobilizes an enemy for a turn"
+LocFlyOverText="Jail"
+
+[MassJail X2AbilityTemplate]
+LocFriendlyName="Mass Jail"
+LocLongDescription="Exalted Purge Bishops and Archbishops can utilize their psionic powers to create a cage around multiple targets immobilizing them and making them easy prey to their large area of effect attacks"
+LocHelpText="Immobilizes multiple enemies for a turn"
+LocFlyOverText="Mass Jail"
+
+[FlameControl X2AbilityTemplate]
+LocFriendlyName="Flame Control"
+LocLongDescription="These priests's control over fire makes them immune to fire based attacks"
+LocHelpText="Fire Immunity"
+LocFlyOverText="Flame Control"
+
+[SuperHeated X2AbilityTemplate]
+LocFriendlyName="Super Heated"
+LocLongDescription="Exalted Purge Archbishops are in a constant super heated state, making them immune to fire, frost and acid"
+LocHelpText="Fire, Frost and Acid Immunity"
+LocFlyOverText="Super Heated"
+

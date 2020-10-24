@@ -11,7 +11,7 @@ strIncompatibleModsTitle="DUPLICATE MODS PRESENT"
 strIncompatibleModsText="Duplicate mods detected :\n%modnames%\nThese mods have been integrated into this mod already, and should be disabled in the launcher. Choosing to proceed may result in a negative experience such as poor performance or instability. Proceed at your own risk."
 
 [UIMission_LWCustomMission]
-m_strMissionDifficulty_start="BASELINE ENEMY ACTIVITY"
+m_strMissionDifficulty_start="BASELINE AYY ACTIVITY"
 
 [ProtectRegionEarly X2LWAlienActivityTemplate]
 ActivityName="ProtectRegion1Activity"
@@ -24,7 +24,7 @@ ActivityObjectives[0]="Start liberating the region"
 
 [ProtectRegionMid X2LWAlienActivityTemplate]
 ActivityName="ProtectRegion2Activity"
-ActivityObjectives[0]="Liberation: Rescue a Defector"
+ActivityObjectives[0]="Liberation: \"Rescue\" a Defector"
 
 +MissionDescriptions=(MissionFamily="Extract_LW", Description="We can extract a defector from ADVENT who has key information about alien weaknesses in this region.", MissionIndex=0)
 +MissionDescriptions=(MissionFamily="Rescue_LW", Description="We have learned of a Resistance sympathizer who has crucial details about alien weaknesses in this region.", MissionIndex=0)
@@ -45,7 +45,7 @@ ActivityObjectives[2]="Liberation: Assault ADVENT Base"
 [Counterinsurgency X2LWAlienActivityTemplate]
 ActivityName="CounterinsurgencyActivity"
 ActivityObjectives[0]="Prevent a Resistance data leak"
-ActivityObjectives[1]="Defend a Resistance Haven"
+ActivityObjectives[1]="Defend Your slave Haven"
 
 +MissionDescriptions=(MissionFamily="DestroyObject_LW", Description="ADVENT is investigating our operations in this region. Our Haven may be in danger.", MissionIndex=0)
 +MissionDescriptions=(MissionFamily="Terror_LW", Description="Enemy forces are closing on our Haven. We must rush to defend it and our people there.", MissionIndex=1)
@@ -110,24 +110,24 @@ ActivityObjectives[1]="Recover UFO artifacts"
 
 [Invasion X2LWAlienActivityTemplate]
 ActivityName="InvasionActivity"
-ActivityObjectives[0]="Ambush ADVENT Advance Forces"
-ActivityObjectives[1]="Defend the Provisional Government"
+ActivityObjectives[0]="Fuck up the ADVENT Rape Squad"
+ActivityObjectives[1]="Protect your Slave Plantation"
 
 +MissionDescriptions=(MissionFamily="SupplyLineRaid_LW", Description="We have detected ADVENT forces entering this region. It is vital we halt their advance.", MissionIndex=0)
-+MissionDescriptions=(MissionFamily="Invasion_LW", Description="ADVENT is invading this region and attacking the provisional government. Defend our people or the aliens will control the region once again.", MissionIndex=1)
++MissionDescriptions=(MissionFamily="Invasion_LW", Description="ADVENT is invading this region and attacking the provisional government. Defend our people or the Ayyliens will control the region once again.", MissionIndex=1)
 
 [Foothold X2LWAlienActivityTemplate]
 ActivityName="FootholdActivity"
 ActivityObjectives[0]="Attack UFO Assault Carrier"
 ActivityObjectives[1]="Defend the Provisional Government"
 
-+MissionDescriptions=(MissionFamily="SecureUFO_LW", Description="The aliens are trying to regain a foothold on Earth. We can stop them by attacking one of their assault carriers as it lands.", MissionIndex=0)
-+MissionDescriptions=(MissionFamily="Invasion_LW", Description="The aliens are invading this region and attacking the provisional government. Defend our people or the aliens will control the region once again.", MissionIndex=1)
++MissionDescriptions=(MissionFamily="SecureUFO_LW", Description="The Ayyliens are trying to regain a foothold on Earth. We can stop them by attacking one of their assault carriers as it lands.", MissionIndex=0)
++MissionDescriptions=(MissionFamily="Invasion_LW", Description="Oh shit dude, you're fucked. Step up your game, or you'll lose the region.", MissionIndex=1)
 
 [Propaganda X2LWAlienActivityTemplate]
 ActivityName="PropagandaActivity"
-ActivityObjectives[0]="Get ADVENT's attention"
-+MissionDescriptions=(MissionFamily="SabotageCC_LW", Description="The aliens have left an urban center relatively unprotected. We can strike one of their monuments to send a message, but ADVENT will certainly respond.", MissionIndex=0)
+ActivityObjectives[0]="Piss ADVENT off"
++MissionDescriptions=(MissionFamily="SabotageCC_LW", Description="The Ayyliens have left an urban center relatively unprotected. We can strike one of their monuments to send a message, but ADVENT will certainly respond.", MissionIndex=0)
 +MissionDescriptions=(MissionFamily="Neutralize_LW", Description="We have learned of a human official high in the ADVENT administration will be relatively unprotected for a brief period in the near future. We can take him out, but ADVENT will certainly take notice.", MissionIndex=0)
 
 [ProtectResearch X2LWAlienActivityTemplate]
@@ -150,19 +150,19 @@ ActivityObjectives[0]="Find a Lead"
 
 [TroopManeuvers X2LWAlienActivityTemplate]
 ActivityName="TroopManeuversActivity"
-ActivityObjectives[0]="Reduce Enemy Strength"
+ActivityObjectives[0]="Fuck ADVENT up"
 +MissionDescriptions=(MissionFamily="TroopManeuvers_LW", Description="ADVENT has left one of its combat units vulnerable to a raid by our forces.")
 
 [HighValuePrisoner X2LWAlienActivityTemplate]
 ActivityName="HighValuePrisonerActivity"
-ActivityObjectives[0]="Free an Important Prisoner"
+ActivityObjectives[0]="Free an Important Dude"
 +MissionDescriptions=(MissionFamily="Rescue_LW", Description="We have learned where ADVENT is holding an important prisoner. We have a brief opportunity to free that person.", MissionIndex=0)
 +MissionDescriptions=(MissionFamily="Extract_LW", Description="We have learned of an escapee from an ADVENT facility who can help the Resistance. We have a brief opportunity to extract this person.", MissionIndex=0)
 
 [PoliticalPrisoners X2LWAlienActivityTemplate]
 ActivityName="PoliticalPrisonersActivity"
-ActivityObjectives[0]="Free Captured Rebels"
-+MissionDescriptions=(MissionFamily="Jailbreak_LW", Description="A group of Resistance members are being held at a secure facility. We have a brief chance to rescue them.", MissionIndex=0)
+ActivityObjectives[0]="\"Free\" Captured Slaves"
++MissionDescriptions=(MissionFamily="Jailbreak_LW", Description="A group of Slaves are being held at a secure facility. We have a brief chance to rescue them.", MissionIndex=0)
 
 [Logistics X2LWAlienActivityTemplate]
 ActivityObjectives[0]="Seize ADVENT resource cache"
@@ -176,7 +176,7 @@ ActivityObjectives[0]="Protect Resistance Assets"
 [SupplyConvoy X2LWAlienActivityTemplate]
 ActivityName="SupplyConvoyActivity"
 ActivityObjectives[0]="Protect Resistance Assets"
-+MissionDescriptions=(MissionFamily="SupplyConvoy_LW", Description="ADVENT forces are moving to strike a Resistance supply convoy. We need to protect our people and materiel.")
++MissionDescriptions=(MissionFamily="SupplyConvoy_LW", Description="ADVENT forces are moving to strike a Resistance dosh convoy. We need to protect our people and materiel.")
 
 [RecruitRaid X2LWAlienActivityTemplate]
 ActivityName="RecruitRaidActivity"
@@ -198,40 +198,40 @@ ActivityName="RendezvousActivity"
 ActivityObjectives[0]="Dummy mission"
 ActivityObjectives[1]="Ambush ADVENT forces"
 +MissionDescriptions=(MissionFamily="Rendezvous_LW", Description="Dummy mission", MissionIndex=0)
-+MissionDescriptions=(MissionFamily="Rendezvous_LW", Description="Hunt for Faceless spies and their ADVENT contacts near this Haven.", MissionIndex=1)
++MissionDescriptions=(MissionFamily="Rendezvous_LW", Description="Hunt for Fellow Human spies and their ADVENT contacts near this Haven.", MissionIndex=1)
 
 [X2Item_LWGauntlet]
 PrimaryRangeLabel="Rocket Range"
 PrimaryRadiusLabel="Rocket Radius"
-SecondaryRangeLabel="Flamethrower Range"
-SecondaryRadiusLabel="Flamethrower Radius"
+SecondaryRangeLabel="Flammenwerfer Range"
+SecondaryRadiusLabel="Flammenwerfer Radius"
 
 [LWGauntlet_CV X2MultiWeaponTemplate]
 FriendlyName="Gauntlet"
 FriendlyNamePlural="Gauntlets"
-BriefSummary="This combination flamethrower-minirocket launcher was devised for our Technicals to handle a variety of combat situations."
-TacticalText="<Bullet/> The XCOM gauntlet is an advanced device that carries both a minirocket launcher and a flamethrower.<br/><Bullet/> The Rocket Launcher carries one rocket initially and it has a three-tile radius for its area of effect.<br/><Bullet/> It may target anything in sight range.<br/><Bullet/> Damage from rockets falls off from the point of impact.<br/><Bullet/> The flamethrower is a short-range weapon that causes damage to multiple targets within a cone-shaped area of effect.<br/><Bullet/> The flamethrower has two charges and does not damage mechanical units without upgrades.<br/><Bullet/> Using either gauntlet ability requires one action and ends your turn.<br/><Bullet/> Rocket accuracy is affected by the soldier's aim, target distance, and whether the soldier has used any actions already this turn. Low accuracy-rockets will have higher scatter values, meaning they are more likely to miss the target tile by greater distances. The rocket's maximum possible scatter is noted in the popup, while a value appearing with the targeting cursor will show the expected (average) scatter for a shot on that location."
+BriefSummary="This combination Flammenwerfer-minirocket launcher was devised for our Technicals to handle a variety of combat situations."
+TacticalText="<Bullet/> The XCOM gauntlet is an advanced device that carries both a minirocket launcher and a Flammenwerfer.<br/><Bullet/> The Rocket Launcher carries one rocket initially and it has a three-tile radius for its area of effect.<br/><Bullet/> It may target anything in sight range.<br/><Bullet/> Damage from rockets falls off from the point of impact.<br/><Bullet/> The Flammenwerfer is a short-range weapon that causes damage to multiple targets within a cone-shaped area of effect.<br/><Bullet/> The Flammenwerfer has two charges and does not damage mechanical units without upgrades.<br/><Bullet/> Using either gauntlet ability requires one action and ends your turn.<br/><Bullet/> Rocket accuracy is affected by the soldier's aim, target distance, and whether the soldier has used any actions already this turn. Low accuracy-rockets will have higher scatter values, meaning they are more likely to miss the target tile by greater distances. The rocket's maximum possible scatter is noted in the popup, while a value appearing with the targeting cursor will show the expected (average) scatter for a shot on that location."
 AbilityDescName="gauntlet"
 
 [LWGauntlet_MG X2MultiWeaponTemplate]
 FriendlyName="Gauntlet Mark II"
 FriendlyNamePlural="Gauntlet Mark IIs"
 BriefSummary="The weapons of the Mark II Gauntlet have increased damage over the Mark I."
-TacticalText="<Bullet/> The XCOM gauntlet is an advanced device that carries both a minirocket launcher and a flamethrower.<br/><Bullet/> The Rocket Launcher carries one rocket initially and it has a three-tile radius for its area of effect.<br/><Bullet/> It may target anything in sight range.<br/><Bullet/> Damage from rockets falls off from the point of impact.<br/><Bullet/> The flamethrower is a short-range weapon that causes damage to multiple targets within a cone-shaped area of effect.<br/><Bullet/> The flamethrower has two charges and does not damage mechanical units without upgrades.<br/><Bullet/> Using either gauntlet ability requires one action and ends your turn.<br/><Bullet/> Rocket accuracy is affected by the soldier's aim, target distance, and whether the soldier has used any actions already this turn. Low accuracy-rockets will have higher scatter values, meaning they are more likely to miss the target tile by greater distances. The rocket's maximum possible scatter is noted in the popup, while a value appearing with the targeting cursor will show the expected (average) scatter for a shot on that location."
+TacticalText="<Bullet/> The XCOM gauntlet is an advanced device that carries both a minirocket launcher and a Flammenwerfer.<br/><Bullet/> The Rocket Launcher carries one rocket initially and it has a three-tile radius for its area of effect.<br/><Bullet/> It may target anything in sight range.<br/><Bullet/> Damage from rockets falls off from the point of impact.<br/><Bullet/> The Flammenwerfer is a short-range weapon that causes damage to multiple targets within a cone-shaped area of effect.<br/><Bullet/> The Flammenwerfer has two charges and does not damage mechanical units without upgrades.<br/><Bullet/> Using either gauntlet ability requires one action and ends your turn.<br/><Bullet/> Rocket accuracy is affected by the soldier's aim, target distance, and whether the soldier has used any actions already this turn. Low accuracy-rockets will have higher scatter values, meaning they are more likely to miss the target tile by greater distances. The rocket's maximum possible scatter is noted in the popup, while a value appearing with the targeting cursor will show the expected (average) scatter for a shot on that location."
 AbilityDescName="gauntlet"
 
 [LWGauntlet_CG X2MultiWeaponTemplate]
 FriendlyName="Gauntlet Mark III"
 FriendlyNamePlural="Gauntlet Mark IIIs"
 BriefSummary="The Mark III Gauntlet does more damage than the Mark I and Mark II."
-TacticalText="<Bullet/> The XCOM gauntlet is an advanced device that carries both a minirocket launcher and a flamethrower.<br/><Bullet/> The Rocket Launcher carries one rocket initially and it has a three-tile radius for its area of effect.<br/><Bullet/> It may target anything in sight range.<br/><Bullet/> Damage from rockets falls off from the point of impact.<br/><Bullet/> The flamethrower is a short-range weapon that causes damage to multiple targets within a cone-shaped area of effect.<br/><Bullet/> The flamethrower has two charges and does not damage mechanical units without upgrades.<br/><Bullet/> Using either gauntlet ability requires one action and ends your turn.<br/><Bullet/> Rocket accuracy is affected by the soldier's aim, target distance, and whether the soldier has used any actions already this turn. Low accuracy-rockets will have higher scatter values, meaning they are more likely to miss the target tile by greater distances. The rocket's maximum possible scatter is noted in the popup, while a value appearing with the targeting cursor will show the expected (average) scatter for a shot on that location."
+TacticalText="<Bullet/> The XCOM gauntlet is an advanced device that carries both a minirocket launcher and a Flammenwerfer.<br/><Bullet/> The Rocket Launcher carries one rocket initially and it has a three-tile radius for its area of effect.<br/><Bullet/> It may target anything in sight range.<br/><Bullet/> Damage from rockets falls off from the point of impact.<br/><Bullet/> The Flammenwerfer is a short-range weapon that causes damage to multiple targets within a cone-shaped area of effect.<br/><Bullet/> The Flammenwerfer has two charges and does not damage mechanical units without upgrades.<br/><Bullet/> Using either gauntlet ability requires one action and ends your turn.<br/><Bullet/> Rocket accuracy is affected by the soldier's aim, target distance, and whether the soldier has used any actions already this turn. Low accuracy-rockets will have higher scatter values, meaning they are more likely to miss the target tile by greater distances. The rocket's maximum possible scatter is noted in the popup, while a value appearing with the targeting cursor will show the expected (average) scatter for a shot on that location."
 AbilityDescName="gauntlet"
 
 [LWGauntlet_BM X2MultiWeaponTemplate]
 FriendlyName="Blaster Gauntlet"
 FriendlyNamePlural="Blaster Gauntlets"
 BriefSummary="The Advanced Gauntlet's weapons do extensive damage and minirockets may now be guided to their target."
-TacticalText="<Bullet/> The Blaster Launcher component of the Advanced Gauntlet fires a high-tech rocket that can navigate around blocking terrain.\n<Bullet/> The upgraded flamethrower deals massive damage in a small cone, damaging environmental and enemy targets alike.<br/><Bullet/> Damage from rockets falls off from the point of impact.<br/><Bullet/> The flamethrower is a short-range weapon that causes damage to multiple targets within a cone-shaped area of effect.<br/><Bullet/> The flamethrower has two charges and does not damage mechanical units without upgrades.<br/><Bullet/> Using either gauntlet ability requires one action and ends your turn.<br/><Bullet/> Rocket accuracy is affected by the soldier's aim, target distance, and whether the soldier has used any actions already this turn. Low accuracy-rockets will have higher scatter values, meaning they are more likely to miss the target tile by greater distances. The rocket's maximum possible scatter is noted in the popup, while a value appearing with the targeting cursor will show the expected (average) scatter for a shot on that location."
+TacticalText="<Bullet/> The Blaster Launcher component of the Advanced Gauntlet fires a high-tech rocket that can navigate around blocking terrain.\n<Bullet/> The upgraded Flammenwerfer deals massive damage in a small cone, damaging environmental and enemy targets alike.<br/><Bullet/> Damage from rockets falls off from the point of impact.<br/><Bullet/> The Flammenwerfer is a short-range weapon that causes damage to multiple targets within a cone-shaped area of effect.<br/><Bullet/> The Flammenwerfer has two charges and does not damage mechanical units without upgrades.<br/><Bullet/> Using either gauntlet ability requires one action and ends your turn.<br/><Bullet/> Rocket accuracy is affected by the soldier's aim, target distance, and whether the soldier has used any actions already this turn. Low accuracy-rockets will have higher scatter values, meaning they are more likely to miss the target tile by greater distances. The rocket's maximum possible scatter is noted in the popup, while a value appearing with the targeting cursor will show the expected (average) scatter for a shot on that location."
 AbilityDescName="gauntlet"
 
 [UISquadSelect_InfiltrationPanel]
@@ -255,7 +255,7 @@ BoostTextPost="Boost"
 ; End Translation
 
 [UIScreenListener_DropShipBriefing_MissionStart]
-strLaunchingInfiltration="CONTACT IMMINENT"
+strLaunchingInfiltration="TIME TO KICK SOME ASS"
 
 [UIUtilities_Text_LW]
 m_strHelp="Help"
@@ -273,28 +273,20 @@ ResistanceHQBodyText="Access Resistance Haven Information"
 [X2LWAbilitiesModTemplate]
 strCritReductionFromConditionalToHit="To Hit" ; To change
 
-[X2EventListener_Missions]
-m_strClearSquad="CLEAR SQUAD"
-m_strTooltipClearSquad="Remove all soldiers from squad."
-
-m_strAutofillSquad="AUTOFILL SQUAD"
-m_strTooltipAutofillSquad="Autofill empty squad positions."
-
 [X2EventListener_StrategyMap]
 strTimeRemainingHoursOnly="<XGParam:IntValue0> Hours"
 strTimeRemainingDaysAndHours="<XGParam:IntValue1>D, <XGParam:IntValue0>H"
-; LWOTC Needs Translation
-strDarkEventExpiredTitle="Dark Event Expired"
-strDarkEventExpiredText="has expired"
-; End Translation
 
 [X2EventListener_Soldiers]
-OnLiaisonDuty="Haven Adviser"
+OnLiaisonDuty="Slave overseer"
 OnInfiltrationMission="Infiltrating"
 UnitAlreadyInSquad="Unit In Another Squad"
 UnitInSquad="Unit In A Squad"
-RankTooLow="Rank Too Low"
+RankTooLow="Too much of a noob"
 CannotModifyOnMissionSoldierTooltip="Cannot modify soldier currently on mission"
+
+[X2Effect_LWHolotarget]
+HoloTargetEffectName="Holotargeted"
 
 [XComGameState_LWPersistentSquad]
 +DefaultSquadNames="Menace"
@@ -359,13 +351,13 @@ BackupTempSquadName="Temporary Squad <XGParam:StrValue0>"
 +m_strSquadSelection="SQUAD BARRACKS"
 
 [UIScreenListener_Alert]
-m_strNewRebelsAvailableTitle="NEW RESISTANCE PERSONNEL ACQUIRED"
+m_strNewRebelsAvailableTitle="NEW SLAVES ACQUIRED"
 m_strNewRebelsAvailable="Awaiting task assignment at Resistance Haven: %REGION"
 m_strHelpBMGoodsDescription="Commander, new Scientists, Engineers, and Veteran Soldiers are available for recruitment at the Black Market."
 
 m_strInvasionTitle=ADVENT INVASION
-m_strInvasionLabel=FREE REGION UNDER ASSAULT
-m_strInvasionBody=Commander, ADVENT is attempting to reconquer a liberated region. They are launching a massive attack on the headquarters of the provisional government!
+m_strInvasionLabel=PREPARE YOUR ANUS
+m_strInvasionBody=Advent has had enough of your shit, and is about to wreck your region!
 m_strInvasionFlare=EMERGENCY COMMUNICATION
 m_strInvasionConfirm=VIEW INVASION SITE
 
@@ -423,7 +415,7 @@ TooltipBarracks_SquadManagement="Manage Persistent Soldier Squads"
 
 [UIStrategyMapItem_Mission_LW]
 strRecon="Infil"
-InfiltrationTooltipString="INFILTRATION"
+
 
 [UIMission_LWLaunchDelayedMission]
 m_strMission="INFILTRATION"
@@ -434,7 +426,7 @@ m_strAbort="ABORT"
 m_strBoostInfiltration="BOOST INFILTRATION"
 m_strAlreadyBoostedInfiltration="Squad <XGParam:StrValue0> has already boosted infiltration"
 m_strInsufficentIntelForBoostInfiltration="Insufficient Intel"
-m_strBoostInfiltrationDescription="You can spend <XGParam:StrValue0> to boost the infiltration rate of this squad by <XGParam:IntValue1>% for this mission. The boost is retroactive. Do you wish to spend the intel?"
+m_strBoostInfiltrationDescription="You can spend<XGParam:StrValue0> to boost the infiltration rate of this squad by <XGParam:IntValue1>% for this mission. The boost is retroactive. Do you wish to spend the intel?"
 m_strViewSquad="VIEW SQUAD"
 m_strInfiltrationStatusExpiring="<XGParam:IntValue0>% Infiltrated / <XGParam:IntValue1>d <XGParam:IntValue2>h until 100%"
 m_strInfiltrationStatusMissionEnding="<XGParam:IntValue0>% Infiltrated / <XGParam:IntValue1>d <XGParam:IntValue2>h until must launch"
@@ -467,8 +459,8 @@ m_strInsuffientInfiltrationToLaunch="Need to infiltrate to at least <XGParam:Int
 +m_strRendezvousDesc="**Unauthorized signal from Resistance Haven in <XGParam:StrValue0/!WorldRegionName>** The adviser and volunteers from the Haven will intercept and eliminate a spy and their ADVENT handlers at a nearby meeting site."
 
 m_strInvasionMission="INVASION"
-m_strInvasionWarning="ALERT"
-m_strInvasionDesc="ADVENT forces have launched an invasion of <XGParam:StrValue0/!WorldRegionName/>! We must respond immediately or this region will fall back under ADVENT control."
+m_strInvasionWarning="OH SHIT SON"
+m_strInvasionDesc="ADVENT has had enough of your shit and is launching an Invasion on <XGParam:StrValue0/!WorldRegionName/>! Hurry your ass up over there or the entire region is fucked!."
 
 [UIStrategyMapItem_Region_LW]
 m_strOutpostTitle="Haven: <XGParam:StrValue0>"
@@ -487,15 +479,15 @@ m_strTitle="RESISTANCE OVERVIEW"
 m_strLabel="CONTACTING RESISTANCE HAVENS..."
 m_strRegionLabel="REGION"
 m_strStrength="ADVENT STRENGTH"
-m_strAdviserLabel="HA"
+m_strAdviserLabel="SO"
 m_strIncomeLabel="INCOME"
 m_strRebelCountLabel="HAVEN"
 m_strADVENTUnitSingular="Legion"
 m_strADVENTUnitPlural="Legions"
 
 m_strGlobalAlert="Global ADVENT Strength:"
-m_strGlobalInsurgency="• Global Resistance Threat:"
-m_strAvatarPenalty="• Avatar Progress Slowed By <XGParam:IntValue0/>%"
+m_strGlobalInsurgency="% Global Resistance Threat:"
+m_strAvatarPenalty="% Avatar Progress Slowed By <XGParam:IntValue0/>%"
 m_strThreatVeryLow="Low"
 m_strThreatLow="Guarded"
 m_strThreatMedium="Elevated"
@@ -503,8 +495,6 @@ m_strThreatHigh="High"
 m_strThreatVeryHigh="Severe"
 m_strLiberated="Liberated"
 m_strResistanceManagementLevels="<XGParam:IntValue0> (V:<XGParam:IntValue1>)"
-ViewHavenStr="VIEW HAVEN"
-FlyToHavenStr="FLY TO HAVEN"
 
 [UIOutpostManagement]
 m_strTitle="HAVEN MANAGEMENT"
@@ -512,16 +502,13 @@ m_strLabel="Placeholder UI for Haven management..."
 m_strName="Name"
 m_strMission="Mission"
 m_strBuildRadioRelay="Build Radio Relay"
-m_strLiaisonTitle="Haven Adviser"
+m_strLiaisonTitle="Slave Overseer"
 ; 0=Alert, 1=Vigilance, 2=Force
 m_strRegionalInfo="ADVENT Strength: <XGParam:IntValue0/>"
 m_strResistanceMecs="Resistance MECs: <XGParam:IntValue0/>"
 m_strProhibited="Prohibited"
-m_strCannotChangeLiaisonTitle="Cannot Move Adviser"
-m_strCannotChangeLiaison="The adviser cannot be changed at this time due to active missions in the region"
-ChangeJobStr="CHANGE JOB"
-ChangeAllJobsStr="CHANGE ALL JOBS"
-PerksStr="PERKS" 
+m_strCannotChangeLiaisonTitle="Cannot Move Overseer"
+m_strCannotChangeLiaison="The Overseer cannot be changed at this time due to active missions in the region"
 
 [UIScreenListener_TacticalHUD]
 strEvacRequestTitle="EVAC Requested"
@@ -537,7 +524,7 @@ strStaffRecruited="%TITLE %UNIT recruited from %REGION"
 strJobName="None"
 
 [Resupply LWRebelJobTemplate]
-strJobName="Supply"
+strJobName="Dosh"
 
 [Recruit LWRebelJobTemplate]
 strJobName="Recruit"
@@ -562,7 +549,7 @@ m_strHelpButtonTooltip="Resistance Management Help"
 
 [OutpostManagement_Help LWHelpTemplate]
 m_strHelpTitle="Haven Management"
-m_strHelpText="In this panel, Resistance members stationed at a given Resistance Haven can be assigned tasks to assist XCOM in the fight against ADVENT, and the Commander may assign an XCOM member to serve as an adviser liasion to the Haven by clicking on the picture frame. Soldier advisers assist with recruiting and internal security; scientist advisers help with intelligence gathering, and engineer advisers assist in gathering supplies. For a full description of these mechanics, see the Resistance Haven entries in the XCOM Archives in the Commander's Quarters."
+m_strHelpText="In this panel, Slaves stationed at a given Resistance Haven can be assigned tasks to assist XCOM in the fight against ADVENT, and the Commander may assign an XCOM member to serve as an adviser liasion to the Haven by clicking on the picture frame. Soldier advisers assist with recruiting and internal security; scientist advisers help with intelligence gathering, and engineer advisers assist in gathering dosh. For a full description of these mechanics, see the Resistance Haven entries in the XCOM Archives in the Commander's Quarters."
 m_strHelpButtonTooltip="Haven Management Help"
 
 [Personnel_SquadBarracks_Help LWHelpTemplate]
@@ -576,25 +563,25 @@ m_strHelpText="Many missions require the squad to spend some time infiltrating t
 m_strHelpButtonTooltip="Infiltration Help"
 
 [X2StrategyElement_DefaultStaffSlots_LW]
-m_strLiaisonLocation="Haven Adviser: <XGParam:StrValue0>"
+m_strLiaisonLocation="Slave Overseer: <XGParam:StrValue0>"
 
 [X2StrategyElement_MissionSiteDescriptions_LW]
 ; This goes in front of a city name in invasion missions, e.g. "Free Chicago"
 m_strLiberatedCityPrefix="Free"
 
 [XComGameState_LWOutPost]
-m_strProhibitedJobAlert="Because of an ADVENT raid, Resistance members cannot be assigned to the <XGParam:StrValue0/> job for <XGParam:IntValue0/> days in <XGParam:StrValue1/>. All Resistance personnel on that job have gone into hiding."
-m_strProhibitedJobEnded="Resistance members in <XGParam:StrValue0/> assigned to the <XGParam:StrValue1/> job will now be productive again."
-;LWOTC needs translation
-m_strRetributionEnded="Resistance members in <XGParam:StrValue0/> have recovered from one of the Chosen's retributions"
-;End translation
+m_strProhibitedJobAlert="Because of an ADVENT raid, Slaves cannot be assigned to the <XGParam:StrValue0/> job for <XGParam:IntValue0/> days in <XGParam:StrValue1/>. All Slaves on that job have gone into hiding."
+m_strProhibitedJobEnded="Slaves in <XGParam:StrValue0/> assigned to the <XGParam:StrValue1/> job will now be productive again."
+
 [X2StrategyElement_DefaultAlienActivities]
-m_strInsufficientRebels="Need at least <XGParam:IntValue0/> rebels in Haven to make contact with neighbors"
+m_strInsufficientRebels="Need at least <XGParam:IntValue0/> Slaves in Haven to make contact with neighbors"
+
+
 
 [UIScreenListener_Alert]
 m_strInvasionTitle=ADVENT INVASION
-m_strInvasionLabel=FREE REGION UNDER ASSAULT
-m_strInvasionBody=Commander, ADVENT is attempting to reconquer a liberated region. They are launching a massive attack on the headquarters of the provisional government!
+m_strInvasionLabel=PREPARE YOUR ANUS
+m_strInvasionBody=Advent has had enough of your shit, and is about to fucking wreck your region!
 m_strInvasionFlare=EMERGENCY COMMUNICATION
 m_strInvasionConfirm=VIEW INVASION SITE
 
@@ -659,7 +646,7 @@ m_strTurnPlural="Turns"
 m_strMinimumInfiltration="Requires <XGParam:IntValue0>% Infiltration"
 m_strYellowAlert="Enemies on High Alert"
 m_sAverageScatterText="± <XGParam:StrValue0/> Tiles"
-m_strBullet="•"
+m_strBullet="%"
 
 m_strStripWeaponUpgrades=STRIP ALL WEAPON UPGRADES
 m_strStripWeaponUpgradesLower=Strip All Weapon Upgrades
@@ -676,6 +663,7 @@ m_strPrevHaven="PREV HAVEN"
 m_strNextHaven="NEXT HAVEN"
 
 m_strVIPCaptureReward="(VIP Capture Only)"
+
 ; LWOTC Needs Translation
 [UIListener_CampaignStartMenu]
 
@@ -695,4 +683,4 @@ HeavyDazedName="Heavy Dazed"
 ; End Translation
 
 [UICovertActionReport_LW]
-strCovertActionFailed="FAILED"
+strCovertActionFailed="MAILED"

@@ -843,7 +843,7 @@ function ModifyAbilitiesGeneral(X2AbilityTemplate Template, int Difficulty)
 	local X2Effect_SharpshooterAim_LW   	AimEffect;
 	local X2AbilityCooldown_Shared			CooldownShared;
 	local X2AbilityMultiTarget_Cone			ConeMultiTarget;
-
+	local X2Condition						Condition;
 	// WOTC TODO: Trying this out. Should be put somewhere more appropriate.
 	if (Template.DataName == 'ReflexShotModifier')
 	{
@@ -950,7 +950,7 @@ function ModifyAbilitiesGeneral(X2AbilityTemplate Template, int Difficulty)
 		DFAEffect = New class'X2Effect_CancelLongRangePenalty';
 		DFAEffect.BuildPersistentEffect (1, true, false);
 		DFAEffect.SetDisplayInfo (0, Template.LocFriendlyName, Template.LocLongDescription, Template.IconImage, false,, Template.AbilitySourceName);
-		Template.AddTargetEffect(DFAEffect);
+		//Template.AddTargetEffect(DFAEffect);
 		DeathEffect = new class'X2Effect_DeathFromAbove_LW';
 		DeathEffect.BuildPersistentEffect(1, true, false, false);
 		DeathEffect.SetDisplayInfo(0, Template.LocFriendlyName, Template.LocLongDescription, Template.IconImage, true,, Template.AbilitySourceName);
@@ -969,6 +969,16 @@ function ModifyAbilitiesGeneral(X2AbilityTemplate Template, int Difficulty)
 	// 	}
 	// }
 
+	if (Template.DataName == 'stunlance')
+	{
+		foreach Template.AbilityShooterConditions(Condition)
+		{
+			if(Condition.isA(class'X2Condition_UnitEffects'.name))
+			{
+				X2Condition_UnitEffects(Condition).RemoveExcludeEffect(class'X2AbilityTemplateManager'.default.DisorientedName);
+			}
+		}
+	}
 	if (Template.DataName == 'Insanity' || Template.DataName == 'VoidRiftInsanity')
 	{
 		for (k = Template.AbilityTargetEffects.length - 1; k >= 0; k--)
@@ -1967,15 +1977,14 @@ function GeneralCharacterMod(X2CharacterTemplate Template, int Difficulty)
 	switch (Template.DataName)
 	{
 		// Give ADVENT the hunker down ability
-		case 'AdvTrooperM1':
+		
 		case 'AdvTrooperM2':
 		case 'AdvTrooperM3':
-		case 'AdvCaptainM1':
-		case 'AdvCaptainM2':
-		case 'AdvCaptainM3':
+		case 'AdvTrooperM1':
+			Template.Abilities.AddItem('LightemUp');
+			Template.Abilities.AddItem('LW_AimAssist');
 		case 'AdvShieldbearerM2':
 		case 'AdvShieldbearerM3':
-		case 'AdvStunLancerM1':
 			Template.Abilities.AddItem('HunkerDown');
 			break;
 		case 'FacelessCivilian':
@@ -1996,24 +2005,167 @@ function GeneralCharacterMod(X2CharacterTemplate Template, int Difficulty)
 			Template.ImmuneTypes.AddItem(class'X2Item_DefaultDamageTypes'.default.ParthenogenicPoisonType);
 			Template.ImmuneTypes.AddItem('Fire');
 			break;
+		case 'AdvStunLancerM1':
+			Template.Abilities.AddItem('HunkerDown');
+			Template.Abilities.AddItem('Whirlwind2');
+			Template.Abilities.AddItem('Bladestorm');
+			Template.Abilities.AddItem('Infighter');
+			Template.Abilities.AddItem('CoupdeGrace2');
+			break;
 		case 'AdvStunLancerM2':
 			Template.Abilities.AddItem('HunkerDown');
 			Template.Abilities.AddItem('CoupdeGrace2');
+			Template.Abilities.AddItem('Bladestorm');
+			Template.Abilities.AddItem('Whirlwind2');
+			Template.Abilities.AddItem('Infighter');
+			Template.Abilities.AddItem('Blademaster');
 			break;
 		case 'AdvStunLancerM3':
 			Template.Abilities.AddItem('HunkerDown');
 			Template.Abilities.AddItem('CoupdeGrace2');
 			Template.Abilities.AddItem('Whirlwind2');
+			Template.Abilities.AddItem('Bladestorm');
+			Template.Abilities.AddItem('Infighter');
+			Template.Abilities.AddItem('Blademaster');
+			Template.Abilities.AddItem('Formidable');
 			break;
 		case 'AdvPurifierM3':
+			Template.Abilities.AddItem('NapalmX');
 			Template.Abilities.AddItem('Formidable');
+			Template.Abilities.AddItem('Sprinter');
+			Template.Abilities.AddItem('FireandSteel');
 		case 'AdvPurifierM2':
 			Template.Abilities.AddItem('Burnout');
+			Template.Abilities.AddItem('Incinerator');
+		case 'AdvPurifierM1':
+			Template.Abilities.AddItem('ReturnFire');
+			Template.Abilities.AddItem('LW_Overkill');
+			Template.Abilities.AddItem('Huntersinstinct');
+
 			break;
 		case 'SpectreM2':
 			Template.Abilities.AddItem('LowProfile');
+		case 'SpectreM1':
+			Template.Abilities.AddItem('RapidReaction');
+			Template.Abilities.AddItem('CoolUnderPressure');
+			Template.Abilities.AddItem('GrazingFire');
 			break;
+		case 'AdvMec_M3':
+			Template.Abilities.Additem('Formidable');
+			Template.Abilities.Additem('CombatAwareness');
+		case 'AdvMec_M2':
+		case 'AdvMECArcherM2':
+			Template.Abilities.Additem('Sentinel');
+			Template.Abilities.Additem('CoolUnderPressure');
+			Template.Abilities.Additem('Coveringfire');
+			Template.Abilities.Additem('GrazingFire');
+		case 'AdvMec_M1':
+		case 'AdvMECArcherM1':
+			Template.Abilities.AddItem('ChosenImmuneMelee');
+			Template.Abilities.Additem('Closeandpersonal');
+			Template.Abilities.Additem('DamageControl');
+			Template.Abilities.Additem('CombatEngineer');
+			Template.Abilities.Additem('LW_Predator');
+			break;
+		case 'AdvCaptainM3':
+			Template.Abilities.Additem('LW_Concentration');
+			Template.Abilities.Additem('CloseCombatSpecialist');
+		case 'AdvCaptainM2':
+			Template.Abilities.Additem('CoolUnderPressure');
+			Template.Abilities.Additem('GrazingFire');
+			Template.Abilities.Additem('CombatEngineer');
+			Template.Abilities.Additem('HeavyFrags');
+		case 'AdvCaptainM1':
+			Template.Abilities.Additem('LW_Avenger');
+			break;
+		case 'Sectopod':
+			Template.Abilities.Additem('Executioner_LW');
+			Template.Abilities.Additem('CoupDeGrace2');
+			Template.Abilities.Additem('PrimaryReturnFire');
+			Template.Abilities.Additem('CoolUnderPressure');
+			break;
+		case 'ViperM3_LW':
+		case 'ViperM2_LW':
+		case 'Viper':
+		Template.Abilities.AddItem('LW_SurvivalInstinct');
+		Template.Abilities.AddItem('HazmatVestBonus');
+		Template.Abilities.Additem('IronSkin');
+		break;
+		case 'Archon':
+		Template.Abilities.AddItem('Bladestorm');
+		Template.Abilities.AddItem('CloseCombatSpecialist');
+		Template.Abilities.AddItem('HardTarget');
+			break;
+		case 'Cyberus':
+		Template.Abilities.AddItem('Evasive');
+			break;
+		case 'MutonM3_LW':
+		Template.Abilities.AddItem('CloseCombatSpecialist');
 
+		case 'MutonM2_LW':
+		Template.Abilities.AddItem('HazmatVestBonus');
+
+		case 'Muton':
+		Template.Abilities.AddItem('GrazingFire');
+		Template.Abilities.AddItem('ChosenSoulstealer');
+		break;
+		case 'Chryssalid':
+		case 'Chryssalidsoldier':
+		case 'HiveQueen':
+		Template.Abilities.AddItem('LidReaction');
+			break;
+		case 'Berserker':
+		Template.Abilities.AddItem('ZerkerReaction');
+		Template.Abilities.AddItem('DamageControl');
+			break;
+		case 'AdvShieldBearerM3':
+		Template.Abilities.AddItem('LW_Predator');
+		Template.Abilities.AddItem('CloseandPersonal');
+		Template.Abilities.AddItem('Formidable');
+
+		case 'AdvShieldBearerM2':
+		Template.Abilities.AddItem('CloseCombatSpecialist');
+		Template.Abilities.AddItem('CoolUnderPressure');
+		Template.Abilities.AddItem('ApexPredator');
+		break;
+
+		case 'Andromedon':
+		Template.Abilities.AddItem('ChosenImmuneMelee');
+		Template.Abilities.AddItem('DamageControl');
+		Template.Abilities.AddItem('CloseandPersonal');
+		Template.Abilities.AddItem('aggression');
+		case 'AndromedonRobot':
+		Template.Abilities.AddItem('ChosenImmuneMelee');
+		Template.Abilities.AddItem('Bladostorm');
+		Template.Abilities.AddItem('DamageControl');
+		Template.Abilities.AddItem('CloseandPersonal');
+		Template.Abilities.AddItem('aggression');
+		break;
+		case 'AdvPsiWitchM3':
+		Template.Abilities.AddItem('DamageControl');
+		Template.Abilities.AddItem('ChosenImmuneMelee');
+		Template.Abilities.AddItem('CloseCombatSpecialist');
+		Template.Abilities.AddItem('CoolUnderPressure');
+		Template.Abilities.AddItem('ApexPredator');
+		Template.Abilities.AddItem('ChosenSoulstealer');
+		Template.Abilities.AddItem('HazmatVestBonus');
+		Template.Abilities.AddItem('LW_SurvivalInstinct');
+		Template.Abilities.Additem('Executioner_LW');
+		Template.Abilities.Additem('CoupDeGrace2');
+		Template.Abilities.Additem('PrimaryReturnFire');
+		Template.Abilities.AddItem('GrazingFire');
+		Template.Abilities.AddItem('Infighter');
+		Template.Abilities.AddItem('Formidable');
+		Template.Abilities.Additem('CloseandPersonal');
+		Template.Abilities.Additem('LW_Predator');
+		Template.Abilities.AddItem('HardTarget');
+		Template.Abilities.AddItem('ChosenKineticPlating');
+		Template.Abilities.AddItem('ChosenRegenerate');
+
+		break;
+		case 'Gatekeeper':
+		Template.Abilities.AddItem('MindShield');
+		break;
 		// Should turn off tick damage every action
 		case 'ViperKing':
 		case 'BerserkerQueen':
@@ -2077,42 +2229,29 @@ function GeneralCharacterMod(X2CharacterTemplate Template, int Difficulty)
 		case 'TheLostDasherHP12':
 			Template.DefaultLoadout='TheLostDasherTier4_Loadout';
 			break;
-		/*
+		
 		case 'ChosenSniper':
 		case 'ChosenSniperM2':
 		case 'ChosenSniperM3':
 		case 'ChosenSniperM4':
-			Template.Abilities.AddItem('Yoink');
-			Template.Abilities.AddItem('HunterReaction');
-			Template.Abilities.AddItem('ChosenCritImmune');
-			Template.ImmuneTypes.AddItem('Frost');
-			break;
 		case 'ChosenWarlock':
 		case 'ChosenWarlockM2':
 		case 'ChosenWarlockM3':
-		case 'ChosenWarlockM4':
-			Template.Abilities.AddItem('WarlockReaction');
-			Template.Abilities.AddItem('DetonateMindshield_LW');
-			Template.Abilities.AddItem('ShieldAlly_LW');
-			Template.Abilities.AddItem('AmmoDump_LW');
-			Template.Abilities.AddItem('ChosenCritImmune');
-			Template.ImmuneTypes.AddItem('Frost');
-			break;
+		case 'ChosenWarlockM4':	
 		case 'ChosenAssassin':
 		case 'ChosenAssassinM2':
 		case 'ChosenAssassinM3':
 		case 'ChosenAssassinM4':
-			Template.Abilities.AddItem('AssassinReaction');
-			Template.Abilities.AddItem('ChosenCritImmune');
-			Template.ImmuneTypes.AddItem('Frost');
+			Template.Abilities.AddItem('OwMyknee');
+			Template.strBehaviorTree = "ChosenDeath";
 			break;
-		*/
+		
 		default:
 			break;
 	}
 
 	// Allow the Lost to climb walls
-	if (InStr(Template.DataName, "TheLost") == 0)
+	if (InStr(Template.DataName, "TheLost") == 0 || InStr(Template.DataName, "LW_TheLost") == 0 )
 	{
 		Template.bCanUse_eTraversal_WallClimb = true;
 		Template.ImmuneTypes.AddItem('Acid');
@@ -2212,25 +2351,36 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 		if (WeaponTemplate.DataName == 'AdvTurretM1_WPN' && default.EARLY_TURRET_SQUADSIGHT)
 		{
 			WeaponTemplate.Abilities.AddItem('Squadsight');
+			WeaponTemplate.Abilities.AddItem('LongWatch');
+			WeaponTemplate.Abilities.AddItem('RapidReaction');
 		}
 		if (WeaponTemplate.DataName == 'AdvTurretM2_WPN' && default.MID_TURRET_SQUADSIGHT)
 		{
-			WeaponTemplate.Abilities.AddItem('Squadsight');
+			WeaponTemplate.Abilities.AddItem('Squadsight');			
+			WeaponTemplate.Abilities.AddItem('LongWatch');
+			WeaponTemplate.Abilities.AddItem('RapidReaction');
 		}
 		if (WeaponTemplate.DataName == 'AdvTurretM3_WPN' && default.LATE_TURRET_SQUADSIGHT)
 		{
 			WeaponTemplate.Abilities.AddItem('Squadsight');
+			WeaponTemplate.Abilities.AddItem('LongWatch');
+			WeaponTemplate.Abilities.AddItem('RapidReaction');
 		}
 
 		switch (WeaponTemplate.DataName)
 		{
 		case 'AdvPriestM1_PsiAmp':
 			WeaponTemplate.Abilities.AddItem('PriestPsiMindControl');
+			WeaponTemplate.Abilities.AddItem('mindshield');
+			
 			break;
 		case 'AdvPriestM3_PsiAmp':
 			WeaponTemplate.Abilities.AddItem('Bastion');
 		case 'AdvPriestM2_PsiAmp':
 			WeaponTemplate.Abilities.AddItem('Fortress');
+			WeaponTemplate.Abilities.AddItem('mindshield');
+			WeaponTemplate.Abilities.AddItem('ChosenRegenerate');
+
 			break;
 		case 'AdvPurifierFlamethrower':
 			WeaponTemplate.iIdealRange = 7;
@@ -2269,9 +2419,11 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 		}
 		switch (WeaponTemplate.DataName)
 		{
+			case 'ArchonStaff':
+				WeaponTemplate.Aim = 35;
+				WeaponTemplate.CritChance = 35;
 			case 'Muton_MeleeAttack':
 			case 'AndromedonRobot_MeleeAttack':
-			case 'ArchonStaff':
 			case 'Viper_Tongue_WPN':
 			case 'PsiZombie_MeleeAttack':
 				WeaponTemplate.iEnvironmentDamage = 0;

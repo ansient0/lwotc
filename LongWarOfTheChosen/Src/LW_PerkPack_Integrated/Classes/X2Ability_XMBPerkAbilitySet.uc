@@ -89,6 +89,7 @@ var config int MAIM_DURATION;
 
 var config array<name> AgentstHealEffectTypes;    
 
+var config WeaponDamageValue SHOGGOTH_MELEEAOE_BASEDAMAGE;
 var string Dissassemblybonustext;
 var name LeadTheTargetReserveActionName;
 var name LeadTheTargetMarkEffectName;
@@ -150,6 +151,13 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(PrimaryReturnFire());
 	Templates.AddItem(PrimaryReturnFireShot());
 	
+	Templates.AddItem(CreateZerkerReaction());
+	Templates.AddItem(CreateLidReaction());
+	
+	Templates.AddItem(CreateChangeForm_Shoggoth_Ability());
+	Templates.AddItem(CreateScythingClawsAbility());
+
+
 	return Templates;
 }
 
@@ -1820,6 +1828,7 @@ static function X2AbilityTemplate AimingAssist()
 	NeedOneOfTheEffects=new class'X2Condition_TargetHasOneOfTheEffects';
 	NeedOneOfTheEffects.EffectNames.AddItem(class'X2Effect_LWHolotarget'.default.EffectName);
 	NeedOneOfTheEffects.EffectNames.AddItem(class'X2Effect_Holotarget'.default.EffectName);
+	NeedOneOfTheEffects.EffectNames.AddItem(class'X2StatusEffects'.default.MarkedName);
 
 	Effect.AbilityTargetConditions.AddItem(NeedOneOfTheEffects);
 
@@ -2207,6 +2216,328 @@ static function X2AbilityTemplate PrimaryReturnFireShot()
 	Template.bFrameEvenWhenUnitIsHidden = true;
 	Template.DefaultSourceItemSlot = eInvSlot_PrimaryWeapon;
 
+	return Template;
+}
+
+static function X2AbilityTemplate CreateLidReaction()
+{
+	local X2AbilityTemplate Template;
+	local X2AbilityTrigger_EventListener Trigger;
+	local X2Effect_RunBehaviorTree ReactionEffect;
+	local X2Effect_GrantActionPoints AddAPEffect;
+	local array<name> SkipExclusions;
+	local X2Condition_UnitProperty UnitPropertyCondition;
+	local X2Condition_OnlyOnXCOMTurn TurnCondition;
+
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'LidReaction');
+
+	Template.AbilitySourceName = 'eAbilitySource_Standard';
+	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_NeverShow;
+	Template.IconImage = "img:///UILibrary_PerkIcons.UIPerk_combatstims";
+
+	Template.AbilityToHitCalc = default.DeadEye;
+	Template.AbilityTargetStyle = default.SelfTarget;
+
+	Template.AbilityShooterConditions.AddItem(default.LivingShooterProperty);
+
+	SkipExclusions.AddItem(class'X2AbilityTemplateManager'.default.DisorientedName);
+	SkipExclusions.AddItem(class'X2StatusEffects'.default.BurningName);
+	SkipExclusions.AddItem(class'X2AbilityTemplateManager'.default.ConfusedName);
+	Template.AddShooterEffectExclusions(SkipExclusions);
+
+	Trigger = new class'X2AbilityTrigger_EventListener';
+	Trigger.ListenerData.Deferral = ELD_OnStateSubmitted;
+	Trigger.ListenerData.EventID = 'UnitTakeEffectDamage';
+	Trigger.ListenerData.EventFn = class'XComGameState_Ability'.static.AbilityTriggerEventListener_Self;
+	Trigger.ListenerData.Filter = eFilter_Unit;
+	Template.AbilityTriggers.AddItem(Trigger);
+
+	TurnCondition =new class'X2Condition_OnlyOnXCOMTurn';
+	Template.AbilityShooterConditions.AddItem(TurnCondition);
+	
+	// The unit must be alive and not stunned
+	UnitPropertyCondition = new class'X2Condition_UnitProperty';
+	UnitPropertyCondition.ExcludeDead = true;
+	UnitPropertyCondition.ExcludeAlive = false;
+	UnitPropertyCondition.ExcludeStunned = true;
+	Template.AbilityShooterConditions.AddItem(UnitPropertyCondition);
+
+	AddAPEffect = new class'X2Effect_GrantActionPoints';
+	AddAPEffect.NumActionPoints = 1;
+	AddAPEffect.PointType = class'X2CharacterTemplateManager'.default.StandardActionPoint;
+	Template.AddTargetEffect(AddAPEffect);
+
+	ReactionEffect = new class'X2Effect_RunBehaviorTree';
+	ReactionEffect.BehaviorTreeName = 'ChryssalidRedAbilitySelector';
+	Template.AddTargetEffect(ReactionEffect);
+
+	Template.bShowActivation = true;
+	Template.bSkipExitCoverWhenFiring = true;
+	Template.bSkipFireAction = true;
+
+	Template.FrameAbilityCameraType = eCameraFraming_Always;
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+	Template.BuildVisualizationFn = TypicalAbility_BuildVisualization;
+
+	return Template;
+}
+
+static function X2AbilityTemplate CreateZerkerReaction()
+{
+	local X2AbilityTemplate Template;
+	local X2AbilityTrigger_EventListener Trigger;
+	local X2Effect_RunBehaviorTree ReactionEffect;
+	local X2Effect_GrantActionPoints AddAPEffect;
+	local array<name> SkipExclusions;
+	local X2Condition_UnitProperty UnitPropertyCondition;
+	local X2Condition_OnlyOnXCOMTurn TurnCondition;
+
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'ZerkerReaction');
+
+	Template.AbilitySourceName = 'eAbilitySource_Standard';
+	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_NeverShow;
+	Template.IconImage = "img:///UILibrary_PerkIcons.UIPerk_combatstims";
+
+	Template.AbilityToHitCalc = default.DeadEye;
+	Template.AbilityTargetStyle = default.SelfTarget;
+
+	Template.AbilityShooterConditions.AddItem(default.LivingShooterProperty);
+
+	SkipExclusions.AddItem(class'X2AbilityTemplateManager'.default.DisorientedName);
+	SkipExclusions.AddItem(class'X2StatusEffects'.default.BurningName);
+	SkipExclusions.AddItem(class'X2AbilityTemplateManager'.default.ConfusedName);
+	Template.AddShooterEffectExclusions(SkipExclusions);
+
+	Trigger = new class'X2AbilityTrigger_EventListener';
+	Trigger.ListenerData.Deferral = ELD_OnStateSubmitted;
+	Trigger.ListenerData.EventID = 'UnitTakeEffectDamage';
+	Trigger.ListenerData.EventFn = class'XComGameState_Ability'.static.AbilityTriggerEventListener_Self;
+	Trigger.ListenerData.Filter = eFilter_Unit;
+	Template.AbilityTriggers.AddItem(Trigger);
+
+	TurnCondition =new class'X2Condition_OnlyOnXCOMTurn';
+	Template.AbilityShooterConditions.AddItem(TurnCondition);
+	
+	// The unit must be alive and not stunned
+	UnitPropertyCondition = new class'X2Condition_UnitProperty';
+	UnitPropertyCondition.ExcludeDead = true;
+	UnitPropertyCondition.ExcludeAlive = false;
+	UnitPropertyCondition.ExcludeStunned = true;
+	Template.AbilityShooterConditions.AddItem(UnitPropertyCondition);
+
+	AddAPEffect = new class'X2Effect_GrantActionPoints';
+	AddAPEffect.NumActionPoints = 1;
+	AddAPEffect.PointType = class'X2CharacterTemplateManager'.default.StandardActionPoint;
+	Template.AddTargetEffect(AddAPEffect);
+
+	ReactionEffect = new class'X2Effect_RunBehaviorTree';
+	ReactionEffect.BehaviorTreeName = 'Berserker_RedAbilitySelector';
+	Template.AddTargetEffect(ReactionEffect);
+
+	Template.bShowActivation = true;
+	Template.bSkipExitCoverWhenFiring = true;
+	Template.bSkipFireAction = true;
+
+	Template.FrameAbilityCameraType = eCameraFraming_Always;
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+	Template.BuildVisualizationFn = TypicalAbility_BuildVisualization;
+
+	return Template;
+}
+
+static function X2AbilityTemplate CreateChangeForm_Shoggoth_Ability()
+{
+	local X2AbilityTemplate Template;
+	local X2AbilityTrigger_EventListener Trigger;
+	local X2Effect_RemoveEffects RemoveEffects;
+
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'ChangeForm_Shoggoth');
+
+	Template.AbilitySourceName = 'eAbilitySource_Standard';
+	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_NeverShow;
+	Template.IconImage = "img:///UILibrary_PerkIcons.none";
+
+	Template.AbilityToHitCalc = default.DeadEye;
+	Template.AbilityTargetStyle = default.SelfTarget;
+
+	Template.AbilityShooterConditions.AddItem(default.LivingShooterProperty);
+	Template.AddShooterEffectExclusions();
+
+	// This ability fires can when the unit takes damage
+	Trigger = new class'X2AbilityTrigger_EventListener';
+	Trigger.ListenerData.Deferral = ELD_OnStateSubmitted;
+	Trigger.ListenerData.EventID = 'UnitTakeEffectDamage';
+	Trigger.ListenerData.EventFn = class'XComGameState_Ability'.static.AbilityTriggerEventListener_Self;
+	Trigger.ListenerData.Filter = eFilter_Unit;
+	Template.AbilityTriggers.AddItem(Trigger);
+
+	Trigger = new class'X2AbilityTrigger_EventListener';
+	Trigger.ListenerData.Deferral = ELD_OnStateSubmitted;
+	Trigger.ListenerData.EventID = 'UnitDied';
+	Trigger.ListenerData.Filter = eFilter_Unit;
+	Trigger.ListenerData.EventFn = class'XComGameState_Ability'.static.AbilityTriggerEventListener_Self;
+	Template.AbilityTriggers.AddItem(Trigger);
+
+	Template.AddTargetEffect(new class'ABetterADVENT_Effect_SpawnShoggoth');
+
+	RemoveEffects = new class'X2Effect_RemoveEffects';
+	RemoveEffects.EffectNamesToRemove.AddItem('ChangeFormCheckEffect');
+	Template.AddTargetEffect(RemoveEffects);
+
+	Template.AddMultiTargetEffect(new class'X2Effect_BreakUnitConcealment');
+
+	Template.bSkipFireAction = true;
+	Template.FrameAbilityCameraType = eCameraFraming_Always;
+	Template.bFrameEvenWhenUnitIsHidden = true;
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+	Template.BuildVisualizationFn = ChangeForm_Shoggoth_BuildVisualization;
+	Template.CinescriptCameraType = "Faceless_ChangeForm";
+
+	return Template;
+}
+
+
+simulated function ChangeForm_Shoggoth_BuildVisualization(XComGameState VisualizeGameState)
+{
+	local XComGameStateHistory History;
+	local XComGameStateContext_Ability Context;
+	local StateObjectReference InteractingUnitRef;
+	local VisualizationActionMetadata EmptyTrack;
+	local VisualizationActionMetadata CivilianTrack, FacelessTrack;
+	local X2Action_MoveTurn MoveTurnAction;
+	local XComGameState_Unit MovedUnitState;
+	local XComGameState_Unit CivilianUnit, SpawnedUnit;
+	local UnitValue SpawnedUnitValue;
+	local ABetterADVENT_Effect_SpawnShoggoth SpawnFacelessEffect;
+	
+	History = `XCOMHISTORY;
+
+	Context = XComGameStateContext_Ability(VisualizeGameState.GetContext());
+	InteractingUnitRef = Context.InputContext.SourceObject;
+
+	//Configure the visualization track for the shooter
+	//****************************************************************************************
+	CivilianTrack = EmptyTrack;
+	History.GetCurrentAndPreviousGameStatesForObjectID(InteractingUnitRef.ObjectID,
+													   CivilianTrack.StateObject_OldState, CivilianTrack.StateObject_NewState,
+													   eReturnType_Reference,
+													   VisualizeGameState.HistoryIndex);
+	CivilianTrack.VisualizeActor = History.GetVisualizer(InteractingUnitRef.ObjectID);
+	CivilianUnit = XComGameState_Unit(CivilianTrack.StateObject_NewState);
+
+	if( Context.InputContext.MultiTargets.Length > 0 )
+	{
+		// Turn to face the moved unit
+		MovedUnitState = XComGameState_Unit(History.GetGameStateForObjectID(Context.InputContext.MultiTargets[0].ObjectID));
+
+		MoveTurnAction = X2Action_MoveTurn(class'X2Action_MoveTurn'.static.AddToVisualizationTree(CivilianTrack, Context));
+		MoveTurnAction.m_vFacePoint = `XWORLD.GetPositionFromTileCoordinates(MovedUnitState.TileLocation);
+	}
+
+	// Play the civilian and Faceless change form actions
+	CivilianUnit.GetUnitValue(class'X2Effect_SpawnUnit'.default.SpawnedUnitValueName, SpawnedUnitValue);
+
+	FacelessTrack = EmptyTrack;
+	FacelessTrack.StateObject_OldState = History.GetGameStateForObjectID(SpawnedUnitValue.fValue, eReturnType_Reference, VisualizeGameState.HistoryIndex);
+	FacelessTrack.StateObject_NewState = FacelessTrack.StateObject_OldState;
+	SpawnedUnit = XComGameState_Unit(FacelessTrack.StateObject_NewState);
+	`assert(SpawnedUnit != none);
+	FacelessTrack.VisualizeActor = History.GetVisualizer(SpawnedUnit.ObjectID);
+
+	// Only one target effect and it is X2Effect_SpawnFaceless
+	SpawnFacelessEffect = ABetterADVENT_Effect_SpawnShoggoth(Context.ResultContext.TargetEffectResults.Effects[0]);
+
+	if( SpawnFacelessEffect == none )
+	{
+		`RedScreenOnce("ChangeForm_BuildVisualization: Missing ABetterADVENT_Effect_SpawnShoggoth -dslonneger @gameplay");
+		return;
+	}
+
+	SpawnFacelessEffect.AddSpawnVisualizationsToTracks(Context, SpawnedUnit, FacelessTrack, CivilianUnit, CivilianTrack);
+}
+
+
+static function X2AbilityTemplate CreateScythingClawsAbility()
+{
+	local X2AbilityTemplate Template;
+	local X2AbilityCost_ActionPoints ActionPointCost;
+	local X2AbilityToHitCalc_StandardMelee MeleeHitCalc;
+	local X2Condition_UnitProperty UnitPropertyCondition;
+	local X2AbilityTarget_Cursor CursorTarget;
+	local X2AbilityMultiTarget_Cone ConeMultiTarget;
+	local X2Effect_ApplyWeaponDamage PhysicalDamageEffect;
+	local array<name> SkipExclusions;
+
+	`CREATE_X2ABILITY_TEMPLATE (Template, 'ShoggothClaws');
+	Template.IconImage = "img:///UILibrary_PerkIcons.UIPerk_chryssalid_chargeandslash";
+
+	Template.Hostility = eHostility_Offensive;
+	Template.AbilitySourceName = 'eAbilitySource_Standard';
+
+	ActionPointCost = new class'X2AbilityCost_ActionPoints';
+	ActionPointCost.iNumPoints = 1;
+	ActionPointCost.bConsumeAllPoints = true;
+	Template.AbilityCosts.AddItem(ActionPointCost);
+
+	Template.AbilityTriggers.AddItem(default.PlayerInputTrigger);
+
+	MeleeHitCalc = new class'X2AbilityToHitCalc_StandardMelee';
+	Template.AbilityToHitCalc = MeleeHitCalc;
+
+	Template.TargetingMethod = class'X2TargetingMethod_Cone';
+
+	CursorTarget = new class'X2AbilityTarget_Cursor';
+	CursorTarget.bRestrictToWeaponRange = false;
+	CursorTarget.FixedAbilityRange = class'X2Ability_Faceless'.default.SCYTHING_CLAWS_LENGTH_TILES * class'XComWorldData'.const.WORLD_StepSize;
+	Template.AbilityTargetStyle = CursorTarget;
+
+	ConeMultiTarget = new class'X2AbilityMultiTarget_Cone';
+	ConeMultiTarget.ConeEndDiameter = class'X2Ability_Faceless'.default.SCYTHING_CLAWS_END_DIAMETER_TILES * class'XComWorldData'.const.WORLD_StepSize;
+	ConeMultiTarget.ConeLength = class'X2Ability_Faceless'.default.SCYTHING_CLAWS_LENGTH_TILES * class'XComWorldData'.const.WORLD_StepSize;
+	ConeMultiTarget.fTargetRadius = Sqrt( Square(ConeMultiTarget.ConeEndDiameter / 2) + Square(ConeMultiTarget.ConeLength) ) * class'XComWorldData'.const.WORLD_UNITS_TO_METERS_MULTIPLIER;
+	ConeMultiTarget.bExcludeSelfAsTargetIfWithinRadius = true;
+	Template.AbilityMultiTargetStyle = ConeMultiTarget;
+
+	Template.AbilityShooterConditions.AddItem(default.LivingShooterProperty);
+	
+	// May attack if the unit is burning or disoriented
+	SkipExclusions.AddItem(class'X2AbilityTemplateManager'.default.DisorientedName);
+	SkipExclusions.AddItem(class'X2StatusEffects'.default.BurningName);
+	Template.AddShooterEffectExclusions(SkipExclusions);
+
+	// Primary Target
+	Template.AbilityTargetConditions.AddItem(default.GameplayVisibilityCondition);
+
+	UnitPropertyCondition = new class'X2Condition_UnitProperty';
+	UnitPropertyCondition.ExcludeDead = true;
+	UnitPropertyCondition.ExcludeFriendlyToSource = true;
+	UnitPropertyCondition.ExcludeCosmetic = true;
+	Template.AbilityTargetConditions.AddItem(UnitPropertyCondition);
+
+	PhysicalDamageEffect = new class'X2Effect_ApplyWeaponDamage';
+	PhysicalDamageEffect.EffectDamageValue = default.SHOGGOTH_MELEEAOE_BASEDAMAGE;
+	PhysicalDamageEffect.EffectDamageValue.DamageType = 'Melee';
+	PhysicalDamageEffect.EnvironmentalDamageAmount = class'X2Ability_Faceless'.default.AREA_MELEE_ENVIRONMENT_DAMAGE;
+	Template.AddTargetEffect(PhysicalDamageEffect);
+
+	// Multi Targets
+	UnitPropertyCondition = new class'X2Condition_UnitProperty';
+	UnitPropertyCondition.ExcludeDead = true;
+	UnitPropertyCondition.ExcludeFriendlyToSource = false;
+	UnitPropertyCondition.RequireWithinRange = true;
+	Template.AbilityMultiTargetConditions.AddItem(UnitPropertyCondition);	
+
+	Template.AddMultiTargetEffect(PhysicalDamageEffect);
+
+	Template.CustomFireAnim = 'NO_ScythingClawsSlash';
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+	Template.BuildInterruptGameStateFn = TypicalAbility_BuildInterruptGameState;
+	Template.BuildVisualizationFn = TypicalAbility_BuildVisualization;
+	Template.CinescriptCameraType = "Faceless_ScythingClaws";
+//BEGIN AUTOGENERATED CODE: Template Overrides 'ScythingClaws'
+	Template.bFrameEvenWhenUnitIsHidden = true;
+//END AUTOGENERATED CODE: Template Overrides 'ScythingClaws'
+	
 	return Template;
 }
 
