@@ -1132,8 +1132,8 @@ static function CHEventListenerTemplate ChainActivationListeners()
 
 	`CREATE_X2TEMPLATE(class'CHEventListenerTemplate', Template, 'ChainActivationListeners');
 	Template.AddCHEvent('OverrideSeesAlertedAllies', ActivatePodSeenAllies, ELD_Immediate, GetListenerPriority());
-	//Template.AddCHEvent('OverrideEnemyFactionsAlertsOutsideVision', MakeSureAItoAIWorks, ELD_Immediate, GetListenerPriority());
-	//Template.AddCHEvent('Unit', MakeSureAItoAIWorks, ELD_Immediate, GetListenerPriority());
+	Template.AddCHEvent('OverrideEnemyFactionsAlertsOutsideVision', MakeSureAItoAIWorks, ELD_Immediate, GetListenerPriority());
+	Template.AddCHEvent('UnitMoveFinished', ChainActivate, ELD_OnStateSubmitted, GetListenerPriority());
 
 	Template.RegisterInTactical = true;
 
@@ -1192,4 +1192,109 @@ static function EventListenerReturn MakeSureAItoAIWorks(Object EventData, Object
 	return ELR_NoInterrupt;
 }
 
+static function EventListenerReturn ChainActivate(Object EventData, Object EventSource, XComGameState GameState, Name EventID, Object CallbackData)
+{
+	local XComGameState_AIUnitData AIUnit, MovedUnitData, NewAIUnitData;
+	local XComGameStateHistory History;
+	local XComGameState_Unit AlertedUnit, MovedUnit;
+	local int AlertDataIndex;
+	local int MovedUnitDataID;
+	local AlertAbilityInfo AlertInfo;
+	local XcomGameState NewGameState;
+	local XComGameState_AIGroup AIGroupState;
+	local X2Condition_Visibility VisibiliyCondition;
+	local array<X2Condition> ActivationVisibilityCondition;
+
+	History = `XCOMHISTORY;
+
+	VisibiliyCondition = new class'X2Condition_Visibility';
+	VisibiliyCondition.bRequireGameplayVisible=true;
+
+	ActivationVisibilityCondition.AddItem(VisibiliyCondition);
+	foreach History.IterateByClassType(class'XComGameState_AIUnitData', AIUnit)
+	{
+		AlertedUnit = XComGameState_Unit(History.GetGameStateForObjectID(AIUnit.m_iUnitObjectID));
+		//If the unactivated unit  saw an activated moved unit
+
+		MovedUnit = XComGameState_Unit(EventData);
+		if( MovedUnit == none || AlertedUnit == none || AlertedUnit.IsDead() )
+		{
+			return ELR_NoInterrupt;
+		}
 	
+		if (MovedUnit.GetCurrentStat(eStat_AlertLevel) > 1 && AlertedUnit.GetCurrentStat(eStat_AlertLevel) < 2)
+		{
+
+			if((class'X2TacticalVisibilityHelpers'.static.CanUnitSeeLocation(AIUnit.m_iUnitObjectID, MovedUnit.TileLocation, ActivationVisibilityCondition) || AIUnit.IsKnowledgeAboutUnitAbsolute(MovedUnit.ObjectID, AlertDataIndex)) && AlertedUnit.TileDistanceBetween(MovedUnit) <= 18)
+			{
+				AlertInfo.AlertUnitSourceID = MovedUnit.ObjectID;
+				AlertInfo.AnalyzingHistoryIndex = GameState.HistoryIndex;
+				AlertInfo.AlertTileLocation = MovedUnit.TileLocation;
+
+				NewGameState = class'XComGameStateContext_ChangeContainer'.static.CreateChangeState(string(GetFuncName()));
+				NewAIUnitData = XComGameState_AIUnitData(NewGameState.ModifyStateObject(class'XComGameState_AIUnitData', AIUnit.ObjectID));
+				if( NewAIUnitData.AddAlertData(AIUnit.m_iUnitObjectID, eAC_SeesSpottedUnit, AlertInfo, NewGameState) )
+				{
+					AIGroupState = AlertedUnit.GetGroupMembership();
+					if(AIGroupState != none && !AIGroupState.bProcessedScamper && AlertedUnit.bTriggerRevealAI)
+					{
+						AIGroupState = XComGameState_AIGroup(NewGameState.ModifyStateObject(class'XComGameState_AIGroup', AIGroupState.ObjectID));
+						AIGroupState.InitiateReflexMoveActivate(AlertedUnit, eAC_SeesSpottedUnit);
+
+					}
+					`TACTICALRULES.SubmitGameState(NewGameState);
+				}
+				else
+				{
+					NewGameState.PurgeGameStateForObjectID(NewAIUnitData.ObjectID);
+					History.CleanupPendingGameState(NewGameState);
+				}
+			}
+
+		}
+			/*
+		//If the unactivated moved unit saw an activated unit
+		else if(MovedUnit.GetCurrentStat(eStat_AlertLevel) < 2 && AlertedUnit.GetCurrentStat(eStat_AlertLevel) > 1)
+		{
+			MovedUnitDataID = MovedUnit.GetAIUnitDataID();
+
+			if (MovedUnitDataID > 0 && !MovedUnit.IsDead())
+			{
+				MovedUnitData = XComGameState_AIUnitData(History.GetGameStateForObjectID(MovedUnitDataID));
+
+				if(class'X2TacticalVisibilityHelpers'.static.CanUnitSeeLocation(MovedUnitData.m_iUnitObjectID, AlertedUnit.TileLocation, ActivationVisibilityCondition) || MovedUnitData.IsKnowledgeAboutUnitAbsolute(AlertedUnit.ObjectID, AlertDataIndex))
+				{
+
+					AlertInfo.AlertUnitSourceID = AlertedUnit.ObjectID;
+					AlertInfo.AnalyzingHistoryIndex = GameState.HistoryIndex;
+					AlertInfo.AlertTileLocation = AlertedUnit.TileLocation;
+
+
+
+					NewGameState = class'XComGameStateContext_ChangeContainer'.static.CreateChangeState(string(GetFuncName()));
+					NewAIUnitData = XComGameState_AIUnitData(NewGameState.ModifyStateObject(class'XComGameState_AIUnitData', MovedUnitData.ObjectID));
+					if( NewAIUnitData.AddAlertData(MovedUnitData.m_iUnitObjectID, eAC_SeesSpottedUnit, AlertInfo, NewGameState) )
+					{
+						AIGroupState = MovedUnit.GetGroupMembership();
+						if(AIGroupState != none && !AIGroupState.bProcessedScamper && MovedUnit.bTriggerRevealAI)
+						{
+							AIGroupState = XComGameState_AIGroup(NewGameState.ModifyStateObject(class'XComGameState_AIGroup', AIGroupState.ObjectID));
+							AIGroupState.InitiateReflexMoveActivate(MovedUnit, eAC_SeesSpottedUnit);
+
+						}
+						`TACTICALRULES.SubmitGameState(NewGameState);
+					}
+					else
+					{
+						NewGameState.PurgeGameStateForObjectID(NewAIUnitData.ObjectID);
+						History.CleanupPendingGameState(NewGameState);
+					}
+				}
+			}
+		}
+			*/
+	}
+
+
+
+}
