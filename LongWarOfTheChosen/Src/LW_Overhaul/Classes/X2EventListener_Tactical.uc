@@ -1155,7 +1155,7 @@ static function EventListenerReturn ActivatePodSeenAllies(Object EventData, Obje
 
 	// Copying original LW2 behaviour for now, which is to disable this alert
 	// when yellow alert is enabled.
-	if(	XComGameState_Unit(Tuple.Data[0].o).GetCurrentStat(eStat_AlertLevel) > 1 || XComGameState_Unit(Tuple.Data[0].o).GetCurrentStat(eStat_AlertLevel) > 1) 
+	if(	XComGameState_Unit(Tuple.Data[0].o).GetCurrentStat(eStat_AlertLevel) > 1 || XComGameState_Unit(Tuple.Data[1].o).GetCurrentStat(eStat_AlertLevel) > 1) 
 	{			
 		Tuple.Data[2].i = eAC_SeesSpottedUnit;
 	}
