@@ -21,8 +21,10 @@ static function array<X2DataTemplate> CreateTemplates()
 
 	`LWTrace("  >> X2Character_AlienPack.CreateTemplates()");
 	
-	Templates.AddItem(CreateTemplate_MutonM2_LW());
-	Templates.AddItem(CreateTemplate_MutonM3_LW());
+	Templates.AddItem(CreateTemplate_MutonCenturion('MutonM2_LW'));
+	Templates.AddItem(CreateTemplate_MutonCenturion('MutonM3_LW'));
+	Templates.AddItem(CreateTemplate_MutonElite_LW('MutonM4_LW'));
+	Templates.AddItem(CreateTemplate_MutonElite_LW('MutonM5_LW'));
 
 	Templates.AddItem(CreateTemplate_Naja('NajaM1'));
 	Templates.AddItem(CreateTemplate_Naja('NajaM2'));
@@ -31,21 +33,34 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(CreateTemplate_Sidewinder('SidewinderM1'));
 	Templates.AddItem(CreateTemplate_Sidewinder('SidewinderM2'));
 	Templates.AddItem(CreateTemplate_Sidewinder('SidewinderM3'));
+	Templates.AddItem(CreateTemplate_Sidewinder('SidewinderM4'));
+	Templates.AddItem(CreateTemplate_Sidewinder('SidewinderM5'));
 
 	Templates.AddItem(CreateTemplate_Viper_LW('ViperM2_LW'));
 	Templates.AddItem(CreateTemplate_Viper_LW('ViperM3_LW'));
+	Templates.AddItem(CreateTemplate_Viper_LW('ViperM4_LW'));
+	Templates.AddItem(CreateTemplate_Viper_LW('ViperM5_LW'));
 
-	Templates.AddItem(CreateTemplate_ArchonM2_LW());
+	Templates.AddItem(CreateTemplate_Archon_LW('ArchonM2_LW'));
+	Templates.AddItem(CreateTemplate_Archon_LW('ArchonM3_LW'));
+	Templates.AddItem(CreateTemplate_Archon_LW('ArchonM4_LW'));
 
-	Templates.AddItem(CreateTemplate_SectoidM2_LW());
+	Templates.AddItem(CreateTemplate_Sectoid('SectoidM2_LW');
+	//Templates.AddItem(CreateTemplate_Sectoid_LW('SectoidM3_LW');
+	Templates.AddItem(CreateTemplate_Sectoid_LW('SectoidM4_LW');
+	Templates.AddItem(CreateTemplate_Sectoid_LW('SectoidM5_LW');
 
 	Templates.AddItem(CreateTemplate_AdvGunner('AdvGunnerM1'));
 	Templates.AddItem(CreateTemplate_AdvGunner('AdvGunnerM2'));
 	Templates.AddItem(CreateTemplate_AdvGunner('AdvGunnerM3'));
+	Templates.AddItem(CreateTemplate_AdvGunner('AdvGunnerM4'));
+	Templates.AddItem(CreateTemplate_AdvGunner('AdvGunnerM5'));
 
 	Templates.AddItem(CreateTemplate_AdvSentry('AdvSentryM1'));
 	Templates.AddItem(CreateTemplate_AdvSentry('AdvSentryM2'));
 	Templates.AddItem(CreateTemplate_AdvSentry('AdvSentryM3'));
+	Templates.AddItem(CreateTemplate_AdvSentry('AdvSentryM4'));
+	Templates.AddItem(CreateTemplate_AdvSentry('AdvSentryM5'));
 
 	Templates.AddItem(CreateTemplate_AdvGrenadier('AdvGrenadierM1'));
 	Templates.AddItem(CreateTemplate_AdvGrenadier('AdvGrenadierM2'));
@@ -55,13 +70,46 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(CreateTemplate_AdvRocketeer('AdvRocketeerM2'));
 	Templates.AddItem(CreateTemplate_AdvRocketeer('AdvRocketeerM3'));
 	
-	Templates.AddItem(CreateTemplate_AdvMec_M3());
+	Templates.AddItem(CreateTemplate_AdvMec_LW('AdvMec_M3'));
+	Templates.AddItem(CreateTemplate_AdvMec_LW('AdvMec_M4'));
+	Templates.AddItem(CreateTemplate_AdvMec_LW('AdvMec_M5'));
 
 	Templates.AddItem(CreateTemplate_AdvMECArcher('AdvMECArcherM1'));
 	Templates.AddItem(CreateTemplate_AdvMECArcher('AdvMECArcherM2'));
 
 	Templates.AddItem(CreateTemplate_Drone('LWDroneM1'));
 	Templates.AddItem(CreateTemplate_Drone('LWDroneM2'));
+	Templates.AddItem(CreateTemplate_Drone('LWDroneM3'));
+	Templates.AddItem(CreateTemplate_Drone('LWDroneM4'));
+	Templates.AddItem(CreateTemplate_Drone('LWDroneM5'));
+
+	Templates.AddItem(CreateTemplate_Chryssalid('ChryssalidM2');
+	Templates.AddItem(CreateTemplate_Chryssalid('ChryssalidM3');
+	Templates.AddItem(CreateTemplate_Chryssalid('ChryssalidM4');
+
+	Templates.AddItem(CreateTemplate_Andromedon('AndromedonM2'));
+	Templates.AddItem(CreateTemplate_Andromedon('AndromedonM2'));
+	Templates.AddItem(CreateTemplate_AndromedonRobot('AndromedonRobotM2'));
+	Templates.AddItem(CreateTemplate_AndromedonRobot('AndromedonRobotM3'));
+
+	Templates.AddItem(CreateTemplate_Spectre('SpectreM3'));
+	Templates.AddItem(class'X2Character_DefaultCharacters'.static.CreateTemplate_ShadowbindUnit('ShadowbindUnitM3'));
+
+	Templates.AddItem(class'X2Character_DefaultCharacters'.static.CreateTemplate_PsiZombie('PsiZombieM2'));
+	Templates.AddItem(class'X2Character_DefaultCharacters'.static.CreateTemplate_PsiZombie('PsiZombieM3'));
+	Templates.AddItem(class'X2Character_DefaultCharacters'.static.CreateTemplate_PsiZombie('PsiZombieM4'));
+	Templates.AddItem(class'X2Character_DefaultCharacters'.static.CreateTemplate_PsiZombie('PsiZombieM5'));
+
+	Templates.AddItem(CreateTemplate_PsiZombieHuman('PsiZombieHumanM2'));
+	Templates.AddItem(CreateTemplate_PsiZombieHuman('PsiZombieHumanM3'));
+	Templates.AddItem(CreateTemplate_PsiZombieHuman('PsiZombieHumanM4'));
+	Templates.AddItem(CreateTemplate_PsiZombieHuman('PsiZombieHumanM5'));
+
+	Templates.AddItem(CreateTemplate_Sectopod('SectopodM2'));
+	Templates.AddItem(CreateTemplate_Sectopod('SectopodM3'));
+
+	Templates.AddItem(CreateTemplate_Gatekeeper('GatekeeperM2'));
+	Templates.AddItem(CreateTemplate_Gatekeeper('GatekeeperM3'));
 
 	Templates.Additem(CreateTemplate_ChryssalidSoldier());
 	Templates.AddItem(CreateTemplate_HiveQueen());
@@ -75,15 +123,17 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(CreateTemplate_AdvGeneric('AdvScout'));
 	Templates.AddItem(CreateTemplate_AdvGeneric('AdvVanguard'));
 
+	
+	
 	return Templates;
 }
 
-static function X2CharacterTemplate CreateTemplate_MutonM2_LW()
+static function X2CharacterTemplate CreateTemplate_MutonCenturion(name TemplateName)
 {
 	local X2CharacterTemplate CharTemplate;
 	local LootReference Loot;
 
-	`CREATE_X2CHARACTER_TEMPLATE(CharTemplate, 'MutonM2_LW');
+	`CREATE_X2CHARACTER_TEMPLATE(CharTemplate, TemplateName);
 	CharTemplate.CharacterGroupName = 'Muton';
 	CharTemplate.DefaultLoadout='MutonM2_LW_Loadout';
 	CharTemplate.BehaviorClass=class'XGAIBehavior';
@@ -211,7 +261,7 @@ static function X2CharacterTemplate CreateTemplate_MutonM2_Dummy()
 	CharTemplate.Abilities.AddItem('CounterattackPreparation');
 	CharTemplate.Abilities.AddItem('CounterattackDescription');
 	CharTemplate.Abilities.AddItem('WarCry');
-	CharTemplate.Abilities.AddItem('Beastmaster_LW');
+	//CharTemplate.Abilities.AddItem('Beastmaster_LW');
 	// WOTC abilities
 	CharTemplate.Abilities.AddItem('DarkEventAbility_Barrier');
 
@@ -227,12 +277,12 @@ static function X2CharacterTemplate CreateTemplate_MutonM2_Dummy()
 	return CharTemplate;
 }
 
-static function X2CharacterTemplate CreateTemplate_MutonM3_LW()
+static function X2CharacterTemplate CreateTemplate_MutonElite_LW(name TemplateName)
 {
 	local X2CharacterTemplate CharTemplate;
 	local LootReference Loot;
 
-	`CREATE_X2CHARACTER_TEMPLATE(CharTemplate, 'MutonM3_LW');
+	`CREATE_X2CHARACTER_TEMPLATE(CharTemplate, TemplateName);
 	CharTemplate.CharacterGroupName = 'Muton';
 	CharTemplate.DefaultLoadout='MutonM3_LW_Loadout';
 	CharTemplate.BehaviorClass=class'XGAIBehavior';
@@ -285,9 +335,9 @@ static function X2CharacterTemplate CreateTemplate_MutonM3_LW()
 	CharTemplate.Abilities.AddItem('CounterattackPreparation');
 	CharTemplate.Abilities.AddItem('CounterattackDescription');
 	CharTemplate.Abilities.AddItem('WarCry');
-	CharTemplate.Abilities.AddItem('Beastmaster_LW');
+	//CharTemplate.Abilities.AddItem('Beastmaster_LW');
 
-	CharTemplate.Abilities.AddItem('TacticalSense');
+	//CharTemplate.Abilities.AddItem('TacticalSense');
 	CharTemplate.Abilities.AddItem('PersonalShield');
 	// WOTC abilities
 	CharTemplate.Abilities.AddItem('DarkEventAbility_Barrier');
@@ -536,7 +586,7 @@ static function X2CharacterTemplate CreateTemplate_Sidewinder(name TemplateName)
 }
 
 
-static function X2CharacterTemplate CreateTemplate_ArchonM2_LW()
+static function X2CharacterTemplate CreateTemplate_Archon_LW()
 {
 	local X2CharacterTemplate CharTemplate;
 	local LootReference Loot;
@@ -612,12 +662,12 @@ static function X2CharacterTemplate CreateTemplate_ArchonM2_LW()
 	return CharTemplate;
 }
 
-static function X2CharacterTemplate CreateTemplate_SectoidM2_LW()  // I have big brains
+static function X2CharacterTemplate CreateTemplate_Sectoid_LW(name TemplateName)  // I have big brains
 {
 	local X2CharacterTemplate CharTemplate;
 	local LootReference Loot;
 
-	`CREATE_X2CHARACTER_TEMPLATE(CharTemplate, 'SectoidM2_LW');
+	`CREATE_X2CHARACTER_TEMPLATE(CharTemplate, TemplateName);
 	CharTemplate.CharacterGroupName = 'Sectoid';
 	CharTemplate.DefaultLoadout='SectoidM2_LW_Loadout';
 	CharTemplate.BehaviorClass=class'XGAIBehavior';
@@ -663,7 +713,6 @@ static function X2CharacterTemplate CreateTemplate_SectoidM2_LW()  // I have big
 
 	CharTemplate.bAllowSpawnFromATT = false;
 
-	CharTemplate.Abilities.AddItem('VulnerabilityMelee');
 	//DelayedPsiExplosion does nothing, except moving camera to pointlessly show 
 	//the corpse of Sectoid Commander one turn after his death.
 	//SectoidDeathOverride is apparently to be used if DelayedPsiExplosion were to work.
@@ -1199,7 +1248,7 @@ static function X2CharacterTemplate CreateTemplate_AdvRocketeer(name TemplateNam
 	return CharTemplate;
 }
 
-static function X2CharacterTemplate CreateTemplate_AdvMec_M3()
+static function X2CharacterTemplate CreateTemplate_AdvMec_LW()
 {
 	local X2CharacterTemplate CharTemplate;
 	local LootReference Loot;
@@ -1765,12 +1814,572 @@ static function X2CharacterTemplate CreateTemplate_AdvGeneric(name TemplateName)
 	return CharTemplate;
 }
 
+//For Vanilla Sectoid appearance
+	static function X2CharacterTemplate CreateTemplate_Sectoid(name TemplateName)
+{
+	local X2CharacterTemplate CharTemplate;
+	local LootReference Loot;
+
+	`CREATE_X2CHARACTER_TEMPLATE(CharTemplate, TemplateName);
+	CharTemplate.CharacterGroupName = 'Sectoid';
+	CharTemplate.DefaultLoadout='Sectoid_Loadout';
+	CharTemplate.BehaviorClass=class'XGAIBehavior';
+	CharTemplate.strPawnArchetypes.AddItem("GameUnit_Sectoid.ARC_GameUnit_Sectoid");
+	Loot.ForceLevel=0;
+	Loot.LootTableName='Sectoid_BaseLoot';
+	CharTemplate.Loot.LootReferences.AddItem(Loot);
+
+	// Timed Loot
+	Loot.ForceLevel = 0;
+	Loot.LootTableName = 'Sectoid_TimedLoot';
+	CharTemplate.TimedLoot.LootReferences.AddItem(Loot);
+	Loot.LootTableName = 'Sectoid_VultureLoot';
+	CharTemplate.VultureLoot.LootReferences.AddItem(Loot);
+
+	CharTemplate.strMatineePackages.AddItem("CIN_Sectoid");
+
+	CharTemplate.UnitSize = 1;
+	// Traversal Rules
+	CharTemplate.bCanUse_eTraversal_Normal = true;
+	CharTemplate.bCanUse_eTraversal_ClimbOver = true;
+	CharTemplate.bCanUse_eTraversal_ClimbOnto = true;
+	CharTemplate.bCanUse_eTraversal_ClimbLadder = true;
+	CharTemplate.bCanUse_eTraversal_DropDown = true;
+	CharTemplate.bCanUse_eTraversal_Grapple = false;
+	CharTemplate.bCanUse_eTraversal_Landing = true;
+	CharTemplate.bCanUse_eTraversal_BreakWindow = true;
+	CharTemplate.bCanUse_eTraversal_KickDoor = true;
+	CharTemplate.bCanUse_eTraversal_JumpUp = false;
+	CharTemplate.bCanUse_eTraversal_WallClimb = false;
+	CharTemplate.bCanUse_eTraversal_BreakWall = false;
+	CharTemplate.bAppearanceDefinesPawn = false;    
+	CharTemplate.bCanTakeCover = true;
+
+	CharTemplate.bIsAlien = true;
+	CharTemplate.bIsAdvent = false;
+	CharTemplate.bIsCivilian = false;
+	CharTemplate.bIsPsionic = true;
+	CharTemplate.bIsRobotic = false;
+	CharTemplate.bIsSoldier = false;
+
+	CharTemplate.bCanBeTerrorist = false;
+	CharTemplate.bCanBeCriticallyWounded = false;
+	CharTemplate.bIsAfraidOfFire = true;
+
+	CharTemplate.bAllowSpawnFromATT = false;
+
+	//CharTemplate.Abilities.AddItem('VulnerabilityMelee');
+	CharTemplate.Abilities.AddItem('Mindspin');
+	//CharTemplate.Abilities.AddItem('DelayedPsiExplosion');
+	CharTemplate.Abilities.AddItem('PsiReanimation');
+	CharTemplate.Abilities.AddItem('KillSiredZombies');
+	//CharTemplate.Abilities.AddItem('SectoidDeathOverride');
+	CharTemplate.Abilities.AddItem('DarkEventAbility_Barrier');
+
+	CharTemplate.AddTemplateAvailablility(CharTemplate.BITFIELD_GAMEAREA_Multiplayer); // Allow in MP!
+	CharTemplate.MPPointValue = CharTemplate.XpKillscore * 10;
+
+	CharTemplate.SightedNarrativeMoments.AddItem(XComNarrativeMoment'X2NarrativeMoments.TACTICAL.AlienSitings.T_Tygan_AlienSightings_Sectoid');
+
+	CharTemplate.strTargetIconImage = class'UIUtilities_Image'.const.TargetIcon_Alien;
+	CharTemplate.AcquiredPhobiaTemplate = 'FearOfSectoids';
+
+	return CharTemplate;
+}
 
 
 
+static function X2CharacterTemplate CreateTemplate_Chryssalid(name TemplateName)
+{
+	local X2CharacterTemplate CharTemplate;
+	local LootReference Loot;
+
+	`CREATE_X2CHARACTER_TEMPLATE(CharTemplate, TemplateName);
+	CharTemplate.CharacterGroupName = 'Chryssalid';
+	CharTemplate.DefaultLoadout='Chryssalid_Loadout';
+	CharTemplate.BehaviorClass=class'XGAIBehavior';
+	CharTemplate.strPawnArchetypes.AddItem("GameUnit_Chryssalid.ARC_GameUnit_Chryssalid");
+	Loot.ForceLevel=0;
+	Loot.LootTableName='Chryssalid_BaseLoot';
+	CharTemplate.Loot.LootReferences.AddItem(Loot);
+
+	// Timed Loot
+	//Loot.ForceLevel = 0;
+	//Loot.LootTableName = 'Chryssalid_TimedLoot';
+	//CharTemplate.TimedLoot.LootReferences.AddItem(Loot);
+	//Loot.LootTableName = 'Chryssalid_VultureLoot';
+	//CharTemplate.VultureLoot.LootReferences.AddItem(Loot);
+
+	CharTemplate.strMatineePackages.AddItem("CIN_Chryssalid");
+
+	CharTemplate.UnitSize = 1;
+	// Traversal Rules
+	CharTemplate.bCanUse_eTraversal_Normal = true;
+	CharTemplate.bCanUse_eTraversal_ClimbOver = true;
+	CharTemplate.bCanUse_eTraversal_ClimbOnto = true;
+	CharTemplate.bCanUse_eTraversal_ClimbLadder = false;
+	CharTemplate.bCanUse_eTraversal_DropDown = true;
+	CharTemplate.bCanUse_eTraversal_Grapple = false;
+	CharTemplate.bCanUse_eTraversal_Landing = true;
+	CharTemplate.bCanUse_eTraversal_BreakWindow = true;
+	CharTemplate.bCanUse_eTraversal_KickDoor = true;
+	CharTemplate.bCanUse_eTraversal_JumpUp = true;
+	CharTemplate.bCanUse_eTraversal_WallClimb = false;
+	CharTemplate.bCanUse_eTraversal_BreakWall = false;
+	CharTemplate.bAppearanceDefinesPawn = false;    
+	CharTemplate.bCanTakeCover = false;
+
+	CharTemplate.bIsAlien = true;
+	CharTemplate.bIsAdvent = false;
+	CharTemplate.bIsCivilian = false;
+	CharTemplate.bIsPsionic = false;
+	CharTemplate.bIsRobotic = false;
+	CharTemplate.bIsSoldier = false;
+	CharTemplate.bIsMeleeOnly = true;
+
+	CharTemplate.bCanBeTerrorist = false;
+	CharTemplate.bCanBeCriticallyWounded = false;
+	CharTemplate.bIsAfraidOfFire = true;
+
+	CharTemplate.bAllowSpawnFromATT = false;
+
+	CharTemplate.AddTemplateAvailablility(CharTemplate.BITFIELD_GAMEAREA_Multiplayer); // Allow in MP!
+	CharTemplate.MPPointValue = CharTemplate.XpKillscore * 10;
+	CharTemplate.strScamperBT = "ChryssalidScamperRoot";
+
+	CharTemplate.Abilities.AddItem('ChryssalidSlash');
+	//CharTemplate.Abilities.AddItem('ChryssalidBurrow');
+	CharTemplate.Abilities.AddItem('ChyssalidPoison');
+	CharTemplate.Abilities.AddItem('ChryssalidImmunities');
+	CharTemplate.Abilities.AddItem('DarkEventAbility_Barrier');
+
+	CharTemplate.SightedNarrativeMoments.AddItem(XComNarrativeMoment'X2NarrativeMoments.TACTICAL.AlienSitings.T_Central_AlienSightings_Cryssalid');
+
+	CharTemplate.strTargetIconImage = class'UIUtilities_Image'.const.TargetIcon_Alien;
+
+	return CharTemplate;
+}
 
 
+	static function X2CharacterTemplate CreateTemplate_Andromedon(name TemplateName)
+{
+	local X2CharacterTemplate CharTemplate;
+	local LootReference Loot;
+
+	`CREATE_X2CHARACTER_TEMPLATE(CharTemplate, TemplateName);
+	CharTemplate.CharacterGroupName = 'Andromedon';
+	CharTemplate.DefaultLoadout='Andromedon_Loadout';
+	CharTemplate.BehaviorClass=class'XGAIBehavior';
+	CharTemplate.strPawnArchetypes.AddItem("GameUnit_Andromedon.ARC_GameUnit_Andromedon");
+	//Loot.ForceLevel=0;
+	//Loot.LootTableName='Andromedon_BaseLoot';
+	//CharTemplate.Loot.LootReferences.AddItem(Loot);
+
+	// Timed Loot
+	Loot.ForceLevel = 0;
+	Loot.LootTableName = 'Andromedon_TimedLoot';
+	CharTemplate.TimedLoot.LootReferences.AddItem(Loot);
+	Loot.LootTableName = 'Andromedon_VultureLoot';
+	CharTemplate.VultureLoot.LootReferences.AddItem(Loot);
+
+	CharTemplate.strMatineePackages.AddItem("CIN_Andromedon");
+	CharTemplate.strMatineePackages.AddItem("CIN_Muton");
+	CharTemplate.strTargetingMatineePrefix = "CIN_Muton_FF_StartPos";
+
+	CharTemplate.UnitSize = 1;
+	// Traversal Rules
+	CharTemplate.bCanUse_eTraversal_Normal = true;
+	CharTemplate.bCanUse_eTraversal_ClimbOver = true;
+	CharTemplate.bCanUse_eTraversal_ClimbOnto = true;
+	CharTemplate.bCanUse_eTraversal_ClimbLadder = true;
+	CharTemplate.bCanUse_eTraversal_DropDown = true;
+	CharTemplate.bCanUse_eTraversal_Grapple = false;
+	CharTemplate.bCanUse_eTraversal_Landing = true;
+	CharTemplate.bCanUse_eTraversal_BreakWindow = true;
+	CharTemplate.bCanUse_eTraversal_KickDoor = true;
+	CharTemplate.bCanUse_eTraversal_JumpUp = false;
+	CharTemplate.bCanUse_eTraversal_WallClimb = false;
+	CharTemplate.bCanUse_eTraversal_BreakWall = false;
+	CharTemplate.bAppearanceDefinesPawn = false;    
+	CharTemplate.bCanTakeCover = true;
+
+	CharTemplate.bIsAlien = true;
+	CharTemplate.bIsAdvent = false;
+	CharTemplate.bIsCivilian = false;
+	CharTemplate.bIsPsionic = false;
+	CharTemplate.bIsRobotic = false;
+	CharTemplate.bIsSoldier = false;
+
+	CharTemplate.bCanBeTerrorist = false;
+	CharTemplate.bCanBeCriticallyWounded = false;
+	CharTemplate.bIsAfraidOfFire = false;
+
+	CharTemplate.bAllowSpawnFromATT = false;
+
+	CharTemplate.AddTemplateAvailablility(CharTemplate.BITFIELD_GAMEAREA_Multiplayer); // Allow in MP!
+	CharTemplate.MPPointValue = CharTemplate.XpKillscore * 10;
+
+	CharTemplate.Abilities.AddItem('SwitchToRobot');
+	CharTemplate.Abilities.AddItem('AndromedonImmunities');
+	CharTemplate.Abilities.AddItem('BigDamnPunch');
+	CharTemplate.Abilities.AddItem('WallBreaking');
+	CharTemplate.Abilities.AddItem('WallSmash');
+	CharTemplate.Abilities.AddItem('RobotBattlesuit');
+	//CharTemplate.Abilities.AddItem('ShellLauncher');
+	CharTemplate.Abilities.AddItem('DarkEventAbility_Barrier');
+
+	CharTemplate.SightedNarrativeMoments.AddItem(XComNarrativeMoment'X2NarrativeMoments.TACTICAL.AlienSitings.T_Central_AlienSightings_Andromedon');
+
+	CharTemplate.strTargetIconImage = class'UIUtilities_Image'.const.TargetIcon_Alien;
+
+	return CharTemplate;
+}
+
+static function X2CharacterTemplate CreateTemplate_AndromedonRobot(name TemplateName)
+{
+	local X2CharacterTemplate CharTemplate;
+	local LootReference Loot;
+
+	`CREATE_X2CHARACTER_TEMPLATE(CharTemplate, TemplateName);
+	CharTemplate.CharacterGroupName = 'AndromedonRobot';
+	CharTemplate.DefaultLoadout='AndromedonRobot_Loadout';
+	CharTemplate.BehaviorClass=class'XGAIBehavior';
+	CharTemplate.strPawnArchetypes.AddItem("GameUnit_Andromedon.ARC_GameUnit_Andromedon_Robot_Suit");
+	Loot.ForceLevel=0;
+	Loot.LootTableName='AndromedonRobot_BaseLoot';
+	CharTemplate.Loot.LootReferences.AddItem(Loot);
+
+	// Timed Loot
+	//Loot.ForceLevel = 0;
+	//Loot.LootTableName = 'AndromedonRobot_TimedLoot';
+	//CharTemplate.TimedLoot.LootReferences.AddItem(Loot);
+	//Loot.LootTableName = 'AndromedonRobot_VultureLoot';
+	//CharTemplate.VultureLoot.LootReferences.AddItem(Loot);
+
+	CharTemplate.strMatineePackages.AddItem("CIN_Andromedon");
+	CharTemplate.strMatineePackages.AddItem("CIN_Muton");
+	CharTemplate.strTargetingMatineePrefix = "CIN_Muton_FF_StartPos";
+
+	CharTemplate.UnitSize = 1;
+	// Traversal Rules
+	CharTemplate.bCanUse_eTraversal_Normal = true;
+	CharTemplate.bCanUse_eTraversal_ClimbOver = true;
+	CharTemplate.bCanUse_eTraversal_ClimbOnto = true;
+	CharTemplate.bCanUse_eTraversal_ClimbLadder = true;
+	CharTemplate.bCanUse_eTraversal_DropDown = true;
+	CharTemplate.bCanUse_eTraversal_Grapple = false;
+	CharTemplate.bCanUse_eTraversal_Landing = true;
+	CharTemplate.bCanUse_eTraversal_BreakWindow = false;
+	CharTemplate.bCanUse_eTraversal_KickDoor = false;
+	CharTemplate.bCanUse_eTraversal_JumpUp = false;
+	CharTemplate.bCanUse_eTraversal_WallClimb = false;
+	CharTemplate.bCanUse_eTraversal_BreakWall = false;
+	CharTemplate.bAppearanceDefinesPawn = false;    
+	CharTemplate.bCanTakeCover = false;
+
+	CharTemplate.bIsAlien = true;
+	CharTemplate.bIsAdvent = false;
+	CharTemplate.bIsCivilian = false;
+	CharTemplate.bIsPsionic = false;
+	CharTemplate.bIsRobotic = true;
+	CharTemplate.bIsSoldier = false;
+
+	CharTemplate.bAllowSpawnFromATT = false;
+
+	CharTemplate.bCanBeTerrorist = false;
+	CharTemplate.bCanBeCriticallyWounded = false;
+	CharTemplate.bIsAfraidOfFire = false;
+	
+	CharTemplate.MPPointValue = CharTemplate.XpKillscore * 10;
+
+	CharTemplate.Abilities.AddItem('AndromedonRobotImmunities');
+	CharTemplate.Abilities.AddItem('BigDamnPunch');
+	CharTemplate.Abilities.AddItem('AndromedonRobotAcidTrail');
+	CharTemplate.Abilities.AddItem('WallBreaking');
+	CharTemplate.Abilities.AddItem('WallSmash');
+	CharTemplate.Abilities.AddItem('RobotReboot');
+	CharTemplate.Abilities.AddItem('DarkEventAbility_Barrier');
+
+	CharTemplate.strScamperBT = "ScamperRoot_NoCover";
+
+	CharTemplate.SightedNarrativeMoments.AddItem(XComNarrativeMoment'X2NarrativeMoments.TACTICAL.AlienSitings.T_Central_AlienSightings_First_Andromedon_Battlesuit');
+	CharTemplate.strHackIconImage = "UILibrary_Common.TargetIcons.Hack_robot_icon";
+	CharTemplate.strTargetIconImage = class'UIUtilities_Image'.const.TargetIcon_Alien;
+
+	return CharTemplate;
+}
 
 
+static function X2CharacterTemplate CreateTemplate_Sectopod(name TemplateName)
+{
+	local X2CharacterTemplate CharTemplate;
+	local LootReference Loot;
+
+	`CREATE_X2CHARACTER_TEMPLATE(CharTemplate, TemplateName);
+	CharTemplate.CharacterGroupName = 'Sectopod';
+	CharTemplate.DefaultLoadout='Sectopod_Loadout';
+	CharTemplate.BehaviorClass=class'XGAIBehavior';
+	CharTemplate.strPawnArchetypes.AddItem("GameUnit_Sectopod.ARC_GameUnit_Sectopod");
+	Loot.ForceLevel=0;
+	Loot.LootTableName='Sectopod_BaseLoot';
+	CharTemplate.Loot.LootReferences.AddItem(Loot);
+
+	// Timed Loot
+	Loot.ForceLevel = 0;
+	Loot.LootTableName = 'Sectopod_TimedLoot';
+	CharTemplate.TimedLoot.LootReferences.AddItem(Loot);
+	Loot.LootTableName = 'Sectopod_VultureLoot';
+	CharTemplate.VultureLoot.LootReferences.AddItem(Loot);
+
+	CharTemplate.strMatineePackages.AddItem("CIN_Sectopod");
+	CharTemplate.strTargetingMatineePrefix = "CIN_Sectopod_FF_StartPos";
+
+	CharTemplate.UnitSize = 2;
+	CharTemplate.UnitHeight = 4;
+
+	CharTemplate.KillContribution = 2.0;
+
+	// Traversal Rules
+	CharTemplate.bCanUse_eTraversal_Normal = true;
+	CharTemplate.bCanUse_eTraversal_ClimbOver = false;
+	CharTemplate.bCanUse_eTraversal_ClimbOnto = true;
+	CharTemplate.bCanUse_eTraversal_ClimbLadder = false;
+	CharTemplate.bCanUse_eTraversal_DropDown = true;
+	CharTemplate.bCanUse_eTraversal_Grapple = false;
+	CharTemplate.bCanUse_eTraversal_Landing = true;
+	CharTemplate.bCanUse_eTraversal_BreakWindow = false;
+	CharTemplate.bCanUse_eTraversal_KickDoor = false;
+	CharTemplate.bCanUse_eTraversal_JumpUp = false;
+	CharTemplate.bCanUse_eTraversal_WallClimb = false;
+	CharTemplate.bCanUse_eTraversal_BreakWall = false;
+	CharTemplate.bAppearanceDefinesPawn = false;    
+	CharTemplate.bCanTakeCover = false;
+	CharTemplate.bSkipDefaultAbilities = true;
+
+	CharTemplate.bIsAlien = true;
+	CharTemplate.bIsAdvent = false;
+	CharTemplate.bIsCivilian = false;
+	CharTemplate.bIsPsionic = false;
+	CharTemplate.bIsRobotic = true;
+	CharTemplate.bIsSoldier = false;
+	CharTemplate.bAllowRushCam = false;
+
+	CharTemplate.bCanBeTerrorist = false;
+	CharTemplate.bCanBeCriticallyWounded = false;
+	CharTemplate.bIsAfraidOfFire = false;
+	//CharTemplate.AcquiredPhobiaTemplate = 'FearOfMecs';
+
+	CharTemplate.bAllowSpawnFromATT = false;
+
+	CharTemplate.AddTemplateAvailablility(CharTemplate.BITFIELD_GAMEAREA_Multiplayer); // Allow in MP!
+	CharTemplate.MPPointValue = CharTemplate.XpKillscore * 10;
+
+	CharTemplate.strScamperBT = "ScamperRoot_NoCover";
+
+	CharTemplate.SightedNarrativeMoments.AddItem(XComNarrativeMoment'X2NarrativeMoments.TACTICAL.AlienSitings.T_Shen_AlienSightings_Sectopod');
+
+	CharTemplate.ImmuneTypes.AddItem('Fire');
+
+	CharTemplate.Abilities.AddItem('StandardMove');
+	CharTemplate.Abilities.AddItem('SectopodHigh');
+	CharTemplate.Abilities.AddItem('SectopodLow');
+	CharTemplate.Abilities.AddItem('SectopodLightningField');
+	CharTemplate.Abilities.AddItem('DeathExplosion');
+	CharTemplate.Abilities.AddItem('SectopodInitialState');
+	CharTemplate.Abilities.AddItem('SectopodNewTeamState');
+
+	CharTemplate.strHackIconImage = "UILibrary_Common.TargetIcons.Hack_robot_icon";
+	CharTemplate.strTargetIconImage = class'UIUtilities_Image'.const.TargetIcon_Alien;
+
+	CharTemplate.Abilities.AddItem('DarkEventAbility_Barrier');
+
+	return CharTemplate;
+}
+
+static function X2CharacterTemplate CreateTemplate_Gatekeeper(name TemplateName)
+{
+	local X2CharacterTemplate CharTemplate;
+	local LootReference Loot;
+
+	`CREATE_X2CHARACTER_TEMPLATE(CharTemplate, TemplateName);
+	CharTemplate.CharacterGroupName = 'Gatekeeper';
+	CharTemplate.DefaultLoadout='Gatekeeper_Loadout';
+	CharTemplate.BehaviorClass=class'XGAIBehavior';
+	CharTemplate.strPawnArchetypes.AddItem("GameUnit_Gatekeeper.ARC_GameUnit_Gatekeeper");
+	Loot.ForceLevel=0;
+	Loot.LootTableName='Gatekeeper_BaseLoot';
+	CharTemplate.Loot.LootReferences.AddItem(Loot);
+
+	// Timed Loot
+	Loot.ForceLevel = 0;
+	Loot.LootTableName = 'Gatekeeper_TimedLoot';
+	CharTemplate.TimedLoot.LootReferences.AddItem(Loot);
+	Loot.LootTableName = 'Gatekeeper_VultureLoot';
+	CharTemplate.VultureLoot.LootReferences.AddItem(Loot);
+
+	CharTemplate.strMatineePackages.AddItem("CIN_Gatekeeper");
+	CharTemplate.GetRevealMatineePrefixFn = GetGateKeeperRevealMatineePrefix;
+	CharTemplate.strTargetingMatineePrefix = "CIN_Gatekeeper_FF_StartPos";	
+
+	CharTemplate.UnitSize = 2;
+
+	CharTemplate.KillContribution = 2.0;
+
+	// Traversal Rules
+	CharTemplate.bCanUse_eTraversal_Normal = true;
+	CharTemplate.bCanUse_eTraversal_ClimbOver = false;
+	CharTemplate.bCanUse_eTraversal_ClimbOnto = false;
+	CharTemplate.bCanUse_eTraversal_ClimbLadder = false;
+	CharTemplate.bCanUse_eTraversal_DropDown = false;
+	CharTemplate.bCanUse_eTraversal_Grapple = false;
+	CharTemplate.bCanUse_eTraversal_Landing = true;
+	CharTemplate.bCanUse_eTraversal_BreakWindow = false;
+	CharTemplate.bCanUse_eTraversal_KickDoor = false;
+	CharTemplate.bCanUse_eTraversal_JumpUp = false;
+	CharTemplate.bCanUse_eTraversal_WallClimb = false;
+	CharTemplate.bCanUse_eTraversal_BreakWall = false;
+	CharTemplate.bCanUse_eTraversal_Launch = true;
+	CharTemplate.bCanUse_eTraversal_Flying = true;
+	CharTemplate.bCanUse_eTraversal_Land = true;
+	CharTemplate.MaxFlightPitchDegrees = 0;
+	CharTemplate.bAppearanceDefinesPawn = false;    
+	CharTemplate.bCanTakeCover = false;
+
+	CharTemplate.bIsAlien = true;
+	CharTemplate.bIsAdvent = false;
+	CharTemplate.bIsCivilian = false;
+	CharTemplate.bIsPsionic = true;
+	CharTemplate.bIsRobotic = false;
+	CharTemplate.bIsSoldier = false;
+	CharTemplate.bAllowRushCam = false;
+	CharTemplate.bWeakAgainstTechLikeRobot = true;
+
+	CharTemplate.bCanBeTerrorist = false;
+	CharTemplate.bCanBeCriticallyWounded = false;
+	CharTemplate.bIsAfraidOfFire = true;
+
+	CharTemplate.bAllowSpawnFromATT = false;
+	CharTemplate.bImmueToFalling = true;
+
+	CharTemplate.AddTemplateAvailablility(CharTemplate.BITFIELD_GAMEAREA_Multiplayer); // Allow in MP!
+	CharTemplate.MPPointValue = CharTemplate.XpKillscore * 10;
+
+	CharTemplate.strScamperBT = "ScamperRoot_NoCover";
+
+	CharTemplate.Abilities.AddItem('GatekeeperInitialState');  // Sets initial closed effect on Gatekeeper.
+	CharTemplate.Abilities.AddItem('Retract');
+	CharTemplate.Abilities.AddItem('AnimaInversion');
+	CharTemplate.Abilities.AddItem('AnimaConsume');
+	CharTemplate.Abilities.AddItem('AnimaGate');
+	CharTemplate.Abilities.AddItem('DeathExplosion');
+	CharTemplate.Abilities.AddItem('KillSiredZombies');
+	CharTemplate.Abilities.AddItem('DarkEventAbility_Barrier');
+
+	CharTemplate.SightedNarrativeMoments.AddItem(XComNarrativeMoment'X2NarrativeMoments.TACTICAL.AlienSitings.T_Shen_AlienSightings_Gatekeeper');
+
+	CharTemplate.strHackIconImage = "UILibrary_Common.TargetIcons.Hack_robot_icon";
+	CharTemplate.strTargetIconImage = class'UIUtilities_Image'.const.TargetIcon_Alien;
+
+	return CharTemplate;
+}
 
 
+static function X2CharacterTemplate CreateTemplate_Spectre(name TemplateName)
+{
+	local X2CharacterTemplate CharTemplate;
+	local LootReference Loot;
+
+	`CREATE_X2CHARACTER_TEMPLATE(CharTemplate, TemplateName);
+	CharTemplate.CharacterGroupName = 'Spectre';
+	CharTemplate.DefaultLoadout = 'SpectreM2_Loadout';
+	CharTemplate.BehaviorClass = class'XGAIBehavior';	
+
+	// Auto-Loot
+	Loot.ForceLevel = 0;
+	Loot.LootTableName = 'Spectre_BaseLoot';
+	CharTemplate.Loot.LootReferences.AddItem(Loot);
+
+	// Timed Loot
+	Loot.ForceLevel = 0;
+	Loot.LootTableName = 'Spectre_TimedLoot';
+	CharTemplate.TimedLoot.LootReferences.AddItem(Loot);
+	Loot.LootTableName = 'Spectre_VultureLoot';
+	CharTemplate.VultureLoot.LootReferences.AddItem(Loot);
+
+	CharTemplate.UnitSize = 1;
+
+	// Traversal Rules
+	CharTemplate.bCanUse_eTraversal_Normal = true;
+
+//BEGIN AUTOGENERATED CODE: Template Overrides 'SpectreM2'
+	CharTemplate.strPawnArchetypes.AddItem("GameUnit_Spectre.ARC_GameUnit_SpectreM2");
+	CharTemplate.bCanUse_eTraversal_ClimbOver = false;
+	CharTemplate.bCanUse_eTraversal_ClimbOnto = false;
+	CharTemplate.bCanUse_eTraversal_ClimbLadder = false;
+	CharTemplate.bCanUse_eTraversal_DropDown = false;
+	CharTemplate.bCanUse_eTraversal_Launch = true;
+	CharTemplate.bCanUse_eTraversal_Flying = true;
+	CharTemplate.bCanUse_eTraversal_Land = true;
+	CharTemplate.bCanUse_eTraversal_Landing = true;
+	CharTemplate.strMatineePackages[0] = "CIN_XP_Spectre";
+	CharTemplate.strIntroMatineeSlotPrefix = "CIN_Spectre_Reveal";
+//END AUTOGENERATED CODE: Template Overrides 'SpectreM2'
+
+	CharTemplate.bCanUse_eTraversal_Grapple = false;
+	CharTemplate.bCanUse_eTraversal_Landing = true;
+	CharTemplate.bCanUse_eTraversal_BreakWindow = true;
+	CharTemplate.bCanUse_eTraversal_KickDoor = true;
+	CharTemplate.bCanUse_eTraversal_JumpUp = false;
+	CharTemplate.bCanUse_eTraversal_WallClimb = false;
+	CharTemplate.bCanUse_eTraversal_BreakWall = false;
+	CharTemplate.bAppearanceDefinesPawn = false;
+	CharTemplate.bSetGenderAlways = true;
+	CharTemplate.bCanTakeCover = true;
+	CharTemplate.MaxFlightPitchDegrees = 0;
+
+	CharTemplate.bIsAlien = true;
+	CharTemplate.bIsHumanoid = true;
+	CharTemplate.bIsAdvent = false;
+	CharTemplate.bIsCivilian = false;
+	CharTemplate.bIsPsionic = false;
+	CharTemplate.bIsRobotic = false;
+	CharTemplate.bIsSoldier = false;
+	CharTemplate.bWeakAgainstTechLikeRobot = true;
+
+	CharTemplate.bCanBeTerrorist = false;
+	CharTemplate.bCanBeCriticallyWounded = false;
+	CharTemplate.bIsAfraidOfFire = true;
+
+	CharTemplate.Abilities.AddItem('SpectreMoveBegin');
+	CharTemplate.Abilities.AddItem('Vanish');
+	CharTemplate.Abilities.AddItem('LightningReflexes');
+	CharTemplate.Abilities.AddItem('ShadowbindM2');
+	//CharTemplate.Abilities.AddItem('ShadowboundLink');
+	CharTemplate.Abilities.AddItem('KillShadowboundLinkedUnits');
+	
+	CharTemplate.ImmuneTypes.AddItem('Mental');
+	CharTemplate.ImmuneTypes.AddItem('Fire');
+	CharTemplate.ImmuneTypes.AddItem('Poison');
+	CharTemplate.ImmuneTypes.AddItem(class'X2Item_DefaultDamageTypes'.default.ParthenogenicPoisonType);
+	CharTemplate.ImmuneTypes.AddItem('Acid');
+
+	CharTemplate.SightedNarrativeMoments.AddItem(XComNarrativeMoment'XPACK_NarrativeMoments.X2_XP_TYG_T_First_Seen_Spectre_M1');
+
+	CharTemplate.strHackIconImage = "UILibrary_Common.TargetIcons.Hack_captain_icon";
+	CharTemplate.strTargetIconImage = class'UIUtilities_Image'.const.TargetIcon_Alien;
+
+	return CharTemplate;
+}
+
+static function X2CharacterTemplate CreateTemplate_PsiZombieHuman(name TemplateName)
+{
+	local X2CharacterTemplate CharTemplate;
+	CharTemplate = CreateTemplate_PsiZombie(TemplateName);
+	CharTemplate.strPawnArchetypes.Length = 0;
+	CharTemplate.strPawnArchetypes.AddItem("GameUnit_Zombie.ARC_GameUnit_Zombie_Human_M");
+	CharTemplate.strPawnArchetypes.AddItem("GameUnit_Zombie.ARC_GameUnit_Zombie_Human_F");
+
+	CharTemplate.strTargetIconImage = class'UIUtilities_Image'.const.TargetIcon_Alien;
+
+	return CharTemplate;
+}
