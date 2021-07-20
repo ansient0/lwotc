@@ -48,6 +48,20 @@ var config int HIVE_QUEEN_SLASH_BONUS_DAMAGE;
 var config int REPAIR_SERVOS_BONUS_ARMOR;
 var config int REPAIR_SERVOS_DURATION;
 
+var const config int HOLYWARRIOR_M4_MOBILITY;
+var const config int HOLYWARRIOR_M4_OFFENSE;
+var const config int HOLYWARRIOR_M4_CRIT;
+var const config int HOLYWARRIOR_M4_HP;
+var const config int HOLYWARRIOR_M5_MOBILITY;
+var const config int HOLYWARRIOR_M5_OFFENSE;
+var const config int HOLYWARRIOR_M5_CRIT;
+var const config int HOLYWARRIOR_M5_HP;
+
+var config int ENERGY_SHIELD_MK4_HP;
+var config int ENERGY_SHIELD_MK5_HP;
+
+
+
 var localized string strBayonetChargePenalty;
 
 
@@ -74,6 +88,14 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(AddRepairServosAbility());
 	Templates.AddItem(AddFireOnDeathAbility());
 	Templates.AddItem(PurePassive('RepairServosPassive', "img:///UILibrary_LWAlienPack.LW_AbilityDamageControl", true, 'eAbilitySource_Perk'));
+
+
+	Templates.AddItem(class'X2Ability_AdvPriest'.static.CreateHolyWarrior('HolyWarriorM4', default.HOLYWARRIOR_M4_MOBILITY, default.HOLYWARRIOR_M4_OFFENSE, default.HOLYWARRIOR_M4_CRIT, default.HOLYWARRIOR_M4_HP));
+	Templates.AddItem(class'X2Ability_AdvPriest'.static.CreateHolyWarrior('HolyWarriorM5', default.HOLYWARRIOR_M5_MOBILITY, default.HOLYWARRIOR_M5_OFFENSE, default.HOLYWARRIOR_M5_CRIT, default.HOLYWARRIOR_M5_HP));
+
+	Templates.AddItem(CreateEnergyShieldAbility('EnergyShieldMk4',default.ENERGY_SHIELD_MK4_HP));
+	Templates.AddItem(CreateEnergyShieldAbility('EnergyShieldMk5',default.ENERGY_SHIELD_MK5_HP));
+
 	return Templates;
 }
 
@@ -1161,5 +1183,83 @@ static function X2AbilityTemplate AddFireOnDeathAbility()
 	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
 	Template.BuildVisualizationFn = TypicalAbility_BuildVisualization;
 
+	return Template;
+}
+
+static function X2DataTemplate CreateEnergyShieldAbility(name TemplateName, int ShieldPoints)
+{
+	local X2AbilityTemplate Template;
+	local X2AbilityCost_ActionPoints ActionPointCost;
+	local X2AbilityCharges Charges;
+	local X2AbilityCost_Charges ChargeCost;
+	local X2AbilityCooldown_LocalAndGlobal Cooldown;
+	local X2Condition_UnitProperty UnitPropertyCondition;
+	local X2AbilityTrigger_PlayerInput InputTrigger;
+	local X2Effect_PersistentStatChange ShieldedEffect;
+	local X2AbilityMultiTarget_Radius MultiTarget;
+
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'EnergyShieldMk3');
+	Template.IconImage = "img:///UILibrary_PerkIcons.UIPerk_adventshieldbearer_energyshield";
+
+	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_AlwaysShow;
+	Template.AbilitySourceName = 'eAbilitySource_Standard';
+	Template.Hostility = eHostility_Defensive;
+
+	// This ability is a free action
+	ActionPointCost = new class'X2AbilityCost_ActionPoints';
+	ActionPointCost.iNumPoints = 1;
+	ActionPointCost.bConsumeAllPoints = true;
+	Template.AbilityCosts.AddItem(ActionPointCost);
+
+	Charges = new class 'X2AbilityCharges';
+	Charges.InitialCharges = 1;
+	Template.AbilityCharges = Charges;
+
+	ChargeCost = new class'X2AbilityCost_Charges';
+	ChargeCost.NumCharges = 1;
+	Template.AbilityCosts.AddItem(ChargeCost);
+
+	Cooldown = new class'X2AbilityCooldown_LocalAndGlobal';
+	Cooldown.iNumTurns = class'X2Ability_AdventShieldbearer'.default.ENERGY_SHIELD_COOLDOWN;
+	Cooldown.NumGlobalTurns = class'X2Ability_AdventShieldbearer'.default.ENERGY_SHIELD_GLOBAL_COOLDOWN;
+	Template.AbilityCooldown = Cooldown;
+
+	//Can't use while dead
+	Template.AbilityShooterConditions.AddItem(default.LivingShooterProperty);
+
+	// Add dead eye to guarantee
+	Template.AbilityToHitCalc = default.DeadEye;
+	Template.AbilityTargetStyle = default.SelfTarget;
+
+	// Multi target
+	MultiTarget = new class'X2AbilityMultiTarget_Radius';
+	MultiTarget.fTargetRadius = class'X2Ability_AdventShieldbearer'.default.ENERGY_SHIELD_RANGE_METERS;
+	MultiTarget.bIgnoreBlockingCover = true;
+	Template.AbilityMultiTargetStyle = MultiTarget;
+
+	InputTrigger = new class'X2AbilityTrigger_PlayerInput';
+	Template.AbilityTriggers.AddItem(InputTrigger);
+
+	// The Targets must be within the AOE, LOS, and friendly
+	UnitPropertyCondition = new class'X2Condition_UnitProperty';
+	UnitPropertyCondition.ExcludeDead = true;
+	UnitPropertyCondition.ExcludeFriendlyToSource = false;
+	UnitPropertyCondition.ExcludeHostileToSource = true;
+	UnitPropertyCondition.ExcludeCivilian = true;
+	UnitPropertyCondition.FailOnNonUnits = true;
+	Template.AbilityMultiTargetConditions.AddItem(UnitPropertyCondition);
+
+	// Friendlies in the radius receives a shield receives a shield
+	ShieldedEffect = class'X2Ability_AdventShieldbearer'.static.CreateShieldedEffect(Template.LocFriendlyName, Template.GetMyLongDescription(), ShieldPoints);
+
+	Template.AddShooterEffect(ShieldedEffect);
+	Template.AddMultiTargetEffect(ShieldedEffect);
+
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+	Template.BuildVisualizationFn = class'X2Ability_AdventShieldbearer'.static.Shielded_BuildVisualization;
+	Template.CinescriptCameraType = "AdvShieldBearer_EnergyShieldArmor";
+
+	Template.LostSpawnIncreasePerUse = class'X2AbilityTemplateManager'.default.StandardShotLostSpawnIncreasePerUse;
+	
 	return Template;
 }

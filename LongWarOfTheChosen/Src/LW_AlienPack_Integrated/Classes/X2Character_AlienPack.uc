@@ -128,9 +128,14 @@ static function array<X2DataTemplate> CreateTemplates()
 
 	Templates.AddItem(CreateTemplate_AdvStunLancer('AdvStunLancerM4'));
 	Templates.AddItem(CreateTemplate_AdvStunLancer('AdvStunLancerM5'));
+	Templates.AddItem(CreateTemplate_AdvPriest('AdvPriestM4'));
+	Templates.AddItem(CreateTemplate_AdvPriest('AdvPriestM5'));
+
+	Templates.AddItem(CreateTemplate_AdvPurifier('AdvPurifierM4'));
+	Templates.AddItem(CreateTemplate_AdvPurifier('AdvPurifierM5'));
 
 	
-
+	
 	
 	//Templates.AddItem(CreateTemplate_AdvGeneric('AdvSergeantM1'));
 	//Templates.AddItem(CreateTemplate_AdvGeneric('AdvSergeantM2'));
@@ -2869,6 +2874,7 @@ static function X2CharacterTemplate CreateTemplate_AdvShieldBearer(name Template
 		CharTemplate.TimedLoot.LootReferences.AddItem(Loot);
 		Loot.LootTableName = 'GenericLateAlienVultureLoot_LW';
 		CharTemplate.VultureLoot.LootReferences.AddItem(Loot);
+		CharTemplate.Abilities.AddItem('EnergyShieldMk4');
 	}
 	if (TemplateName == 'AdvShieldBearerM5')
 	{
@@ -2877,6 +2883,7 @@ static function X2CharacterTemplate CreateTemplate_AdvShieldBearer(name Template
 		CharTemplate.TimedLoot.LootReferences.AddItem(Loot);
 		Loot.LootTableName = 'GenericLateAlienVultureLoot_LW';
 		CharTemplate.VultureLoot.LootReferences.AddItem(Loot);
+		CharTemplate.Abilities.AddItem('EnergyShieldMk5');
 	}
 
 	CharTemplate.strMatineePackages.AddItem("CIN_Advent");
@@ -2913,7 +2920,6 @@ static function X2CharacterTemplate CreateTemplate_AdvShieldBearer(name Template
 	CharTemplate.bCanBeCriticallyWounded = false;
 	CharTemplate.bIsAfraidOfFire = true;
 
-	CharTemplate.Abilities.AddItem('EnergyShieldMk3');
 	CharTemplate.Abilities.AddItem('AdventStilettoRounds');
 	CharTemplate.Abilities.AddItem('DarkEventAbility_SealedArmor');
 	CharTemplate.Abilities.AddItem('DarkEventAbility_UndyingLoyalty');
@@ -2924,6 +2930,173 @@ static function X2CharacterTemplate CreateTemplate_AdvShieldBearer(name Template
 
 	CharTemplate.AddTemplateAvailablility(CharTemplate.BITFIELD_GAMEAREA_Multiplayer); // Allow in MP!
 	CharTemplate.MPPointValue = CharTemplate.XpKillscore * 10;
+
+	CharTemplate.strHackIconImage = "UILibrary_Common.TargetIcons.Hack_captain_icon";
+	CharTemplate.strTargetIconImage = class'UIUtilities_Image'.const.TargetIcon_Advent;
+
+	return CharTemplate;
+}
+
+	static function X2CharacterTemplate CreateTemplate_AdvPriest(name TemplateName)
+{
+	local X2CharacterTemplate CharTemplate;
+	local LootReference Loot;
+
+	`CREATE_X2CHARACTER_TEMPLATE(CharTemplate, TemplateName);
+	CharTemplate.CharacterGroupName = 'AdventPriest';
+	CharTemplate.BehaviorClass = class'XGAIBehavior';
+	CharTemplate.strPawnArchetypes.AddItem("GameUnit_AdvPriest.ARC_GameUnit_AdvPriestM3_M");
+	CharTemplate.strPawnArchetypes.AddItem("GameUnit_AdvPriest.ARC_GameUnit_AdvPriestM3_F");
+
+	// Auto-Loot
+	Loot.ForceLevel = 0;
+	Loot.LootTableName = 'AdvPriestM3_BaseLoot';
+	CharTemplate.Loot.LootReferences.AddItem(Loot);
+
+	if (TemplateName == 'AdvPriestM4')
+	{
+		CharTemplate.DefaultLoadout = 'AdvPriestM4_Loadout';
+		Loot.LootTableName = 'GenericLateAlienLoot_LW'; 
+		CharTemplate.TimedLoot.LootReferences.AddItem(Loot);
+		Loot.LootTableName = 'GenericLateAlienVultureLoot_LW';
+		CharTemplate.VultureLoot.LootReferences.AddItem(Loot);
+	}
+	if (TemplateName == 'AdvPriestM5')
+	{
+		CharTemplate.DefaultLoadout = 'AdvPriestM5_Loadout';
+		Loot.LootTableName = 'GenericLateAlienLoot_LW'; 
+		CharTemplate.TimedLoot.LootReferences.AddItem(Loot);
+		Loot.LootTableName = 'GenericLateAlienVultureLoot_LW';
+		CharTemplate.VultureLoot.LootReferences.AddItem(Loot);
+	}
+
+
+	CharTemplate.strMatineePackages.AddItem("CIN_Advent");
+	CharTemplate.strMatineePackages.AddItem("CIN_Soldier");
+	CharTemplate.RevealMatineePrefix = "CIN_Advent_Priest";
+	CharTemplate.GetRevealMatineePrefixFn = GetAdventMatineePrefix;
+
+	CharTemplate.UnitSize = 1;
+
+	// Traversal Rules
+	CharTemplate.bCanUse_eTraversal_Normal = true;
+	CharTemplate.bCanUse_eTraversal_ClimbOver = true;
+	CharTemplate.bCanUse_eTraversal_ClimbOnto = true;
+	CharTemplate.bCanUse_eTraversal_ClimbLadder = true;
+	CharTemplate.bCanUse_eTraversal_DropDown = true;
+	CharTemplate.bCanUse_eTraversal_Grapple = false;
+	CharTemplate.bCanUse_eTraversal_Landing = true;
+	CharTemplate.bCanUse_eTraversal_BreakWindow = true;
+	CharTemplate.bCanUse_eTraversal_KickDoor = true;
+	CharTemplate.bCanUse_eTraversal_JumpUp = false;
+	CharTemplate.bCanUse_eTraversal_WallClimb = false;
+	CharTemplate.bCanUse_eTraversal_BreakWall = false;
+	CharTemplate.bAppearanceDefinesPawn = false;
+	CharTemplate.bSetGenderAlways = true;
+	CharTemplate.bCanTakeCover = true;
+
+	CharTemplate.bIsAlien = false;
+	CharTemplate.bIsAdvent = true;
+	CharTemplate.bIsCivilian = false;
+	CharTemplate.bIsPsionic = true;
+	CharTemplate.bIsRobotic = false;
+	CharTemplate.bIsSoldier = false;
+
+	CharTemplate.bCanBeTerrorist = false;
+	CharTemplate.bCanBeCriticallyWounded = false;
+	CharTemplate.bIsAfraidOfFire = false;
+	
+	CharTemplate.Abilities.AddItem('Sustain');
+	CharTemplate.Abilities.AddItem('AdventStilettoRounds');
+	CharTemplate.Abilities.AddItem('DarkEventAbility_ReturnFire');
+	CharTemplate.Abilities.AddItem('DarkEventAbility_SealedArmor');
+	CharTemplate.Abilities.AddItem('DarkEventAbility_UndyingLoyalty');
+	CharTemplate.Abilities.AddItem('DarkEventAbility_Barrier');
+	CharTemplate.Abilities.AddItem('DarkEventAbility_Counterattack');
+
+	CharTemplate.SightedNarrativeMoments.AddItem(XComNarrativeMoment'XPACK_NarrativeMoments.X2_XP_TYG_T_First_Seen_Adv_Priest_M1');
+
+	CharTemplate.strHackIconImage = "UILibrary_Common.TargetIcons.Hack_captain_icon";
+	CharTemplate.strTargetIconImage = class'UIUtilities_Image'.const.TargetIcon_Advent;
+
+	return CharTemplate;
+}
+
+	static function X2CharacterTemplate CreateTemplate_AdvPurifier(name TemplateName)
+{
+	local X2CharacterTemplate CharTemplate;
+	local LootReference Loot;
+
+	`CREATE_X2CHARACTER_TEMPLATE(CharTemplate, TemplateName);
+	CharTemplate.CharacterGroupName = 'AdventPurifier';
+	CharTemplate.BehaviorClass = class'XGAIBehavior';
+	CharTemplate.strPawnArchetypes.AddItem("GameUnit_AdvPurifier.ARC_GameUnit_AdvPurifierM3_M");
+	CharTemplate.strPawnArchetypes.AddItem("GameUnit_AdvPurifier.ARC_GameUnit_AdvPurifierM3_F");
+
+	// Auto-Loot
+	Loot.ForceLevel = 0;
+	Loot.LootTableName = 'AdvPurifierM3_BaseLoot';
+	CharTemplate.Loot.LootReferences.AddItem(Loot);
+
+
+	if (TemplateName == 'AdvPurifierM4')
+	{
+		CharTemplate.DefaultLoadout = 'AdvPurifierM4_Loadout';
+		Loot.LootTableName = 'GenericLateAlienLoot_LW'; 
+		CharTemplate.TimedLoot.LootReferences.AddItem(Loot);
+		Loot.LootTableName = 'GenericLateAlienVultureLoot_LW';
+		CharTemplate.VultureLoot.LootReferences.AddItem(Loot);
+	}
+	if (TemplateName == 'AdvPurifierM5')
+	{
+		CharTemplate.DefaultLoadout = 'AdvPurifierM5_Loadout';
+		Loot.LootTableName = 'GenericLateAlienLoot_LW'; 
+		CharTemplate.TimedLoot.LootReferences.AddItem(Loot);
+		Loot.LootTableName = 'GenericLateAlienVultureLoot_LW';
+		CharTemplate.VultureLoot.LootReferences.AddItem(Loot);
+	}
+
+	CharTemplate.strMatineePackages.AddItem("CIN_Advent");
+	CharTemplate.strMatineePackages.AddItem("CIN_XP_Advent");
+	CharTemplate.RevealMatineePrefix = "CIN_Advent_Purifier";
+	CharTemplate.GetRevealMatineePrefixFn = GetAdventMatineePrefix;
+
+	CharTemplate.UnitSize = 1;
+	
+	// Traversal Rules
+	CharTemplate.bCanUse_eTraversal_Normal = true;
+	CharTemplate.bCanUse_eTraversal_ClimbOver = true;
+	CharTemplate.bCanUse_eTraversal_ClimbOnto = true;
+	CharTemplate.bCanUse_eTraversal_ClimbLadder = true;
+	CharTemplate.bCanUse_eTraversal_DropDown = true;
+	CharTemplate.bCanUse_eTraversal_Grapple = false;
+	CharTemplate.bCanUse_eTraversal_Landing = true;
+	CharTemplate.bCanUse_eTraversal_BreakWindow = true;
+	CharTemplate.bCanUse_eTraversal_KickDoor = true;
+	CharTemplate.bCanUse_eTraversal_JumpUp = false;
+	CharTemplate.bCanUse_eTraversal_WallClimb = false;
+	CharTemplate.bCanUse_eTraversal_BreakWall = false;
+	CharTemplate.bAppearanceDefinesPawn = false;
+	CharTemplate.bSetGenderAlways = true;
+	CharTemplate.bCanTakeCover = true;
+
+	CharTemplate.bIsAlien = false;
+	CharTemplate.bIsAdvent = true;
+	CharTemplate.bIsCivilian = false;
+	CharTemplate.bIsPsionic = false;
+	CharTemplate.bIsRobotic = false;
+	CharTemplate.bIsSoldier = false;
+
+	CharTemplate.bCanBeTerrorist = false;
+	CharTemplate.bCanBeCriticallyWounded = false;
+	CharTemplate.bIsAfraidOfFire = false;
+
+	CharTemplate.Abilities.AddItem('PurifierInit');
+	CharTemplate.Abilities.AddItem('DarkEventAbility_SealedArmor');
+	CharTemplate.Abilities.AddItem('DarkEventAbility_UndyingLoyalty');
+	CharTemplate.Abilities.AddItem('DarkEventAbility_Barrier');
+
+	CharTemplate.SightedNarrativeMoments.AddItem(XComNarrativeMoment'XPACK_NarrativeMoments.X2_XP_CEN_T_First_Seen_Adv_Purifier_M1');
 
 	CharTemplate.strHackIconImage = "UILibrary_Common.TargetIcons.Hack_captain_icon";
 	CharTemplate.strTargetIconImage = class'UIUtilities_Image'.const.TargetIcon_Advent;
