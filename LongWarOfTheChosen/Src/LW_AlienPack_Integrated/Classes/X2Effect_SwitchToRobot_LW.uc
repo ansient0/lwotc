@@ -5,7 +5,7 @@ function name GetUnitToSpawnName(const out EffectAppliedData ApplyEffectParamete
 {
     local XComGameState_Unit SourceUnit;
 
-	SourceUnit = XComGameState_Unit(History.GetGameStateForObjectID(ApplyEffectParameters.SourceStateObjectRef.ObjectID));
+	SourceUnit = XComGameState_Unit(`XCOMHISTORY.GetGameStateForObjectID(ApplyEffectParameters.SourceStateObjectRef.ObjectID));
     
     if(SourceUnit != none)
     {   
@@ -21,7 +21,7 @@ function name GetUnitToSpawnName(const out EffectAppliedData ApplyEffectParamete
 
     }
 
-	return "Not Found";
+	return 'Not Found';
 }
 defaultproperties
 {
