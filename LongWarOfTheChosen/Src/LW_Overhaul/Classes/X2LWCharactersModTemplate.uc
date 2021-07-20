@@ -48,13 +48,13 @@ static function UpdateCharacters(X2CharacterTemplate Template, int Difficulty)
 static function DoaGlobalStatModifierByDifficulty(X2CharacterTemplate Template, int Difficulty)
 {
 	local X2CharacterTemplate HighestDiffTemplate;
-	local array<X2CharacterTemplate> DiffTemplates;
+	local array<X2DataTemplate> DiffTemplates;
 	local X2CharacterTemplateManager TemplateManager;
 
 
 
 
-	if(EXCLUDED_CHARACTERS_FROM_GLOBAL_DIFF_MOD.Find(Template.DataName) != INDEX_NONE || Template.bIsSoldier || Template.bIsCivilian)
+	if(default.EXCLUDED_CHARACTERS_FROM_GLOBAL_DIFF_MOD.Find(Template.DataName) != INDEX_NONE || Template.bIsSoldier || Template.bIsCivilian)
 	{
 		return;
 	}
@@ -63,14 +63,14 @@ static function DoaGlobalStatModifierByDifficulty(X2CharacterTemplate Template, 
 
 	//Get The highest difficulty template
 
-	TemplateManager.FindDataTemplateAllDifficulties(TemplateName, DiffTemplates);
+	TemplateManager.FindDataTemplateAllDifficulties(Template.DataName, DiffTemplates);
 
-	HighestDiffTemplate = DiffTemplates[3];
+	HighestDiffTemplate = X2CharacterTemplate(DiffTemplates[3]);
 
 
-	Template.CharacterBaseStats[eStat_HP] = Ceil(HighestDiffTemplate.CharacterBaseStats[eStat_HP] * DIFFICULTY_HP_MODIFIER[Difficulty]);
-	Template.CharacterBaseStats[eStat_Offense] = Ceil(HighestDiffTemplate.CharacterBaseStats[eStat_Offense] + DIFFICULTY_AIM_MODIFIER[Difficulty]);
-	Template.CharacterBaseStats[eStat_Will] = Ceil(HighestDiffTemplate.CharacterBaseStats[eStat_Will] + DIFFICULTY_Will_MODIFIER[Difficulty]);
+	Template.CharacterBaseStats[eStat_HP] = FCeil(HighestDiffTemplate.CharacterBaseStats[eStat_HP] * default.DIFFICULTY_HP_MODIFIER[Difficulty]);
+	Template.CharacterBaseStats[eStat_Offense] = FCeil(HighestDiffTemplate.CharacterBaseStats[eStat_Offense] + default.DIFFICULTY_AIM_MODIFIER[Difficulty]);
+	Template.CharacterBaseStats[eStat_Will] = FCeil(HighestDiffTemplate.CharacterBaseStats[eStat_Will] + default.DIFFICULTY_Will_MODIFIER[Difficulty]);
 
 	Template.CharacterBaseStats[eStat_ArmorMitigation]=HighestDiffTemplate.CharacterBaseStats[eStat_ArmorMitigation];
 	Template.CharacterBaseStats[eStat_CritChance]=HighestDiffTemplate.CharacterBaseStats[eStat_CritChance];
