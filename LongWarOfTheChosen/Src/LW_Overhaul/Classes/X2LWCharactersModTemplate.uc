@@ -42,6 +42,7 @@ static function UpdateCharacters(X2CharacterTemplate Template, int Difficulty)
 	default:
 		break;
 	}
+	StandarizeLootForUnits(Template,Difficulty);
 	DoaGlobalStatModifierByDifficulty(Template,Difficulty);
 }
 
@@ -84,6 +85,47 @@ static function DoaGlobalStatModifierByDifficulty(X2CharacterTemplate Template, 
 	Template.CharacterBaseStats[eStat_HackDefense]=HighestDiffTemplate.CharacterBaseStats[eStat_HackDefense];
 	Template.CharacterBaseStats[eStat_FlankingCritChance]=HighestDiffTemplate.CharacterBaseStats[eStat_FlankingCritChance];
 
+}
+
+static function StandarizeLootForUnits(X2CharacterTemplate Template, int Difficulty)
+{
+
+	switch(Template.DataName)
+	{
+		case'AdvTrooperM1':
+		case'SpectreM1':
+		case'AdvPriestM1':
+		case'AdvPriestM2':
+		case'AdvPurifierM1':
+		case'AdvPurifierM2':
+		case'AdvShieldBearerM2':
+		case'Berserker':
+		case'Faceless':
+		case'Muton':
+		case'Sectoid':
+		case'Viper':
+		case'AdvMec_M1':
+		case'AdvStunLancerM1':
+		case'AdvStunLancerM2':
+		case'AdvTrooperM2':
+
+			Template.TimedLoot.LootReferences[0].LootTableName = 'GenericEarlyAlienLoot_LW';
+			Template.VultureLoot.LootReferences[0].LootTableName = 'GenericEarlyAlienVultureLoot_LW';
+			break;
+		case'SpectreM2':
+		case'AdvPriestM3':
+		case'AdvPurifierM3':
+		case'AdvShieldBearerM3':
+		case'AdvStunLancerM3':
+		case'AdvTrooperM3':
+		case'AdvMec_M2':
+		case'Sectopod':
+		case'Andromedon':
+		case'Archon':
+			Template.TimedLoot.LootReferences[0].LootTableName = 'GenericMidAlienLoot_LW';
+			Template.VultureLoot.LootReferences[0].LootTableName = 'GenericMidAlienVultureLoot_LW';
+			break;
+	}
 }
 
 defaultproperties
