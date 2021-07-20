@@ -43,10 +43,11 @@ static function array<X2DataTemplate> CreateTemplates()
 
 	Templates.AddItem(CreateTemplate_Archon_LW('ArchonM2_LW'));
 	Templates.AddItem(CreateTemplate_Archon_LW('ArchonM3_LW'));
-	Templates.AddItem(CreateTemplate_Archon_LW('ArchonM4_LW'));
+	//Templates.AddItem(CreateTemplate_Archon_LW('ArchonM4_LW'));
 
 	Templates.AddItem(CreateTemplate_Sectoid('SectoidM2_LW');
-	//Templates.AddItem(CreateTemplate_Sectoid_LW('SectoidM3_LW');
+
+	Templates.AddItem(CreateTemplate_Sectoid_LW('SectoidM3_LW');
 	Templates.AddItem(CreateTemplate_Sectoid_LW('SectoidM4_LW');
 	Templates.AddItem(CreateTemplate_Sectoid_LW('SectoidM5_LW');
 
@@ -114,6 +115,9 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.Additem(CreateTemplate_ChryssalidSoldier());
 	Templates.AddItem(CreateTemplate_HiveQueen());
 	
+	Templates.AddItem(CreateTemplate_AdvGeneric('AdvTrooperM4'));
+	Templates.AddItem(CreateTemplate_AdvGeneric('AdvTrooperM5'));
+
 	Templates.AddItem(CreateTemplate_AdvGeneric('AdvSergeantM1'));
 	Templates.AddItem(CreateTemplate_AdvGeneric('AdvSergeantM2'));
 	Templates.AddItem(CreateTemplate_AdvGeneric('AdvGeneralM1_LW'));
@@ -123,7 +127,7 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(CreateTemplate_AdvGeneric('AdvScout'));
 	Templates.AddItem(CreateTemplate_AdvGeneric('AdvVanguard'));
 
-	
+
 	
 	return Templates;
 }
@@ -475,12 +479,49 @@ static function X2CharacterTemplate CreateTemplate_Sidewinder(name TemplateName)
 	`CREATE_X2CHARACTER_TEMPLATE(CharTemplate, TemplateName);
 	CharTemplate.CharacterGroupName = 'Viper';
 
+	Loot.ForceLevel = 0;
 	if (TemplateName == 'SidewinderM1')
+	{
 		CharTemplate.DefaultLoadout='SidewinderM1_Loadout';
+		Loot.LootTableName = 'Viper_TimedLoot';
+		CharTemplate.TimedLoot.LootReferences.AddItem(Loot);
+		Loot.LootTableName = 'Viper_VultureLoot';
+		CharTemplate.VultureLoot.LootReferences.AddItem(Loot);
+	}
+
 	if (TemplateName == 'SidewinderM2')
+	{
 		CharTemplate.DefaultLoadout='SidewinderM2_Loadout';
+		Loot.LootTableName = 'GenericMidAlienLoot_LW'; 
+		CharTemplate.TimedLoot.LootReferences.AddItem(Loot);
+		Loot.LootTableName = 'GenericMidAlienVultureLoot_LW';
+		CharTemplate.VultureLoot.LootReferences.AddItem(Loot);
+	}
 	if (TemplateName == 'SidewinderM3')
+	{
 		CharTemplate.DefaultLoadout='SidewinderM3_Loadout';
+		Loot.LootTableName = 'GenericMidAlienLoot_LW'; 
+		CharTemplate.TimedLoot.LootReferences.AddItem(Loot);
+		Loot.LootTableName = 'GenericMidAlienVultureLoot_LW';
+		CharTemplate.VultureLoot.LootReferences.AddItem(Loot);
+	}
+	if (TemplateName == 'SidewinderM4')
+	{
+		CharTemplate.DefaultLoadout='SidewinderM4_Loadout';
+		Loot.LootTableName = 'GenericLateAlienLoot_LW'; 
+		CharTemplate.TimedLoot.LootReferences.AddItem(Loot);
+		Loot.LootTableName = 'GenericLateAlienVultureLoot_LW';
+		CharTemplate.VultureLoot.LootReferences.AddItem(Loot);
+
+	}
+	if (TemplateName == 'SidewinderM5')
+	{
+		CharTemplate.DefaultLoadout='SidewinderM5_Loadout';
+		Loot.LootTableName = 'GenericLateAlienLoot_LW'; 
+		CharTemplate.TimedLoot.LootReferences.AddItem(Loot);
+		Loot.LootTableName = 'GenericLateAlienVultureLoot_LW';
+		CharTemplate.VultureLoot.LootReferences.AddItem(Loot);
+	}
 
 	CharTemplate.BehaviorClass=class'XGAIBehavior';
 	CharTemplate.strPawnArchetypes.AddItem("LWSidewinder.Archetypes.ARC_GameUnit_Sidewinder_M"); 
@@ -489,29 +530,6 @@ static function X2CharacterTemplate CreateTemplate_Sidewinder(name TemplateName)
 	Loot.LootTableName='Viper_BaseLoot';
 	CharTemplate.Loot.LootReferences.AddItem(Loot);
 
-	// Timed Loot
-	Loot.ForceLevel = 0;
-	if (TemplateName == 'SidewinderM1')
-	{
-		Loot.LootTableName = 'Viper_TimedLoot';
-		CharTemplate.TimedLoot.LootReferences.AddItem(Loot);
-		Loot.LootTableName = 'Viper_VultureLoot';
-		CharTemplate.VultureLoot.LootReferences.AddItem(Loot);
-	}
-	if (TemplateName == 'SidewinderM2')
-	{
-		Loot.LootTableName = 'GenericMidAlienLoot_LW'; 
-		CharTemplate.TimedLoot.LootReferences.AddItem(Loot);
-		Loot.LootTableName = 'GenericMidAlienVultureLoot_LW';
-		CharTemplate.VultureLoot.LootReferences.AddItem(Loot);
-	}
-	if (TemplateName == 'SidewinderM3')
-	{
-		Loot.LootTableName = 'GenericLateAlienLoot_LW'; 
-		CharTemplate.TimedLoot.LootReferences.AddItem(Loot);
-		Loot.LootTableName = 'GenericLateAlienVultureLoot_LW';
-		CharTemplate.VultureLoot.LootReferences.AddItem(Loot);
-	}
 
 	CharTemplate.strMatineePackages.AddItem("CIN_Viper");
 	CharTemplate.strMatineePackages.AddItem("CIN_AdventMEC");
@@ -552,25 +570,27 @@ static function X2CharacterTemplate CreateTemplate_Sidewinder(name TemplateName)
 	switch(TemplateName)
 	{
 		case 'SidewinderM1':
-			CharTemplate.strBehaviorTree = "LWSidewinderRoot"; // new config behavior tree parsing means we could use the group instead
-			break;
 		case 'SidewinderM2':
 		case 'SidewinderM3':
 			CharTemplate.strBehaviorTree = "LWSidewinderHitAndRunRoot"; // new config behavior tree parsing means we could use the group instead
 		default:
 	}
+	
+	CharTemplate.Abilities.AddItem('HitandSlither');
+	CharTemplate.Abilities.AddItem('MovingTarget_LW');
 
+/*
 	switch(TemplateName)
 	{
 		case 'SidewinderM3':
 			CharTemplate.Abilities.AddItem('Infighter');
 		case 'SidewinderM2':
-			CharTemplate.Abilities.AddItem('HitandSlither');
 		case 'SidewinderM1':
 			CharTemplate.Abilities.AddItem('Shadowstep');
 		default:
 		break;
 	}
+		*/
 	// WOTC abilities
 	CharTemplate.Abilities.AddItem('DarkEventAbility_Barrier');
 
@@ -586,14 +606,35 @@ static function X2CharacterTemplate CreateTemplate_Sidewinder(name TemplateName)
 }
 
 
-static function X2CharacterTemplate CreateTemplate_Archon_LW()
+static function X2CharacterTemplate CreateTemplate_Archon_LW(name TemplateName)
 {
 	local X2CharacterTemplate CharTemplate;
 	local LootReference Loot;
 
-	`CREATE_X2CHARACTER_TEMPLATE(CharTemplate, 'ArchonM2_LW');
+	`CREATE_X2CHARACTER_TEMPLATE(CharTemplate, TemplateName);
+
+
+	Loot.ForceLevel = 0;
+	if (TemplateName == 'ArchonM2_LW')
+	{
+		CharTemplate.DefaultLoadout='ArchonM2_LW_Loadout';
+		Loot.LootTableName = 'Archon_TimedLoot';
+		CharTemplate.TimedLoot.LootReferences.AddItem(Loot);
+		Loot.LootTableName = 'Archon_VultureLoot';
+		CharTemplate.VultureLoot.LootReferences.AddItem(Loot);
+	
+	}
+	if (TemplateName == 'ArchonM3_LW')
+	{
+		CharTemplate.DefaultLoadout='ArchonM3_LW_Loadout';
+		Loot.LootTableName = 'ArchonM3_TimedLoot';
+		CharTemplate.TimedLoot.LootReferences.AddItem(Loot);
+		Loot.LootTableName = 'ArchonM3_VultureLoot';
+		CharTemplate.VultureLoot.LootReferences.AddItem(Loot);
+	}
+
+
 	CharTemplate.CharacterGroupName = 'Archon';
-	CharTemplate.DefaultLoadout='ArchonM2_LW_Loadout';
 	CharTemplate.BehaviorClass=class'XGAIBehavior';
 	CharTemplate.strPawnArchetypes.AddItem("GameUnit_Archon.ARC_GameUnit_Archon");
 	Loot.ForceLevel=0;
@@ -601,11 +642,6 @@ static function X2CharacterTemplate CreateTemplate_Archon_LW()
 	CharTemplate.Loot.LootReferences.AddItem(Loot);
 
 	// Timed Loot
-	Loot.ForceLevel = 0;
-	Loot.LootTableName = 'Archon_TimedLoot';
-	CharTemplate.TimedLoot.LootReferences.AddItem(Loot);
-	Loot.LootTableName = 'Archon_VultureLoot';
-	CharTemplate.VultureLoot.LootReferences.AddItem(Loot);
 
 	CharTemplate.strMatineePackages.AddItem("CIN_Archon");
 	CharTemplate.strMatineePackages.AddItem("CIN_AdventMEC");
@@ -651,7 +687,7 @@ static function X2CharacterTemplate CreateTemplate_Archon_LW()
 
 	CharTemplate.Abilities.AddItem('FrenzyDamageListener');
 	CharTemplate.Abilities.AddItem('BlazingPinionsStage1');
-	CharTemplate.Abilities.AddItem('LightningReflexes_LW');
+	//CharTemplate.Abilities.AddItem('LightningReflexes_LW');
 	// WOTC abilities
 	CharTemplate.Abilities.AddItem('DarkEventAbility_Barrier');
 
@@ -672,10 +708,40 @@ static function X2CharacterTemplate CreateTemplate_Sectoid_LW(name TemplateName)
 	CharTemplate.DefaultLoadout='SectoidM2_LW_Loadout';
 	CharTemplate.BehaviorClass=class'XGAIBehavior';
 	CharTemplate.strPawnArchetypes.AddItem("LWSectoidM2.Archetypes.ARC_GameUnit_SectoidM2"); //SCRUBBED AFTER S&R
+	
 	Loot.ForceLevel=0;
 	Loot.LootTableName='Sectoid_BaseLoot';
 	CharTemplate.Loot.LootReferences.AddItem(Loot);
 	// Timed Loot
+
+	Loot.ForceLevel = 0;
+	if (TemplateName == 'SectoidM3_LW')
+	{
+		CharTemplate.DefaultLoadout='ArchonM2_LW_Loadout';
+		Loot.LootTableName = 'Archon_TimedLoot';
+		CharTemplate.TimedLoot.LootReferences.AddItem(Loot);
+		Loot.LootTableName = 'Archon_VultureLoot';
+		CharTemplate.VultureLoot.LootReferences.AddItem(Loot);
+	
+	}
+	if (TemplateName == 'SectoidM4_LW')
+	{
+		CharTemplate.DefaultLoadout='ArchonM3_LW_Loadout';
+		Loot.LootTableName = 'ArchonM3_TimedLoot';
+		CharTemplate.TimedLoot.LootReferences.AddItem(Loot);
+		Loot.LootTableName = 'ArchonM3_VultureLoot';
+		CharTemplate.VultureLoot.LootReferences.AddItem(Loot);
+	}
+	if (TemplateName == 'SectoidM5_LW')
+	{
+		CharTemplate.DefaultLoadout='ArchonM3_LW_Loadout';
+		Loot.LootTableName = 'ArchonM3_TimedLoot';
+		CharTemplate.TimedLoot.LootReferences.AddItem(Loot);
+		Loot.LootTableName = 'ArchonM3_VultureLoot';
+		CharTemplate.VultureLoot.LootReferences.AddItem(Loot);
+	}
+
+
 	Loot.LootTableName = 'GenericMidAlienLoot_LW'; 
 	CharTemplate.TimedLoot.LootReferences.AddItem(Loot);
 	Loot.LootTableName = 'GenericMidAlienVultureLoot_LW';
@@ -1023,9 +1089,6 @@ static function X2CharacterTemplate CreateTemplate_AdvSentry(name TemplateName)
 	CharTemplate.Abilities.AddItem('DarkEventAbility_UndyingLoyalty');
 	CharTemplate.Abilities.AddItem('DarkEventAbility_Barrier');
 	CharTemplate.Abilities.AddItem('DarkEventAbility_Counterattack');
-
-	if (TemplateName == 'AdvSentryM3')
-		CharTemplate.Abilities.AddItem('TacticalSense');
 
 	CharTemplate.SightedNarrativeMoments.AddItem(XComNarrativeMoment'X2NarrativeMoments.TACTICAL.AlienSitings.T_Central_AlienSightings_AdvTrooperM1');
 
@@ -1769,6 +1832,18 @@ static function X2CharacterTemplate CreateTemplate_AdvGeneric(name TemplateName)
 			CharTemplate.Abilities.AddItem('Executioner_LW');
 			break;
 
+		case 'AdvTrooperM4':
+			CharTemplate.DefaultLoadout='AdvTrooperM4_Loadout';
+			LootBase.LootTableName='AdvTrooperM4_BaseLoot';
+			LootTimed.LootTableName='AdvTrooperM4_TimedLoot';
+			LootVulture.LootTableName='AdvTrooperM4_VultureLoot';
+			break;
+		case 'AdvTrooperM5':
+			CharTemplate.DefaultLoadout='AdvTrooperM5_Loadout';
+			LootBase.LootTableName='AdvTrooperM5_BaseLoot';
+			LootTimed.LootTableName='AdvTrooperM5_TimedLoot';
+			LootVulture.LootTableName='AdvTrooperM5_VultureLoot';
+			break;
 		default:
 			break;
 	}
