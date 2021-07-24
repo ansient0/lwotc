@@ -2208,6 +2208,7 @@ function GeneralCharacterMod(X2CharacterTemplate Template, int Difficulty)
 	// Allow the Lost to climb walls
 	if (InStr(Template.DataName, "TheLost") == 0)
 	{
+		Template.Abilities.AddItem('LostHpPctBuff');
 		Template.bCanUse_eTraversal_WallClimb = true;
 		Template.ImmuneTypes.AddItem('Acid');
 	}
