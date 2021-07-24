@@ -143,7 +143,7 @@ FriendlyName="Bayonet"
 ;;;;;;;;;;;;;;;;;;;;;;;;;; MutonM3_LW ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 [MutonM3_LW X2CharacterTemplate]
-strCharacterName="Muton Elite"
+strCharacterName="Muton Centurion"
 
 [MutonM3_LW_Wpn X2WeaponTemplate]
 FriendlyName="Elite Plasma Cannon"
@@ -162,7 +162,7 @@ LaunchedAbilityName="Launch Alien Grenade"
 LaunchedAbilityHelpText="Launch an Alien Grenade at target area. Shreds armor."
 
 [MutonM4_LW X2CharacterTemplate]
-strCharacterName="Supreme Muton"
+strCharacterName="Muton Elite"
 
 [MutonM5_LW X2CharacterTemplate]
 strCharacterName="Bashar"
