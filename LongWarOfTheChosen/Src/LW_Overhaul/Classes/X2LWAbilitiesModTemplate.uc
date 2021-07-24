@@ -46,6 +46,7 @@ var config int MIND_SCORCH_BURN_CHANCE;
 
 var config float CHOSEN_REGENERATION_HEAL_VALUE_PCT;
 
+var config WeaponDamageValue EMPTY_DAMAGE_VALUE;
 var config array<name> PISTOL_ABILITY_WEAPON_CATS;
 
 // Data structure for multi-shot abilities that need patching
@@ -210,6 +211,9 @@ static function UpdateAbilities(X2AbilityTemplate Template, int Difficulty)
 			break;
 		case 'MindShield':
 			DisplayMindShieldPassive(Template);
+			break;
+		case 'BidDamnPunch':
+			MakeBigDamnPunchScaleAble(Template);
 			break;
 		default:
 			break;
@@ -1312,7 +1316,23 @@ static function name GetMultiShotContinueUnitValueName(name AbilityName)
 {
 	return name(AbilityName $ "Continue");
 }
+	
 
+static function MakeBigDamnPunchScaleAble(X2AbilityTemplate Template)
+{
+	local X2Effect_ApplyWeaponDamage  WeaponDamage;
+	local X2Effect TempEffect;
+
+	Template.IconImage = "img:///UILibrary_XPACK_Common.PerkIcons.UIPerk_mindshield";
+	foreach Template.AbilityTargetEffects( TempEffect )
+	{
+		if ( X2Effect_ApplyWeaponDamage(TempEffect) != none )
+		{
+			WeaponDamage = X2Effect_ApplyWeaponDamage(TempEffect);
+			WeaponDamage.EffectDamageValue = default.EMPTY_DAMAGE_VALUE;
+		}
+	}
+}
 defaultproperties
 {
 	AbilityTemplateModFn=UpdateAbilities

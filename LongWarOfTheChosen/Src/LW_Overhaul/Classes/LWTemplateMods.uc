@@ -2404,6 +2404,12 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 		{
 			WeaponTemplate.Abilities.AddItem('Squadsight');
 		}
+		if (WeaponTemplate.DataName == 'ANDROMEDONROBOT_MELEEATTACK')
+		{
+			WeaponTemplate.Abilities.RemoveItem('StandardMelee');
+		}
+
+			
 
 		switch (WeaponTemplate.DataName)
 		{

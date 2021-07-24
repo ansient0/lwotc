@@ -2118,6 +2118,7 @@ static function X2CharacterTemplate CreateTemplate_Chryssalid(name TemplateName)
 		CharTemplate.TimedLoot.LootReferences.AddItem(Loot);
 		Loot.LootTableName = 'GenericEarlyAlienVultureLoot_LW';
 		CharTemplate.VultureLoot.LootReferences.AddItem(Loot);
+		CharTemplate.Abilities.AddItem('ChryssalidSlash');
 	}
 	if (TemplateName == 'ChryssalidM2')
 	{
@@ -2126,6 +2127,8 @@ static function X2CharacterTemplate CreateTemplate_Chryssalid(name TemplateName)
 		CharTemplate.TimedLoot.LootReferences.AddItem(Loot);
 		Loot.LootTableName = 'GenericMidAlienVultureLoot_LW';
 		CharTemplate.VultureLoot.LootReferences.AddItem(Loot);
+		CharTemplate.Abilities.AddItem('ChryssalidSlashM2');
+
 	}
 	if (TemplateName == 'ChryssalidM3')
 	{
@@ -2134,6 +2137,7 @@ static function X2CharacterTemplate CreateTemplate_Chryssalid(name TemplateName)
 		CharTemplate.TimedLoot.LootReferences.AddItem(Loot);
 		Loot.LootTableName = 'GenericLateAlienVultureLoot_LW';
 		CharTemplate.VultureLoot.LootReferences.AddItem(Loot);
+		CharTemplate.Abilities.AddItem('ChryssalidSlashM3');
 	}
 	if (TemplateName == 'ChryssalidM4')
 	{
@@ -2142,6 +2146,7 @@ static function X2CharacterTemplate CreateTemplate_Chryssalid(name TemplateName)
 		CharTemplate.TimedLoot.LootReferences.AddItem(Loot);
 		Loot.LootTableName = 'GenericLateAlienVultureLoot_LW';
 		CharTemplate.VultureLoot.LootReferences.AddItem(Loot);
+		CharTemplate.Abilities.AddItem('ChryssalidSlashM4');
 	}
 	CharTemplate.strMatineePackages.AddItem("CIN_Chryssalid");
 
@@ -2180,7 +2185,6 @@ static function X2CharacterTemplate CreateTemplate_Chryssalid(name TemplateName)
 	CharTemplate.MPPointValue = CharTemplate.XpKillscore * 10;
 	CharTemplate.strScamperBT = "ChryssalidScamperRoot";
 
-	CharTemplate.Abilities.AddItem('ChryssalidSlash');
 	//CharTemplate.Abilities.AddItem('ChryssalidBurrow');
 	CharTemplate.Abilities.AddItem('ChyssalidPoison');
 	CharTemplate.Abilities.AddItem('ChryssalidImmunities');
@@ -2696,6 +2700,7 @@ static function X2CharacterTemplate CreateTemplate_Berserker(name TemplateName)
 		CharTemplate.TimedLoot.LootReferences.AddItem(Loot);
 		Loot.LootTableName = 'GenericLateAlienVultureLoot_LW';
 		CharTemplate.VultureLoot.LootReferences.AddItem(Loot);
+		CharTemplate.Abilities.AddItem('DevastatingPunchM2');
 	}
 	if (TemplateName == 'BerserkerM3')
 	{
@@ -2704,6 +2709,7 @@ static function X2CharacterTemplate CreateTemplate_Berserker(name TemplateName)
 		CharTemplate.TimedLoot.LootReferences.AddItem(Loot);
 		Loot.LootTableName = 'GenericLateAlienVultureLoot_LW';
 		CharTemplate.VultureLoot.LootReferences.AddItem(Loot);
+		CharTemplate.Abilities.AddItem('DevastatingPunchM3');
 	}
 	if (TemplateName == 'BerserkerM4')
 	{
@@ -2712,6 +2718,7 @@ static function X2CharacterTemplate CreateTemplate_Berserker(name TemplateName)
 		CharTemplate.TimedLoot.LootReferences.AddItem(Loot);
 		Loot.LootTableName = 'GenericLateAlienVultureLoot_LW';
 		CharTemplate.VultureLoot.LootReferences.AddItem(Loot);
+		CharTemplate.Abilities.AddItem('DevastatingPunchM2');
 	}
 
 
@@ -2756,7 +2763,6 @@ static function X2CharacterTemplate CreateTemplate_Berserker(name TemplateName)
 	CharTemplate.strScamperBT = "ScamperRoot_MeleeNoCover";
 
 	CharTemplate.Abilities.AddItem('TriggerRageDamageListener');
-	CharTemplate.Abilities.AddItem('DevastatingPunch');
 	CharTemplate.Abilities.AddItem('DarkEventAbility_Barrier');
 
 	CharTemplate.SightedNarrativeMoments.AddItem(XComNarrativeMoment'X2NarrativeMoments.TACTICAL.AlienSitings.T_Central_AlienSightings_Berserker');
