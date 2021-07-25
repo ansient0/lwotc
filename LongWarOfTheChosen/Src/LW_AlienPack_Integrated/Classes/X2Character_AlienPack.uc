@@ -897,7 +897,7 @@ static function X2CharacterTemplate CreateTemplate_Viper_LW(name TemplateName)
 	}
 	if (TemplateName == 'ViperM5_LW')
 	{
-		CharTemplate.DefaultLoadout='ViperM4_LW_Loadout';
+		CharTemplate.DefaultLoadout='ViperM5_LW_Loadout';
 
 		Loot.LootTableName = 'GenericLateAlienLoot_LW'; 
 		CharTemplate.TimedLoot.LootReferences.AddItem(Loot);

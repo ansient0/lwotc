@@ -245,6 +245,8 @@ static function array<X2DataTemplate> CreateTemplates()
 
 	Templates.AddItem(CreateTemplate_ViperMX_WPN('ViperM2_LW_WPN'));
 	Templates.AddItem(CreateTemplate_ViperMX_WPN('ViperM3_LW_WPN'));
+	Templates.AddItem(CreateTemplate_ViperMX_WPN('ViperM4_LW_WPN'));
+	Templates.AddItem(CreateTemplate_ViperMX_WPN('ViperM5_LW_WPN'));
 
 	Templates.AddItem(CreateTemplate_AdvGunner_WPN('AdvGunnerM1_WPN'));
 	Templates.AddItem(CreateTemplate_AdvGunner_WPN('AdvGunnerM2_WPN'));
@@ -1243,6 +1245,11 @@ static function X2DataTemplate CreateTemplate_ViperMX_WPN(name TemplateName)
 		Template.BaseDamage = default.VIPERM2_WPN_BASEDAMAGE;
 	if (TemplateName == 'ViperM3_LW_WPN')
 		Template.BaseDamage = default.VIPERM3_WPN_BASEDAMAGE;
+	if (TemplateName == 'ViperM4_LW_WPN')
+		Template.BaseDamage = default.VIPERM4_WPN_BASEDAMAGE;
+	if (TemplateName == 'ViperM5_LW_WPN')
+		Template.BaseDamage = default.VIPERM5_WPN_BASEDAMAGE;
+
 
 	Template.iClipSize = class'X2Item_DefaultWeapons'.default.ASSAULTRIFLE_MAGNETIC_ICLIPSIZE;
     Template.iSoundRange = class'X2Item_DefaultWeapons'.default.ASSAULTRIFLE_MAGNETIC_ISOUNDRANGE;
