@@ -286,6 +286,16 @@ strCharacterName="Supreme Trooper"
 strCharacterName="ADVENT Shock Trooper"
 
 
+;;zerkers;;
+[BerserkerM2 X2CharacterTemplate]
+strCharacterName="Elite Berserker"
+
+[BerserkerM3 X2CharacterTemplate]
+strCharacterName="Supreme Berserker"
+
+[BerserkerM4 X2CharacterTemplate]
+strCharacterName="Mongo"
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;; Lancer ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 [AdvStunLancerM4 X2CharacterTemplate]
 strCharacterName="Supreme Lancer"
@@ -599,10 +609,10 @@ AbilityDescName="mag rifle"
 
 ;Shieldbearers
 
-[AdvShieldbearerM3 X2CharacterTemplate]
+[AdvShieldbearerM4 X2CharacterTemplate]
 strCharacterName="Supreme Shieldbearer"
 
-[AdvShieldbearerM4 X2CharacterTemplate]
+[AdvShieldbearerM5 X2CharacterTemplate]
 strCharacterName="ADVENT Vanguard"
 
 ;Andromedons
