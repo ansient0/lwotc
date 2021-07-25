@@ -71,9 +71,9 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(CreateTemplate_AdvRocketeer('AdvRocketeerM2'));
 	Templates.AddItem(CreateTemplate_AdvRocketeer('AdvRocketeerM3'));
 	
-	Templates.AddItem(CreateTemplate_AdvMec_LW('AdvMec_M3'));
-	Templates.AddItem(CreateTemplate_AdvMec_LW('AdvMec_M4'));
-	Templates.AddItem(CreateTemplate_AdvMec_LW('AdvMec_M5'));
+	Templates.AddItem(CreateTemplate_AdvMec_LW('AdvMec_M3_LW'));
+	Templates.AddItem(CreateTemplate_AdvMec_LW('AdvMec_M4_LW'));
+	Templates.AddItem(CreateTemplate_AdvMec_LW('AdvMec_M5_LW'));
 
 	Templates.AddItem(CreateTemplate_AdvMECArcher('AdvMECArcherM1'));
 	Templates.AddItem(CreateTemplate_AdvMECArcher('AdvMECArcherM2'));
@@ -118,6 +118,8 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(CreateTemplate_AdvGeneric('AdvTrooperM4'));
 	Templates.AddItem(CreateTemplate_AdvGeneric('AdvTrooperM5'));
 
+	Templates.AddItem(CreateTemplate_AdvGeneric('AdvCaptainM4'));
+	Templates.AddItem(CreateTemplate_AdvGeneric('AdvCaptainM5'));
 
 	Templates.AddItem(CreateTemplate_Berserker('BerserkerM2'));
 	Templates.AddItem(CreateTemplate_Berserker('BerserkerM3'));
@@ -137,14 +139,15 @@ static function array<X2DataTemplate> CreateTemplates()
 	
 	
 	
-	//Templates.AddItem(CreateTemplate_AdvGeneric('AdvSergeantM1'));
-	//Templates.AddItem(CreateTemplate_AdvGeneric('AdvSergeantM2'));
 	Templates.AddItem(CreateTemplate_AdvGeneric('AdvGeneralM1_LW'));
 	Templates.AddItem(CreateTemplate_AdvGeneric('AdvGeneralM2_LW'));
-	//Templates.AddItem(CreateTemplate_AdvGeneric('AdvCommando'));
-	//Templates.AddItem(CreateTemplate_AdvGeneric('AdvShockTroop'));
-	//Templates.AddItem(CreateTemplate_AdvGeneric('AdvScout'));
-	//Templates.AddItem(CreateTemplate_AdvGeneric('AdvVanguard'));
+
+	Templates.AddItem(CreateTemplate_AdvGeneric('AdvSergeantM1'));
+	Templates.AddItem(CreateTemplate_AdvGeneric('AdvSergeantM2'));
+	Templates.AddItem(CreateTemplate_AdvGeneric('AdvCommando'));
+	Templates.AddItem(CreateTemplate_AdvGeneric('AdvShockTroop'));
+	Templates.AddItem(CreateTemplate_AdvGeneric('AdvScout'));
+	Templates.AddItem(CreateTemplate_AdvGeneric('AdvVanguard'));
 
 
 	
@@ -1905,7 +1908,35 @@ static function X2CharacterTemplate CreateTemplate_AdvGeneric(name TemplateName)
 			CharTemplate.SightedNarrativeMoments.length = 0;
 			CharTemplate.SightedNarrativeMoments.AddItem(XComNarrativeMoment'X2NarrativeMoments.TACTICAL.AlienSitings.T_Central_AlienSightings_AdvCaptainM1');
 			break;
-		
+
+			case 'AdvCaptainM4':
+			CharTemplate.CharacterGroupName = 'AdventCaptain';
+			CharTemplate.DefaultLoadout='AdvGeneralM1_LW_Loadout';
+			LootBase.LootTableName='AdvCaptainM3_BaseLoot';
+			LootTimed.LootTableName='GenericLateAlienLoot_LW';
+			LootVulture.LootTableName='GenericLateAlienVultureLoot_LW';
+			CharTemplate.strPawnArchetypes.AddItem("GameUnit_AdvCaptain.ARC_GameUnit_AdvCaptainM3_M");
+			CharTemplate.strPawnArchetypes.AddItem("GameUnit_AdvCaptain.ARC_GameUnit_AdvCaptainM3_F");		
+			CharTemplate.Abilities.AddItem('MarkTarget');
+			CharTemplate.Abilities.AddItem('Defilade');
+			CharTemplate.RevealMatineePrefix = "CIN_Advent_Captain";
+			CharTemplate.SightedNarrativeMoments.length = 0;
+			CharTemplate.SightedNarrativeMoments.AddItem(XComNarrativeMoment'X2NarrativeMoments.TACTICAL.AlienSitings.T_Central_AlienSightings_AdvCaptainM1');
+			break;
+			case 'AdvCaptainM5':
+			CharTemplate.CharacterGroupName = 'AdventCaptain';
+			CharTemplate.DefaultLoadout='AdvGeneralM1_LW_Loadout';
+			LootBase.LootTableName='AdvCaptainM3_BaseLoot';
+			LootTimed.LootTableName='GenericLateAlienLoot_LW';
+			LootVulture.LootTableName='GenericLateAlienVultureLoot_LW';
+			CharTemplate.strPawnArchetypes.AddItem("GameUnit_AdvCaptain.ARC_GameUnit_AdvCaptainM3_M");
+			CharTemplate.strPawnArchetypes.AddItem("GameUnit_AdvCaptain.ARC_GameUnit_AdvCaptainM3_F");		
+			CharTemplate.Abilities.AddItem('MarkTarget');
+			CharTemplate.Abilities.AddItem('Defilade');
+			CharTemplate.RevealMatineePrefix = "CIN_Advent_Captain";
+			CharTemplate.SightedNarrativeMoments.length = 0;
+			CharTemplate.SightedNarrativeMoments.AddItem(XComNarrativeMoment'X2NarrativeMoments.TACTICAL.AlienSitings.T_Central_AlienSightings_AdvCaptainM1');
+			break;
 		case 'AdvGeneralM2_LW':
 			CharTemplate.CharacterGroupName='AdventCaptain';
 			CharTemplate.DefaultLoadout='AdvGeneralM2_LW_Loadout';
@@ -1969,6 +2000,9 @@ static function X2CharacterTemplate CreateTemplate_AdvGeneric(name TemplateName)
 			LootBase.LootTableName='AdvTrooperM1_BaseLoot';
 			LootTimed.LootTableName='GenericLateAlienLoot_LW';
 			LootVulture.LootTableName='GenericLateAlienVultureLoot_LW';
+			CharTemplate.strPawnArchetypes.AddItem("GameUnit_AdvTrooper.ARC_GameUnit_AdvTrooperM1_M");
+			CharTemplate.strPawnArchetypes.AddItem("GameUnit_AdvTrooper.ARC_GameUnit_AdvTrooperM1_F");
+				
 			break;
 		case 'AdvTrooperM5':
 			CharTemplate.DefaultLoadout='AdvTrooperM5_Loadout';
@@ -2866,12 +2900,12 @@ static function X2CharacterTemplate CreateTemplate_AdvShieldBearer(name Template
 	CharTemplate.CharacterGroupName = 'AdventShieldBearer';
 	CharTemplate.DefaultLoadout='AdvShieldBearerM3_Loadout';
 	CharTemplate.BehaviorClass=class'XGAIBehavior';
-	CharTemplate.strPawnArchetypes.AddItem("GameUnit_AdvShieldBearer.ARC_GameUnit_AdvShieldBearerM3_M");
-	CharTemplate.strPawnArchetypes.AddItem("GameUnit_AdvShieldBearer.ARC_GameUnit_AdvShieldBearerM3_F");
 	Loot.ForceLevel=0;
 	Loot.LootTableName='AdvShieldBearerM3_BaseLoot';
 	CharTemplate.Loot.LootReferences.AddItem(Loot);
 
+	CharTemplate.strPawnArchetypes.AddItem("GameUnit_AdvShieldBearer.ARC_GameUnit_AdvShieldBearerM3_M");
+	CharTemplate.strPawnArchetypes.AddItem("GameUnit_AdvShieldBearer.ARC_GameUnit_AdvShieldBearerM3_F");	
 
 	if (TemplateName == 'AdvShieldBearerM4')
 	{
@@ -2881,6 +2915,7 @@ static function X2CharacterTemplate CreateTemplate_AdvShieldBearer(name Template
 		Loot.LootTableName = 'GenericLateAlienVultureLoot_LW';
 		CharTemplate.VultureLoot.LootReferences.AddItem(Loot);
 		CharTemplate.Abilities.AddItem('EnergyShieldMk4');
+	
 	}
 	if (TemplateName == 'AdvShieldBearerM5')
 	{

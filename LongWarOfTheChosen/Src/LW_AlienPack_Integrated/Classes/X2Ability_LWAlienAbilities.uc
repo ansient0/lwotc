@@ -1213,7 +1213,7 @@ static function X2DataTemplate CreateEnergyShieldAbility(name TemplateName, int 
 	local X2Effect_PersistentStatChange ShieldedEffect;
 	local X2AbilityMultiTarget_Radius MultiTarget;
 
-	`CREATE_X2ABILITY_TEMPLATE(Template, 'EnergyShieldMk3');
+	`CREATE_X2ABILITY_TEMPLATE(Template, TemplateName);
 	Template.IconImage = "img:///UILibrary_PerkIcons.UIPerk_adventshieldbearer_energyshield";
 
 	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_AlwaysShow;
