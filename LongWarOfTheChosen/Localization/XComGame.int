@@ -4237,6 +4237,7 @@ PreMissionText="Grants ADVENT units bonus offense."
 PostMissionSuccessText="Dark Event Countered: ADVENT Scopes"
 PostMissionFailureText="Failed to Counter Dark Event: ADVENT Scopes"
 
+
 [DarkEvent_ADVENTScopes X2HackRewardTemplate]
 FriendlyName="Dark Event: ADVENT Scopes"
 Description="Some ADVENT soldiers gain +5 aim."
@@ -4244,6 +4245,253 @@ Description="Some ADVENT soldiers gain +5 aim."
 [ADVENTScopes X2AbilityTemplate]
 LocFriendlyName="ADVENT Scope"
 LocLongDescription="+5 Aim"
+
+
+; LWOTC Needs Translation
+
+[DarkEvent_TrooperOpenFire_LW X2DarkEventTemplate]
+DisplayName="Permanent: Trooper Open Fire"
+SummaryText="Troopers Gain Open Fire."
+QuoteText="\"More Dark Events? Not this Shit Again\""
+QuoteTextAuthor="- Everyone"
+PreMissionText="Grants Troopers Open Fire."
+PostMissionSuccessText="Permanent: Trooper Open Fire"
+PostMissionFailureText="Permanent: Trooper Open Fire"
+
+
+DarkEventAbility_TrooperImpulse_LW
+
+DarkEventAbility_TrooperFormidable
+
+DarkEventAbility_TrooperLockedOn
+
+DarkEventAbility_TrooperOpenFire_LW
+
+DarkEventAbility_TrooperEvasive
+
+DarkEventAbility_TrooperChosenViperRounds
+
+DarkEventAbility_SentryGrazingFire
+
+DarkEventAbility_SentryConcentration_LW
+
+DarkEventAbility_SentryCombatAwarenesss
+
+DarkEventAbility_SentryCoolUnderPressure
+
+DarkEventAbility_SentryRapidReaction
+
+
+DarkEventAbility_SentryHuntersInstinct
+
+DarkEventAbility_GunnerGrazingFire
+
+DarkEventAbility_GunnerOpenFire_LW
+
+DarkEventAbility_GunnerCombatAwareness
+
+DarkEventAbility_GunnerMayhem
+
+DarkEventAbility_GunnerShredder
+
+DarkEventAbility_GunnerHolotargeting
+
+DarkEventAbility_SectoidInstantReactionTime
+
+DarkEventAbility_SectoidPredator_LW
+
+DarkEventAbility_SectoidShootingSharp_LW
+
+DarkEventAbility_SectoidAggression
+
+DarkEventAbility_SectoidMindShield
+
+DarkEventAbility_SectoidDominant_LW
+
+DarkEventAbility_SectoidApexPredator_LW
+
+DarkEventAbility_SectoidSolace
+
+DarkEventAbility_CaptainShootingSharp_LW
+
+DarkEventAbility_CaptainCloseCombatSpecialist
+
+DarkEventAbility_CaptainExecutioner_LW
+
+DarkEventAbility_CaptainAimAssist_LW
+
+DarkEventAbility_CaptainOverbearingSuperiority_LW
+
+DarkEventAbility_DronePredator_LW
+
+DarkEventAbility_DroneBrawler
+
+DarkEventAbility_DroneApexPredator_LW
+
+DarkEventAbility_DroneHuntersInstinct_LW
+
+DarkEventAbility_DroneCloseCombatSpecialist
+
+DarkEventAbility_DroneParalyzingBlows
+
+DarkEventAbility_StunLancerInfighter
+
+DarkEventAbility_StunLancerZoneOfControl_LW
+
+DarkEventAbility_StunLancerFreeGrenades
+
+DarkEventAbility_StunLancerBladestorm
+
+DarkEventAbility_StunLancerParalyzingBlows
+
+DarkEventAbility_StunLancerCoupDeGrace2
+
+DarkEventAbility_ViperInfighter
+
+DarkEventAbility_ViperOpenFire_LW
+
+DarkEventAbility_ViperSurvivalInstinct_LW
+
+DarkEventAbility_ViperSteadyHands
+
+DarkEventAbility_ViperSerpentine
+
+DarkEventAbility_ViperEntwine_LW
+
+DarkEventAbility_ViperHazmatVestBonus_LW
+
+DarkEventAbility_PriestImpulse_LW
+
+DarkEventAbility_PriestInfighter
+
+DarkEventAbility_PriestSuperiorHolyWarrior
+
+DarkEventAbility_PriestMindShield
+
+DarkEventAbility_PriestGrit_LW
+
+DarkEventAbility_PriestDominant_LW
+
+DarkEventAbility_PriestChosenDragonRounds
+
+DarkEventAbility_PriestSolace
+
+DarkEventAbility_SidewinderInstantReactionTime
+
+DarkEventAbility_SidewinderFormidable
+
+DarkEventAbility_SidewinderPredator_LW
+
+DarkEventAbility_SidewinderQuickRetreat
+
+DarkEventAbility_SidewinderSerpentine
+
+DarkEventAbility_PurifierMagnum_LW
+
+DarkEventAbility_PurifierLowProfile
+
+DarkEventAbility_PurifierOverKill_LW
+
+DarkEventAbility_PurifierSprinter
+
+DarkEventAbility_PurifierInstantReactionTime
+
+DarkEventAbility_PurifierReturnFire
+
+DarkEventAbility_MutonShredder
+
+DarkEventAbility_MutonSprinter
+
+DarkEventAbility_MutonZoneOfControl_LW
+
+DarkEventAbility_MutonPredator_LW
+
+DarkEventAbility_MutonBladeStorm
+
+DarkEventAbility_MutonTotalCombat
+
+DarkEventAbility_MutonGrit_LW
+
+DarkEventAbility_MecResilience
+
+DarkEventAbility_MecShredder
+
+DarkEventAbility_MecSprinter
+
+DarkEventAbility_MecVolitileMix
+
+DarkEventAbility_MecReturnFire
+
+DarkEventAbility_MecReactiveSensors
+
+DarkEventAbility_CyberusPredator
+
+DarkEventAbility_CyberusResilience
+
+DarkEventAbility_CyberusLowProfile
+
+DarkEventAbility_CyberusApexPredator_LW
+
+DarkEventAbility_SpectreInfighter
+
+DarkEventAbility_SpectreHuntersInstinct
+
+DarkEventAbility_SpectreLowProfile
+
+DarkEventAbility_SpectreSprinter
+
+DarkEventAbility_ShieldBearerBrawler
+
+DarkEventAbility_ShieldBearerFormindable
+
+DarkEventAbility_ShieldBearerReadyForAnything
+
+DarkEventAbility_ShieldBearerChosenDragonRounds
+
+DarkEventAbility_BerserkerParalyzingBlows
+
+DarkEventAbility_BerserkerSprinter
+
+DarkEventAbility_BerserkerZoneOfControl_LW
+
+DarkEventAbility_BerserkerResilience
+
+DarkEventAbility_BerserkerBladestorm
+
+DarkEventAbility_BerserkerDamageControl
+
+DarkEventAbility_ChryssalidMovingTarget_LW
+
+DarkEventAbility_ChryssalidInfighter
+
+DarkEventAbility_ChryssalidParalyzingBlows
+
+DarkEventAbility_ChryssalidGrit_LW
+
+DarkEventAbility_ChryssalidSprinter
+
+DarkEventAbility_ChryssalidInstantReactionTime
+
+DarkEventAbility_AndromedonSprinter
+
+DarkEventAbility_AndromedonVolitileMix
+
+DarkEventAbility_AndromedonSuperDuperRobot
+
+DarkEventAbility_AndromedonCloseCombatSpecialist
+
+DarkEventAbility_ArchonHardTarget
+
+DarkEventAbility_ArchonCoolUnderPressure
+
+DarkEventAbility_SectopodShredder
+
+DarkEventAbility_SectopodReturnFire
+
+DarkEventAbility_GatekeeperDefilade
+; End Translation
+
+
 
 ; LASER SIGHT
 
@@ -6980,4 +7228,10 @@ LocPromotionPopupText="<Bullet/> Ionic Storm's radius increases at higher Focus 
 SummaryText="We've been struggling to maintain long range communications after the recent sabotage by the Chosen. Our covert actions will be delayed by 2 weeks."
 ShortSummaryText="Our covert actions have been delayed by 2 weeks!"
 ; End Translation
+
+[FreeGrenades X2AbilityTemplate]
+LocFriendlyName="Devastation"
+LocLongDescription="Throwing grenades is a free action."
+LocHelpText="Throwing grenades is a free action."
+LocPromotionPopupText="Throwing grenades is a free action."
 

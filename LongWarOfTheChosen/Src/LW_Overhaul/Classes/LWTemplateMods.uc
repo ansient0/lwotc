@@ -2076,6 +2076,11 @@ function GeneralCharacterMod(X2CharacterTemplate Template, int Difficulty)
 		`Log("Adding evac to " $ Template.DataName);
 		Template.Abilities.AddItem('Evac');
 	}
+	
+	if(Template.bCanTakeCover)
+	{
+		Template.Abilities.AddItem('HunkerDown');
+	}
 
 	switch (Template.DataName)
 	{
@@ -2083,14 +2088,12 @@ function GeneralCharacterMod(X2CharacterTemplate Template, int Difficulty)
 		case 'AdvTrooperM1':
 		case 'AdvTrooperM2':
 		case 'AdvTrooperM3':
+		Template.Abilities.AddItem('SkirmisherStrike');
 		case 'AdvCaptainM1':
 		case 'AdvCaptainM2':
 		case 'AdvCaptainM3':
-		case 'AdvShieldbearerM2':
-		case 'AdvShieldbearerM3':
-		case 'AdvStunLancerM1':
-			Template.Abilities.AddItem('HunkerDown');
-			break;
+		Template.Abilities.AddItem('Defilade');
+		break;
 		case 'FacelessCivilian':
 			// Set 'FacelessCivilian' as being hostile. These are mostly only used
 			// with the Infiltrators DE, and without this set it's trivial to detect
@@ -2109,15 +2112,16 @@ function GeneralCharacterMod(X2CharacterTemplate Template, int Difficulty)
 			Template.ImmuneTypes.AddItem(class'X2Item_DefaultDamageTypes'.default.ParthenogenicPoisonType);
 			Template.ImmuneTypes.AddItem('Fire');
 			break;
-		case 'AdvStunLancerM2':
-			Template.Abilities.AddItem('HunkerDown');
-			Template.Abilities.AddItem('CoupdeGrace2');
-			break;
+		case 'AdvStunLancerM5':
+		case 'AdvStunLancerM4':
 		case 'AdvStunLancerM3':
-			Template.Abilities.AddItem('HunkerDown');
-			Template.Abilities.AddItem('CoupdeGrace2');
+		case 'AdvStunLancerM2':
+		case 'AdvStunLancerM1':
 			Template.Abilities.AddItem('Whirlwind2');
 			break;
+
+		case 'AdvPurifierM5':
+		case 'AdvPurifierM4':
 		case 'AdvPurifierM3':
 			Template.Abilities.AddItem('Formidable');
 		case 'AdvPurifierM2':
@@ -2133,8 +2137,10 @@ function GeneralCharacterMod(X2CharacterTemplate Template, int Difficulty)
 		case 'AdvPurifierM1':
 			Template.strScamperBT = "ScamperRoot_Purifier";
 			break;
+
 		case 'SpectreM2':
 			Template.Abilities.AddItem('LowProfile');
+		case 'SpectreM1':
 			break;
 
 		// Should turn off tick damage every action
@@ -2418,9 +2424,9 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 			WeaponTemplate.Abilities.AddItem('PriestPsiMindControl');
 			break;
 		case 'AdvPriestM3_PsiAmp':
-			WeaponTemplate.Abilities.AddItem('Solace');
+			//WeaponTemplate.Abilities.AddItem('Solace');
 		case 'AdvPriestM2_PsiAmp':
-			WeaponTemplate.Abilities.AddItem('MindShield');
+			//WeaponTemplate.Abilities.AddItem('MindShield');
 			break;
 		case 'AdvPurifierFlamethrower':
 			WeaponTemplate.iIdealRange = 7;
