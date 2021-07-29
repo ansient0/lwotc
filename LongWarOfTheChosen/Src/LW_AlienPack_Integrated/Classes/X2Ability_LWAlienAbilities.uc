@@ -570,7 +570,7 @@ static function X2AbilityTemplate AddDroneMeleeStun()
 {
 	local X2AbilityTemplate Template;
 	local X2AbilityCost_ActionPoints ActionPointCost;
-	local X2AbilityToHitCalc_StandardAim HitCalc;
+	local X2AbilityToHitCalc_StandardMelee HitCalc;
 	//local X2Effect_ApplyWeaponDamage PhysicalDamageEffect;
 	local X2Effect_Stunned				    StunnedEffect;
 	local X2Condition_UnitProperty			AdjacencyCondition;
@@ -594,7 +594,7 @@ static function X2AbilityTemplate AddDroneMeleeStun()
 	Cooldown.iNumTurns = default.STUNNER_COOLDOWN;
 	Template.AbilityCooldown = Cooldown;
 
-	HitCalc = new class'X2AbilityToHitCalc_StandardAim';
+	HitCalc = new class'X2AbilityToHitCalc_StandardMelee';
 	HitCalc.BuiltInHitMod = default.DRONE_STUN_HIT_MODIFIER;
 	Template.AbilityToHitCalc = HitCalc;
 
