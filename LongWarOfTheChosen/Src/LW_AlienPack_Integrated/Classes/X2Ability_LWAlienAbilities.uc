@@ -111,6 +111,12 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(CreateSlashAbility('ChryssalidSlashM4',default.CHRYSSALIDM4_MELEEATTACK_BASEDAMAGE));
 	Templates.AddItem(CreateLostHPBuff());
 
+
+	Templates.AddItem(PurePassive('BindM2Damage', "img:///UILibrary_XPerkIconPack.UIPerk_enemy_command", true, 'eAbilitySource_Perk'));
+	Templates.AddItem(PurePassive('BindM3Damage', "img:///UILibrary_XPerkIconPack.UIPerk_enemy_command_chevron", true, 'eAbilitySource_Perk'));
+	Templates.AddItem(PurePassive('BindM4Damage', "img:///UILibrary_XPerkIconPack.UIPerk_enemy_command_chevron_x2", true, 'eAbilitySource_Perk'));
+	Templates.AddItem(PurePassive('BindM5Damage', "img:///UILibrary_XPerkIconPack.UIPerk_enemy_command_chevron_x3", true, 'eAbilitySource_Perk'));
+
 	return Templates;
 }
 
@@ -524,6 +530,7 @@ static function X2DataTemplate CreateDroneRepairAbility()
 
 	ActionPointCost = new class'X2AbilityCost_ActionPoints';
 	ActionPointCost.iNumPoints = default.DRONE_REPAIR_ACTION_COST;
+	ActionPointCost.bfreeCost = true;
 	ActionPointCost.bConsumeAllPoints = false;
 	Template.AbilityCosts.AddItem(ActionPointCost);
 

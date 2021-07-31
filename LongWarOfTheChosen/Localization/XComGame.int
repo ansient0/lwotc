@@ -5073,7 +5073,7 @@ PreMissionText="Grants Mecs Return Fire."
 PostMissionSuccessText="Permanent: Mec Return Fire"
 PostMissionFailureText="Permanent: Mec Return Fire"
 
-[DarkEvent_MecReactiveSensors X2DarkEventTemplate]
+[DarkEvent_MecAbsorptionFields_LW X2DarkEventTemplate]
 
 DisplayName="Permanent: Mec Reactive Sensors"
 SummaryText="Mecs Gain Reactive Sensors."
@@ -8168,3 +8168,109 @@ LocFriendlyName="Paralyzing Blows"
 LocLongDescription="Melee Attacks now Stun For 1 more action."
 LocHelpText="Melee Attacks now Stun For 1 more action."
 LocPromotionPopupText="Melee Attacks now Stun For 1 more action."
+
+[Serpentine X2AbilityTemplate]
+LocFriendlyName="Serpentine"
+LocHelpText="Poison Spit is now a free action."
+LocLongDescription="Poison Spit is now a free action."
+LocPromotionPopupText="Poison Spit is now a free action."
+LocFlyOverText="Entwine"
+
+[Entwine_LW X2AbilityTemplate]
+LocFriendlyName="Entwine"
+LocHelpText="Gain 30 defense while binding."
+LocLongDescription="Gain 30 defense while binding."
+LocPromotionPopupText="Gain 30 defense while binding."
+LocFlyOverText="Entwine"
+
+[BindM2Damage X2AbilityTemplate]
+LocFriendlyName="Better Bind"
+LocHelpText="Increased Bind Damage."
+LocLongDescription="Increased Bind Damage."
+LocPromotionPopupText="Increased Bind Damage."
+LocFlyOverText="Better Bind"
+
+[BindM3Damage X2AbilityTemplate]
+LocFriendlyName="Better Bind"
+LocHelpText="Increased Bind Damage."
+LocLongDescription="Increased Bind Damage."
+LocPromotionPopupText="Increased Bind Damage."
+LocFlyOverText="Better Bind"
+
+[BindM4Damage X2AbilityTemplate]
+LocFriendlyName="Better Bind"
+LocHelpText="Increased Bind Damage."
+LocLongDescription="Increased Bind Damage."
+LocPromotionPopupText="Increased Bind Damage."
+LocFlyOverText="Better Bind"
+
+[BindM5Damage X2AbilityTemplate]
+LocFriendlyName="Better Bind"
+LocHelpText="Increased Bind Damage."
+LocLongDescription="Increased Bind Damage."
+LocPromotionPopupText="Increased Bind Damage."
+LocFlyOverText="Better Bind"
+
+[Dominant_LW X2AbilityTemplate]
+LocFriendlyName="Dominant"
+LocHelpText="Increases psi offense by 40."
+LocLongDescription="Increases psi offense by 40."
+LocPromotionPopupText="Increases psi offense by 40."
+LocFlyOverText="Better Bind"
+
+[Grit_LW X2AbilityTemplate]
+LocFriendlyName="Grit"
+LocHelpText="Gain 10% + Missing HP%/2 Damage Reduction."
+LocLongDescription="Gain 10% + Missing HP%/2 Damage Reduction."
+LocPromotionPopupText="Gain 10% + Missing HP%/2 Damage Reduction."
+LocFlyOverText="Grit"
+
+[BullRushPassive X2AbilityTemplate]
+LocFriendlyName="Bull Rush"
+LocHelpText="When Damaged, Gain a movement Action."
+LocLongDescription="When Damaged, Gain a movement Action."
+LocPromotionPopupText="When Damaged, Gain a movement Action."
+LocFlyOverText="Bull Rush"
+
+[BullRush X2AbilityTemplate]
+LocFriendlyName="Bull Rush"
+LocHelpText="When Damaged, Gain a movement Action."
+LocLongDescription="When Damaged, Gain a movement Action."
+LocPromotionPopupText="When Damaged, Gain a movement Action."
+LocFlyOverText="Bull Rush"
+
+[QuickRetreatPassive X2AbilityTemplate]
+LocFriendlyName="Quick Retreat"
+LocHelpText="Once per turn, when taking damage and being flanked, take a movement action."
+LocLongDescription="Once per turn, when taking damage and being flanked, take a movement action."
+LocPromotionPopupText="Once per turn, when taking damage and being flanked, take a movement action."
+LocFlyOverText="Quick Retreat"
+
+[QuickRetreat X2AbilityTemplate]
+LocFriendlyName="Quick Retreat"
+LocHelpText="Once per turn, when taking damage and being flanked, take a movement action."
+LocLongDescription="Once per turn, when taking damage and being flanked, take a movement action."
+LocPromotionPopupText="Once per turn, when taking damage and being flanked, take a movement action."
+LocFlyOverText="Quick Retreat"
+
+[AbsorptionFields_LW X2AbilityTemplate]
+LocFriendlyName="Absorbsion Fields"
+LocHelpText="The First Damage you take each turn is reduced by 35%."
+LocLongDescription="The First Damage you take each turn is reduced by 35%."
+LocPromotionPopupText="The First Damage you take each turn is reduced by 35%."
+LocFlyOverText="Absorbsion Fields"
+
+[AbsorptionFieldsTrigger_LW X2AbilityTemplate]
+LocFriendlyName="Absorbsion Fields"
+LocHelpText="The First Damage you take each turn is reduced by 35%."
+LocLongDescription="The First Damage you take each turn is reduced by 35%."
+LocPromotionPopupText="The First Damage you take each turn is reduced by 35%."
+LocFlyOverText="Grit"
+
+
+[ProtectiveServos X2AbilityTemplate]
+LocFriendlyName="Protective Servos"
+LocFlyOverText="Protective Servos"
+LocLongDescription="After taking damage, gain Stackable 1 armor through the end of the turn."
+LocHelpText="After taking damage, gain Stackable 1 armor through the end of the turn."
+LocPromotionPopupText="<Bullet/> Your armor hardens temporarily after an impact. After taking damage, gain 1 armor through the end of the next turn.

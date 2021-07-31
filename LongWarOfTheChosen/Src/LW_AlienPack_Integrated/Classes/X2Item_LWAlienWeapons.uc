@@ -213,6 +213,9 @@ var config WeaponDamageValue PSIZOMBIE_MELEEATTACKM5_BASEDAMAGE;
 var config WeaponDamageValue ADVPRIESTM4_WPN_BASEDAMAGE;
 var config WeaponDamageValue ADVPRIESTM5_WPN_BASEDAMAGE;
 
+var config WeaponDamageValue BERSERKERM2_MELEEATTACK_BASEDAMAGE;
+var config WeaponDamageValue BERSERKERM3_MELEEATTACK_BASEDAMAGE;
+var config WeaponDamageValue BERSERKERM4_MELEEATTACK_BASEDAMAGE;
 static function array<X2DataTemplate> CreateTemplates()
 {
 	local array<X2DataTemplate> Templates;
@@ -375,7 +378,11 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(CreateTemplate_AdvPriest_PsiAmp('AdvPriestM4_PsiAmp'));
 	Templates.AddItem(CreateTemplate_AdvPriest_PsiAmp('AdvPriestM5_PsiAmp'));
 
-	
+	Templates.AddItem(CreateTemplate_AndromedonRobot_MeleeAttack_LW('Berserker_MeleeAttack'));
+	Templates.AddItem(CreateTemplate_AndromedonRobot_MeleeAttack_LW('Berserker_MeleeAttackM2'));
+	Templates.AddItem(CreateTemplate_AndromedonRobot_MeleeAttack_LW('Berserker_MeleeAttackM3'));
+	Templates.AddItem(CreateTemplate_AndromedonRobot_MeleeAttack_LW('Berserker_MeleeAttackM4'));
+
 	return Templates;
 }
 
@@ -1540,6 +1547,22 @@ static function X2DataTemplate CreateTemplate_AndromedonRobot_MeleeAttack_LW(nam
 	if(Templatename == 'AndromedonRobot_MeleeAttackM3')
 	{
 		Template.BaseDamage = default.ANDROMEDONROBOT_MELEEATTACKM3_BASEDAMAGE;
+	}
+	if(Templatename == 'Berserker_MeleeAttack')
+	{
+		Template.BaseDamage = default.BERSERKER_MELEEATTACK_BASEDAMAGE;
+	}
+	if(Templatename == 'Berserker_MeleeAttackM2')
+	{
+		Template.BaseDamage = default.BERSERKERM2_MELEEATTACK_BASEDAMAGE;
+	}
+	if(Templatename == 'Berserker_MeleeAttackM3')
+	{
+		Template.BaseDamage = default.BERSERKERM3_MELEEATTACK_BASEDAMAGE;
+	}
+	if(Templatename == 'Berserker_MeleeAttackM4')
+	{
+		Template.BaseDamage = default.BERSERKERM4_MELEEATTACK_BASEDAMAGE;
 	}
 
 	Template.BaseDamage.DamageType='Melee';

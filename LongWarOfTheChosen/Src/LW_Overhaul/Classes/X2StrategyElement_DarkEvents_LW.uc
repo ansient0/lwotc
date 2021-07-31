@@ -167,7 +167,7 @@ static function array<X2DataTemplate> CreateTemplates()
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Sprinter','Mec',MutonM2,default.T2_UPGRADES_WEIGHT));
 
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('ReturnFire','Mec',MutonM3,default.T3_UPGRADES_WEIGHT));
-	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('ReactiveSensors','Mec',MutonM3,default.T3_UPGRADES_WEIGHT));
+	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('AbsorptionFields_LW','Mec',MutonM3,default.T3_UPGRADES_WEIGHT));
 
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Resilience','Cyberus',Cyberus,default.T2_UPGRADES_WEIGHT));
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Predator','Cyberus',Cyberus,default.T2_UPGRADES_WEIGHT));

@@ -177,7 +177,7 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(CreateDarkEventAbility('VolitileMix','Mec'));
 	Templates.AddItem(CreateDarkEventAbility('VolitileMix','Andromedon'));
 
-	Templates.AddItem(CreateDarkEventAbility('ReactiveSensors','Mec'));
+	Templates.AddItem(CreateDarkEventAbility('AbsorptionFields_LW','Mec'));
 
 	Templates.AddItem(CreateDarkEventAbility('PrimaryReturnFire','Mec'));
 	Templates.AddItem(CreateDarkEventAbility('PrimaryReturnFire','Sectopod'));

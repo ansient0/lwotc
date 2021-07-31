@@ -2088,12 +2088,35 @@ function GeneralCharacterMod(X2CharacterTemplate Template, int Difficulty)
 		case 'AdvTrooperM1':
 		case 'AdvTrooperM2':
 		case 'AdvTrooperM3':
+		case 'AdvTrooperM4':
+		case 'AdvTrooperM5':
 		Template.Abilities.AddItem('SkirmisherStrike');
 		case 'AdvCaptainM1':
 		case 'AdvCaptainM2':
 		case 'AdvCaptainM3':
+		case 'AdvCaptainM4':
+		case 'AdvCaptainM5':
 		Template.Abilities.AddItem('Defilade');
 		break;
+		case 'Muton':
+		case 'MutonM2_LW':
+		case 'MutonM3_LW':
+		case 'MutonM4_LW':
+		case 'MutonM5_LW':
+		Template.Abilities.AddItem('WillToSurvive');
+		break;
+		case 'Viper':
+		case 'ViperM2_LW':
+		case 'ViperM3_LW':
+		case 'ViperM4_LW':
+		case 'ViperM5_LW':
+		Template.ImmuneTypes.RemoveItem('Poison');
+		break;
+
+		case 'Cyberus':
+		Template.Abilities.AddItem('Evasive');
+		break;
+
 		case 'FacelessCivilian':
 			// Set 'FacelessCivilian' as being hostile. These are mostly only used
 			// with the Infiltrators DE, and without this set it's trivial to detect
@@ -2108,8 +2131,8 @@ function GeneralCharacterMod(X2CharacterTemplate Template, int Difficulty)
 			Template.Loot.LootReferences.AddItem(Loot);
 			break;
 		case 'Gatekeeper':
-			Template.ImmuneTypes.AddItem('Poison');
-			Template.ImmuneTypes.AddItem(class'X2Item_DefaultDamageTypes'.default.ParthenogenicPoisonType);
+			//Template.ImmuneTypes.AddItem('Poison');
+			//Template.ImmuneTypes.AddItem(class'X2Item_DefaultDamageTypes'.default.ParthenogenicPoisonType);
 			Template.ImmuneTypes.AddItem('Fire');
 			break;
 		case 'AdvStunLancerM5':
@@ -2118,12 +2141,40 @@ function GeneralCharacterMod(X2CharacterTemplate Template, int Difficulty)
 		case 'AdvStunLancerM2':
 		case 'AdvStunLancerM1':
 			Template.Abilities.AddItem('Whirlwind2');
+			Template.Abilities.AddItem('Resilience');
 			break;
+
+		case 'AdvMec_M1':
+		case 'AdvMec_M2':
+		case 'AdvMec_M3_LW':
+		case 'AdvMec_M4_LW':
+		case 'AdvMec_M5_LW':
+			Template.Abilities.AddItem('DamageControl');
+			break;
+		case 'Sectoid':
+			Template.Abilities.RemoveItem('VulnerabilityMelee');
+			break;
+		case 'AdvShielbearerM2':
+		case 'AdvShielbearerM3':
+		case 'AdvShielbearerM4':
+		case 'AdvShielbearerM5':
+		Template.Abilities.AddItem('FreeGrenades');
+		break;	
+	
+		case 'Berserker':
+		Template.DefaultLoadout='Berserker_Loadout';
+		case 'BerserkerM2':
+		case 'BerserkerM3':
+		case 'BerserkerM4':
+		//Template.Abilities.AddItem('Grit_LW');
+		Template.Abilities.AddItem('Brawler');
+		Template.Abilities.AddItem('BullRush');
+		break;
 
 		case 'AdvPurifierM5':
 		case 'AdvPurifierM4':
 		case 'AdvPurifierM3':
-			Template.Abilities.AddItem('Formidable');
+			//Template.Abilities.AddItem('Formidable');
 		case 'AdvPurifierM2':
 			Template.Abilities.AddItem('Burnout');
 			Template.Abilities.AddItem('PhosphorusPassive');
@@ -2138,12 +2189,35 @@ function GeneralCharacterMod(X2CharacterTemplate Template, int Difficulty)
 			Template.strScamperBT = "ScamperRoot_Purifier";
 			break;
 
+		case 'Andromedon':
+		case 'AndromedonM2':
+		case 'AndromedonM3':
+		Template.Abilities.AddItem('WillToSurvive');
+		break;
+
+
+		case 'AndromedonRobot':
+		case 'AndromedonRobotM2':
+		case 'AndromedonRobotM3':
+		Template.Abilities.AddItem('DamageControl');
+		break;
+
+		case 'Archon':
+		case 'ArchonM2_LW':
+		case 'ArchonM3_LW':
+		Template.Abilities.AddItem('CloseCombatSpecialist');
+		break;
+
+		case 'Sectopod':
+		case 'SectopodM2':
+		case 'SectopodM3':
+		Template.Abilities.AddItem('ProtectiveServos');
+		break;
+
 		case 'SpectreM2':
-			Template.Abilities.AddItem('LowProfile');
 		case 'SpectreM1':
 			break;
-
-		// Should turn off tick damage every action
+				// Should turn off tick damage every action
 		case 'ViperKing':
 		case 'BerserkerQueen':
 		case 'ArchonKing':
@@ -2420,6 +2494,14 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 
 		switch (WeaponTemplate.DataName)
 		{
+
+		case 'AcidBlob':
+		case 'AcidBlobM2':
+		case 'AcidBlobM3':
+		case 'AcidBlobM4':
+			X2GrenadeTemplate(WeaponTemplate).iRadius = 2;
+			break;
+
 		case 'AdvPriestM1_PsiAmp':
 			WeaponTemplate.Abilities.AddItem('PriestPsiMindControl');
 			break;

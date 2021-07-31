@@ -221,14 +221,14 @@ static function X2CharacterTemplate CreateTemplate_MutonCenturion(name TemplateN
 
 	CharTemplate.Abilities.AddItem('CounterattackPreparation');
 	CharTemplate.Abilities.AddItem('CounterattackDescription');
-	CharTemplate.Abilities.AddItem('WarCry');
+	//CharTemplate.Abilities.AddItem('WarCry');
 	//CharTemplate.Abilities.AddItem('Beastmaster_LW');
 	// WOTC abilities
 	CharTemplate.Abilities.AddItem('DarkEventAbility_Barrier');
 
 	CharTemplate.AddTemplateAvailablility(CharTemplate.BITFIELD_GAMEAREA_Multiplayer); // Allow in MP!
 	CharTemplate.MPPointValue = CharTemplate.XpKillscore * 10;
-	CharTemplate.strBehaviorTree = "MutonM2_LWRoot";  // new config behavior tree parsing means we could use the group instead
+	//CharTemplate.strBehaviorTree = "MutonM2_LWRoot";  // new config behavior tree parsing means we could use the group instead
 
 	//probably keep cinematic intro, since it's a lot of work to create a new one -- alternatively no cinematic intro for tier 2
 	CharTemplate.SightedNarrativeMoments.AddItem(XComNarrativeMoment'X2NarrativeMoments.TACTICAL.AlienSitings.T_Central_AlienSightings_Muton');
@@ -876,6 +876,7 @@ static function X2CharacterTemplate CreateTemplate_Viper_LW(name TemplateName)
 		CharTemplate.TimedLoot.LootReferences.AddItem(Loot);
 		Loot.LootTableName = 'GenericEarlyAlienVultureLoot_LW';
 		CharTemplate.VultureLoot.LootReferences.AddItem(Loot);
+		CharTemplate.Abilities.AddItem('BindM2Damage');		
 	}
 	if (TemplateName == 'ViperM3_LW')
 	{
@@ -885,6 +886,7 @@ static function X2CharacterTemplate CreateTemplate_Viper_LW(name TemplateName)
 		CharTemplate.TimedLoot.LootReferences.AddItem(Loot);
 		Loot.LootTableName = 'GenericMidAlienVultureLoot_LW';
 		CharTemplate.VultureLoot.LootReferences.AddItem(Loot);
+		CharTemplate.Abilities.AddItem('BindM3Damage');		
 	}
 	if (TemplateName == 'ViperM4_LW')
 	{
@@ -894,6 +896,7 @@ static function X2CharacterTemplate CreateTemplate_Viper_LW(name TemplateName)
 		CharTemplate.TimedLoot.LootReferences.AddItem(Loot);
 		Loot.LootTableName = 'GenericLateAlienVultureLoot_LW';
 		CharTemplate.VultureLoot.LootReferences.AddItem(Loot);
+		CharTemplate.Abilities.AddItem('BindM4Damage');		
 	}
 	if (TemplateName == 'ViperM5_LW')
 	{
@@ -903,6 +906,7 @@ static function X2CharacterTemplate CreateTemplate_Viper_LW(name TemplateName)
 		CharTemplate.TimedLoot.LootReferences.AddItem(Loot);
 		Loot.LootTableName = 'GenericLateAlienVultureLoot_LW';
 		CharTemplate.VultureLoot.LootReferences.AddItem(Loot);
+		CharTemplate.Abilities.AddItem('BindM5Damage');
 	}
 	
 
@@ -2734,7 +2738,7 @@ static function X2CharacterTemplate CreateTemplate_Berserker(name TemplateName)
 		CharTemplate.TimedLoot.LootReferences.AddItem(Loot);
 		Loot.LootTableName = 'GenericLateAlienVultureLoot_LW';
 		CharTemplate.VultureLoot.LootReferences.AddItem(Loot);
-		CharTemplate.Abilities.AddItem('DevastatingPunchM2');
+		CharTemplate.Abilities.AddItem('DevastatingPunch');
 	}
 	if (TemplateName == 'BerserkerM3')
 	{
@@ -2743,7 +2747,7 @@ static function X2CharacterTemplate CreateTemplate_Berserker(name TemplateName)
 		CharTemplate.TimedLoot.LootReferences.AddItem(Loot);
 		Loot.LootTableName = 'GenericLateAlienVultureLoot_LW';
 		CharTemplate.VultureLoot.LootReferences.AddItem(Loot);
-		CharTemplate.Abilities.AddItem('DevastatingPunchM3');
+		CharTemplate.Abilities.AddItem('DevastatingPunch');
 	}
 	if (TemplateName == 'BerserkerM4')
 	{
@@ -2752,7 +2756,7 @@ static function X2CharacterTemplate CreateTemplate_Berserker(name TemplateName)
 		CharTemplate.TimedLoot.LootReferences.AddItem(Loot);
 		Loot.LootTableName = 'GenericLateAlienVultureLoot_LW';
 		CharTemplate.VultureLoot.LootReferences.AddItem(Loot);
-		CharTemplate.Abilities.AddItem('DevastatingPunchM2');
+		CharTemplate.Abilities.AddItem('DevastatingPunch');
 	}
 
 
