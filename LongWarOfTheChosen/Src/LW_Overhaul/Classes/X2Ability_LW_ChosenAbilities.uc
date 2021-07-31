@@ -6,6 +6,9 @@
 
 class X2Ability_LW_ChosenAbilities extends X2Ability config(LW_SoldierSkills);
 
+var localized string ShieldedStatBuffsLocDescription;
+var localized string ImpactCompensationBuffDescription;
+
 var config int COOLDOWN_AMMO_DUMP;
 var config int COOLDOWN_SHIELD_ALLY;
 var config int MSTERROR_STAT_CHECK_BASE_VALUE;
@@ -17,8 +20,6 @@ var config int SHIELDALLYM4_SHIELD;
 var config array<name> KIDNAP_ELIGIBLE_CHARTYPES;
 var config array<name> COMBAT_READINESS_EFFECTS_TO_REMOVE;
 
-var private name ExtractKnowledgeMarkSourceEffectName, ExtractKnowledgeMarkTargetEffectName;
-var localized string ShieldedStatBuffsLocDescription;
 var config array<name> CHOSEN_SUMMON_RNF_DATA;
 
 var config int GREATEST_CHAMPION_AIM;
@@ -27,7 +28,12 @@ var config int GREATEST_CHAMPION_WILL;
 var config int GREATEST_CHAMPION_PSIOFFENSE;
 var config float SHIELD_ALLY_PCT_DR;
 var config float IMPACT_COMPENSATION_PCT_DR;
+var config int IMPACT_COMPENSATION_MAX_STACKS;
+
 var const string ChosenSummonContextDesc;
+
+var private name ExtractKnowledgeMarkSourceEffectName, ExtractKnowledgeMarkTargetEffectName;
+
 static function array<X2DataTemplate> CreateTemplates()
 {
 	local array<X2DataTemplate> Templates;
@@ -77,6 +83,9 @@ static function array<X2DataTemplate> CreateTemplates()
 	
 	Templates.AddItem(AssassinBladestorm());
 	Templates.AddItem(AssassinBladestormAttack());
+	Templates.AddItem(ParalyzingBlows());
+	Templates.AddItem(ParalyzingBlowsPassive());
+	
 	
 	return Templates;
 }
@@ -413,6 +422,7 @@ static function X2AbilityTemplate CreateShieldAlly(name Templatename, int Shield
 	local X2Effect_GreatestChampion StatBuffsEffect;
 	local X2Effect_PCTDamageReduction ImpactEffect;
 	local X2Condition_Visibility	VisibilityCondition;
+
 	`CREATE_X2ABILITY_TEMPLATE(Template, Templatename);
 	Template.IconImage = "img:///UILibrary_XPACK_Common.PerkIcons.UIPerk_mindscorch";
 	Template.Hostility = eHostility_Neutral;
@@ -477,7 +487,7 @@ static function X2AbilityTemplate CreateShieldAlly(name Templatename, int Shield
 	ImpactEffect.BuildPersistentEffect(1,true,true,,eGameRule_PlayerTurnEnd);
 	ImpactEffect.SetDisplayInfo(ePerkBuff_Bonus, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, false,,Template.AbilitySourceName);
 	ImpactEffect.DuplicateResponse = eDupe_Allow;
-	ImpactEffect.EffectName = 'WarlockDamageReduction';
+	ImpactEffect.EffectName = 'WarlockDamageReduction_LW';
 	Template.AddShooterEffect(ImpactEffect);
 
 
@@ -1710,9 +1720,8 @@ static function X2AbilityTemplate ImpactCompensationPassive()
 
 static function X2AbilityTemplate ImpactCompensation()
 {
-	local X2AbilityTemplate						Template;	
-	local X2AbilityTrigger_EventListener		EventListener;
-	local X2Effect_PCTDamageReduction 				ImpactEffect;
+	local X2AbilityTemplate					Template;
+	local X2Effect_ImpactCompensation		ImpactEffect;
 
 	`CREATE_X2ABILITY_TEMPLATE(Template, 'ImpactCompensation_LW');
 	Template.IconImage = "img:///UILibrary_LW_PerkPack.LW_AbilityDamageControl";
@@ -1723,28 +1732,23 @@ static function X2AbilityTemplate ImpactCompensation()
     Template.AbilityTargetStyle = default.SelfTarget;
 	Template.bShowActivation = false;
 	Template.bSkipFireAction = true;
-	//Template.bIsPassive = true;
+
 	Template.AbilityShooterConditions.AddItem(default.LivingShooterProperty);
+	Template.AbilityTriggers.AddItem(default.UnitPostBeginPlayTrigger);
 
-	// Trigger on Damage
-	EventListener = new class'X2AbilityTrigger_EventListener';
-	EventListener.ListenerData.EventID = 'UnitTakeEffectDamage';
-	EventListener.ListenerData.EventFn = class'XComGameState_Ability'.static.AbilityTriggerEventListener_Self;
-	EventListener.ListenerData.Deferral = ELD_OnStateSubmitted;
-	EventListener.ListenerData.Filter = eFilter_Unit;
-	Template.AbilityTriggers.AddItem(EventListener);
-
-	ImpactEffect = new class'X2Effect_PCTDamageReduction';
-	ImpactEffect.PCTDamage_Reduction = default.IMPACT_COMPENSATION_PCT_DR;
-	ImpactEffect.BuildPersistentEffect(1,false,true,,eGameRule_PlayerTurnEnd);
-	ImpactEffect.SetDisplayInfo(ePerkBuff_Bonus, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, true,,Template.AbilitySourceName);
-	ImpactEffect.DuplicateResponse = eDupe_Allow;
+	ImpactEffect = new class'X2Effect_ImpactCompensation';
+	ImpactEffect.DamageModifier = default.IMPACT_COMPENSATION_PCT_DR;
+	ImpactEffect.MaxStacks = default.IMPACT_COMPENSATION_MAX_STACKS;
+	ImpactEffect.BuildPersistentEffect(1, true, false);
+	ImpactEffect.SetDisplayInfo(ePerkBuff_Bonus, Template.LocFriendlyName, default.ImpactCompensationBuffDescription, Template.IconImage, true,,Template.AbilitySourceName);
+	ImpactEffect.DuplicateResponse = eDupe_Ignore;
 	Template.AddTargetEffect(ImpactEffect);
 
 	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
 	Template.BuildVisualizationFn = TypicalAbility_BuildVisualization;
 	//Template.BuildInterruptGameStateFn = TypicalAbility_BuildInterruptGameState;
 
+	Template.AdditionalAbilities.AddItem('DamageInstanceTracker');
 	Template.AdditionalAbilities.AddItem('ImpactCompensationPassive_LW');
 
 	Template.bDisplayInUITooltip = true;
@@ -1811,6 +1815,75 @@ static function X2AbilityTemplate AssassinBladestormAttack()
 	Template.AddShooterEffectExclusions(SkipExclusions);
 
 	return Template;
+}
+
+
+	static function X2AbilityTemplate ParalyzingBlows()
+{
+	local X2AbilityTemplate					Template;
+	local X2AbilityTrigger_EventListener	EventListener;
+	local XMBCondition_AbilityProperty	MeleeCondition;
+
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'ParalyzingBlows');
+
+	Template.IconImage = "img:///UILibrary_XPerkIconPack.UIPerk_mind_crit";
+	Template.eAbilityIconBehaviorHUD = EAbilityIconBehavior_NeverShow;
+	Template.Hostility = eHostility_Neutral;
+
+	Template.AbilityTargetStyle = default.SimpleSingleTarget;
+	Template.AbilityToHitCalc = default.DeadEye;
+
+	Template.AbilityShooterConditions.AddItem(default.LivingShooterProperty);
+	Template.AbilityTargetConditions.AddItem(default.LivingHostileTargetProperty);
+
+	MeleeCondition = new class'XMBCondition_AbilityProperty';
+	MeleeCondition.bRequireMelee = true;
+	Template.AbilityTargetConditions.AddItem(MeleeCondition);
+
+	// Trigger on Damage
+	EventListener = new class'X2AbilityTrigger_EventListener';
+	EventListener.ListenerData.EventID = 'AbilityActivated';
+	EventListener.ListenerData.EventFn = AbilityTriggerEventListener_ParalyzingBlows;
+	EventListener.ListenerData.Deferral = ELD_OnStateSubmitted;
+	EventListener.ListenerData.Priority = 40;
+	EventListener.ListenerData.Filter = eFilter_Unit;
+
+	Template.AbilityTriggers.AddItem(EventListener);
+
+	Template.AddTargetEffect(class'X2StatusEffects'.static.CreateStunnedStatusEffect(1,100,false));
+
+	Template.FrameAbilityCameraType = eCameraFraming_Never; 
+	Template.bSkipExitCoverWhenFiring = true;
+	Template.bSkipFireAction = true;	//	this fire action will be merged by Merge Vis function
+	Template.bShowActivation = true;
+	Template.bUsesFiringCamera = false;
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+	Template.BuildVisualizationFn = TypicalAbility_BuildVisualization;
+	Template.MergeVisualizationFn = ApplyEffect_MergeVisualization;
+	Template.BuildInterruptGameStateFn = none;
+
+	Template.AdditionalAbilities.AddItem('ParalyzingBlowsPassive');
+
+	return Template;
+}
+
+static function X2AbilityTemplate ParalyzingBlowsPassive()
+{
+	local X2AbilityTemplate	Template;
+
+	Template = PurePassive('ParalyzingBlowsPassive', "img:///UILibrary_XPerkIconPack.UIPerk_mind_crit", false);
+
+	return Template;
+}
+
+static function EventListenerReturn AbilityTriggerEventListener_ParalyzingBlows(
+	Object EventData,
+	Object EventSource,
+	XComGameState GameState,
+	Name EventID,
+	Object CallbackData)
+{
+	return HandleApplyEffectEventTrigger('ParalyzingBlows', EventData, EventSource, GameState);
 }
 
 defaultproperties

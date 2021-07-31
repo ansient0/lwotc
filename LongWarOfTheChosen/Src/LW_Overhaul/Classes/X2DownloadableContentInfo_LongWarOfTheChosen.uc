@@ -188,7 +188,7 @@ static event OnPostTemplatesCreated()
 	UpdateFirstMissionTemplate();
 	AddObjectivesToParcels();
 	UpdateChosenActivities();
-
+	UpdateChosenSabotages();
 	CHHelpersObj = class'CHHelpers'.static.GetCDO();
 	if (CHHelpersObj == none)
 	{
@@ -340,6 +340,11 @@ static function SaveSecondWaveOptions()
 	// Clear existing data from INI first
 	PersistentData.SecondWaveOptionList.Length = 0;
 	PersistentData.SaveConfig();
+
+	// Save difficulty and beginner VO settings
+	PersistentData.IsDifficultySet = true;
+	PersistentData.Difficulty = CampaignSettingsState.DifficultySetting;
+	PersistentData.DisableBeginnerVO = CampaignSettingsState.bSuppressFirstTimeNarrative;
 
 	// Add base-game second wave options
 	foreach ShellDifficultyUI.SecondWaveOptions(SWOption)
@@ -2573,6 +2578,103 @@ static function UpdateChosenActivities()
 	UpdateRetribution();
 }
 
+static function UpdateChosenSabotages()
+{
+	UpdateWeaponLockers();
+	UpdateLabStorage();
+	UpdateSecureStorage();
+}
+
+
+static function UpdateWeaponLockers()
+{
+	local X2SabotageTemplate Template;
+
+	Template = X2SabotageTemplate(class'X2StrategyElementTemplateManager'.static.GetStrategyElementTemplateManager().FindStrategyElementTemplate('Sabotage_WeaponLockers'));
+	Template.CanActivateFn = CanActivateWeaponLockers;
+}
+
+static function UpdateLabStorage()
+{
+	local X2SabotageTemplate Template;
+
+	Template = X2SabotageTemplate(class'X2StrategyElementTemplateManager'.static.GetStrategyElementTemplateManager().FindStrategyElementTemplate('Sabotage_LabStorage'));
+	Template.CanActivateFn = CanActivateLabStorage;
+}
+static function UpdateSecureStorage()
+{
+	local X2SabotageTemplate Template;
+
+	Template = X2SabotageTemplate(class'X2StrategyElementTemplateManager'.static.GetStrategyElementTemplateManager().FindStrategyElementTemplate('Sabotage_SecureStorage'));
+	Template.CanActivateFn = CanActivateSecureStorage;
+}
+function bool CanActivateWeaponLockers()
+{
+	local XComGameStateHistory History;
+	local XComGameState_HeadquartersXCom XComHQ;
+	local XComGameState_Item ItemState;
+	local StateObjectReference ItemRef;
+	local X2WeaponUpgradeTemplate UpgradeTemplate;
+	local int NumUpgrades, MinMods;
+
+	MinMods = `ScaleStrategyArrayInt(class'X2StrategyElement_DefaultSabotages'.default.MinWeaponLockersMods);
+	
+	NumUpgrades = 10;
+	History = `XCOMHISTORY;
+	XComHQ = XComGameState_HeadquartersXCom(`XCOMHISTORY.GetSingleGameStateObjectForClass(class'XComGameState_HeadquartersXCom'));
+
+	foreach XComHQ.Inventory(ItemRef)
+	{
+		ItemState = XComGameState_Item(History.GetGameStateForObjectID(ItemRef.ObjectID));
+
+		if(ItemState != none)
+		{
+			UpgradeTemplate = X2WeaponUpgradeTemplate(ItemState.GetMyTemplate());
+
+			if(UpgradeTemplate != none)
+			{
+				NumUpgrades++;
+				if(NumUpgrades >= MinMods)
+				{
+					return true;
+				}
+			}
+		}
+	}
+	return false;
+}
+function bool CanActivateLabStorage()
+{
+	local XComGameStateHistory History;
+	local XComGameState_HeadquartersXCom XComHQ;
+	local XComGameState_Item ItemState;
+	local StateObjectReference ItemRef;
+	local int NumPads, MinPads;
+	NumPads = 0;
+	History = `XCOMHISTORY;
+	XComHQ = XComGameState_HeadquartersXCom(`XCOMHISTORY.GetSingleGameStateObjectForClass(class'XComGameState_HeadquartersXCom'));
+	MinPads = `ScaleStrategyArrayInt(class'X2StrategyElement_DefaultSabotages'.default.LabStorageMinDatapads);
+	foreach XComHQ.Inventory(ItemRef)
+	{
+		ItemState = XComGameState_Item(History.GetGameStateForObjectID(ItemRef.ObjectID));
+
+		if(ItemState != none && (ItemState.GetMyTemplateName() == 'AdventDatapad' || ItemState.GetMyTemplateName() == 'AlienDatapad'))
+		{
+			NumPads++;
+			if(NumPads >= MinPads)
+			{
+				return true;
+			}
+		}
+	}
+
+	return false;
+}
+
+static function bool CanActivateSecureStorage()
+{
+	return (class'UIUtilities_Strategy'.static.GetResource('EleriumCore') >= `ScaleStrategyArrayInt(class'X2StrategyElement_DefaultSabotages'.default.MinSecureStorageCores) && class'X2StrategyElement_DefaultSabotages'.static.ExistsValidStaffForWounding());
+}
 static function UpdateTraining()
 {
 	local X2ChosenActionTemplate Template;
@@ -3225,14 +3327,19 @@ static function bool AbilityTagExpandHandler(string InString, out string OutStri
 			return true;
 		case 'RESCUE_CV_CHARGES':
 			Outstring = string(class'X2Ability_LW_SpecialistAbilitySet'.default.RESCUE_CV_CHARGES);
-			return true;			
+			return true;
 		case 'IMPACT_COMPENSATION_PCT_DR':
 			Outstring = string(int(class'X2Ability_LW_ChosenAbilities'.default.IMPACT_COMPENSATION_PCT_DR * 100));
+			return true;
+		case 'IMPACT_COMPENSATION_MAX_STACKS':
+			Outstring = string(class'X2Ability_LW_ChosenAbilities'.default.IMPACT_COMPENSATION_MAX_STACKS);
 			return true;
 		case 'SHIELD_ALLY_PCT_DR':
 			Outstring = string(int(class'X2Ability_LW_ChosenAbilities'.default.SHIELD_ALLY_PCT_DR * 100));
 			return true;
-
+		case 'CHOSEN_RETRIBUTION_DURATION':
+			OutString = string(default.CHOSEN_RETRIBUTION_DURATION);
+			return true;
 		default:
 			return false;
 	}
@@ -3242,7 +3349,10 @@ static function bool AbilityTagExpandHandler_CH(string InString, out string OutS
 {
 	local name Type;
 	local XComGameState_Ability AbilityState;
+	local XComGameState_Effect EffectState;
+	local XComGameState_Unit UnitState;
 	local X2AbilityTemplate AbilityTemplate;
+	local int ImpactCompensationStacks;
 
 	Type = name(InString);
 	switch(Type)
@@ -3263,6 +3373,32 @@ static function bool AbilityTagExpandHandler_CH(string InString, out string OutS
 				// LW2 doesn't subtract 1 from cooldowns as a general rule, so to keep it consistent
 				// there is substitute tag
 				OutString = string(AbilityTemplate.AbilityCooldown.iNumTurns);
+			}
+		}
+		return true;
+	case 'IMPACT_COMPENSATION_CURRENT_DR':
+		OutString = "0";
+		AbilityState = XComGameState_Ability(ParseObj);
+		if (AbilityState != none)
+		{
+			UnitState = XComGameState_Unit(`XCOMHISTORY.GetGameStateForObjectID(AbilityState.OwnerStateObject.ObjectID));
+		}
+		else
+		{
+			EffectState = XComGameState_Effect(ParseObj);
+			if (EffectState != none)
+			{
+				UnitState = XComGameState_Unit(`XCOMHISTORY.GetGameStateForObjectID(EffectState.ApplyEffectParameters.TargetStateObjectRef.ObjectID));
+			}
+		}
+
+		if (UnitState != none)
+		{
+			ImpactCompensationStacks = int(class'Utilities_LW'.static.GetUnitValue(UnitState, class'X2Ability_PerkPackAbilitySet2'.const.DAMAGED_COUNT_NAME));
+			if (ImpactCompensationStacks > 0)
+			{
+				OutString = string(int((1 - (1 - class'X2Ability_LW_ChosenAbilities'.default.IMPACT_COMPENSATION_PCT_DR) **
+						Min(ImpactCompensationStacks, class'X2Ability_LW_ChosenAbilities'.default.IMPACT_COMPENSATION_MAX_STACKS)) * 100));
 			}
 		}
 		return true;
