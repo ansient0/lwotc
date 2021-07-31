@@ -116,7 +116,9 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(PurePassive('BindM3Damage', "img:///UILibrary_XPerkIconPack.UIPerk_enemy_command_chevron", true, 'eAbilitySource_Perk'));
 	Templates.AddItem(PurePassive('BindM4Damage', "img:///UILibrary_XPerkIconPack.UIPerk_enemy_command_chevron_x2", true, 'eAbilitySource_Perk'));
 	Templates.AddItem(PurePassive('BindM5Damage', "img:///UILibrary_XPerkIconPack.UIPerk_enemy_command_chevron_x3", true, 'eAbilitySource_Perk'));
+	Templates.AddItem(AddNewKillSiredZombies());
 
+	
 	return Templates;
 }
 
@@ -1490,4 +1492,10 @@ static function X2AbilityTemplate CreateLostHPBuff()
 	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
 	Template.BuildVisualizationFn = TypicalAbility_BuildVisualization;
 	return Template;
+}
+
+
+static function X2AbilityTemplate AddNewKillSiredZombies()
+{
+	return class'X2Ability_Sectoid'.static.AddKillLinkedUnits('KillSiredZombies', class'X2Ability_Sectoid'.default.SireZombieLinkName, class'X2Action_ZombieSireDeath', false);
 }

@@ -160,11 +160,11 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(CreateDarkEventAbility('InstantReactionTime','Sectoid'));
 	Templates.AddItem(CreateDarkEventAbility('InstantReactionTime','Chryssalid'));
 
-	Templates.AddItem(CreateDarkEventAbility('MutonBladestorm','Muton'));
+	Templates.AddItem(CreateDarkEventAbility('Bladestorm','Muton'));
 
-	Templates.AddItem(CreateDarkEventAbility('TortalCombat','Muton'));
+	Templates.AddItem(CreateDarkEventAbility('TotalCombat','Muton'));
 
-	Templates.AddItem(CreateDarkEventAbility('Grenadier','Trooper'));
+	Templates.AddItem(CreateDarkEventAbility('FreeGrenades','Trooper'));
 
 	Templates.AddItem(CreateDarkEventAbility('ZoneOfControl_LW','Muton'));
 	Templates.AddItem(CreateDarkEventAbility('ZoneOfControl_LW','Berserker'));
@@ -174,8 +174,8 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(CreateDarkEventAbility('Resilience','Cyberus'));
 	Templates.AddItem(CreateDarkEventAbility('Resilience','Berserker'));
 
-	Templates.AddItem(CreateDarkEventAbility('VolitileMix','Mec'));
-	Templates.AddItem(CreateDarkEventAbility('VolitileMix','Andromedon'));
+	Templates.AddItem(CreateDarkEventAbility('VolatileMix','Mec'));
+	Templates.AddItem(CreateDarkEventAbility('VolatileMix','Andromedon'));
 
 	Templates.AddItem(CreateDarkEventAbility('AbsorptionFields_LW','Mec'));
 
@@ -206,7 +206,7 @@ static function array<X2DataTemplate> CreateTemplates()
 
 	Templates.AddItem(CreateDarkEventAbility('MovingTarget_LW','Chryssalid'));
 
-	Templates.AddItem(CreateDarkEventAbility('DisorientingAttacks','Chryssalid'));
+	Templates.AddItem(CreateDarkEventAbility('ParalyzingBlows','Chryssalid'));
 
 	Templates.AddItem(CreateDarkEventAbility('Sprinter','Andromedon'));
 	

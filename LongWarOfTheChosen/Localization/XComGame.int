@@ -5053,7 +5053,7 @@ PreMissionText="Grants Mecs Sprinter."
 PostMissionSuccessText="Permanent: Mec Sprinter"
 PostMissionFailureText="Permanent: Mec Sprinter"
 
-[DarkEvent_MecVolitileMix X2DarkEventTemplate]
+[DarkEvent_MecVolatileMix X2DarkEventTemplate]
 
 DisplayName="Permanent: Mec Volitile Mix"
 SummaryText="Mecs Gain Volitile Mix."
@@ -5333,7 +5333,7 @@ PreMissionText="Grants Andromedon Sprinter."
 PostMissionSuccessText="Permanent: Andromedon Sprinter"
 PostMissionFailureText="Permanent: Andromedon Sprinter"
 
-[DarkEvent_AndromedonVolitileMix X2DarkEventTemplate]
+[DarkEvent_AndromedonVolatileMix X2DarkEventTemplate]
 
 DisplayName="Permanent: Andromedon Volitile Mix"
 SummaryText="Andromedon Gain Volitile Mix."
@@ -8274,3 +8274,16 @@ LocFlyOverText="Protective Servos"
 LocLongDescription="After taking damage, gain Stackable 1 armor through the end of the turn."
 LocHelpText="After taking damage, gain Stackable 1 armor through the end of the turn."
 LocPromotionPopupText="<Bullet/> Your armor hardens temporarily after an impact. After taking damage, gain 1 armor through the end of the next turn.
+
+[SuperiorHolyWarrior X2AbilityTemplate]
+LocFriendlyName="Superior Holy Warrior"
+LocHelpText="Holy Warrior gains 30 crit."
+LocLongDescription="Holy Warrior gains 30 crit."
+LocPromotionPopupText="Holy Warrior gains 30 crit."
+LocFlyOverText="Grit"
+
+
+[SuperDuperRobot X2AbilityTemplate]
+LocFriendlyName="Super Duper Robot"
+LocLongDescription="Robot Gains 10 Health, 15 aim, and 6 mobility."
+LocHelpText="Robot Gains 10 Health, 15 aim, and 6 mobility."

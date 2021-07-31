@@ -163,7 +163,7 @@ static function array<X2DataTemplate> CreateTemplates()
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Resilience','Mec',MutonM1,default.T1_UPGRADES_WEIGHT));
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Shredder','Mec',MutonM1,default.T1_UPGRADES_WEIGHT));
 
-	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('VolitileMix','Mec',MutonM2,default.T2_UPGRADES_WEIGHT));
+	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('VolatileMix','Mec',MutonM2,default.T2_UPGRADES_WEIGHT));
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Sprinter','Mec',MutonM2,default.T2_UPGRADES_WEIGHT));
 
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('ReturnFire','Mec',MutonM3,default.T3_UPGRADES_WEIGHT));
@@ -211,7 +211,7 @@ static function array<X2DataTemplate> CreateTemplates()
 	//DarkEvents.AddItem(CreateTacticalUpgradesTemplate('ReadyForAnything','Shieldbearer',ViperM4,default.T4_UPGRADES_WEIGHT));
 
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Sprinter','Andromdedon',LancerM3,default.T3_UPGRADES_WEIGHT));
-	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('VolitileMix','Andromdedon',LancerM3,default.T3_UPGRADES_WEIGHT));
+	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('VolatileMix','Andromdedon',LancerM3,default.T3_UPGRADES_WEIGHT));
 
 
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('CloseCombatSpecialist','Andromdedon',LancerM4,default.T4_UPGRADES_WEIGHT));

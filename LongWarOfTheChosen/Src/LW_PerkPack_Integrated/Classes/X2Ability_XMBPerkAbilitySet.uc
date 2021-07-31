@@ -222,6 +222,8 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(CreateBullRushPassive());
 	Templates.AddItem(AddProtectiveServosAbility());
 	Templates.AddItem(AddProtectiveServosPassive());
+	Templates.AddItem(AddSuperiorHolyWarrior());
+	Templates.AddItem(AddSuperDuperRobot());
 	
 	
 	return Templates;
@@ -3377,6 +3379,38 @@ static function X2AbilityTemplate AddSuperiorHolyWarrior()
 	//Template.AdditionalAbilities.AddItem('DamageControlAbilityActivated');
 	return Template;
 }
+
+	static function X2AbilityTemplate AddSuperDuperRobot()
+{
+	local X2AbilityTemplate						Template;
+	local X2Effect_PersistentStatChange			StatEffect;
+
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'SuperDuperRobot');
+	Template.IconImage = "img:///UILibrary_LW_PerkPack.LW_AbilityExtraConditioning";
+	Template.eAbilityIconBehaviorHUD = EAbilityIconBehavior_NeverShow;
+	Template.Hostility = eHostility_Neutral;
+	Template.AbilityToHitCalc = default.DeadEye;
+	Template.AbilityTargetStyle = default.SelfTarget;
+	Template.AbilityTriggers.AddItem(default.UnitPostBeginPlayTrigger);
+	Template.bIsPassive = true;
+	Template.Hostility = eHostility_Neutral;
+	Template.AbilitySourceName = 'eAbilitySource_Perk';
+
+	StatEffect = new class'X2Effect_PersistentStatChange';
+	StatEffect.AddPersistentStatChange(eStat_HP, float(10));
+	StatEffect.AddPersistentStatChange(eStat_Offense, float(15));
+	StatEffect.AddPersistentStatChange(eStat_Mobility, float(6));
+	StatEffect.BuildPersistentEffect(1, true, false, false);
+	StatEffect.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, true,,Template.AbilitySourceName);
+	Template.AddTargetEffect(StatEffect);
+	Template.bCrossClassEligible = true;
+
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+
+	return Template;
+}
+
+
 defaultproperties
 {
 	LeadTheTargetReserveActionName = "leadthetarget"

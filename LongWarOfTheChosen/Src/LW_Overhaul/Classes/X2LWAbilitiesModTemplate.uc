@@ -224,8 +224,15 @@ static function UpdateAbilities(X2AbilityTemplate Template, int Difficulty)
 			RemoveAbilityWeaponDamage(Template);
 			break;
 		case 'MarkTarget':
+		case 'MindSpin':
+		case 'MassMindSpin':
 		class'Helpers_LW'.static.MakeFreeAction(Template);
 			break;
+
+		case 'PsiReanimation':
+		case 'MassReanimation_LW':
+			MakeAbilityNonTurnEnding(Template);
+			break;			
 
 		case 'StunLance':
 		case 'ShadowBind':
@@ -1366,12 +1373,9 @@ static function RemoveAbilityWeaponDamage(X2AbilityTemplate Template)
 
 static function MakeBindDamageScale(X2AbilityTemplate Template)
 {
-	local X2AbilityTemplateManager      AbilityManager;
 	local X2Condition_AbilityProperty	BindM2Condition, BindM3Condition,BindM4Condition,BindM5Condition;
 	local X2Effect_ApplyWeaponDamage    PhysicalDamageEffect;
 
-	// Find the relevant ability template - then treat as normal template building
-	AbilityManager = class'X2AbilityTemplateManager'.static.GetAbilityTemplateManager();
 
 	BindM2Condition = new class 'X2Condition_AbilityProperty';
 	BindM2Condition.OwnerHasSoldierAbilities.addItem('BindM2Damage');
