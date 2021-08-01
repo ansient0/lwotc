@@ -2473,6 +2473,28 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 		{
 			WeaponTemplate.RangeAccuracy = class'X2Item_DefaultWeaponMods_LW'.default.MID_LONG_ALL_RANGE;
 		}
+		if (WeaponTemplate.WeaponCat == 'rifle')
+		{
+			WeaponTemplate.RangeAccuracy = class'X2Item_DefaultWeaponMods_LW'.default.MEDIUM_ALL_RANGE;
+		}
+		if (WeaponTemplate.WeaponCat == 'sniper_rifle')
+		{
+			WeaponTemplate.RangeAccuracy = class'X2Item_DefaultWeaponMods_LW'.default.LONG_ALL_RANGE;
+		}
+		if (WeaponTemplate.WeaponCat == 'bullpup'|| 
+		WeaponTemplate.WeaponCat == 'pistol' ||
+		WeaponTemplate.WeaponCat == 'smg' 
+		)
+		{
+			WeaponTemplate.RangeAccuracy = class'X2Item_DefaultWeaponMods_LW'.default.MIDSHORT_ALL_RANGE;
+		}
+		if (WeaponTemplate.WeaponCat == 'shotgun'|| 
+			WeaponTemplate.WeaponCat == 'sidearm'
+			)
+		{
+			WeaponTemplate.RangeAccuracy = class'X2Item_DefaultWeaponMods_LW'.default.SHORT_ALL_RANGE;
+		}
+
 		if (WeaponTemplate.DataName == 'Medikit')
 		{
 			WeaponTemplate.HideIfResearched = '';
