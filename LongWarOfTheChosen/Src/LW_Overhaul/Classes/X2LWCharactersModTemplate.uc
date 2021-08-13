@@ -10,6 +10,8 @@ var config array<name> EXCLUDED_CHARACTERS_FROM_GLOBAL_DIFF_MOD;
 var config array<float> DIFFICULTY_HP_MODIFIER;
 var config array<float> DIFFICULTY_AIM_MODIFIER;
 var config array<float> DIFFICULTY_WILL_MODIFIER;
+var config int GLOBAL_FLANKING_CRIT_CHANCE;
+
 
 static function UpdateCharacters(X2CharacterTemplate Template, int Difficulty)
 {
@@ -44,6 +46,8 @@ static function UpdateCharacters(X2CharacterTemplate Template, int Difficulty)
 	}
 	StandarizeLootForUnits(Template,Difficulty);
 	DoaGlobalStatModifierByDifficulty(Template,Difficulty);
+
+	Template.CharacterBaseStats[eStat_FlankingCritChance] = default.GLOBAL_FLANKING_CRIT_CHANCE;
 }
 
 static function DoaGlobalStatModifierByDifficulty(X2CharacterTemplate Template, int Difficulty)
