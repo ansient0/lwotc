@@ -2468,6 +2468,15 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 		if (WeaponTemplate.WeaponCat == 'cannon')
 		{
 			WeaponTemplate.RangeAccuracy = class'X2Item_DefaultWeaponMods_LW'.default.LMG_ALL_RANGE;
+			WeaponTemplate.Abilities.AddItem('HeavyWeaponsMobPenalty');
+		}
+		if (WeaponTemplate.WeaponCat == 'LWChemThrower')
+		{
+			WeaponTemplate.Abilities.AddItem('HeavyWeaponsMobPenalty');
+		}
+		if (WeaponTemplate.WeaponCat == 'Bullpup')
+		{
+			WeaponTemplate.Abilities.AddItem('SMG_LS_StatBonus');
 		}
 		if (WeaponTemplate.WeaponCat == 'vektor_rifle')
 		{
@@ -2480,6 +2489,7 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 		if (WeaponTemplate.WeaponCat == 'sniper_rifle')
 		{
 			WeaponTemplate.RangeAccuracy = class'X2Item_DefaultWeaponMods_LW'.default.LONG_ALL_RANGE;
+			WeaponTemplate.Abilities.AddItem('HeavyWeaponsMobPenalty');
 		}
 		if (WeaponTemplate.WeaponCat == 'bullpup'|| 
 		WeaponTemplate.WeaponCat == 'pistol' ||
