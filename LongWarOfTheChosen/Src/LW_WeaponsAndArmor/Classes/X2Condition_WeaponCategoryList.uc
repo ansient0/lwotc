@@ -35,5 +35,4 @@ event name CallAbilityMeetsCondition(XComGameState_Ability kAbility, XComGameSta
 
 defaultproperties
 {
-	bCheckAmmo = true
 }

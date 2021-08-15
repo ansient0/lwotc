@@ -76,7 +76,7 @@ static function X2AbilityTemplate FlankCritFrameAttachment()
 	Effect.EffectName = 'FlamerDamageReduction';
 
 	Condition = new class'X2Condition_WeaponCategoryList';
-	Condition.IncludeWeaponCategories.AddItem('LWChemThrower');
+	Condition.IncludeWeaponCategories.AddItem('lwchemthrower');
 	Condition.IncludeWeaponCategories.AddItem('LWCanister');
 	// The effect only applies while wounded
 	EFfect.AbilityShooterConditions.AddItem(Condition);

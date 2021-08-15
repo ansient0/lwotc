@@ -49,7 +49,7 @@ static function X2DataTemplate CreateTemplate_Immolator_T0()
 	Template.ItemCat = 'weapon';
 	Template.WeaponCat = 'lwchemthrower';
 	Template.WeaponTech = 'conventional';
-	Template.strImage = "img:///IRIStolenFlamer.UI.Flamethrower_TLE";
+	Template.strImage = "img:///IRIStolenFlamer_LW.UI.Flamethrower_TLE";
 	Template.EquipSound = "Conventional_Weapon_Equip";
 	Template.Tier = 0;
 
@@ -74,7 +74,7 @@ static function X2DataTemplate CreateTemplate_Immolator_T0()
 	
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
 	
-	Template.GameArchetype ="IRIStolenFlamer.Archetypes.WP_StolenFlamer";
+	Template.GameArchetype ="IRIStolenFlamer_LW.Archetypes.WP_StolenFlamer";
 	Template.bMergeAmmo = true;
 	Template.bCanBeDodged = false;
 

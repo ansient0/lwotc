@@ -38,7 +38,7 @@ static function X2AbilityTemplate CreateFlameThrower()
 	local X2AbilityCost_ActionPoints		ActionPointCost;
 	local X2Effect_ApplyWeaponDamage		WeaponDamageEffect;
 	local X2AbilityTarget_Cursor			CursorTarget;
-	local X2AbilityMultiTarget_Cone_LW			ConeMultiTarget;
+	local X2AbilityMultiTarget_Cone_LWFlamethrower			ConeMultiTarget;
 	local X2AbilityToHitCalc_StandardAim	StandardAim;
 	local X2AbilityCost_Ammo				AmmoCost;
 	local X2Effect_PersistentStatChange     DisorientedEffect;
@@ -124,7 +124,7 @@ static function X2AbilityTemplate CreateFlameThrower()
 	DisorientedEffect.TargetConditions.AddItem(AbilityCondition);
 	Template.AddMultiTargetEffect(DisorientedEffect);
 
-	ConeMultiTarget = new class'X2AbilityMultiTarget_Cone_LW';
+	ConeMultiTarget = new class'X2AbilityMultiTarget_Cone_LWFlamethrower';
 	ConeMultiTarget.bUseWeaponRadius = true;
 	ConeMultiTarget.bIgnoreBlockingCover = true;
 	ConeMultiTarget.ConeEndDiameter = default.FLAMETHROWER_TILE_WIDTH * class'XComWorldData'.const.WORLD_StepSize;
@@ -167,7 +167,7 @@ static function X2AbilityTemplate CreateFlameThrowerOverwatchShot()
 	local X2AbilityTemplate					Template;
 	local X2AbilityCost_ReserveActionPoints ReserveActionPointCost;
 	local X2Effect_ApplyWeaponDamage		WeaponDamageEffect;
-	local X2AbilityMultiTarget_Cone_LW			ConeMultiTarget;
+	local X2AbilityMultiTarget_Cone_LWFlamethrower			ConeMultiTarget;
 	local X2AbilityToHitCalc_StandardAim	StandardAim;
 	local X2AbilityCost_Ammo				AmmoCost;
 	local X2Condition_Visibility			TargetVisibilityCondition;
@@ -291,7 +291,7 @@ static function X2AbilityTemplate CreateFlameThrowerOverwatchShot()
 	Template.AddMultiTargetEffect(DisorientedEffect);
 	Template.AddTargetEffect(DisorientedEffect);
 
-	ConeMultiTarget = new class'X2AbilityMultiTarget_Cone_LW';
+	ConeMultiTarget = new class'X2AbilityMultiTarget_Cone_LWFlamethrower';
 	ConeMultiTarget.bUseWeaponRadius = true;
 	ConeMultiTarget.bIgnoreBlockingCover = true;
 	ConeMultiTarget.ConeEndDiameter = default.FLAMETHROWER_TILE_WIDTH * class'XComWorldData'.const.WORLD_StepSize;
@@ -333,7 +333,7 @@ static function X2AbilityTemplate CreateFulmination()
 	local X2AbilityCost_ActionPoints		ActionPointCost;
 	local X2Effect_ApplyCanisterDamage		WeaponDamageEffect;
 	local X2AbilityTarget_Cursor			CursorTarget;
-	local X2AbilityMultiTarget_Cone_LW			ConeMultiTarget;
+	local X2AbilityMultiTarget_Cone_LWFlamethrower			ConeMultiTarget;
 	local X2AbilityToHitCalc_StandardAim	StandardAim;
 	local X2AbilityCost_Ammo				AmmoCost;
 	local X2Effect_TriggerEvent				InsanityEvent;
@@ -400,7 +400,7 @@ static function X2AbilityTemplate CreateFulmination()
 	InsanityEvent.ApplyChance = 100;
 	Template.AddMultiTargetEffect(InsanityEvent);
 
-	ConeMultiTarget = new class'X2AbilityMultiTarget_Cone_LW';
+	ConeMultiTarget = new class'X2AbilityMultiTarget_Cone_LWFlamethrower';
 	ConeMultiTarget.bUseWeaponRadius = true;
 	ConeMultiTarget.bIgnoreBlockingCover = true;
 	ConeMultiTarget.ConeEndDiameter = default.FLAMETHROWER_TILE_WIDTH * class'XComWorldData'.const.WORLD_StepSize;
@@ -446,7 +446,7 @@ static function X2AbilityTemplate CreatePressureBlast()
 	local X2AbilityCost_ActionPoints		ActionPointCost;
 	local X2Effect_ApplyCanisterDamage		WeaponDamageEffect;
 	local X2AbilityTarget_Cursor			CursorTarget;
-	local X2AbilityMultiTarget_Cone_LW			ConeMultiTarget;
+	local X2AbilityMultiTarget_Cone_LWFlamethrower			ConeMultiTarget;
 	local X2AbilityToHitCalc_StandardAim	StandardAim;
 	local X2AbilityCost_Ammo				AmmoCost;
 	local X2AbilityCooldown					Cooldown;
@@ -517,7 +517,7 @@ static function X2AbilityTemplate CreatePressureBlast()
 	Disorient.TargetConditions.AddItem(AbilityCondition);
 	Template.AddMultiTargetEffect(Disorient);
 
-	ConeMultiTarget = new class'X2AbilityMultiTarget_Cone_LW';
+	ConeMultiTarget = new class'X2AbilityMultiTarget_Cone_LWFlamethrower';
 	ConeMultiTarget.bUseWeaponRadius = true;
 	ConeMultiTarget.bIgnoreBlockingCover = true;
 	ConeMultiTarget.ConeEndDiameter = default.FLAMETHROWER_TILE_WIDTH * class'XComWorldData'.const.WORLD_StepSize;
@@ -564,7 +564,7 @@ static function X2AbilityTemplate Suppression()
 	local X2Effect_ReserveActionPoints      ReserveActionPointsEffect;
 	local X2Effect_Suppression              SuppressionEffect;
 	local X2Condition_UnitProperty			TargetPropertyCondition;
-	local X2AbilityMultiTarget_Cone_LW			ConeMultiTarget;
+	local X2AbilityMultiTarget_Cone_LWFlamethrower			ConeMultiTarget;
 	local X2Effect_PersistentStatChange		Disorient;
 	local X2Condition_AbilityProperty		AbilityCondition;
 
@@ -607,7 +607,7 @@ static function X2AbilityTemplate Suppression()
 	Template.TargetingMethod = class'X2TargetingMethod_Cone';
 	Template.AbilityTriggers.AddItem(default.PlayerInputTrigger);
 
-	ConeMultiTarget = new class'X2AbilityMultiTarget_Cone_LW';
+	ConeMultiTarget = new class'X2AbilityMultiTarget_Cone_LWFlamethrower';
 	ConeMultiTarget.bUseWeaponRadius = true;
 	ConeMultiTarget.bIgnoreBlockingCover = true;
 	ConeMultiTarget.ConeEndDiameter = default.FLAMETHROWER_TILE_WIDTH * class'XComWorldData'.const.WORLD_StepSize;
@@ -730,7 +730,7 @@ static function X2AbilityTemplate SuppressionShot()
 	local array<name>                       SkipExclusions;
 	local X2Condition_UnitEffectsWithAbilitySource TargetEffectCondition;
 	local X2Effect_RemoveEffects            RemoveSuppression;
-	local X2AbilityMultiTarget_Cone_LW			ConeMultiTarget;
+	local X2AbilityMultiTarget_Cone_LWFlamethrower			ConeMultiTarget;
 	local X2Effect_ApplyWeaponDamage		WeaponDamageEffect;
 	//local X2Effect_Persistent               KillZoneEffect;
 	//local X2Condition_UnitEffectsWithAbilitySource  KillZoneCondition;
@@ -813,7 +813,7 @@ static function X2AbilityTemplate SuppressionShot()
 	Template.AddTargetEffect(Disorient);
 
 	
-	ConeMultiTarget = new class'X2AbilityMultiTarget_Cone_LW';
+	ConeMultiTarget = new class'X2AbilityMultiTarget_Cone_LWFlamethrower';
 	ConeMultiTarget.bUseWeaponRadius = true;
 	ConeMultiTarget.bIgnoreBlockingCover = true;
 	ConeMultiTarget.ConeEndDiameter = default.FLAMETHROWER_TILE_WIDTH * class'XComWorldData'.const.WORLD_StepSize;

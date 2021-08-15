@@ -1999,7 +1999,7 @@ function bool ValidExplosiveFalloffAbility(X2AbilityTemplate Template, X2Effect_
 	if (!ClassIsChildOf(class'X2Effect_ApplyExplosiveFalloffWeaponDamage', DamageEffect.Class))
 	{
 		// Make
-		`REDSCREEN("Can't apply explosive falloff to" @ DamageEffect.Class @ "as it's not a super class of X2Effect_ApplyExplosiveFalloffWeaponDamage");
+		//`REDSCREEN("Can't apply explosive falloff to" @ DamageEffect.Class @ "as it's not a super class of X2Effect_ApplyExplosiveFalloffWeaponDamage");
 		return false;
 	}
 
@@ -2470,7 +2470,7 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 			WeaponTemplate.RangeAccuracy = class'X2Item_DefaultWeaponMods_LW'.default.LMG_ALL_RANGE;
 			WeaponTemplate.Abilities.AddItem('HeavyWeaponsMobPenalty');
 		}
-		if (WeaponTemplate.WeaponCat == 'LWChemThrower')
+		if (WeaponTemplate.WeaponCat == 'lwchemthrower')
 		{
 			WeaponTemplate.Abilities.AddItem('HeavyWeaponsMobPenalty');
 		}

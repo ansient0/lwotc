@@ -97,8 +97,6 @@ private function GetTilesEnteredArray(XComGameStateContext_Ability AbilityContex
 	local float								StepDistance;
 	local Vector							TestLocation;
 	local float								TestDistanceUnits;
-	local XGUnit							TargetVisualizer;
-	local XComUnitPawn						TargetUnitPawn;
 	local XComGameStateHistory				History;
 	local X2AbilityTemplate					AbilityTemplate;
 	local bool								bCursorTargetFound;
@@ -155,11 +153,7 @@ private function GetTilesEnteredArray(XComGameStateContext_Ability AbilityContex
 
 			KnockbackToLocation = StartLocation + (OutAttackDirection * float(KnockbackDistance) * 64.0f); //Convert knockback distance to meters
 
-			TargetVisualizer = XGUnit(History.GetVisualizer(TargetUnit.ObjectID));
-			if( TargetVisualizer != None )
-			{
-				TargetUnitPawn = TargetVisualizer.GetPawn();
-			}
+
 
 			//Totally borked. sends this flying into the sunset.
 			//if( WorldData.GetAllActorsTrace(StartLocation, KnockbackToLocation, Hits, Extents) )

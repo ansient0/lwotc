@@ -1,6 +1,6 @@
 class X2Ability_Canisters extends X2Ability config(GameData_WeaponData);
 
-var config int Canister_Width, Canister_Length, PoisonCanister_Length, PoisonCanister_Width, BlastCanister_Length, BlastCanister_Width SmokeCanister_Width, SmokeCanister_Length, MatchingCanister_DamageBonus;
+var config int Canister_Width, Canister_Length, PoisonCanister_Length, PoisonCanister_Width, BlastCanister_Length, BlastCanister_Width, SmokeCanister_Width, SmokeCanister_Length, MatchingCanister_DamageBonus;
 var config int MedicCanister_MedisprayCharges, MedicCanister_PerTurnSelfRegen, MedicCanister_MaxSelfRegen, MedicCanister_PerTurnBuffRegen, MedicCanister_BuffRegenTurns;
 var config float FireCanister_Firechance_Lv1, FireCanister_Firechance_Lv2, FireCanister_Firechance_Lv3;
 var config int FireCanister_Charges, FireCanister_BurnDamage, FireCanister_BurnSpread;
@@ -169,7 +169,7 @@ static function X2AbilityTemplate FireCanisterActivate()
 	local X2AbilityCost_ActionPoints		ActionPointCost;
 	local X2Effect_ApplyCanisterDamage		WeaponDamageEffect;
 	local X2AbilityTarget_Cursor			CursorTarget;
-	local X2AbilityMultiTarget_Cone_LW			ConeMultiTarget;
+	local X2AbilityMultiTarget_Cone_LWFlamethrower			ConeMultiTarget;
 	local X2AbilityToHitCalc_StandardAim	StandardAim;
 	local X2AbilityCost_Ammo				AmmoCost;
 	local X2Effect_ApplyFireToWorld			FireToWorldEffect;
@@ -238,7 +238,7 @@ static function X2AbilityTemplate FireCanisterActivate()
 
 	Template.AddMultiTargetEffect(class'X2StatusEffects'.static.CreateBurningStatusEffect(default.FireCanister_BurnDamage, default.FireCanister_BurnSpread));
 
-	ConeMultiTarget = new class'X2AbilityMultiTarget_Cone_LW';
+	ConeMultiTarget = new class'X2AbilityMultiTarget_Cone_LWFlamethrower';
 	ConeMultiTarget.bUseWeaponRadius = true;
 	ConeMultiTarget.bIgnoreBlockingCover = true;
 	ConeMultiTarget.ConeEndDiameter = default.Canister_Width * class'XComWorldData'.const.WORLD_StepSize;
@@ -285,7 +285,7 @@ static function X2AbilityTemplate PoisonCanisterActivate()
 	local X2AbilityCost_ActionPoints		ActionPointCost;
 	local X2Effect_ApplyCanisterDamage		WeaponDamageEffect;
 	local X2AbilityTarget_Cursor			CursorTarget;
-	local X2AbilityMultiTarget_Cone_LW			ConeMultiTarget;
+	local X2AbilityMultiTarget_Cone_LWFlamethrower			ConeMultiTarget;
 	local X2AbilityToHitCalc_StandardAim	StandardAim;
 	local X2AbilityCost_Ammo				AmmoCost;
 	local X2Effect_ApplyPoisonToWorld		PoisonCloudEffect;
@@ -351,7 +351,7 @@ static function X2AbilityTemplate PoisonCanisterActivate()
 
 	Template.AddMultiTargetEffect(class'X2StatusEffects'.static.CreatePoisonedStatusEffect());
 
-	ConeMultiTarget = new class'X2AbilityMultiTarget_Cone_LW';
+	ConeMultiTarget = new class'X2AbilityMultiTarget_Cone_LWFlamethrower';
 	ConeMultiTarget.bUseWeaponRadius = true;
 	ConeMultiTarget.bIgnoreBlockingCover = true;
 	ConeMultiTarget.ConeEndDiameter = default.PoisonCanister_Width * class'XComWorldData'.const.WORLD_StepSize;
@@ -398,7 +398,7 @@ static function X2AbilityTemplate CurseCanisterActivate()
 	local X2AbilityCost_ActionPoints		ActionPointCost;
 	local X2Effect_ApplyCanisterDamage		WeaponDamageEffect;
 	local X2AbilityTarget_Cursor			CursorTarget;
-	local X2AbilityMultiTarget_Cone_LW			ConeMultiTarget;
+	local X2AbilityMultiTarget_Cone_LWFlamethrower			ConeMultiTarget;
 	local X2AbilityToHitCalc_StandardAim	StandardAim;
 	local X2AbilityCost_Ammo				AmmoCost;
 
@@ -455,7 +455,7 @@ static function X2AbilityTemplate CurseCanisterActivate()
 	WeaponDamageEffect.Scalar = default.CurseCanister_Scalar;
 	Template.AddMultiTargetEffect(WeaponDamageEffect);
 
-	ConeMultiTarget = new class'X2AbilityMultiTarget_Cone_LW';
+	ConeMultiTarget = new class'X2AbilityMultiTarget_Cone_LWFlamethrower';
 	ConeMultiTarget.bUseWeaponRadius = true;
 	ConeMultiTarget.bIgnoreBlockingCover = true;
 	ConeMultiTarget.ConeEndDiameter = default.Canister_Width * class'XComWorldData'.const.WORLD_StepSize;
@@ -502,10 +502,10 @@ static function X2AbilityTemplate BluescreenCanisterActivate()
 	local X2AbilityCost_ActionPoints		ActionPointCost;
 	local X2Effect_ApplyCanisterDamage		WeaponDamageEffect;
 	local X2AbilityTarget_Cursor			CursorTarget;
-	local X2AbilityMultiTarget_Cone_LW			ConeMultiTarget;
+	local X2AbilityMultiTarget_Cone_LWFlamethrower			ConeMultiTarget;
 	local X2AbilityToHitCalc_StandardAim	StandardAim;
 	local X2AbilityCost_Ammo				AmmoCost;
-	local X2Effect_PersistentStatChange		Disorient;
+	//local X2Effect_PersistentStatChange		Disorient;
 	local X2Effect_Stunned					RoboStun;
 	local X2Condition_UnitProperty			RoboCondition, NonRoboCondition;
 
@@ -589,7 +589,7 @@ static function X2AbilityTemplate BluescreenCanisterActivate()
 	RoboStun.TargetConditions.AddItem(RoboCondition);
 	Template.AddMultiTargetEffect(RoboStun);
 
-	ConeMultiTarget = new class'X2AbilityMultiTarget_Cone_LW';
+	ConeMultiTarget = new class'X2AbilityMultiTarget_Cone_LWFlamethrower';
 	ConeMultiTarget.bUseWeaponRadius = true;
 	ConeMultiTarget.bIgnoreBlockingCover = true;
 	ConeMultiTarget.ConeEndDiameter = default.Canister_Width * class'XComWorldData'.const.WORLD_StepSize;
@@ -644,7 +644,7 @@ static function X2AbilityTemplate BlastCanisterActivate()
 	local X2AbilityCost_ActionPoints		ActionPointCost;
 	local X2Effect_ApplyCanisterDamage		WeaponDamageEffect;
 	local X2AbilityTarget_Cursor			CursorTarget;
-	local X2AbilityMultiTarget_Cone_LW			ConeMultiTarget;
+	local X2AbilityMultiTarget_Cone_LWFlamethrower			ConeMultiTarget;
 	local X2AbilityToHitCalc_StandardAim	StandardAim;
 	local X2AbilityCost_Ammo				AmmoCost;
 
@@ -703,7 +703,7 @@ static function X2AbilityTemplate BlastCanisterActivate()
 	WeaponDamageEffect.Scalar = default.BlastCanister_Scalar;
 	Template.AddMultiTargetEffect(WeaponDamageEffect);
 
-	ConeMultiTarget = new class'X2AbilityMultiTarget_Cone_LW';
+	ConeMultiTarget = new class'X2AbilityMultiTarget_Cone_LWFlamethrower';
 	ConeMultiTarget.bUseWeaponRadius = true;
 	ConeMultiTarget.bIgnoreBlockingCover = true;
 	ConeMultiTarget.ConeEndDiameter = default.BlastCanister_Width * class'XComWorldData'.const.WORLD_StepSize;
@@ -750,7 +750,7 @@ static function X2AbilityTemplate AcidCanisterActivate()
 	local X2AbilityCost_ActionPoints		ActionPointCost;
 	local X2Effect_ApplyCanisterDamage		WeaponDamageEffect;
 	local X2AbilityTarget_Cursor			CursorTarget;
-	local X2AbilityMultiTarget_Cone_LW			ConeMultiTarget;
+	local X2AbilityMultiTarget_Cone_LWFlamethrower			ConeMultiTarget;
 	local X2AbilityToHitCalc_StandardAim	StandardAim;
 	local X2AbilityCost_Ammo				AmmoCost;
 	local MZ_Effect_Knockback 				KnockbackEffect;
@@ -813,7 +813,7 @@ static function X2AbilityTemplate AcidCanisterActivate()
 	Template.AddMultiTargetEffect( class'X2StatusEffects'.static.CreateAcidBurningStatusEffect(default.AcidCanister_BurnDamage, default.AcidCanister_BurnSpread));
 	Template.AddMultiTargetEffect( new class'X2Effect_ApplyAcidToWorld_Cone');
 
-	ConeMultiTarget = new class'X2AbilityMultiTarget_Cone_LW';
+	ConeMultiTarget = new class'X2AbilityMultiTarget_Cone_LWFlamethrower';
 	ConeMultiTarget.bUseWeaponRadius = true;
 	ConeMultiTarget.bIgnoreBlockingCover = true;
 	ConeMultiTarget.ConeEndDiameter = default.Canister_Width * class'XComWorldData'.const.WORLD_StepSize;
@@ -867,7 +867,7 @@ static function X2AbilityTemplate SmokeCanisterActivate()
 	local X2AbilityCost_Charges                 ChargeCost;
 	local X2AbilityCost_ActionPoints		ActionPointCost;
 	local X2AbilityTarget_Cursor			CursorTarget;
-	local X2AbilityMultiTarget_Cone_LW			ConeMultiTarget;
+	local X2AbilityMultiTarget_Cone_LWFlamethrower			ConeMultiTarget;
 	local X2AbilityCost_Ammo				AmmoCost;
 	local X2Effect_ApplySmokeGrenadeToWorld WeaponEffect;
 	local X2Condition_AbilityProperty		AbilityCondition;
@@ -946,7 +946,7 @@ static function X2AbilityTemplate SmokeCanisterActivate()
 	Effect.TargetConditions.AddItem(AbilityCondition);
 	Template.AddMultiTargetEffect( Effect );
 
-	ConeMultiTarget = new class'X2AbilityMultiTarget_Cone_LW';
+	ConeMultiTarget = new class'X2AbilityMultiTarget_Cone_LWFlamethrower';
 	ConeMultiTarget.bUseWeaponRadius = true;
 	ConeMultiTarget.bIgnoreBlockingCover = true;
 	ConeMultiTarget.ConeEndDiameter = default.SmokeCanister_Width * class'XComWorldData'.const.WORLD_StepSize;
