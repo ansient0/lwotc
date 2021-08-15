@@ -2473,7 +2473,7 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 		{
 			WeaponTemplate.RangeAccuracy = class'X2Item_DefaultWeaponMods_LW'.default.MID_LONG_ALL_RANGE;
 		}
-		if (WeaponTemplate.WeaponCat == 'rifle')
+		if (WeaponTemplate.WeaponCat == 'rifle' || WeaponTemplate.WeaponCat == 'arcthrower')
 		{
 			WeaponTemplate.RangeAccuracy = class'X2Item_DefaultWeaponMods_LW'.default.MEDIUM_ALL_RANGE;
 		}
@@ -2879,19 +2879,58 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 		{
 			switch (ArmorTemplate.DataName)
 			{
-				// Let all soldier armors provide an extra utility slot
-				case 'KevlarArmor':
-				case 'LightPlatedArmor':
+				case 'KevlarArmor_DLC_Day0':
+				ArmorTemplate.bAddsUtilitySlot = true;
+				ArmorTemplate.Abilities.AddItem('LightKevlarArmorStats');
+				ArmorTemplate.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, class'X2Ability_LW_GearAbilities'.default.LIGHT_KEVLAR_MOBILITY_BONUS);
+				ArmorTemplate.strImage = "img:///UILibrary_HeavyAndLightKevlarArmors.LightArmor";
+				break;
+
 				case 'HeavyPlatedArmor':
-				case 'LightPoweredArmor':
+				ArmorTemplate.Abilities.AddItem('Chitin_Plating_Ability');
+				ArmorTemplate.SetUIStatMarkup(class'XLocalizedData'.default.ArmorLabel, 14, default.MEDIUM_PLATED_MITIGATION_AMOUNT);
+				ArmorTemplate.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, -1);
+				ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, 4);
+				ArmorTemplate.Abilities.AddItem('HeavyArmorMobPenalty');
+				break;
+
 				case 'HeavyPoweredArmor':
+				ArmorTemplate.Abilities.AddItem('Carapace_Plating_Ability');
+				ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, 5);
+				ArmorTemplate.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, -1);
+				ArmorTemplate.Abilities.AddItem('HeavyArmorMobPenalty');
+				break;
+
+				case 'LightPlatedArmor':
+				ArmorTemplate.bAddsUtilitySlot = true;
+				ArmorTemplate.Abilities.AddItem('Mini_Plating_Ability');
+				ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, 1);
+				break;
+
+
+				case 'LightPoweredArmor':
+				ArmorTemplate.Abilities.AddItem('Ceramic_Plating_Ability');
+				ArmorTemplate.bAddsUtilitySlot = true;
+				ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, 2);
+				break;
+
+				case 'KevlarArmor':
 				case 'ReaperArmor':
-				case 'PoweredReaperArmor':
 				case 'SkirmisherArmor':
-				case 'PoweredSkirmisherArmor':
 				case 'TemplarArmor':
+					ArmorTemplate.Abilities.AddItem('Alloy_Plating_Ability');
+					ArmorTemplate.bAddsUtilitySlot = true;
+					ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, 3);
+					break;
+
+				// Let all soldier armors provide an extra utility slot
+				case 'MediumPoweredArmor':
+				case 'PoweredReaperArmor':
+				case 'PoweredSkirmisherArmor':
 				case 'PoweredTemplarArmor':
 					ArmorTemplate.bAddsUtilitySlot = true;
+					ArmorTemplate.Abilities.AddItem('Carapace_Plating_Ability');
+					ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, 5);
 					break;
 				
 				case 'PlatedReaperArmor':
@@ -2899,7 +2938,9 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 				case 'PlatedTemplarArmor':
 					ArmorTemplate.bAddsUtilitySlot = true;
 				case 'MediumPlatedArmor':
+					ArmorTemplate.Abilities.AddItem('Chitin_Plating_Ability');
 					ArmorTemplate.SetUIStatMarkup(class'XLocalizedData'.default.ArmorLabel, 14, default.MEDIUM_PLATED_MITIGATION_AMOUNT);
+					ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, 4);
 					break;
 
 				case 'SparkArmor':

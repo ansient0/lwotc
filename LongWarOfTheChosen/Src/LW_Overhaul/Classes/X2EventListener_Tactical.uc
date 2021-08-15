@@ -1186,8 +1186,6 @@ static protected function EventListenerReturn HideFocusOnAssaults(
 static function EventListenerReturn ActivatePodSeenAllies(Object EventData, Object EventSource, XComGameState GameState, Name EventID, Object CallbackData)
 {
 	local XComLWTuple Tuple;
-	local XComGameStateHistory History;
-	local AlertAbilityInfo AlertInfo;	
 
 	Tuple = XComLWTuple(EventData);
 	if (Tuple == none)
@@ -1238,11 +1236,11 @@ static function EventListenerReturn MakeSureAItoAIWorks(Object EventData, Object
 
 static function EventListenerReturn ChainActivate(Object EventData, Object EventSource, XComGameState GameState, Name EventID, Object CallbackData)
 {
-	local XComGameState_AIUnitData AIUnit, MovedUnitData, NewAIUnitData;
+	local XComGameState_AIUnitData AIUnit, NewAIUnitData;
 	local XComGameStateHistory History;
 	local XComGameState_Unit AlertedUnit, MovedUnit;
 	local int AlertDataIndex;
-	local int MovedUnitDataID;
+	//local int MovedUnitDataID;
 	local AlertAbilityInfo AlertInfo;
 	local XcomGameState NewGameState;
 	local XComGameState_AIGroup AIGroupState;

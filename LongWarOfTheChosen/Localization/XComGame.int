@@ -6985,7 +6985,7 @@ BriefSummary="A pool of points that can be used to grant abilities and stats to 
 ; LWOTC Needs Translation
 [XComGame.UIArmory_Loadout]
 [UIArmory_Loadout]
-m_strInventoryLabels[eInvSlot_Pistol]="PISTOL"
+m_strInventoryLabels[eInvSlot_Pistol]="SIDEARM"
 ; End Translation
 
 ; LWOTC Needs Translation
@@ -8293,3 +8293,11 @@ LocFlyOverText="Grit"
 LocFriendlyName="Super Duper Robot"
 LocLongDescription="Robot Gains 10 Health, 15 aim, and 6 mobility."
 LocHelpText="Robot Gains 10 Health, 15 aim, and 6 mobility."
+
+
+;Armor
+[KevlarArmor_DLC_Day0 X2ArmorTemplate]
+FriendlyName = "Light Kevlar Armor"
+FriendlyNamePlural = "Light Kevlar Armor"
+BriefSummary = "This basic armor consists of improvised protection cobbled together from salvage and Resistance arms caches. It provides minimal protection against ADVENT and alien weaponry."
+TacticalText = "<Bullet/> A lighter variant of our conventional Kevlar Armor.\n<Bullet/> Research can give us access to better armor."
