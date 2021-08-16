@@ -238,7 +238,7 @@ static function X2AbilityTemplate FireCanisterActivate()
 
 	Template.AddMultiTargetEffect(class'X2StatusEffects'.static.CreateBurningStatusEffect(default.FireCanister_BurnDamage, default.FireCanister_BurnSpread));
 
-	ConeMultiTarget = new class'X2AbilityMultiTarget_Cone_LWFlamethrower';
+	ConeMultiTarget = new class'X2AbilityMultiTarget_Cone';
 	ConeMultiTarget.bUseWeaponRadius = true;
 	ConeMultiTarget.bIgnoreBlockingCover = true;
 	ConeMultiTarget.ConeEndDiameter = default.Canister_Width * class'XComWorldData'.const.WORLD_StepSize;
@@ -351,7 +351,7 @@ static function X2AbilityTemplate PoisonCanisterActivate()
 
 	Template.AddMultiTargetEffect(class'X2StatusEffects'.static.CreatePoisonedStatusEffect());
 
-	ConeMultiTarget = new class'X2AbilityMultiTarget_Cone_LWFlamethrower';
+	ConeMultiTarget = new class'X2AbilityMultiTarget_Cone';
 	ConeMultiTarget.bUseWeaponRadius = true;
 	ConeMultiTarget.bIgnoreBlockingCover = true;
 	ConeMultiTarget.ConeEndDiameter = default.PoisonCanister_Width * class'XComWorldData'.const.WORLD_StepSize;
@@ -455,7 +455,7 @@ static function X2AbilityTemplate CurseCanisterActivate()
 	WeaponDamageEffect.Scalar = default.CurseCanister_Scalar;
 	Template.AddMultiTargetEffect(WeaponDamageEffect);
 
-	ConeMultiTarget = new class'X2AbilityMultiTarget_Cone_LWFlamethrower';
+	ConeMultiTarget = new class'X2AbilityMultiTarget_Cone';
 	ConeMultiTarget.bUseWeaponRadius = true;
 	ConeMultiTarget.bIgnoreBlockingCover = true;
 	ConeMultiTarget.ConeEndDiameter = default.Canister_Width * class'XComWorldData'.const.WORLD_StepSize;
@@ -589,7 +589,7 @@ static function X2AbilityTemplate BluescreenCanisterActivate()
 	RoboStun.TargetConditions.AddItem(RoboCondition);
 	Template.AddMultiTargetEffect(RoboStun);
 
-	ConeMultiTarget = new class'X2AbilityMultiTarget_Cone_LWFlamethrower';
+	ConeMultiTarget = new class'X2AbilityMultiTarget_Cone';
 	ConeMultiTarget.bUseWeaponRadius = true;
 	ConeMultiTarget.bIgnoreBlockingCover = true;
 	ConeMultiTarget.ConeEndDiameter = default.Canister_Width * class'XComWorldData'.const.WORLD_StepSize;
@@ -703,7 +703,7 @@ static function X2AbilityTemplate BlastCanisterActivate()
 	WeaponDamageEffect.Scalar = default.BlastCanister_Scalar;
 	Template.AddMultiTargetEffect(WeaponDamageEffect);
 
-	ConeMultiTarget = new class'X2AbilityMultiTarget_Cone_LWFlamethrower';
+	ConeMultiTarget = new class'X2AbilityMultiTarget_Cone';
 	ConeMultiTarget.bUseWeaponRadius = true;
 	ConeMultiTarget.bIgnoreBlockingCover = true;
 	ConeMultiTarget.ConeEndDiameter = default.BlastCanister_Width * class'XComWorldData'.const.WORLD_StepSize;
@@ -813,7 +813,7 @@ static function X2AbilityTemplate AcidCanisterActivate()
 	Template.AddMultiTargetEffect( class'X2StatusEffects'.static.CreateAcidBurningStatusEffect(default.AcidCanister_BurnDamage, default.AcidCanister_BurnSpread));
 	Template.AddMultiTargetEffect( new class'X2Effect_ApplyAcidToWorld_Cone');
 
-	ConeMultiTarget = new class'X2AbilityMultiTarget_Cone_LWFlamethrower';
+	ConeMultiTarget = new class'X2AbilityMultiTarget_Cone';
 	ConeMultiTarget.bUseWeaponRadius = true;
 	ConeMultiTarget.bIgnoreBlockingCover = true;
 	ConeMultiTarget.ConeEndDiameter = default.Canister_Width * class'XComWorldData'.const.WORLD_StepSize;
@@ -946,7 +946,7 @@ static function X2AbilityTemplate SmokeCanisterActivate()
 	Effect.TargetConditions.AddItem(AbilityCondition);
 	Template.AddMultiTargetEffect( Effect );
 
-	ConeMultiTarget = new class'X2AbilityMultiTarget_Cone_LWFlamethrower';
+	ConeMultiTarget = new class'X2AbilityMultiTarget_Cone';
 	ConeMultiTarget.bUseWeaponRadius = true;
 	ConeMultiTarget.bIgnoreBlockingCover = true;
 	ConeMultiTarget.ConeEndDiameter = default.SmokeCanister_Width * class'XComWorldData'.const.WORLD_StepSize;

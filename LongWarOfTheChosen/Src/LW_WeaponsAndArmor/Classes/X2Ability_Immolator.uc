@@ -76,6 +76,7 @@ static function X2AbilityTemplate CreateFlameThrower()
 
 	StandardAim = new class'X2AbilityToHitCalc_StandardAim';
 	StandardAim.bMultiTargetOnly = true;
+	StandardAim.bGuaranteedHit = true;
 	Template.AbilityToHitCalc = StandardAim;
 
 	CursorTarget = new class'X2AbilityTarget_Cursor';
@@ -124,7 +125,7 @@ static function X2AbilityTemplate CreateFlameThrower()
 	DisorientedEffect.TargetConditions.AddItem(AbilityCondition);
 	Template.AddMultiTargetEffect(DisorientedEffect);
 
-	ConeMultiTarget = new class'X2AbilityMultiTarget_Cone_LWFlamethrower';
+	ConeMultiTarget = new class'X2AbilityMultiTarget_Cone';
 	ConeMultiTarget.bUseWeaponRadius = true;
 	ConeMultiTarget.bIgnoreBlockingCover = true;
 	ConeMultiTarget.ConeEndDiameter = default.FLAMETHROWER_TILE_WIDTH * class'XComWorldData'.const.WORLD_StepSize;
@@ -208,6 +209,7 @@ static function X2AbilityTemplate CreateFlameThrowerOverwatchShot()
 	StandardAim = new class'X2AbilityToHitCalc_StandardAim';
 	StandardAim.bReactionFire = true;
 	StandardAim.bOnlyMultiHitWithSuccess = false;
+	StandardAim.bGuaranteedHit = true;
 	Template.AbilityToHitCalc = StandardAim;
 
 	Template.AbilityTargetStyle = default.SimpleSingleTarget;
@@ -291,7 +293,7 @@ static function X2AbilityTemplate CreateFlameThrowerOverwatchShot()
 	Template.AddMultiTargetEffect(DisorientedEffect);
 	Template.AddTargetEffect(DisorientedEffect);
 
-	ConeMultiTarget = new class'X2AbilityMultiTarget_Cone_LWFlamethrower';
+	ConeMultiTarget = new class'X2AbilityMultiTarget_Cone';
 	ConeMultiTarget.bUseWeaponRadius = true;
 	ConeMultiTarget.bIgnoreBlockingCover = true;
 	ConeMultiTarget.ConeEndDiameter = default.FLAMETHROWER_TILE_WIDTH * class'XComWorldData'.const.WORLD_StepSize;
@@ -400,7 +402,7 @@ static function X2AbilityTemplate CreateFulmination()
 	InsanityEvent.ApplyChance = 100;
 	Template.AddMultiTargetEffect(InsanityEvent);
 
-	ConeMultiTarget = new class'X2AbilityMultiTarget_Cone_LWFlamethrower';
+	ConeMultiTarget = new class'X2AbilityMultiTarget_Cone';
 	ConeMultiTarget.bUseWeaponRadius = true;
 	ConeMultiTarget.bIgnoreBlockingCover = true;
 	ConeMultiTarget.ConeEndDiameter = default.FLAMETHROWER_TILE_WIDTH * class'XComWorldData'.const.WORLD_StepSize;
@@ -517,7 +519,7 @@ static function X2AbilityTemplate CreatePressureBlast()
 	Disorient.TargetConditions.AddItem(AbilityCondition);
 	Template.AddMultiTargetEffect(Disorient);
 
-	ConeMultiTarget = new class'X2AbilityMultiTarget_Cone_LWFlamethrower';
+	ConeMultiTarget = new class'X2AbilityMultiTarget_Cone';
 	ConeMultiTarget.bUseWeaponRadius = true;
 	ConeMultiTarget.bIgnoreBlockingCover = true;
 	ConeMultiTarget.ConeEndDiameter = default.FLAMETHROWER_TILE_WIDTH * class'XComWorldData'.const.WORLD_StepSize;
@@ -607,7 +609,7 @@ static function X2AbilityTemplate Suppression()
 	Template.TargetingMethod = class'X2TargetingMethod_Cone';
 	Template.AbilityTriggers.AddItem(default.PlayerInputTrigger);
 
-	ConeMultiTarget = new class'X2AbilityMultiTarget_Cone_LWFlamethrower';
+	ConeMultiTarget = new class'X2AbilityMultiTarget_Cone';
 	ConeMultiTarget.bUseWeaponRadius = true;
 	ConeMultiTarget.bIgnoreBlockingCover = true;
 	ConeMultiTarget.ConeEndDiameter = default.FLAMETHROWER_TILE_WIDTH * class'XComWorldData'.const.WORLD_StepSize;
@@ -813,7 +815,7 @@ static function X2AbilityTemplate SuppressionShot()
 	Template.AddTargetEffect(Disorient);
 
 	
-	ConeMultiTarget = new class'X2AbilityMultiTarget_Cone_LWFlamethrower';
+	ConeMultiTarget = new class'X2AbilityMultiTarget_Cone';
 	ConeMultiTarget.bUseWeaponRadius = true;
 	ConeMultiTarget.bIgnoreBlockingCover = true;
 	ConeMultiTarget.ConeEndDiameter = default.FLAMETHROWER_TILE_WIDTH * class'XComWorldData'.const.WORLD_StepSize;
