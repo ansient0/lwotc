@@ -97,14 +97,12 @@ private function GetTilesEnteredArray(XComGameStateContext_Ability AbilityContex
 	local float								StepDistance;
 	local Vector							TestLocation;
 	local float								TestDistanceUnits;
-	local XComGameStateHistory				History;
 	local X2AbilityTemplate					AbilityTemplate;
 	local bool								bCursorTargetFound;
 	local array<StateObjectReference>		TileUnits;
 	//local int								i;
 
 	WorldData = `XWORLD;
-	History = `XCOMHISTORY;
 	if(AbilityContext != none)
 	{
 		AbilityTemplate = class'XComGameState_Ability'.static.GetMyTemplateManager().FindAbilityTemplate(AbilityContext.InputContext.AbilityTemplateName);

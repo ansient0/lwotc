@@ -254,6 +254,10 @@ static function UpdateAbilities(X2AbilityTemplate Template, int Difficulty)
 		case 'HolyWarriorM5':
 			AddSuperiorholyWarrior(Template);
 			break;
+
+		case 'Reload':
+			MakeAbilityTurnEnding(Template);
+			break;
 			
 
 		default:
@@ -719,6 +723,18 @@ static function MakeAbilityNonTurnEnding(X2AbilityTemplate Template)
 	}
 }
 
+static function MakeAbilityTurnEnding(X2AbilityTemplate Template)
+{
+	local X2AbilityCost Cost;
+
+	foreach Template.AbilityCosts(Cost)
+	{
+		if (Cost.IsA('X2AbilityCost_ActionPoints'))
+		{
+			X2AbilityCost_ActionPoints(Cost).bConsumeAllPoints = true;
+		}
+	}
+}
 // Adds an extra unit condition to both Solace and Solace Cleanse that
 // prevents them from affecting robotic units. This also removes Holy
 // Warrior from the list of effects that Solace Cleanse removes.

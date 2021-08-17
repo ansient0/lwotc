@@ -21,6 +21,7 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(AddRebelHPUpgrade('RebelHPUpgrade_T1', default.REBEL_HP_UPGRADE_T1_AMOUNT));
 	Templates.AddItem(AddRebelHPUpgrade('RebelHPUpgrade_T2', default.REBEL_HP_UPGRADE_T2_AMOUNT));
 	Templates.AddItem(AddRebelGrenadeUpgrade());
+	Templates.AddItem(QuickReloadAbility());
 	
 	return Templates;
 }
@@ -251,4 +252,101 @@ static function X2AbilityTemplate AddRebelGrenadeUpgrade()
 	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
 
 	return Template;
+}
+
+static function X2AbilityTemplate QuickReloadAbility()
+{
+	local X2AbilityTemplate                 Template;
+	local X2AbilityCost_ActionPoints        ActionPointCost;
+	local X2Condition_UnitProperty          ShooterPropertyCondition;
+	local X2Condition_AbilitySourceWeapon   WeaponCondition;
+	local X2AbilityTrigger_PlayerInput      InputTrigger;
+	local array<name>                       SkipExclusions;
+
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'QuickReload');
+
+	Template.bDontDisplayInAbilitySummary = true;
+	ActionPointCost = new class'X2AbilityCost_ActionPoints';
+	ActionPointCost.iNumPoints = 1;
+	ActionPointCost.bConsumeAllPoints = false;	
+	Template.AbilityCosts.AddItem(ActionPointCost);
+
+	ShooterPropertyCondition = new class'X2Condition_UnitProperty';
+	ShooterPropertyCondition.ExcludeDead = true;                    //Can't reload while dead
+	Template.AbilityShooterConditions.AddItem(ShooterPropertyCondition);
+	WeaponCondition = new class'X2Condition_AbilitySourceWeapon';
+	WeaponCondition.WantsReload = true;
+	Template.AbilityShooterConditions.AddItem(WeaponCondition);
+	Template.DefaultKeyBinding = class'UIUtilities_Input'.const.FXS_KEY_R;
+
+	SkipExclusions.AddItem(class'X2AbilityTemplateManager'.default.DisorientedName);
+	Template.AddShooterEffectExclusions(SkipExclusions);
+
+	InputTrigger = new class'X2AbilityTrigger_PlayerInput';
+	Template.AbilityTriggers.AddItem(InputTrigger);
+
+	Template.AbilityToHitCalc = default.DeadEye;
+
+	Template.AbilityTargetStyle = default.SelfTarget;
+
+	Template.AbilitySourceName = 'eAbilitySource_Standard';
+	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_ShowIfAvailable;
+	Template.IconImage = "img:///UILibrary_PerkIcons.UIPerk_reload";
+	Template.ShotHUDPriority = class'UIUtilities_Tactical'.const.RELOAD_PRIORITY;
+	Template.bNoConfirmationWithHotKey = true;
+	Template.bDisplayInUITooltip = false;
+	Template.bDisplayInUITacticalText = false;
+	Template.DisplayTargetHitChance = false;
+
+	Template.ActivationSpeech = 'Reloading';
+
+	Template.BuildNewGameStateFn = ReloadAbility_LW_BuildGameState;
+	Template.BuildVisualizationFn = class'X2Ability_DefaultAbilitySet'.static.ReloadAbility_BuildVisualization;
+
+
+	Template.Hostility = eHostility_Neutral;
+
+	Template.CinescriptCameraType="GenericAccentCam";
+
+	return Template;
+}
+
+simulated function XComGameState ReloadAbility_LW_BuildGameState(XComGameStateContext Context)
+{
+	local XComGameState NewGameState;
+	local XComGameState_Unit UnitState;
+	local XComGameStateContext_Ability AbilityContext;
+	local XComGameState_Ability AbilityState;
+	local XComGameState_Item WeaponState, NewWeaponState;
+	local array<X2WeaponUpgradeTemplate> WeaponUpgrades;
+	local bool bFreeReload;
+	local int i;
+
+	NewGameState = `XCOMHISTORY.CreateNewGameState(true, Context);	
+	AbilityContext = XComGameStateContext_Ability(Context);	
+	AbilityState = XComGameState_Ability(`XCOMHISTORY.GetGameStateForObjectID( AbilityContext.InputContext.AbilityRef.ObjectID ));
+
+	WeaponState = AbilityState.GetSourceWeapon();
+	NewWeaponState = XComGameState_Item(NewGameState.ModifyStateObject(class'XComGameState_Item', WeaponState.ObjectID));
+
+	UnitState = XComGameState_Unit(NewGameState.ModifyStateObject(class'XComGameState_Unit', AbilityContext.InputContext.SourceObject.ObjectID));	
+
+	//  check for free reload upgrade
+	bFreeReload = false;
+	WeaponUpgrades = WeaponState.GetMyWeaponUpgradeTemplates();
+	for (i = 0; i < WeaponUpgrades.Length; ++i)
+	{
+		if (WeaponUpgrades[i].FreeReloadCostFn != none && WeaponUpgrades[i].FreeReloadCostFn(WeaponUpgrades[i], AbilityState, UnitState))
+		{
+			bFreeReload = true;
+			break;
+		}
+	}
+	if (!bFreeReload)
+		AbilityState.GetMyTemplate().ApplyCost(AbilityContext, AbilityState, UnitState, NewWeaponState, NewGameState);	
+
+	//  refill the weapon's ammo	
+	NewWeaponState.Ammo += 2;
+	
+	return NewGameState;	
 }

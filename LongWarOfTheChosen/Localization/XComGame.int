@@ -1250,11 +1250,11 @@ m_strRemoveUpgrade="REMOVE UPGRADE"
 [FreeFireUpgrade_Bsc X2WeaponUpgradeTemplate]
 FriendlyName="Hair Trigger"
 FriendlyNamePlural="Hair Triggers"
-; LWOTC Needs Translation
-BriefSummary="The soldier gains <Ability:TRIGGER_BSC_AIM_BONUS/> bonus aim on reaction fire shots (after reaction fire penalty)."
-; End Translation
-TinySummary="Bonus Reaction Fire To-Hit"
-LootTooltip="This weapon upgrade, when installed, adds bonus aim to reaction fire shots."
+; LWOTC Needs Translation (2)
+BriefSummary="The soldier gains 15 aim on the next shot after a miss."
+; End Translation (2)
+TinySummary="bonus to hit after a miss"
+LootTooltip="This weapon upgrade, when installed, adds bonus aim after a miss."
 
 [FreeFireUpgrade_Adv X2WeaponUpgradeTemplate]
 FriendlyName="Advanced Hair Trigger"
@@ -1274,12 +1274,14 @@ BriefSummary="The soldier gains <Ability:TRIGGER_SUP_AIM_BONUS/> bonus aim on re
 TinySummary="Bonus Reaction Fire To-Hit"
 LootTooltip="This weapon upgrade, when installed, adds bonus aim to reaction fire shots."
 
+;LWOTC needs translation
 [AimUpgrade_Bsc X2WeaponUpgradeTemplate]
 FriendlyName="Scope"
 FriendlyNamePlural="Scopes"
-BriefSummary="Increase aim by <Ability:SCOPE_BSC_AIM_BONUS/> on non-reaction fire shots."
-TinySummary="Increased Non-reaction Aim"
-LootTooltip="This weapon upgrade will add an aim bonus to any weapon it is attached to for non-reaction fire shots."
+BriefSummary="Increase aim by +<Ability:SCOPEAIMINCREASE/>%."
+TinySummary="Increased Aim"
+LootTooltip="This weapon upgrade will add an aim bonus to any weapon it is attached to."
+;LWOTC end Translation
 
 [AimUpgrade_Adv X2WeaponUpgradeTemplate]
 FriendlyName="Advanced Scope"
@@ -1296,13 +1298,12 @@ TinySummary="Increased Non-reaction Aim"
 LootTooltip="This weapon upgrade will add an aim bonus to any weapon it is attached to for non-reaction fire shots."
 
 ;LWOTC needs translation (2)
-
 [MissDamageUpgrade_Bsc X2WeaponUpgradeTemplate]
 FriendlyName="Stock"
 FriendlyNamePlural="Stocks"
-BriefSummary="Grants the Steady Weapon ability, which confers +<Ability:STOCK_BSC_SW_AIM_BONUS/> aim and +<Ability:STOCK_BSC_SW_AIM_BONUS/> critical chance on the next shot."
-TinySummary="Grants Steady Weapon"
-LootTooltip="This weapon upgrade, when installed, grants the Steady Weapon ability."
+BriefSummary="Grants the Grazing Fire ability, Giving missed shots  an additional roll to become a graze."
+TinySummary="Grants Grazing Fire"
+LootTooltip="This weapon upgrade, when installed, grants the Grazing Fire ability."
 
 [MissDamageUpgrade_Adv X2WeaponUpgradeTemplate]
 FriendlyName="Advanced Stock"
@@ -1365,6 +1366,13 @@ FriendlyNamePlural="Elite Expanded Magazines"
 [ReloadUpgrade_Sup X2WeaponUpgradeTemplate]
 FriendlyName="Elite Auto-Loader"
 FriendlyNamePlural="Elite Auto-Loaders"
+
+[ReloadUpgrade_Bsc X2WeaponUpgradeTemplate]
+FriendlyName="Auto-Loader"
+FriendlyNamePlural="Auto-Loaders"
+BriefSummary="Grants the quick reload ability, allowing you to reload 2 ammo without ending your turn."
+TinySummary="Free Reloads"
+LootTooltip="This weapon upgrade will allow you to quickly reload a small amount of ammo without ending your turn."
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;; GEAR ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -6723,6 +6731,12 @@ LocHelpText="Remove the unconcious effect from a soldier."
 LocLongDescription="Remove the unconcious effect from a soldier"
 LocFlyOverText="Get up!"
 
+;LWOTC Needs Translation
+[QuickReload X2AbilityTemplate]
+LocFriendlyName="Quick Reload"
+LocHelpText="Reload your primary weapon for 2 ammo, non-turn ending."
+LocFlyOverText="Reloading"
+;LWOTC end translation
 [ChosenSummonFollowers X2AbilityTemplate]
 LocFriendlyName="Summon Followers"
 LocHelpText="Summon alliens."
@@ -8119,9 +8133,9 @@ LocPromotionPopupText="<Bullet/> Each shot in Banish rolls a separate chance to 
 ;LWOTC needs translation(2)
 [TotalCombat X2AbilityTemplate]
 LocFriendlyName="Total Combat"
-LocLongDescription="Throwing a grenade or using an item no longer ends the turn and grenades have no cooldown. In addition, you can throw grenades 2 tiles further and their radius is increased by 1. Grants a Grenade-only slot."
+LocLongDescription="Throwing a grenade or using an item no longer ends the turn and grenades have no cooldown. In addition, their radius is increased by 1. Grants a Grenade-only slot."
 LocHelpText="Throwing a grenade or using an item no longer ends the turn and grenades have no cooldown. In addition, you can throw grenades 2 tiles further and their radius is increased by 1. Grants a Grenade-only slot."
-LocPromotionPopupText="<Bullet/> Total Combat adds even more flexibility to the Skirmisher's turns, allowing actions to be taken exactly when needed.<br/><Bullet/> Removes the cooldown for grenades.<br/><Bullet/> Grants both Bombard and Volatile Mix, hence it does not stack with either of them."
+LocPromotionPopupText="<Bullet/> Total Combat adds even more flexibility to the Skirmisher's turns, allowing actions to be taken exactly when needed.<br/><Bullet/> Removes the cooldown for grenades.<br/>"
 ;End Translation(2)
 
 [PackMaster_LW X2AbilityTemplate]

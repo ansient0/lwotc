@@ -1405,9 +1405,11 @@ function ModifyAbilitiesGeneral(X2AbilityTemplate Template, int Difficulty)
 			case 'PistolStandardShot':
 			case 'SniperStandardFire':
 			case 'Shadowfall':
+			case 'Overwatch':
+			case 'PistolOverwatch':
 			// Light Em Up and Snap Shot are handled in the template
 				UnitEffects = new class'X2Condition_UnitEffects';
-				UnitEffects.AddExcludeEffect(class'X2StatusEffects'.default.BurningName, 'AA_UnitIsBurning');
+				UnitEffects.AddExcludeEffect(class'X2StatusEffects_LW'.default.LWBurningName, 'AA_UnitIsBurning');
 				Template.AbilityShooterConditions.AddItem(UnitEffects);
 				break;
 			default:
@@ -3204,6 +3206,7 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 	WeaponUpgradeTemplate = X2WeaponUpgradeTemplate(Template);
 	if (WeaponUpgradeTemplate != none)
 	{
+		/*
 		//specific alterations
 		if (WeaponUpgradeTemplate.DataName == 'AimUpgrade_Bsc')
 		{
@@ -3232,14 +3235,14 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 			WeaponUpgradeTemplate.BonusAbilities.length = 0;
 			WeaponUpgradeTemplate.BonusAbilities.AddItem ('Scope_LW_Sup_Ability');
 		}
-
+			*/
 		if (WeaponUpgradeTemplate.DataName == 'FreeFireUpgrade_Bsc')
 		{
 			WeaponUpgradeTemplate.FreeFireChance = 0;
 			WeaponUpgradeTemplate.FreeFireCostFn = none;
 			WeaponUpgradeTemplate.GetBonusAmountFn = none;
 			WeaponUpgradeTemplate.BonusAbilities.length = 0;
-			WeaponUpgradeTemplate.BonusAbilities.AddItem ('Hair_Trigger_LW_Bsc_Ability');
+			WeaponUpgradeTemplate.BonusAbilities.AddItem ('HyperReactivePupils');
 		}
 		if (WeaponUpgradeTemplate.DataName == 'FreeFireUpgrade_Adv')
 		{
@@ -3263,7 +3266,7 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 			WeaponUpgradeTemplate.BonusDamage.Damage = 0;
 			WeaponUpgradeTemplate.GetBonusAmountFn = none;
 			WeaponUpgradeTemplate.BonusAbilities.length = 0;
-			WeaponUpgradeTemplate.BonusAbilities.AddItem ('Stock_LW_Bsc_Ability');
+			WeaponUpgradeTemplate.BonusAbilities.AddItem ('GrazingFire');
 		}
 		if (WeaponUpgradeTemplate.DataName == 'MissDamageUpgrade_Adv')
 		{
@@ -3294,6 +3297,11 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 			WeaponUpgradeTemplate.MutuallyExclusiveUpgrades.AddItem('ClipSizeUpgrade_Bsc');
 			WeaponUpgradeTemplate.MutuallyExclusiveUpgrades.AddItem('ClipSizeUpgrade_Adv');
 			WeaponUpgradeTemplate.MutuallyExclusiveUpgrades.AddItem('ClipSizeUpgrade_Sup');
+			WeaponUpgradeTemplate.FreeReloadCostFn = none;
+			WeaponUpgradeTemplate.FriendlyRenameFn = none;
+			WeaponUpgradeTemplate.GetBonusAmountFn = none;
+		
+			WeaponUpgradeTemplate.BonusAbilities.AddItem('QuickReload');
 		}
 		if (WeaponUpgradeTemplate.DataName == 'ClipSizeUpgrade_Bsc' || WeaponUpgradeTemplate.DataName == 'ClipSizeUpgrade_Adv' || WeaponUpgradeTemplate.DataName == 'ClipSizeUpgrade_Sup')
 		{

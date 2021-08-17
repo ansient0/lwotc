@@ -657,9 +657,9 @@ LocHelpText="Nearby ally grants you +10 aim, +10 critical chance and +1 mobility
 
 ; LWOTC Needs Translation (2)
 [GrazingFire X2AbilityTemplate]
-LocFriendlyName="Grazing Attacks"
-LocFlyOverText="Grazing Attacks"
-LocLongDescription="Your missed attacks have an additional roll to become a graze."
+LocFriendlyName="Grazing Fire"
+LocFlyOverText="Grazing Fire"
+LocLongDescription="Your missed Shots have an additional roll to become a graze."
 LocHelpText="Misses may become grazes."
 LocPromotionPopupText="<Bullet/> Soldier's missed attacks generally have a <Ability:GRAZING_FIRE_SUCCESS_CHANCE>% chance to become a graze.<br/><Bullet/> This effect occurs after normal hit-miss-graze processing.<br/><Bullet/> Targets with a dodge score subtract that score from the ability's success chance.<br/><Bullet/> Works with all weapon attacks including knife attacks and sword slices. <br/>"
 ; End Translation (2)

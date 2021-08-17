@@ -38,7 +38,7 @@ static function X2AbilityTemplate CreateFlameThrower()
 	local X2AbilityCost_ActionPoints		ActionPointCost;
 	local X2Effect_ApplyWeaponDamage		WeaponDamageEffect;
 	local X2AbilityTarget_Cursor			CursorTarget;
-	local X2AbilityMultiTarget_Cone_LWFlamethrower			ConeMultiTarget;
+	local X2AbilityMultiTarget_Cone			ConeMultiTarget;
 	local X2AbilityToHitCalc_StandardAim	StandardAim;
 	local X2AbilityCost_Ammo				AmmoCost;
 	local X2Effect_PersistentStatChange     DisorientedEffect;
@@ -168,7 +168,7 @@ static function X2AbilityTemplate CreateFlameThrowerOverwatchShot()
 	local X2AbilityTemplate					Template;
 	local X2AbilityCost_ReserveActionPoints ReserveActionPointCost;
 	local X2Effect_ApplyWeaponDamage		WeaponDamageEffect;
-	local X2AbilityMultiTarget_Cone_LWFlamethrower			ConeMultiTarget;
+	local X2AbilityMultiTarget_Cone			ConeMultiTarget;
 	local X2AbilityToHitCalc_StandardAim	StandardAim;
 	local X2AbilityCost_Ammo				AmmoCost;
 	local X2Condition_Visibility			TargetVisibilityCondition;
@@ -335,7 +335,7 @@ static function X2AbilityTemplate CreateFulmination()
 	local X2AbilityCost_ActionPoints		ActionPointCost;
 	local X2Effect_ApplyCanisterDamage		WeaponDamageEffect;
 	local X2AbilityTarget_Cursor			CursorTarget;
-	local X2AbilityMultiTarget_Cone_LWFlamethrower			ConeMultiTarget;
+	local X2AbilityMultiTarget_Cone			ConeMultiTarget;
 	local X2AbilityToHitCalc_StandardAim	StandardAim;
 	local X2AbilityCost_Ammo				AmmoCost;
 	local X2Effect_TriggerEvent				InsanityEvent;
@@ -448,7 +448,7 @@ static function X2AbilityTemplate CreatePressureBlast()
 	local X2AbilityCost_ActionPoints		ActionPointCost;
 	local X2Effect_ApplyCanisterDamage		WeaponDamageEffect;
 	local X2AbilityTarget_Cursor			CursorTarget;
-	local X2AbilityMultiTarget_Cone_LWFlamethrower			ConeMultiTarget;
+	local X2AbilityMultiTarget_Cone			ConeMultiTarget;
 	local X2AbilityToHitCalc_StandardAim	StandardAim;
 	local X2AbilityCost_Ammo				AmmoCost;
 	local X2AbilityCooldown					Cooldown;
@@ -566,7 +566,7 @@ static function X2AbilityTemplate Suppression()
 	local X2Effect_ReserveActionPoints      ReserveActionPointsEffect;
 	local X2Effect_Suppression              SuppressionEffect;
 	local X2Condition_UnitProperty			TargetPropertyCondition;
-	local X2AbilityMultiTarget_Cone_LWFlamethrower			ConeMultiTarget;
+	local X2AbilityMultiTarget_Cone			ConeMultiTarget;
 	local X2Effect_PersistentStatChange		Disorient;
 	local X2Condition_AbilityProperty		AbilityCondition;
 
@@ -732,7 +732,7 @@ static function X2AbilityTemplate SuppressionShot()
 	local array<name>                       SkipExclusions;
 	local X2Condition_UnitEffectsWithAbilitySource TargetEffectCondition;
 	local X2Effect_RemoveEffects            RemoveSuppression;
-	local X2AbilityMultiTarget_Cone_LWFlamethrower			ConeMultiTarget;
+	local X2AbilityMultiTarget_Cone			ConeMultiTarget;
 	local X2Effect_ApplyWeaponDamage		WeaponDamageEffect;
 	//local X2Effect_Persistent               KillZoneEffect;
 	//local X2Condition_UnitEffectsWithAbilitySource  KillZoneCondition;

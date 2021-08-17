@@ -293,8 +293,8 @@ static function AddCooldownToBattlelord(X2AbilityTemplate Template)
 
 static function UpdateTotalCombat(X2AbilityTemplate Template)
 {
-	Template.AdditionalAbilities.AddItem('Bombard_LW');
-	Template.AdditionalAbilities.AddItem('VolatileMix');
+	//Template.AdditionalAbilities.AddItem('Bombard_LW');
+	//Template.AdditionalAbilities.AddItem('VolatileMix');
 }
 
 static function UpdateCombatPresence(X2AbilityTemplate Template)

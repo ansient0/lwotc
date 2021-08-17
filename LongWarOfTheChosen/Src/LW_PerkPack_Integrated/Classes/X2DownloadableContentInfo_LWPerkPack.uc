@@ -43,16 +43,24 @@ static event OnPostTemplatesCreated()
 static function UpdateBaseGameThrowGrenade()
 {
 	local X2AbilityTemplateManager			AbilityTemplateManager;
-	local X2AbilityTemplate					ThrowGrenadeAbilityTemplate, LaunchGrenadeAbilityTemplate, ProximityMineAbilityTemplate;
+	local X2AbilityTemplate					ThrowGrenadeAbilityTemplate, LaunchGrenadeAbilityTemplate, 
+					ProximityMineAbilityTemplate, AcidBlobAbilityTemplate;
 	//local AbilityGrantedBonusRadius			BonusRadius;
 
 	AbilityTemplateManager = class'X2AbilityTemplateManager'.static.GetAbilityTemplateManager();
 	ThrowGrenadeAbilityTemplate = AbilityTemplateManager.FindAbilityTemplate('ThrowGrenade');
 	LaunchGrenadeAbilityTemplate = AbilityTemplateManager.FindAbilityTemplate('LaunchGrenade');
 	ProximityMineAbilityTemplate = AbilityTemplateManager.FindAbilityTemplate('ProximityMineDetonation');
+	AcidBlobAbilityTemplate = AbilityTemplateManager.FindAbilityTemplate('AcidBlob');
 	X2AbilityMultiTarget_Radius(ThrowGrenadeAbilityTemplate.AbilityMultiTargetStyle).AddAbilityBonusRadius('VolatileMix', 1.0);
 	X2AbilityMultiTarget_Radius(LaunchGrenadeAbilityTemplate.AbilityMultiTargetStyle).AddAbilityBonusRadius('VolatileMix', 1.0);
 	X2AbilityMultiTarget_Radius(ProximityMineAbilityTemplate.AbilityMultiTargetStyle).AddAbilityBonusRadius('VolatileMix', 1.0);
+	X2AbilityMultiTarget_Radius(AcidBlobAbilityTemplate.AbilityMultiTargetStyle).AddAbilityBonusRadius('VolatileMix', 1.0);
+
+	X2AbilityMultiTarget_Radius(ThrowGrenadeAbilityTemplate.AbilityMultiTargetStyle).AddAbilityBonusRadius('TotalCombat', 1.0);
+	X2AbilityMultiTarget_Radius(LaunchGrenadeAbilityTemplate.AbilityMultiTargetStyle).AddAbilityBonusRadius('TotalCombat', 1.0);
+	X2AbilityMultiTarget_Radius(ProximityMineAbilityTemplate.AbilityMultiTargetStyle).AddAbilityBonusRadius('TotalCombat', 1.0);
+	X2AbilityMultiTarget_Radius(AcidBlobAbilityTemplate.AbilityMultiTargetStyle).AddAbilityBonusRadius('TotalCombat', 1.0);
 
 	`PPDEBUG ("Updated Grenades to respect VM radius increase");
 }

@@ -169,7 +169,7 @@ static function X2AbilityTemplate FireCanisterActivate()
 	local X2AbilityCost_ActionPoints		ActionPointCost;
 	local X2Effect_ApplyCanisterDamage		WeaponDamageEffect;
 	local X2AbilityTarget_Cursor			CursorTarget;
-	local X2AbilityMultiTarget_Cone_LWFlamethrower			ConeMultiTarget;
+	local X2AbilityMultiTarget_Cone			ConeMultiTarget;
 	local X2AbilityToHitCalc_StandardAim	StandardAim;
 	local X2AbilityCost_Ammo				AmmoCost;
 	local X2Effect_ApplyFireToWorld			FireToWorldEffect;
@@ -285,7 +285,7 @@ static function X2AbilityTemplate PoisonCanisterActivate()
 	local X2AbilityCost_ActionPoints		ActionPointCost;
 	local X2Effect_ApplyCanisterDamage		WeaponDamageEffect;
 	local X2AbilityTarget_Cursor			CursorTarget;
-	local X2AbilityMultiTarget_Cone_LWFlamethrower			ConeMultiTarget;
+	local X2AbilityMultiTarget_Cone			ConeMultiTarget;
 	local X2AbilityToHitCalc_StandardAim	StandardAim;
 	local X2AbilityCost_Ammo				AmmoCost;
 	local X2Effect_ApplyPoisonToWorld		PoisonCloudEffect;
@@ -398,7 +398,7 @@ static function X2AbilityTemplate CurseCanisterActivate()
 	local X2AbilityCost_ActionPoints		ActionPointCost;
 	local X2Effect_ApplyCanisterDamage		WeaponDamageEffect;
 	local X2AbilityTarget_Cursor			CursorTarget;
-	local X2AbilityMultiTarget_Cone_LWFlamethrower			ConeMultiTarget;
+	local X2AbilityMultiTarget_Cone			ConeMultiTarget;
 	local X2AbilityToHitCalc_StandardAim	StandardAim;
 	local X2AbilityCost_Ammo				AmmoCost;
 
@@ -502,7 +502,7 @@ static function X2AbilityTemplate BluescreenCanisterActivate()
 	local X2AbilityCost_ActionPoints		ActionPointCost;
 	local X2Effect_ApplyCanisterDamage		WeaponDamageEffect;
 	local X2AbilityTarget_Cursor			CursorTarget;
-	local X2AbilityMultiTarget_Cone_LWFlamethrower			ConeMultiTarget;
+	local X2AbilityMultiTarget_Cone			ConeMultiTarget;
 	local X2AbilityToHitCalc_StandardAim	StandardAim;
 	local X2AbilityCost_Ammo				AmmoCost;
 	//local X2Effect_PersistentStatChange		Disorient;
@@ -644,7 +644,7 @@ static function X2AbilityTemplate BlastCanisterActivate()
 	local X2AbilityCost_ActionPoints		ActionPointCost;
 	local X2Effect_ApplyCanisterDamage		WeaponDamageEffect;
 	local X2AbilityTarget_Cursor			CursorTarget;
-	local X2AbilityMultiTarget_Cone_LWFlamethrower			ConeMultiTarget;
+	local X2AbilityMultiTarget_Cone			ConeMultiTarget;
 	local X2AbilityToHitCalc_StandardAim	StandardAim;
 	local X2AbilityCost_Ammo				AmmoCost;
 
@@ -750,7 +750,7 @@ static function X2AbilityTemplate AcidCanisterActivate()
 	local X2AbilityCost_ActionPoints		ActionPointCost;
 	local X2Effect_ApplyCanisterDamage		WeaponDamageEffect;
 	local X2AbilityTarget_Cursor			CursorTarget;
-	local X2AbilityMultiTarget_Cone_LWFlamethrower			ConeMultiTarget;
+	local X2AbilityMultiTarget_Cone			ConeMultiTarget;
 	local X2AbilityToHitCalc_StandardAim	StandardAim;
 	local X2AbilityCost_Ammo				AmmoCost;
 	local MZ_Effect_Knockback 				KnockbackEffect;
@@ -867,7 +867,7 @@ static function X2AbilityTemplate SmokeCanisterActivate()
 	local X2AbilityCost_Charges                 ChargeCost;
 	local X2AbilityCost_ActionPoints		ActionPointCost;
 	local X2AbilityTarget_Cursor			CursorTarget;
-	local X2AbilityMultiTarget_Cone_LWFlamethrower			ConeMultiTarget;
+	local X2AbilityMultiTarget_Cone			ConeMultiTarget;
 	local X2AbilityCost_Ammo				AmmoCost;
 	local X2Effect_ApplySmokeGrenadeToWorld WeaponEffect;
 	local X2Condition_AbilityProperty		AbilityCondition;
