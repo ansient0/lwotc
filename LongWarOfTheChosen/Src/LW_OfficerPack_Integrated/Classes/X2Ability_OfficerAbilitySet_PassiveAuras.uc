@@ -78,7 +78,7 @@ static function X2AbilityTemplate AddDefiladeAbility()
 	DefenseBonus = new class'XMBEffect_ConditionalBonus';
 
 	DefenseBonus.AddToHitAsTargetModifier(-default.DEFILADE_DEF, eHit_Success);
-	DefenseBonus.BuildPersistentEffect(1, false, true, false, eGameRule_PlayerTurnEnd);
+	DefenseBonus.BuildPersistentEffect(1, true, true, false, eGameRule_PlayerTurnEnd);
 	DefenseBonus.AbilityTargetConditionsAsTarget.AddItem(CoverCondition);
 	DefenseBonus.DuplicateResponse = eDupe_Ignore;
 	DefenseBonus.SetDisplayInfo(ePerkBuff_Bonus, Template.LocFriendlyName, Template.GetMyHelpText(), Template.IconImage, true, , Template.AbilitySourceName);

@@ -26,7 +26,7 @@ static function array<X2DataTemplate> CreateTemplates()
 
 	Templates.AddItem(Suppression());
 	Templates.AddItem(SuppressionShot());
-	Templates.AddItem(CreateFulmination());
+	//Templates.AddItem(CreateFulmination());
 	return Templates;
 }
 

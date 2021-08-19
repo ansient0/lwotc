@@ -127,6 +127,8 @@ var config int ENTWINE_DEF;
 var config float GRIT_BASE_DR;
 
 var config float REACTIVE_SENSORS_DAMAGE_REDUCTION;
+
+var config float SHREDDER_ROUNDS_DMG_PENALTY;
 static function array<X2DataTemplate> CreateTemplates()
 {
 	local array<X2DataTemplate> Templates;
@@ -224,6 +226,7 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(AddProtectiveServosPassive());
 	Templates.AddItem(AddSuperiorHolyWarrior());
 	Templates.AddItem(AddSuperDuperRobot());
+	Templates.AddItem(ShredderRoundsDamagePenalty());
 	
 	
 	return Templates;
@@ -3410,6 +3413,29 @@ static function X2AbilityTemplate AddSuperiorHolyWarrior()
 	return Template;
 }
 
+static function X2AbilityTemplate ShredderRoundsDamagePenalty()
+{
+	local XMBEffect_ConditionalBonus Effect;
+	local X2Condition_WeaponCanUseAmmo Condition;
+
+	// Create a condition that checks that the unit is at less than 100% HP.
+	// X2Condition_UnitStatCheck can also check absolute values rather than percentages, by
+	// using "false" instead of "true" for the last argument.
+	Condition = new class'X2Condition_WeaponCanUseAmmo';
+	// Create a conditional bonus effect
+	Effect = new class'XMBEffect_ConditionalBonus';
+
+	//Need to add for all of them because apparently if you crit you don't hit lol
+	Effect.AddPercentDamageModifier(-1 * default.SHREDDER_ROUNDS_DMG_PENALTY, eHit_Success);
+	Effect.AddPercentDamageModifier(-1 * default.SHREDDER_ROUNDS_DMG_PENALTY, eHit_Graze);
+	Effect.AddPercentDamageModifier(-1 * default.SHREDDER_ROUNDS_DMG_PENALTY, eHit_Crit);
+	Effect.EffectName = 'ShredderRounds_Penalty';
+
+	// The effect only applies while wounded
+	EFfect.AbilityShooterConditions.AddItem(Condition);
+	
+	return Passive('ShredderRoundsPenalty', "img:///UILibrary_XPerkIconPack.UIPerk_melee_adrenaline", true, Effect, false);
+}
 
 defaultproperties
 {

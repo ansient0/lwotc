@@ -43,6 +43,8 @@ var localized string AblativeHPLabel;
 var config int LIGHT_KEVLAR_MOBILITY_BONUS;
 var config int HEAVY_ARMOR_MOB_PENALTY;
 var config int HEAVY_WEAPONS_MOB_PENALTY;
+
+var config int AP_ROUNDS_CRIT_PENALTY;
 static function array<X2DataTemplate> CreateTemplates()
 {
 	local array<X2DataTemplate> Templates;
@@ -104,8 +106,8 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(CreateLightKevlarAbility());
 	Templates.AddItem(HeavyArmorMobPenalty());
 	Templates.AddItem(HeavyWeaponsMobPenalty());
+	Templates.AddItem(AddAPRoundsCritPenalty());
 
-	
 	return Templates;
 }
 
@@ -822,4 +824,39 @@ static function X2AbilityTemplate HeavyArmorMobPenalty()
 	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
 
 	return Template;	
+}
+
+
+static function X2AbilityTemplate AddAPRoundsCritPenalty()
+{
+	local X2AbilityTemplate						Template;
+	local X2AbilityTargetStyle                  TargetStyle;
+	local X2AbilityTrigger						Trigger;
+	local X2Effect_ToHitModifier                ToHitModifier;
+
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'APRoundsCritPenalty');
+	Template.IconImage = "img:///UILibrary_PerkIcons.UIPerk_hithurts";
+
+	Template.AbilitySourceName = 'eAbilitySource_Perk';
+	Template.eAbilityIconBehaviorHUD = EAbilityIconBehavior_NeverShow;
+	Template.Hostility = eHostility_Neutral;
+
+	Template.AbilityToHitCalc = default.DeadEye;
+
+	TargetStyle = new class'X2AbilityTarget_Self';
+	Template.AbilityTargetStyle = TargetStyle;
+
+	Trigger = new class'X2AbilityTrigger_UnitPostBeginPlay';
+	Template.AbilityTriggers.AddItem(Trigger);
+
+	ToHitModifier = new class'X2Effect_ToHitModifier';
+	ToHitModifier.BuildPersistentEffect(1, true, true, true);
+	ToHitModifier.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage,false,,Template.AbilitySourceName);
+	ToHitModifier.AddEffectHitModifier(eHit_Crit, default.AP_ROUNDS_CRIT_PENALTY, Template.LocFriendlyName, /*StandardAim*/, false, true, true, true);
+	Template.AddTargetEffect(ToHitModifier);
+
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+	//  NOTE: No visualization on purpose!
+
+	return Template;
 }

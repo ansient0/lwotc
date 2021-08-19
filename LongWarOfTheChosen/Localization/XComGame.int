@@ -1543,11 +1543,11 @@ TacticalText="<Bullet/> Does +2 damage to nonrobotic ADVENT personnel.<br/><Bull
 [FalconRounds X2AmmoTemplate]
 FriendlyName="Shredder Rounds"
 FriendlyNamePlural="Shredder Rounds"
-BriefSummary="Shreds 2 enemy armor with every hit."
-TacticalText="<Bullet/> Shreds 2 enemy armor with every hit.<br/><Bullet/> Only one ammo enhancement may be equipped at a time."
+BriefSummary="Shreds 1 enemy armor with every hit, at the cost of -<Ability:SHREDDER_ROUNDS_DMG_PENALTY/>% damage penalty."
+TacticalText="<Bullet/> Shreds 1 enemy armor with every hit.<br/><Bullet/> Only one ammo enhancement may be equipped at a time."
 
 [APRounds X2AmmoTemplate]
-BriefSummary="Hand machined from ultra strong, ultra light alien alloys, these deadly rounds will effectively bypass <Ability:APROUNDSPIERCEBONUS/> enemy armor to deal unmitigated damage."
+BriefSummary="Hand machined from ultra strong, ultra light alien alloys, these deadly rounds will effectively bypass <Ability:APROUNDSPIERCEBONUS/> enemy armor to deal unmitigated damage, at the cost of <Ability:AP_ROUNDS_CRIT_PENALTY/> crit."
 
 [HighPressureTanks X2WeaponTemplate]
 FriendlyName="High Pressure Tanks"
@@ -3703,6 +3703,25 @@ Summary="Allows mass-production of these upgrades, which significantly reduce in
 DisplayName="SPARK"
 Summary="Designed by the late Dr. Raymond Shen before the initial invasion some 20 years ago, the captured SPARK robotic prototype apparently served as the progenitor for all future ADVENT MEC designs. The SPARK is a robotic combat unit, serving in either defensive or high-powered combat roles. We can disguise them as ADVENT MECs during infiltrations, but they do take longer to infiltrate targets than human soldiers. Note that SPARKs cannot become Haven advisers, train abilities in the Advanced Warfare Center, or serve as officers. They are also not affected by many officer abilities."
 
+
+;Proving ground techs
+[BreakthroughWeaponUpgrade1 X2TechTemplate]
+DisplayName="Modular Primary Weapons"
+Summary="Despite initial concerns over balance, our recent breakthrough will allow us to add another weapon upgrade slot to all Primary Weapons." 
+
+[BreakthroughWeaponUpgrade2 X2TechTemplate]
+DisplayName="Modular Primary Weapons II"
+Summary="Despite initial concerns over balance, our recent breakthrough will allow us to add another weapon upgrade slot to all Primary Weapons." 
+
+
+[ReinforcedUnderlay1 X2TechTemplate]
+DisplayName="Reinforced Underlay"
+Summary="The Reinforced Underlay project will provide and additional ablative point to all of our armors."
+
+[ReinforcedUnderlay2 X2TechTemplate]
+DisplayName="Reinforced Underlay II"
+Summary="The Reinforced Underlay II project will provide yet another ablative point to all of our armors."
+
 [PatrolRoutes X2QuestItemTemplate]
 FriendlyName="Data Cache"
 FriendlyNamePlural="Data Caches"
@@ -4611,7 +4630,7 @@ PreMissionText="Grants Drones Apex Predator."
 PostMissionSuccessText="Permanent: Drone Apex Predator"
 PostMissionFailureText="Permanent: Drone Apex Predator"
 
-[DarkEvent_DroneHuntersInstinct_LW X2DarkEventTemplate]
+[DarkEvent_DroneHuntersInstinct X2DarkEventTemplate]
 
 DisplayName="Permanent: Drone Hunters Instinct"
 SummaryText="Drones Gain Hunters Instinct."
@@ -8308,10 +8327,27 @@ LocFriendlyName="Super Duper Robot"
 LocLongDescription="Robot Gains 10 Health, 15 aim, and 6 mobility."
 LocHelpText="Robot Gains 10 Health, 15 aim, and 6 mobility."
 
-
+;LWOTC NEEDS TRANSLATION
 ;Armor
 [KevlarArmor_DLC_Day0 X2ArmorTemplate]
 FriendlyName = "Light Kevlar Armor"
 FriendlyNamePlural = "Light Kevlar Armor"
 BriefSummary = "This basic armor consists of improvised protection cobbled together from salvage and Resistance arms caches. It provides minimal protection against ADVENT and alien weaponry."
 TacticalText = "<Bullet/> A lighter variant of our conventional Kevlar Armor.\n<Bullet/> Research can give us access to better armor."
+
+[MagGrenade_LW X2GrenadeTemplate]
+FriendlyName="Magnetic Grenade"
+FriendlyNamePlural="Magnetic Grenades"
+BriefSummary="A concussive grenade augmented by magnetic technology, the magnetic grenade deals more damage than a Frag grenade."
+TacticalText="<Bullet/> Magnetic grenades will damage all units in the blast radius."
+ThrownAbilityName="Throw Magnetic Grenade"
+ThrownAbilityHelpText="Damages units in the target area."
+LaunchedAbilityname="Launch Magnetic Grenade"
+LaunchedAbilityHelpText="Damages units in the target area."
+
+[MagGrenade X2AbilityTemplate]
+LocFriendlyName="Fire mag grenade"
+LocLongDescription="Advent's standard magnetic grenade"
+LocHelpText="Target a small area with a magnetic grenade."
+
+;End translation

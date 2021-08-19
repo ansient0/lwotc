@@ -81,11 +81,8 @@ static function DoaGlobalStatModifierByDifficulty(X2CharacterTemplate Template, 
 	Template.CharacterBaseStats[eStat_CritChance]=HighestDiffTemplate.CharacterBaseStats[eStat_CritChance];
 	Template.CharacterBaseStats[eStat_Defense]=HighestDiffTemplate.CharacterBaseStats[eStat_Defense];
 	Template.CharacterBaseStats[eStat_Dodge]=HighestDiffTemplate.CharacterBaseStats[eStat_Dodge];
-	Template.CharacterBaseStats[eStat_HP]=HighestDiffTemplate.CharacterBaseStats[eStat_HP];
 	Template.CharacterBaseStats[eStat_Mobility]=HighestDiffTemplate.CharacterBaseStats[eStat_Mobility];
-	Template.CharacterBaseStats[eStat_Offense]=HighestDiffTemplate.CharacterBaseStats[eStat_Offense];
 	Template.CharacterBaseStats[eStat_PsiOffense]=HighestDiffTemplate.CharacterBaseStats[eStat_PsiOffense];
-	Template.CharacterBaseStats[eStat_Will]=HighestDiffTemplate.CharacterBaseStats[eStat_Will];
 	Template.CharacterBaseStats[eStat_HackDefense]=HighestDiffTemplate.CharacterBaseStats[eStat_HackDefense];
 	Template.CharacterBaseStats[eStat_FlankingCritChance]=HighestDiffTemplate.CharacterBaseStats[eStat_FlankingCritChance];
 

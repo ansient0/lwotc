@@ -437,6 +437,11 @@ static function bool AbilityTagExpandHandler_CH(string InString, out string OutS
 		case 'MOVING_TARGET_DODGE':
 			Outstring = string(class'X2Ability_XMBPerkAbilitySet'.default.MOVING_TARGET_DODGE);
 			return true;
+		case 'SHREDDER_ROUNDS_DMG_PENALTY':
+			Outstring = string(class'X2Ability_XMBPerkAbilitySet'.default.SHREDDER_ROUNDS_DMG_PENALTY);
+			return true;
+
+
         default:
             return false;
     }

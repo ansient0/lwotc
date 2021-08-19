@@ -2087,7 +2087,7 @@ function GeneralCharacterMod(X2CharacterTemplate Template, int Difficulty)
 		Template.Abilities.AddItem('Evac');
 	}
 	
-	if(Template.bCanTakeCover)
+	if(Template.bCanTakeCover && !Template.bIsSoldier)
 	{
 		Template.Abilities.AddItem('HunkerDown');
 	}
@@ -2847,6 +2847,7 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 			if (EquipmentTemplate.Abilities.Find('AP_Rounds_Ability_PP') == -1)
 			{
 				EquipmentTemplate.Abilities.AddItem('AP_Rounds_Ability_PP');
+				EquipmentTemplate.Abilities.AddItem('APRoundsCritPenalty');
 			}
 		}
 		if (EquipmentTemplate.DataName == 'TalonRounds')
@@ -2885,6 +2886,12 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 				EquipmentTemplate.Abilities.AddItem('Tracer_Rounds_Ability_PP');
 			}
 		}
+		if (EquipmentTemplate.DataName == 'FalconRounds')
+		{
+			EquipmentTemplate.Abilities.AddItem('ShredderRoundsPenalty');
+		}
+
+			
 		// Adds stat markup for medium plated armor
 		ArmorTemplate = X2ArmorTemplate(Template);
 		if (ArmorTemplate != none)
@@ -3081,6 +3088,7 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 			case 'AlienHunterPistol_CV':
 			case 'AlienHunterPistol_MG':
 			case 'AlienHunterPistol_BM':
+				X2WeaponTemplate(EquipmentTemplate).InventorySlot = eInvSlot_Pistol;
 				X2WeaponTemplate(EquipmentTemplate).RangeAccuracy = class'X2Item_SMGWeapon'.default.MIDSHORT_BEAM_RANGE;
 				break;
 			case 'Cannon_CV': // replace archetype with non-suppression shaking variant

@@ -22,6 +22,9 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(AddRebelHPUpgrade('RebelHPUpgrade_T2', default.REBEL_HP_UPGRADE_T2_AMOUNT));
 	Templates.AddItem(AddRebelGrenadeUpgrade());
 	Templates.AddItem(QuickReloadAbility());
+	Templates.AddItem(AddReinforcedUnderlay2());
+	Templates.AddItem(AddReinforcedUnderlay1());
+	
 	
 	return Templates;
 }
@@ -226,10 +229,22 @@ static function X2AbilityTemplate AddRebelGrenadeUpgrade()
 	Template.AbilityTriggers.AddItem(Trigger);
 
 	TemporaryItemEffect = new class'X2Effect_TemporaryItem';
+	TemporaryItemEffect.EffectName = 'MagGrenadeEffect';
+	TemporaryItemEffect.ItemName = 'MagGrenade_LW';
+	TemporaryItemEffect.bReplaceExistingItemOnly = true;
+	TemporaryItemEffect.ExistingItemName = 'FragGrenade';
+	TemporaryItemEffect.ForceCheckAbilities.AddItem('LaunchGrenade');
+	TemporaryItemEffect.bIgnoreItemEquipRestrictions = true;
+	TemporaryItemEffect.BuildPersistentEffect(1, true, false);
+	//TemporaryItemEffect.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, true,,Template.AbilitySourceName);
+	TemporaryItemEffect.DuplicateResponse = eDupe_Ignore;
+	Template.AddTargetEffect(TemporaryItemEffect);
+
+	TemporaryItemEffect = new class'X2Effect_TemporaryItem';
 	TemporaryItemEffect.EffectName = 'PlasmaGrenadeEffect';
 	TemporaryItemEffect.ItemName = 'PlasmaGrenade';
 	TemporaryItemEffect.bReplaceExistingItemOnly = true;
-	TemporaryItemEffect.ExistingItemName = 'FragGrenade';
+	TemporaryItemEffect.ExistingItemName = 'MagGrenade_LW';
 	TemporaryItemEffect.ForceCheckAbilities.AddItem('LaunchGrenade');
 	TemporaryItemEffect.bIgnoreItemEquipRestrictions = true;
 	TemporaryItemEffect.BuildPersistentEffect(1, true, false);
@@ -349,4 +364,75 @@ simulated function XComGameState ReloadAbility_LW_BuildGameState(XComGameStateCo
 	NewWeaponState.Ammo += 2;
 	
 	return NewGameState;	
+}
+
+
+
+static function X2AbilityTemplate AddReinforcedUnderlay1()
+{
+	local X2AbilityTemplate						Template;
+	local X2AbilityTargetStyle                  TargetStyle;
+	local X2AbilityTrigger						Trigger;
+	local X2Effect_PersistentStatChange		PersistentStatChangeEffect;
+
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'ReinforcedUnderlay1');
+
+	Template.AbilitySourceName = 'eAbilitySource_Perk';
+	Template.eAbilityIconBehaviorHUD = EAbilityIconBehavior_NeverShow;
+	Template.Hostility = eHostility_Neutral;
+
+	Template.AbilityToHitCalc = default.DeadEye;
+
+	TargetStyle = new class'X2AbilityTarget_Self';
+	Template.AbilityTargetStyle = TargetStyle;
+
+	Trigger = new class'X2AbilityTrigger_UnitPostBeginPlay';
+	Template.AbilityTriggers.AddItem(Trigger);
+
+	//
+	PersistentStatChangeEffect = new class'X2Effect_PersistentStatChange';
+	PersistentStatChangeEffect.BuildPersistentEffect(1, true, false, false);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_ShieldHP, 1);
+	Template.AddTargetEffect(PersistentStatChangeEffect);
+	Template.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, 1);
+
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+	//  NOTE: No visualization on purpose!
+
+	return Template;
+}
+
+	static function X2AbilityTemplate AddReinforcedUnderlay2()
+{
+	local X2AbilityTemplate						Template;
+	local X2AbilityTargetStyle                  TargetStyle;
+	local X2AbilityTrigger						Trigger;
+	local X2Effect_PersistentStatChange		PersistentStatChangeEffect;
+
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'ReinforcedUnderlay2');
+
+	Template.AbilitySourceName = 'eAbilitySource_Perk';
+	Template.eAbilityIconBehaviorHUD = EAbilityIconBehavior_NeverShow;
+	Template.Hostility = eHostility_Neutral;
+
+	Template.AbilityToHitCalc = default.DeadEye;
+
+	TargetStyle = new class'X2AbilityTarget_Self';
+	Template.AbilityTargetStyle = TargetStyle;
+
+	Trigger = new class'X2AbilityTrigger_UnitPostBeginPlay';
+	Template.AbilityTriggers.AddItem(Trigger);
+
+	//
+	PersistentStatChangeEffect = new class'X2Effect_PersistentStatChange';
+	PersistentStatChangeEffect.BuildPersistentEffect(1, true, false, false);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_ShieldHP, 1);
+	Template.AddTargetEffect(PersistentStatChangeEffect);
+
+	Template.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, 1);
+
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+	//  NOTE: No visualization on purpose!
+
+	return Template;
 }
