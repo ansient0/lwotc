@@ -128,6 +128,14 @@ static event OnLoadedSavedGame()
 	//UpdateUtilityItemSlotsForAllSoldiers();
 }
 
+
+static event UpdateDLC()
+{
+
+	LevelUpXTP();
+
+}
+
 /// <summary>
 /// Called when the player starts a new campaign while this DLC / Mod is installed
 /// </summary>
@@ -146,6 +154,7 @@ static event InstallNewCampaign(XComGameState StartState)
 	class'XComGameState_LWAlienActivityManager'.static.CreateAlienActivityManager(StartState);
 	class'XComGameState_WorldRegion_LWStrategyAI'.static.InitializeRegionalAIs(StartState);
 	class'XComGameState_LWOverhaulOptions'.static.CreateModSettingsState_NewCampaign(class'XComGameState_LWOverhaulOptions', StartState);
+	class'XComGameState_LWXTP'.static.CreateXTPState(StartState);
 
 	// Save the second wave options, but only if we've actually started a new
 	// campaign (hence the check for UIShellDifficulty being open).
@@ -4733,3 +4742,66 @@ exec function DumpUnitInfo()
 }
 
 
+static function LevelUpXTP(optional int Ranks = 1)
+{
+	local XComGameState NewGameState;
+	local XComGameState_HeadquartersXCom XComHQ;
+	local XComGameStateHistory History;
+	local XComGameState_Unit UnitState;
+	local int idx, NewRank;
+
+	History = `XCOMHISTORY;
+	XComHQ = XComGameState_HeadquartersXCom(History.GetSingleGameStateObjectForClass(class'XComGameState_HeadquartersXCom'));
+	NewGameState = class'XComGameStateContext_ChangeContainer'.static.CreateChangeState("Rankup Soldiers XTP");
+	XComHQ = XComGameState_HeadquartersXCom(NewGameState.ModifyStateObject(class'XComGameState_HeadquartersXCom', XComHQ.ObjectID));
+
+	if(`XCOMHQ.SoldierUnlockTemplates.Find('XTP4') != -1)
+	{
+		NewRank = 5;
+	}
+	if(`XCOMHQ.SoldierUnlockTemplates.Find('XTP3') != -1)
+	{
+		NewRank = 4;
+	}
+	else if(`XCOMHQ.SoldierUnlockTemplates.Find('XTP2') != -1)
+	{
+		NewRank = 3;
+	}
+	else if(`XCOMHQ.SoldierUnlockTemplates.Find('XTP1') != -1)
+	{
+		NewRank = 2;
+	}
+	else
+	{
+		NewRank = 1;
+	}
+	
+	for(idx = 0; idx < XComHQ.Crew.Length; idx++)
+	{
+		UnitState = XComGameState_Unit(History.GetGameStateForObjectID(XComHQ.Crew[idx].ObjectID));
+
+		if(UnitState != none && UnitState.IsSoldier() && UnitState.GetRank() < NewRank)
+		{
+			UnitState = XComGameState_Unit(NewGameState.ModifyStateObject(class'XComGameState_Unit', UnitState.ObjectID));
+
+			if(NewRank >= class'X2ExperienceConfig'.static.GetMaxRank())
+			{
+				NewRank = (class'X2ExperienceConfig'.static.GetMaxRank());
+			}
+
+
+
+			UnitState.StartingRank = NewRank;
+			UnitState.SetXPForRank(NewRank);
+		}
+	}
+
+	if( NewGameState.GetNumGameStateObjects() > 0 )
+	{
+		`XCOMGAME.GameRuleset.SubmitGameState(NewGameState);
+	}
+	else
+	{
+		History.CleanupPendingGameState(NewGameState);
+	}
+}

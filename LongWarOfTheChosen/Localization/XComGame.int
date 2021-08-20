@@ -3722,6 +3722,27 @@ Summary="The Reinforced Underlay project will provide and additional ablative po
 DisplayName="Reinforced Underlay II"
 Summary="The Reinforced Underlay II project will provide yet another ablative point to all of our armors."
 
+[VultureProject X2TechTemplate]
+DisplayName="Vulture"
+Summary="Knowledge on alien encryption Should allow us to comprehend more alien technology. Enemies will often drop an additional item with every timed loot drop."
+
+[WetWorkProject X2TechTemplate]
+DisplayName="Wet Work"
+Summary="New Knowledge on alien units will allow our soldier to gain +100 XP on kills"
+
+[StayWithMeUnlock X2TechTemplate]
+DisplayName="Stay With Me"
+Summary="The Newfound horrific knowledge of chryssalids reinforced out Soldier's will to stay alive at all costs. Soldiers will be more likely to bleed out than to die outright."
+
+[IntegratedWarfareUnlock X2TechTemplate]
+DisplayName="Integrated Warfare"
+Summary="PCS bonuses are significantly improved."
+
+[VengeanceUnlock X2TechTemplate]
+DisplayName="Vengeance"
+Summary="The autopsy of the trooper made us remember what they took from us. If a squadmate dies or is critically wounded, gain random tactical bonuses for two turns."
+
+
 [PatrolRoutes X2QuestItemTemplate]
 FriendlyName="Data Cache"
 FriendlyNamePlural="Data Caches"
@@ -6164,6 +6185,22 @@ Summary="Infiltrations for squads of 6 or 7 soldiers will take less time.<br/><b
 [Infiltration2Unlock X2SoldierUnlockTemplate]
 DisplayName="Large Unit Infiltrations"
 Summary="Infiltrations for squads of 8 to 10 soldiers will take less time.<br/><br/>Special Requirement: This upgrade requires an officer of at least Colonel rank to unlock."
+
+[XTP1 X2SoldierUnlockTemplate]
+DisplayName="XCom Training Program"
+Summary="Soldiers Automatically level up to LCPL"
+
+[XTP2 X2SoldierUnlockTemplate]
+DisplayName="XCom Training Program II"
+Summary="Soldiers Automatically level up to CPL"
+
+[XTP3 X2SoldierUnlockTemplate]
+DisplayName="XCom Training Program III"
+Summary="Soldiers Automatically level up to SGT"
+
+[XTP4 X2SoldierUnlockTemplate]
+DisplayName="XCom Training Program IV"
+Summary="Soldiers Automatically level up to SSGT"
 
 [UITodoWidget]
 DescLowScienceScoreText="There are not enough scientists to begin the majority of available research projects. Build, upgrade, or staff a Laboratory to boost a scientists' contribution, or buy a scientist from the Black Market."

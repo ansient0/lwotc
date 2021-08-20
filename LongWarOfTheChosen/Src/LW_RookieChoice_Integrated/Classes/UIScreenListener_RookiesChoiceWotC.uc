@@ -206,7 +206,7 @@ simulated function OnCCButtonCallback(UIButton kButton)
 	local X2SoldierClassTemplateManager SoldierClassManager;
 	local array<Commodity> Commodities;
 	local Commodity ClassComm;
-	local int i, r, iClass;
+	local int i, iClass;
 
 	// CommandersChoice code
 
