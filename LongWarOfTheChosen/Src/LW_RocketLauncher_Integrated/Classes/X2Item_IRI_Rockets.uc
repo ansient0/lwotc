@@ -65,7 +65,7 @@ static function X2DataTemplate Create_Rocket_Standard()
 
 	`CREATE_X2TEMPLATE(class'X2RocketTemplate', Template, 'IRI_Rocket_Standard');
 
-	Template.strImage = "img:///IRI_RocketLaunchers_LW.UI.Inv_Rocket_Standard";
+	Template.strImage = "img:///IRI_RocketLaunchers.UI.Inv_Rocket_Standard";
 	Template.EquipSound = "StrategyUI_Grenade_Equip";
 	Template.iRange = class'X2Item_DefaultGrenades'.default.FRAGGRENADE_RANGE + 10;
 	Template.iRadius = class'X2Item_DefaultGrenades'.default.FRAGGRENADE_RADIUS + 1;
@@ -85,7 +85,7 @@ static function X2DataTemplate Create_Rocket_Standard()
 
 	Template.MobilityPenalty = 1.0f;
 
-	Template.GameArchetype = "IRI_RocketLaunchers_LW.Archetypes.WP_Rocket_Standard";
+	Template.GameArchetype = "IRI_RocketLaunchers.Archetypes.WP_Rocket_Standard";
 
 	Template.iPhysicsImpulse = 10;
 	Template.StartingItem = true;
@@ -119,7 +119,7 @@ static function X2DataTemplate Create_Rocket_Standard_Pair()
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'IRI_Rocket_Standard_Pair');
 
-	Template.GameArchetype = "IRI_RocketLaunchers_LW.Archetypes.WP_Rocket_Standard";
+	Template.GameArchetype = "IRI_RocketLaunchers.Archetypes.WP_Rocket_Standard";
 	Template.ItemCat = 'cosmetic_rocket';
 	Template.WeaponCat = 'rocket';
 
@@ -133,7 +133,7 @@ static function X2DataTemplate Create_Rocket_Plasma()
 
 	`CREATE_X2TEMPLATE(class'X2RocketTemplate', Template, 'IRI_Rocket_Plasma');
 
-	Template.strImage = "img:///IRI_RocketLaunchers_LW.UI.Inv_Rocket_Plasma";
+	Template.strImage = "img:///IRI_RocketLaunchers.UI.Inv_Rocket_Plasma";
 	Template.EquipSound = "StrategyUI_Grenade_Equip";
 	Template.iRange = class'X2Item_DefaultGrenades'.default.FRAGGRENADE_RANGE + 10;
 	Template.iRadius = class'X2Item_DefaultGrenades'.default.FRAGGRENADE_RADIUS + 2;
@@ -155,7 +155,7 @@ static function X2DataTemplate Create_Rocket_Plasma()
 	Template.MobilityPenalty = 1.0f;
 	//Template.CustomID = 7;
 
-	Template.GameArchetype = "IRI_RocketLaunchers_LW.Archetypes.WP_Rocket_Plasma";
+	Template.GameArchetype = "IRI_RocketLaunchers.Archetypes.WP_Rocket_Plasma";
 
 	Template.iPhysicsImpulse = 10;
 	//Template.StowedLocation = eSlot_None;
@@ -193,7 +193,7 @@ static function X2DataTemplate Create_Rocket_Plasma_Pair()
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'IRI_Rocket_Plasma_Pair');
 	
-	Template.GameArchetype = "IRI_RocketLaunchers_LW.Archetypes.WP_Rocket_Plasma";
+	Template.GameArchetype = "IRI_RocketLaunchers.Archetypes.WP_Rocket_Plasma";
 	Template.ItemCat = 'cosmetic_rocket';
 	Template.WeaponCat = 'rocket';
 
@@ -208,7 +208,7 @@ static function X2DataTemplate Create_Rocket_Elerium()
 
 	`CREATE_X2TEMPLATE(class'X2RocketTemplate', Template, 'IRI_Rocket_Elerium');
 
-	Template.strImage = "img:///IRI_RocketLaunchers_LW.UI.Inv_Rocket_Elerium";
+	Template.strImage = "img:///IRI_RocketLaunchers.UI.Inv_Rocket_Elerium";
 	Template.EquipSound = "StrategyUI_Grenade_Equip";
 	Template.iRange = class'X2Item_DefaultGrenades'.default.FRAGGRENADE_RANGE + 10;
 	Template.iRadius = class'X2Item_DefaultGrenades'.default.FRAGGRENADE_RADIUS + 3;
@@ -230,7 +230,7 @@ static function X2DataTemplate Create_Rocket_Elerium()
 	Template.MobilityPenalty = 1.0f;
 	//Template.CustomID = 8;
 
-	Template.GameArchetype = "IRI_RocketLaunchers_LW.Archetypes.WP_Rocket_Elerium";
+	Template.GameArchetype = "IRI_RocketLaunchers.Archetypes.WP_Rocket_Elerium";
 
 	Template.iPhysicsImpulse = 10;
 	//Template.StowedLocation = eSlot_None;
@@ -267,7 +267,7 @@ static function X2DataTemplate Create_Rocket_Elerium_Pair()
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'IRI_Rocket_Elerium_Pair');
 
-	Template.GameArchetype = "IRI_RocketLaunchers_LW.Archetypes.WP_Rocket_Elerium";
+	Template.GameArchetype = "IRI_RocketLaunchers.Archetypes.WP_Rocket_Elerium";
 	Template.ItemCat = 'cosmetic_rocket';
 	Template.WeaponCat = 'rocket';
 
@@ -282,7 +282,7 @@ static function X2DataTemplate Create_Rocket_Shredder()
 
 	`CREATE_X2TEMPLATE(class'X2RocketTemplate', Template, 'IRI_Rocket_Shredder');
 
-	Template.strImage = "img:///IRI_RocketLaunchers_LW.UI.Inv_Rocket_Shredder";
+	Template.strImage = "img:///IRI_RocketLaunchers.UI.Inv_Rocket_Shredder";
 	Template.EquipSound = "StrategyUI_Grenade_Equip";
 	Template.iRange = class'X2Item_DefaultGrenades'.default.FRAGGRENADE_RANGE + 10;
 	Template.iRadius = class'X2Item_DefaultGrenades'.default.FRAGGRENADE_RADIUS + 1;
@@ -304,7 +304,7 @@ static function X2DataTemplate Create_Rocket_Shredder()
 	Template.MobilityPenalty = 1.0f;
 	//Template.CustomID = 3;
 
-	Template.GameArchetype = "IRI_RocketLaunchers_LW.Archetypes.WP_Rocket_Shredder";
+	Template.GameArchetype = "IRI_RocketLaunchers.Archetypes.WP_Rocket_Shredder";
 
 	Template.iPhysicsImpulse = 10;
 	//Template.StowedLocation = eSlot_None;
@@ -365,7 +365,7 @@ static function X2DataTemplate Create_Rocket_Acid()
 	Template.MobilityPenalty = 1.0f;
 	//Template.CustomID = 3;
 
-	Template.GameArchetype = "IRI_RocketLaunchers_LW.Archetypes.WP_Rocket_Acid";
+	Template.GameArchetype = "IRI_RocketLaunchers.Archetypes.WP_Rocket_Acid";
 
 	Template.iPhysicsImpulse = 10;
 	//Template.StowedLocation = eSlot_None;
@@ -427,7 +427,7 @@ static function X2DataTemplate Create_Rocket_Flechette()
 
 	Template.MobilityPenalty = 1.0f;
 
-	Template.GameArchetype = "IRI_RocketLaunchers_LW.Archetypes.WP_Rocket_Flechette";
+	Template.GameArchetype = "IRI_RocketLaunchers.Archetypes.WP_Rocket_Flechette";
 
 	Template.iPhysicsImpulse = 10;
 	Template.StartingItem = true;
@@ -484,7 +484,7 @@ static function X2DataTemplate Create_Rocket_WhitePh()
 
 	Template.MobilityPenalty = 1.0f;
 
-	Template.GameArchetype = "IRI_RocketLaunchers_LW.Archetypes.WP_Rocket_WhitePh";
+	Template.GameArchetype = "IRI_RocketLaunchers.Archetypes.WP_Rocket_WhitePh";
 
 	Template.iPhysicsImpulse = 10;
 	Template.StartingItem = true;
@@ -551,7 +551,7 @@ static function X2DataTemplate Create_Rocket_Napalm()
 
 	Template.MobilityPenalty = 1.0f;
 
-	Template.GameArchetype = "IRI_RocketLaunchers_LW.Archetypes.WP_Rocket_Napalm";
+	Template.GameArchetype = "IRI_RocketLaunchers.Archetypes.WP_Rocket_Napalm";
 
 	Template.iPhysicsImpulse = 10;
 	Template.StartingItem = true;
@@ -604,7 +604,7 @@ static function X2DataTemplate Create_Rocket_Thermobaric()
 
 	Template.MobilityPenalty = 1.0f;
 
-	Template.GameArchetype = "IRI_RocketLaunchers_LW.Archetypes.WP_Rocket_Thermobaric";
+	Template.GameArchetype = "IRI_RocketLaunchers.Archetypes.WP_Rocket_Thermobaric";
 
 	Template.iPhysicsImpulse = 10;
 	Template.StartingItem = true;
@@ -656,7 +656,7 @@ static function X2DataTemplate Create_Rocket_Concussive()
 	Template.MobilityPenalty = 1.0f;
 	//Template.CustomID = 7;
 
-	Template.GameArchetype = "IRI_RocketLaunchers_LW.Archetypes.WP_Rocket_Concussive";
+	Template.GameArchetype = "IRI_RocketLaunchers.Archetypes.WP_Rocket_Concussive";
 
 	Template.iPhysicsImpulse = 10;
 	//Template.StowedLocation = eSlot_None;
@@ -719,7 +719,7 @@ static function X2DataTemplate Create_Rocket_Cryo()
 
 	Template.MobilityPenalty = 1.0f;
 
-	Template.GameArchetype = "IRI_RocketLaunchers_LW.Archetypes.WP_Rocket_Cryo";
+	Template.GameArchetype = "IRI_RocketLaunchers.Archetypes.WP_Rocket_Cryo";
 
 	Template.iPhysicsImpulse = 10;
 	Template.StartingItem = true;
@@ -752,7 +752,7 @@ static function X2DataTemplate Create_Rocket_Lockon()
 
 	`CREATE_X2TEMPLATE(class'X2RocketTemplate', Template, 'IRI_Rocket_Lockon');
 
-	Template.strImage = "img:///IRI_RocketLaunchers_LW.UI.Inv_Rocket_Lockon";
+	Template.strImage = "img:///IRI_RocketLaunchers.UI.Inv_Rocket_Lockon";
 	Template.EquipSound = "StrategyUI_Grenade_Equip";
 	Template.iRange = class'X2Item_DefaultGrenades'.default.FRAGGRENADE_RANGE + 10;
 	Template.iRadius = class'X2Item_DefaultGrenades'.default.FRAGGRENADE_RADIUS;
@@ -773,7 +773,7 @@ static function X2DataTemplate Create_Rocket_Lockon()
 
 	Template.MobilityPenalty = 1.0f;
 
-	Template.GameArchetype = "IRI_RocketLaunchers_LW.Archetypes.WP_Rocket_Lockon";
+	Template.GameArchetype = "IRI_RocketLaunchers.Archetypes.WP_Rocket_Lockon";
 
 	Template.iPhysicsImpulse = 10;
 	Template.StartingItem = true;
@@ -834,7 +834,7 @@ static function X2DataTemplate Create_Rocket_Javelin()
 
 	Template.MobilityPenalty = 1.0f;
 
-	Template.GameArchetype = "IRI_RocketLaunchers_LW.Archetypes.WP_Rocket_Javelin";
+	Template.GameArchetype = "IRI_RocketLaunchers.Archetypes.WP_Rocket_Javelin";
 
 	Template.iPhysicsImpulse = 10;
 	Template.StartingItem = true;
@@ -887,7 +887,7 @@ static function X2DataTemplate Create_Rocket_APFSDS()
 
 	Template.MobilityPenalty = 1.0f;
 
-	Template.GameArchetype = "IRI_RocketLaunchers_LW.Archetypes.WP_Rocket_APFSDS";
+	Template.GameArchetype = "IRI_RocketLaunchers.Archetypes.WP_Rocket_APFSDS";
 
 	Template.iPhysicsImpulse = 10;
 	Template.StartingItem = true;
@@ -919,7 +919,7 @@ static function X2DataTemplate Create_Rocket_PlasmaEjector()
 
 	`CREATE_X2TEMPLATE(class'X2RocketTemplate', Template, 'IRI_Rocket_PlasmaEjector');
 
-	Template.strImage = "img:///IRI_RocketLaunchers_LW.UI.Inv_Plasma_Ejector";
+	Template.strImage = "img:///IRI_RocketLaunchers.UI.Inv_Plasma_Ejector";
 	Template.EquipSound = "StrategyUI_Grenade_Equip";
 	Template.iRange = class'X2Item_DefaultGrenades'.default.FRAGGRENADE_RANGE + 10;
 	Template.iRadius = 1;
@@ -940,7 +940,7 @@ static function X2DataTemplate Create_Rocket_PlasmaEjector()
 
 	Template.MobilityPenalty = 1.0f;
 
-	Template.GameArchetype = "IRI_RocketLaunchers_LW.Archetypes.WP_Rocket_PlasmaEjector";
+	Template.GameArchetype = "IRI_RocketLaunchers.Archetypes.WP_Rocket_PlasmaEjector";
 
 	Template.iPhysicsImpulse = 10;
 	Template.StartingItem = true;
@@ -994,7 +994,7 @@ static function X2DataTemplate Create_Rocket_BlackHole()
 	Template.MobilityPenalty = 1.0f;
 	//Template.CustomID = 6;
 
-	Template.GameArchetype = "IRI_RocketLaunchers_LW.Archetypes.WP_Rocket_BlackHole";
+	Template.GameArchetype = "IRI_RocketLaunchers.Archetypes.WP_Rocket_BlackHole";
 
 	Template.iPhysicsImpulse = 10;
 	//Template.StowedLocation = eSlot_None;
@@ -1055,7 +1055,7 @@ static function X2DataTemplate Create_Rocket_Nuke()
 	Template.MobilityPenalty = 1.0f;
 	//Template.CustomID = 4;
 
-	Template.GameArchetype = "IRI_RocketLaunchers_LW.Archetypes.WP_Rocket_Nuke";
+	Template.GameArchetype = "IRI_RocketLaunchers.Archetypes.WP_Rocket_Nuke";
 
 	Template.iPhysicsImpulse = 10;
 	//Template.StowedLocation = eSlot_None;

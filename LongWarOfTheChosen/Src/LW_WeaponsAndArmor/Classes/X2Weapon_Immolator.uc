@@ -107,7 +107,7 @@ static function X2DataTemplate CreateTemplate_Immolator_CV()
 	Template.ItemCat = 'weapon';
 	Template.WeaponCat = 'lwchemthrower';
 	Template.WeaponTech = 'conventional';
-	Template.strImage = "img:///IRIClausImmolator_LW.UI.Flamethrower_CV";
+	Template.strImage = "img:///IRIClausImmolator.UI.Flamethrower_CV";
 	Template.EquipSound = "Conventional_Weapon_Equip";
 	Template.Tier = 0;
 
@@ -132,7 +132,7 @@ static function X2DataTemplate CreateTemplate_Immolator_CV()
 	
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
 	
-	Template.GameArchetype ="IRIClausImmolator_LW.Archetypes.WP_Immolator_CV";
+	Template.GameArchetype ="IRIClausImmolator.Archetypes.WP_Immolator_CV_Arsenal";
 	Template.bMergeAmmo = true;
 	Template.bCanBeDodged = false;
 
@@ -164,7 +164,7 @@ static function X2DataTemplate CreateTemplate_Immolator_MG()
 	Template.ItemCat = 'weapon';
 	Template.WeaponCat = 'lwchemthrower';
 	Template.WeaponTech = 'magnetic';
-	Template.strImage = "img:///IRIClausImmolator_LW.UI.Flamethrower_MG";
+	Template.strImage = "img:///IRIClausImmolator.UI.Flamethrower_MG";
 	Template.EquipSound = "Magnetic_Weapon_Equip";
 	Template.Tier=3;
 
@@ -189,7 +189,7 @@ static function X2DataTemplate CreateTemplate_Immolator_MG()
 
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
 	
-	Template.GameArchetype = "IRIClausImmolator_LW.Archetypes.WP_Immolator_MG";
+	Template.GameArchetype = "IRIClausImmolator.Archetypes.WP_Immolator_MG_Arsenal";
 	Template.bMergeAmmo = true;
 	Template.bCanBeDodged = false;
 
@@ -223,7 +223,7 @@ static function X2DataTemplate CreateTemplate_Immolator_BM()
 	Template.ItemCat = 'weapon';
 	Template.WeaponCat = 'lwchemthrower';
 	Template.WeaponTech = 'beam';
-	Template.strImage = "img:///IRIClausImmolator_LW.UI.Flamethrower_BM";
+	Template.strImage = "img:///IRIClausImmolator.UI.Flamethrower_BM";
 	Template.EquipSound = "Beam_Weapon_Equip";
 	Template.Tier = 5;
 
@@ -248,7 +248,7 @@ static function X2DataTemplate CreateTemplate_Immolator_BM()
 
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
 	
-	Template.GameArchetype = "IRIClausImmolator_LW.Archetypes.WP_Immolator_BM";
+	Template.GameArchetype = "IRIClausImmolator.Archetypes.WP_Immolator_BM_Arsenal";
 	Template.bMergeAmmo = true;
 	Template.bCanBeDodged = false;
 

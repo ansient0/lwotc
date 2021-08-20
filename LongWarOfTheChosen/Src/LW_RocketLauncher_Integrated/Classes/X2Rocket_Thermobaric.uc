@@ -64,10 +64,10 @@ static function X2DataTemplate Create_Rocket_Main()
 
 	Template.strImage = default.IMAGE;
 
-	Template.AddAbilityIconOverride('IRI_FireRocket', "img:///IRI_RocketLaunchers_LW.UI.Fire_Thermobaric");
-	Template.AddAbilityIconOverride('IRI_FireRocket_Spark', "img:///IRI_RocketLaunchers_LW.UI.Fire_Thermobaric");
-	Template.AddAbilityIconOverride('IRI_GiveRocket', "img:///IRI_RocketLaunchers_LW.UI.Give_Thermobaric");
-	Template.AddAbilityIconOverride('IRI_ArmRocket', "img:///IRI_RocketLaunchers_LW.UI.Arm_Thermobaric");
+	Template.AddAbilityIconOverride('IRI_FireRocket', "img:///IRI_RocketLaunchers.UI.Fire_Thermobaric");
+	Template.AddAbilityIconOverride('IRI_FireRocket_Spark', "img:///IRI_RocketLaunchers.UI.Fire_Thermobaric");
+	Template.AddAbilityIconOverride('IRI_GiveRocket', "img:///IRI_RocketLaunchers.UI.Give_Thermobaric");
+	Template.AddAbilityIconOverride('IRI_ArmRocket', "img:///IRI_RocketLaunchers.UI.Arm_Thermobaric");
 
 	Template.EquipSound = "StrategyUI_Heavy_Weapon_Equip";
 	

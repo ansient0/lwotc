@@ -210,11 +210,11 @@ static function string DLCAppendSockets(XComUnitPawn Pawn)
 		{
 			if (UnitState.kAppearance.iGender == eGender_Male)
 			{
-				return "IRI_RocketLaunchers_LW.Meshes.SM_MaleSockets";
+				return "IRI_RocketLaunchers.Meshes.SM_MaleSockets";
 			}
 			else
 			{
-				return "IRI_RocketLaunchers_LW.Meshes.SM_FemaleSockets";
+				return "IRI_RocketLaunchers.Meshes.SM_FemaleSockets";
 			}
 		}
 	}
@@ -448,7 +448,7 @@ static event OnPostTemplatesCreated()
 			}
 			else
 			{
-				CharTemplate.AdditionalAnimSets.AddItem(AnimSet(`CONTENT.RequestGameArchetype("IRI_RocketLaunchers_LW.Anims.AS_TakeRocket")));
+				CharTemplate.AdditionalAnimSets.AddItem(AnimSet(`CONTENT.RequestGameArchetype("IRI_RocketLaunchers.Anims.AS_TakeRocket")));
 			}
 		}
 	}

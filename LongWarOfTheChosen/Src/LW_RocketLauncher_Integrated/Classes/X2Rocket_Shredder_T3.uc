@@ -59,10 +59,10 @@ static function X2DataTemplate Create_Rocket_Main()
 	
 	`CREATE_X2TEMPLATE(class'X2RocketTemplate', Template, default.TemplateName);
 
-	Template.AddAbilityIconOverride('IRI_FireRocket', "img:///IRI_RocketLaunchers_LW.UI.Fire_Shredder");
-	Template.AddAbilityIconOverride('IRI_FireRocket_Spark', "img:///IRI_RocketLaunchers_LW.UI.Fire_Shredder");
-	Template.AddAbilityIconOverride('IRI_GiveRocket', "img:///IRI_RocketLaunchers_LW.UI.Give_Shredder");
-	Template.AddAbilityIconOverride('IRI_ArmRocket', "img:///IRI_RocketLaunchers_LW.UI.Arm_Shredder");
+	Template.AddAbilityIconOverride('IRI_FireRocket', "img:///IRI_RocketLaunchers.UI.Fire_Shredder");
+	Template.AddAbilityIconOverride('IRI_FireRocket_Spark', "img:///IRI_RocketLaunchers.UI.Fire_Shredder");
+	Template.AddAbilityIconOverride('IRI_GiveRocket', "img:///IRI_RocketLaunchers.UI.Give_Shredder");
+	Template.AddAbilityIconOverride('IRI_ArmRocket', "img:///IRI_RocketLaunchers.UI.Arm_Shredder");
 	
 	Template.strImage = default.IMAGE;
 	Template.EquipSound = "StrategyUI_Heavy_Weapon_Equip";
@@ -123,7 +123,7 @@ static function X2DataTemplate Create_Rocket_Main()
 	Shredded = new class'X2Effect_IRI_Shredded';
 	Shredded.BuildPersistentEffect(1, true);
 	Shredded.DamageMultiplier = default.DAMAGE_MULTIPLIER;
-	Shredded.SetDisplayInfo(ePerkBuff_Penalty, class'X2Rocket_Shredder'.default.ShredderEffectLocName, class'X2Rocket_Shredder'.default.ShredderEffectLocDescription, "img:///IRI_RocketLaunchers_LW.UI.Perk_Shredded", true, "img:///IRI_RocketLaunchers_LW.UI.Status_Shredded");
+	Shredded.SetDisplayInfo(ePerkBuff_Penalty, class'X2Rocket_Shredder'.default.ShredderEffectLocName, class'X2Rocket_Shredder'.default.ShredderEffectLocDescription, "img:///IRI_RocketLaunchers.UI.Perk_Shredded", true, "img:///IRI_RocketLaunchers.UI.Status_Shredded");
 	Template.ThrownGrenadeEffects.AddItem(Shredded);
 
 	Template.OnThrowBarkSoundCue = 'RocketLauncher';

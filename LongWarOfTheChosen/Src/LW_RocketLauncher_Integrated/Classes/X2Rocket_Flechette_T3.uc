@@ -63,10 +63,10 @@ static function X2DataTemplate Create_Rocket_Main()
 	
 	`CREATE_X2TEMPLATE(class'X2RocketTemplate', Template, default.TemplateName);
 
-	Template.AddAbilityIconOverride('IRI_FireRocket', "img:///IRI_RocketLaunchers_LW.UI.Fire_Flechette");
-	Template.AddAbilityIconOverride('IRI_FireRocket_Spark', "img:///IRI_RocketLaunchers_LW.UI.Fire_Flechette");
-	Template.AddAbilityIconOverride('IRI_GiveRocket', "img:///IRI_RocketLaunchers_LW.UI.Give_Flechette");
-	Template.AddAbilityIconOverride('IRI_ArmRocket', "img:///IRI_RocketLaunchers_LW.UI.Arm_Flechette");
+	Template.AddAbilityIconOverride('IRI_FireRocket', "img:///IRI_RocketLaunchers.UI.Fire_Flechette");
+	Template.AddAbilityIconOverride('IRI_FireRocket_Spark', "img:///IRI_RocketLaunchers.UI.Fire_Flechette");
+	Template.AddAbilityIconOverride('IRI_GiveRocket', "img:///IRI_RocketLaunchers.UI.Give_Flechette");
+	Template.AddAbilityIconOverride('IRI_ArmRocket', "img:///IRI_RocketLaunchers.UI.Arm_Flechette");
 
 	Template.strImage = default.IMAGE;
 	Template.EquipSound = "StrategyUI_Heavy_Weapon_Equip";
@@ -125,7 +125,7 @@ static function X2DataTemplate Create_Rocket_Main()
 	Template.ThrownGrenadeEffects.AddItem(WeaponDamageEffect);
 	/*
 	WorldEffect = new class'X2Effect_ApplySpikesToWorld';
-	WorldEffect.PoisonParticleSystemFill_Name = "IRI_RocketLaunchers_LW.PFX.PS_Spikes_World_Persistent";
+	WorldEffect.PoisonParticleSystemFill_Name = "IRI_RocketLaunchers.PFX.PS_Spikes_World_Persistent";
 	WorldEffect.Duration = 99;
 	WorldEffect.bCenterTile = true;	//	applies to Z axis as well.
 	Template.ThrownGrenadeEffects.AddItem(WorldEffect);*/

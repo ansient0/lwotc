@@ -68,6 +68,8 @@ static function X2AbilityTemplate AddDefiladeAbility()
     MultiTargetProperty.ExcludePanicked = true;
 	MultiTargetProperty.ExcludeRobotic = true;
 	MultiTargetProperty.ExcludeStunned = true;
+	MultiTargetProperty.TreatMindControlledSquadmateAsHostile = true;
+	MultiTargetProperty.ExcludeUnrevealedAI = true;
 	Template.AbilityMultiTargetConditions.AddItem(MultiTargetProperty);
 
 	Template.AbilityTargetStyle = default.SelfTarget;

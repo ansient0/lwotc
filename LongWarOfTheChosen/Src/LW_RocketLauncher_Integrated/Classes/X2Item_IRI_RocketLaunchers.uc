@@ -72,7 +72,7 @@ static function X2GrenadeLauncherTemplate Create_IRI_RocketLauncher_CV()
 	`CREATE_X2TEMPLATE(class'X2GrenadeLauncherTemplate', Template, 'IRI_RocketLauncher_CV');
 
 	Template.WeaponCat = 'iri_rocket_launcher';
-	Template.strImage = "img:///IRI_RocketLaunchers_LW.UI.Inv_Rocket_Launcher_CV";
+	Template.strImage = "img:///IRI_RocketLaunchers.UI.Inv_Rocket_Launcher_CV";
 	Template.EquipSound = "Secondary_Weapon_Equip_Conventional";
 
 	Template.TradingPostValue = class'X2Item_DefaultGrenades'.default.GRENADELAUNCHER_TRADINGPOSTVALUE;
@@ -85,7 +85,7 @@ static function X2GrenadeLauncherTemplate Create_IRI_RocketLauncher_CV()
 
 	Template.IncreaseGrenadeRange = 0;
 
-	Template.GameArchetype = "IRI_RocketLaunchers_LW.Archetypes.WP_RocketLauncher_CV";
+	Template.GameArchetype = "IRI_RocketLaunchers.Archetypes.WP_RocketLauncher_CV";
 
 	Template.CanBeBuilt = false;
 	Template.StartingItem = true;
@@ -122,7 +122,7 @@ static function X2GrenadeLauncherTemplate Create_IRI_RocketLauncher_MG()
 	`CREATE_X2TEMPLATE(class'X2GrenadeLauncherTemplate', Template, 'IRI_RocketLauncher_MG');
 
 	Template.WeaponCat = 'iri_rocket_launcher';
-	Template.strImage = "img:///IRI_RocketLaunchers_LW.UI.Inv_Rocket_Launcher_MG";
+	Template.strImage = "img:///IRI_RocketLaunchers.UI.Inv_Rocket_Launcher_MG";
 	Template.EquipSound = "Secondary_Weapon_Equip_Conventional";
 
 	Template.TradingPostValue = class'X2Item_DefaultGrenades'.default.GRENADELAUNCHER_TRADINGPOSTVALUE;
@@ -137,7 +137,7 @@ static function X2GrenadeLauncherTemplate Create_IRI_RocketLauncher_MG()
 
 	Template.IncreaseGrenadeRange = default.MG_RL_BONUS_ROCKET_RANGE_TILES;
 
-	Template.GameArchetype = "IRI_RocketLaunchers_LW.Archetypes.WP_RocketLauncher_MG";
+	Template.GameArchetype = "IRI_RocketLaunchers.Archetypes.WP_RocketLauncher_MG";
 
 	Template.CreatorTemplateName = 'IRI_RocketLauncher_MG_Schematic';
 	Template.BaseItem = 'IRI_RocketLauncher_CV';
@@ -167,7 +167,7 @@ static function X2GrenadeLauncherTemplate Create_IRI_RocketLauncher_BM()
 	`CREATE_X2TEMPLATE(class'X2GrenadeLauncherTemplate', Template, 'IRI_RocketLauncher_BM');
 
 	Template.WeaponCat = 'iri_rocket_launcher';
-	Template.strImage = "img:///IRI_RocketLaunchers_LW.UI.Inv_Rocket_Launcher_BM";
+	Template.strImage = "img:///IRI_RocketLaunchers.UI.Inv_Rocket_Launcher_BM";
 	Template.EquipSound = "Secondary_Weapon_Equip_Conventional";
 
 	//Template.iSoundRange = class'X2Item_DefaultGrenades'.default.GRENADELAUNCHER_ISOUNDRANGE;
@@ -185,7 +185,7 @@ static function X2GrenadeLauncherTemplate Create_IRI_RocketLauncher_BM()
 
 	Template.IncreaseGrenadeRange = default.BM_RL_BONUS_ROCKET_RANGE_TILES;
 
-	Template.GameArchetype = "IRI_RocketLaunchers_LW.Archetypes.WP_RocketLauncher_BM";
+	Template.GameArchetype = "IRI_RocketLaunchers.Archetypes.WP_RocketLauncher_BM";
 
 	Template.CreatorTemplateName = 'IRI_RocketLauncher_BM_Schematic';
 	Template.BaseItem = 'IRI_RocketLauncher_MG';
@@ -222,7 +222,7 @@ static function X2DataTemplate Create_IRI_RocketLauncher_MG_Schematic()
 	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'IRI_RocketLauncher_MG_Schematic');
 
 	Template.ItemCat = 'weapon';
-	Template.strImage = "img:///IRI_RocketLaunchers_LW.UI.Inv_Rocket_Launcher_MG";
+	Template.strImage = "img:///IRI_RocketLaunchers.UI.Inv_Rocket_Launcher_MG";
 	Template.PointsToComplete = 0;
 	Template.Tier = 2;
 	Template.OnBuiltFn = class'X2Item_DefaultSchematics'.static.UpgradeItems;
@@ -261,7 +261,7 @@ static function X2DataTemplate Create_IRI_RocketLauncher_BM_Schematic()
 	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'IRI_RocketLauncher_BM_Schematic');
 
 	Template.ItemCat = 'weapon';
-	Template.strImage = "img:///IRI_RocketLaunchers_LW.UI.Inv_Rocket_Launcher_BM";
+	Template.strImage = "img:///IRI_RocketLaunchers.UI.Inv_Rocket_Launcher_BM";
 	Template.PointsToComplete = 0;
 	Template.Tier = 4;
 	Template.OnBuiltFn = class'X2Item_DefaultSchematics'.static.UpgradeItems;
@@ -316,7 +316,7 @@ static function X2WeaponTemplate Create_IRI_RocketLauncher()
 
 	Template.Abilities.AddItem('IRI_FireRocket');
 
-	Template.GameArchetype = "IRI_RocketLaunchers_LW.Archetypes.WP_RocketLauncher_CV";
+	Template.GameArchetype = "IRI_RocketLaunchers.Archetypes.WP_RocketLauncher_CV";
 	
 	Template.StartingItem = true;
 	Template.CanBeBuilt = false;
@@ -351,13 +351,13 @@ static function X2WeaponTemplate Create_IRI_RocketLauncher()
 	
 	Template.InventorySlot = eInvSlot_SecondaryWeapon;
 	Template.StowedLocation = eSlot_RightBack;
-	Template.GameArchetype = "IRI_RocketLaunchers_LW.Archetypes.WP_RocketLauncher_CV";
+	Template.GameArchetype = "IRI_RocketLaunchers.Archetypes.WP_RocketLauncher_CV";
 	//Template.GameArchetype = "WP_Heavy_RocketLauncher.WP_Heavy_RocketLauncher";
 
 	//Template.bMergeAmmo = true;
 	Template.DamageTypeTemplateName = 'Explosion';
 
-	Template.AddDefaultAttachment('Scope',"IRI_RocketLaunchers_LW.Meshes.SM_RocketLauncher_IronSights");
+	Template.AddDefaultAttachment('Scope',"IRI_RocketLaunchers.Meshes.SM_RocketLauncher_IronSights");
 	//Template.AddDefaultAttachment('Mag', "BeamCannon.Meshes.SM_BeamCannon_MagA", , "img:///UILibrary_Common.UI_BeamCannon.BeamCannon_MagA");
 	//Template.Abilities.AddItem('IRI_FireRocket');
 	//Template.Abilities.AddItem('RocketFuse');

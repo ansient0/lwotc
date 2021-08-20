@@ -70,10 +70,10 @@ static function X2DataTemplate Create_Rocket_Main()
 	
 	`CREATE_X2TEMPLATE(class'X2RocketTemplate', Template, default.TemplateName);
 
-	Template.AddAbilityIconOverride('IRI_FireRocket', "img:///IRI_RocketLaunchers_LW.UI.Fire_Phosphorous");
-	Template.AddAbilityIconOverride('IRI_FireRocket_Spark', "img:///IRI_RocketLaunchers_LW.UI.Fire_Phosphorous");
-	Template.AddAbilityIconOverride('IRI_GiveRocket', "img:///IRI_RocketLaunchers_LW.UI.Give_Phosphorous");
-	Template.AddAbilityIconOverride('IRI_ArmRocket', "img:///IRI_RocketLaunchers_LW.UI.Arm_Phosphorous");
+	Template.AddAbilityIconOverride('IRI_FireRocket', "img:///IRI_RocketLaunchers.UI.Fire_Phosphorous");
+	Template.AddAbilityIconOverride('IRI_FireRocket_Spark', "img:///IRI_RocketLaunchers.UI.Fire_Phosphorous");
+	Template.AddAbilityIconOverride('IRI_GiveRocket', "img:///IRI_RocketLaunchers.UI.Give_Phosphorous");
+	Template.AddAbilityIconOverride('IRI_ArmRocket', "img:///IRI_RocketLaunchers.UI.Arm_Phosphorous");
 
 	Template.strImage = default.IMAGE;
 	Template.EquipSound = "StrategyUI_Heavy_Weapon_Equip";
@@ -138,7 +138,7 @@ static function X2DataTemplate Create_Rocket_Main()
 	//	Poison World Effect
 	
 	PoisonEffect = new class'X2Effect_ApplyPoisonToWorld';
-	PoisonEffect.PoisonParticleSystemFill_Name = "IRI_RocketLaunchers_LW.PFX.Phosphorous_World_Persistent";
+	PoisonEffect.PoisonParticleSystemFill_Name = "IRI_RocketLaunchers.PFX.Phosphorous_World_Persistent";
 	Template.ThrownGrenadeEffects.AddItem(PoisonEffect);
 
 	//	Poison Unit Effect

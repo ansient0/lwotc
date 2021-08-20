@@ -60,6 +60,6 @@ event array<ParticleSystem> GetParticleSystem_Fill()
 {
 	local array<ParticleSystem> ParticleSystems;
 	ParticleSystems.AddItem(none);
-	ParticleSystems.AddItem(ParticleSystem(DynamicLoadObject("IRI_RocketLaunchers_LW.PFX.PS_Ground_Wildfire", class'ParticleSystem')));
+	ParticleSystems.AddItem(ParticleSystem(DynamicLoadObject("IRI_RocketLaunchers.PFX.PS_Ground_Wildfire", class'ParticleSystem')));
 	return ParticleSystems;
 }//class'X2Effect_ApplyFireToWorld'.default.FireParticleSystemFill_Name

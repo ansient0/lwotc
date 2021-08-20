@@ -108,7 +108,7 @@ simulated function AddX2ActionsForVisualization(XComGameState VisualizeGameState
 	RocketTemplate = X2RocketTemplate(ItemState.GetMyTemplate());
 
 	PlayParticleEffectAction = X2Action_PlayEffect(class'X2Action_PlayEffect'.static.AddToVisualizationTree(ActionMetadata, Context, false, ActionMetadata.LastActionAdded));
-	PlayParticleEffectAction.EffectName = "IRI_RocketLaunchers_LW.PFX.Armed_Rocket_Blinking";
+	PlayParticleEffectAction.EffectName = "IRI_RocketLaunchers.PFX.Armed_Rocket_Blinking";
 	PlayParticleEffectAction.AttachToSocketName = 'RocketClip1';
 	PlayParticleEffectAction.AttachToUnit = true;
 	PlayParticleEffectAction.bStopEffect = true;

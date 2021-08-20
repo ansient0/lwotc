@@ -230,7 +230,7 @@ static function X2AbilityTemplate Create_IRI_FireLockon(optional name TemplateNa
 	Template.bDisplayInUITacticalText = true;
 	Template.bUseThrownGrenadeEffects = false;	//	doing this to allow for different localization between the three "fire lockon" abilities
 
-	Template.IconImage = "img:///IRI_RocketLaunchers_LW.UI.Fire_Lockon_Top";
+	Template.IconImage = "img:///IRI_RocketLaunchers.UI.Fire_Lockon_Top";
 
 	Template.TargetingMethod = class'X2TargetingMethod_TopDown';
 	
@@ -367,7 +367,7 @@ static function X2AbilityTemplate Create_IRI_LockAndFireLockon(optional name Tem
 
 	Template = Setup_DirectLockonShot(TemplateName, bSpark);
 
-	Template.IconImage = "img:///IRI_RocketLaunchers_LW.UI.Fire_Lockon_Horiz_Holo";
+	Template.IconImage = "img:///IRI_RocketLaunchers.UI.Fire_Lockon_Horiz_Holo";
 
 	Template.AbilityTargetConditions.AddItem(default.GameplayVisibilityCondition);	//	only enemies in Line of Sight
 	
@@ -399,7 +399,7 @@ static function X2AbilityTemplate Create_IRI_LockAndFireLockon_Holo(optional nam
 
 	Template = Setup_DirectLockonShot(TemplateName, bSpark);
 
-	Template.IconImage = "img:///IRI_RocketLaunchers_LW.UI.Fire_Lockon_Horiz";
+	Template.IconImage = "img:///IRI_RocketLaunchers.UI.Fire_Lockon_Horiz";
 
 	Template.AbilityTargetConditions.AddItem(default.LivingHostileTargetProperty);
 	Template.AbilityTargetConditions.AddItem(new class'X2Condition_IRI_HoloTarget');	//	only holotargeted enemies
@@ -455,7 +455,7 @@ static function X2AbilityTemplate EjectPlasma(optional name TemplateName = 'IRI_
 
 	Template = class'X2Ability_HeavyWeapons'.static.PlasmaBlaster(TemplateName);
 
-	//Template.IconImage = "img:///IRI_RocketLaunchers_LW.UI.Fire_Plasma_Ejector";//doesn't work for some reason
+	//Template.IconImage = "img:///IRI_RocketLaunchers.UI.Fire_Plasma_Ejector";//doesn't work for some reason
 
 	Template.AbilityShooterConditions.AddItem(new class'X2Condition_RocketTechLevel');
 	
@@ -542,7 +542,7 @@ static function X2AbilityTemplate Create_IRI_FireSabot(optional name TemplateNam
 	`CREATE_X2ABILITY_TEMPLATE(Template, TemplateName);
 
 	// Icon Properties
-	Template.IconImage = "img:///IRI_RocketLaunchers_LW.UI.Fire_Sabot2";
+	Template.IconImage = "img:///IRI_RocketLaunchers.UI.Fire_Sabot2";
 	Template.AbilitySourceName = 'eAbilitySource_Item';
 	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_HideSpecificErrors;
 	Template.HideErrors.AddItem('AA_WeaponIncompatible');
@@ -847,7 +847,7 @@ static function X2AbilityTemplate Create_IRI_ArmRocket(name TemplateName, option
 
 	`CREATE_X2ABILITY_TEMPLATE(Template, TemplateName);
 
-	Template.IconImage = "img:///IRI_RocketLaunchers_LW.UI.Arm_Rocket";
+	Template.IconImage = "img:///IRI_RocketLaunchers.UI.Arm_Rocket";
 	Template.AbilitySourceName = 'eAbilitySource_Item';
 	Template.Hostility = eHostility_Neutral;
 	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_HideSpecificErrors;
@@ -1151,7 +1151,7 @@ static function X2AbilityTemplate Create_IRI_GiveRocket(name TemplateName, optio
 	`CREATE_X2ABILITY_TEMPLATE(Template, TemplateName);
 
 	// Boilerplate setup
-	Template.IconImage = "img:///IRI_RocketLaunchers_LW.UI.give_rocket";
+	Template.IconImage = "img:///IRI_RocketLaunchers.UI.give_rocket";
 	Template.AbilitySourceName = 'eAbilitySource_Perk';
 	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_ShowIfAvailable;
 	Template.ShotHUDPriority = class'UIUtilities_Tactical'.const.STANDARD_GRENADE_PRIORITY - 2;
@@ -1356,7 +1356,7 @@ static function X2AbilityTemplate Create_IRI_DisarmRocket()
 
 	`CREATE_X2ABILITY_TEMPLATE(Template, 'IRI_DisarmRocket');
 
-	Template.IconImage = "img:///IRI_RocketLaunchers_LW.UI.Arm_Rocket";
+	Template.IconImage = "img:///IRI_RocketLaunchers.UI.Arm_Rocket";
 	Template.Hostility = eHostility_Neutral;
 	SetHidden(Template);
 

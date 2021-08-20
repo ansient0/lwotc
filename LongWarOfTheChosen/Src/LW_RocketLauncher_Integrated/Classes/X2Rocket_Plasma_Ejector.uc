@@ -58,10 +58,10 @@ static function X2DataTemplate Create_Rocket_Main()
 	
 	`CREATE_X2TEMPLATE(class'X2RocketTemplate', Template, 'IRI_X2Rocket_Plasma_Ejector');
 
-	Template.AddAbilityIconOverride('IRI_Fire_PlasmaEjector', "img:///IRI_RocketLaunchers_LW.UI.Fire_Plasma_Ejector");
-	Template.AddAbilityIconOverride('IRI_Fire_PlasmaEjector_Spark', "img:///IRI_RocketLaunchers_LW.UI.Fire_Plasma_Ejector");
-	Template.AddAbilityIconOverride('IRI_GiveRocket', "img:///IRI_RocketLaunchers_LW.UI.Give_Plasma_Ejector");
-	Template.AddAbilityIconOverride('IRI_ArmRocket', "img:///IRI_RocketLaunchers_LW.UI.Arm_Plasma_Ejector");
+	Template.AddAbilityIconOverride('IRI_Fire_PlasmaEjector', "img:///IRI_RocketLaunchers.UI.Fire_Plasma_Ejector");
+	Template.AddAbilityIconOverride('IRI_Fire_PlasmaEjector_Spark', "img:///IRI_RocketLaunchers.UI.Fire_Plasma_Ejector");
+	Template.AddAbilityIconOverride('IRI_GiveRocket', "img:///IRI_RocketLaunchers.UI.Give_Plasma_Ejector");
+	Template.AddAbilityIconOverride('IRI_ArmRocket', "img:///IRI_RocketLaunchers.UI.Arm_Plasma_Ejector");
 
 	Template.strImage = default.IMAGE;
 	Template.EquipSound = "StrategyUI_Heavy_Weapon_Equip";

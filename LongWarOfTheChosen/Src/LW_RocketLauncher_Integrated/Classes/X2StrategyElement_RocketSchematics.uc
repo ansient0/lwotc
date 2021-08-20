@@ -55,7 +55,7 @@ static function X2DataTemplate Create_Experimental_Rocket_Tech()
 	`CREATE_X2TEMPLATE(class'X2TechTemplate', Template, 'IRI_ExperimentalRocket');
 
 	Template.PointsToComplete = class'X2StrategyElement_DefaultTechs'.static.StafferXDays(1, default.EXPERIMENTAL_ROCKET_BUILD_TIME_DAYS);
-	Template.strImage = "img:///IRI_RocketLaunchers_LW.UI.PG_Experimental_Rocket";
+	Template.strImage = "img:///IRI_RocketLaunchers.UI.PG_Experimental_Rocket";
 	Template.SortingTier = 2;
 	
 	// Created Item
@@ -99,7 +99,7 @@ static function X2DataTemplate Create_Powered_Rocket_Tech()
 	`CREATE_X2TEMPLATE(class'X2TechTemplate', Template, 'IRI_PoweredRocket');
 
 	Template.PointsToComplete = class'X2StrategyElement_DefaultTechs'.static.StafferXDays(1, default.POWERED_ROCKET_BUILD_TIME_DAYS);
-	Template.strImage = "img:///IRI_RocketLaunchers_LW.UI.PG_POWERED_Rocket";
+	Template.strImage = "img:///IRI_RocketLaunchers.UI.PG_POWERED_Rocket";
 	Template.SortingTier = 2;
 	
 	// Created Item
