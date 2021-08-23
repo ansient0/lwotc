@@ -374,10 +374,10 @@ LocPromotionPopupText="<Bullet/> All non-damaging grenades except Ghost Grenades
 
 [HeavyOrdnance_LW X2AbilityTemplate]
 LocFriendlyName="Heavy Ordnance"
-LocLongDescription="Any damaging grenade in your grenade-only slot gains a bonus use."
-LocHelpText="Any damaging grenade in your grenade-only slot gains a bonus use."
+LocLongDescription="Gain +1 ammo to your primary weapon, and a grenade-only slot."
+LocHelpText="Gain +1 ammo to your primary weapon, and a grenade-only slot."
 LocFlyOverText="Heavy Ordnance"
-LocPromotionPopupText="<Bullet/> All damaging grenades are viable for Heavy Ordnance.<br/>"
+LocPromotionPopupText="Gain +1 ammo to your primary weapon, and a grenade-only slot."
 
 [Sapper X2AbilityTemplate]
 LocFriendlyName="Sapper"
@@ -451,7 +451,7 @@ LocFlyOverText="Ghost Grenade"
 
 [BiggestBooms_LW X2AbilityTemplate]
 LocFriendlyName="Biggest Booms"
-LocLongDescription="Your grenades and standard rockets can inflict critical damage (<Ability:BIGGESTBOOMSCHANCE/>% chance for +<Ability:BIGGESTBOOMSDAMAGE/> damage)."
+LocLongDescription="Your Explosives have a <Ability:BIGGESTBOOMSCHANCE/>% chance to crit and deal double damage."
 LocHelpText="Your grenades, standard rockets and micromissiles can inflict critical damage."
 LocFlyOverText="Biggest Booms"
 ; LWOTC Needs Translation
@@ -469,20 +469,20 @@ LocPromotionPopupText="<Bullet/> Knife attacks use one action and do not end you
 
 [Combatives X2AbilityTemplate]
 LocFriendlyName="Combatives"
-LocLongDescription="You may parry melee attacks and counterattack with your melee weapon. Also gain +<ABILITY:COMBATIVES_DODGE_LW/> dodge."
-LocHelpText="You may parry melee attacks and counterattack with your melee weapon."
+LocLongDescription="You may sometimes parry melee attacks and counterattack with your melee weapon. Also your melee attack gain <Ability:CUTTHROAT_BONUS_CRIT_CHANCE/> bonus critical chance."
+LocHelpText="You may sometimes parry melee attacks and counterattack with your melee weapon."
 LocFlyOverText="Combatives"
 ; LWOTC needs translation
-LocPromotionPopupText="<Bullet/> You will parry any grazed melee attack against you and counterattack with your melee weapon.<br/><Bullet/> Combatives grant +<Ability:COUNTERATTACK_DODGE_AMOUNT_LW/> dodge against first melee attack against you in a turn.<br/><Bullet/> Soldier also gains <ABILITY:COMBATIVES_DODGE_LW/> dodge."
+LocPromotionPopupText="<Bullet/> You will parry any grazed melee attack against you and counterattack with your melee weapon.<br/><Bullet/> Combatives grant +<Ability:COUNTERATTACK_DODGE_AMOUNT_LW/> dodge against first melee attack against you in a turn.<br/>"
 ; End Translation
 
 [Flush X2AbilityTemplate]
 LocFriendlyName="Flush"
-LocLongDescription="Special shot with a bonus to hit that does little or no damage but confers defense and dodge penalties and forces target to change position if it hits."
-LocHelpText="Special shot that does little or no damage but confers defense and dodge penalties and forces target to change position."
+LocLongDescription="Special shot but has +30 to hit that does half damage, confers dodge penalties and forces target to change position if it hits."
+LocHelpText="Special shot but has +30 to hit that does half damage, confers dodge penalties and forces target to change position if it hits.."
 LocFlyOverText="Flush"
 ; LWOTC needs translation (2)
-LocPromotionPopupText="<Bullet/> Consumes <Ability:SelfAmmoCost/> ammo.<br/><Bullet/> Flush has a <Ability:SelfCooldown_LW/> turn cooldown.<br/><Bullet/> +<Ability:FLUSH_AIM_BONUS/> bonus to aim.<br/><Bullet/> Cannot crit or apply bonus ammo effects.<br/><Bullet/> Cannot be used from concealment.<br/><Bullet/> Target loses <Ability:FLUSH_DEFENSE_REDUCTION> defense and <Ability:FLUSH_DODGE_REDUCTION> dodge. The debuff lasts <Ability:FLUSH_STATEFFECT_DURATION> turns."
+LocPromotionPopupText="<Bullet/> Consumes <Ability:SelfAmmoCost/> ammo.<br/><Bullet/> Flush has a <Ability:SelfCooldown_LW/> turn cooldown.<br/><Bullet/> +<Ability:FLUSH_AIM_BONUS/> bonus to aim.<br/><Bullet/> Cannot crit or apply bonus ammo effects.<br/><Bullet/> Cannot be used from concealment.<br/><Bullet/> Target loses <Ability:FLUSH_DODGE_REDUCTION> dodge. The debuff lasts <Ability:FLUSH_STATEFFECT_DURATION> turns."
 ; End Translation (2)
 str_FlushEffect="Flushed"
 
@@ -665,10 +665,10 @@ LocPromotionPopupText="<Bullet/> Medium-range, cone-based shotgun attack.<br/><B
 [ChainLightning X2AbilityTemplate]
 LocFriendlyName="Chain Lightning"
 ; LWOTC Needs Translation (3)
-LocLongDescription="An Arc Thrower attack that jumps from target to target up to 4 times, while each target is within 6 tiles of each other."
-LocHelpText="An Arc Thrower attack that jumps from target to target up to 4 times, while each target is within 6 tiles of each other."
+LocLongDescription="Your Arc Thrower attacks now a jump up to 2 additional targets, disorienting them."
+LocHelpText="Your Arc Thrower attacks now a jump up to 2 additional targets, disorienting them."
 LocFlyOverText="Chain Lightning"
-LocPromotionPopupText="<Bullet/> Fires the Arc Thrower at a target in vision, with the arc chaining up to 4 times to other targets within 6 tiles of each other.<br/><Bullet/> Requires one action and ends your turn.<br/><Bullet/> Chain Lightning has a <Ability:SelfCooldown_LW/> turn cooldown.<br/><Bullet/> Cannot be used from concealment."
+LocPromotionPopupText="<Bullet/> Fires the Arc Thrower at a target in vision, with the arc chaining up to 2 times to other targets within 6 tiles of each other.<br/><Bullet/> Replaces standard stun ability.<br/><Bullet/> Chain Lightning has a <Ability:SelfCooldown_LW/> turn cooldown.<br/><Bullet/> Cannot be used from concealment."
 ; End Translation (3)
 
 [Leadership X2AbilityTemplate]
@@ -4703,13 +4703,13 @@ PostMissionFailureText="Permanent: Stun Lancer Zone Of Control"
 
 [DarkEvent_StunLancerFreeGrenades X2DarkEventTemplate]
 
-DisplayName="Permanent: Stun Lancer Free Grenades"
-SummaryText="Stun Lancers Gain Free Grenades."
+DisplayName="Permanent: Stun Lancer Grenadier"
+SummaryText="Stun Lancers Gain Grenadier."
 QuoteText="\"More Dark Events? Not this Shit Again\""
 QuoteTextAuthor="- Everyone"
-PreMissionText="Grants Stun Lancers Free Grenades."
-PostMissionSuccessText="Permanent: Stun Lancer Free Grenades"
-PostMissionFailureText="Permanent: Stun Lancer Free Grenades"
+PreMissionText="Grants Stun Lancers Grenadier."
+PostMissionSuccessText="Permanent: Stun Lancer Grenadier"
+PostMissionFailureText="Permanent: Stun Lancer Grenadier"
 
 [DarkEvent_StunLancerBladestorm X2DarkEventTemplate]
 
@@ -6289,7 +6289,11 @@ TimerDefendTitle="Reinforcements"
 TimerDefendSubtitle="Turns until Advent arrival"
 
 [InTheZone X2AbilityTemplate]
-LocPromotionPopupText="<Bullet/> Serial is meant to chain enemy kills in a single action, as every kill is essentially free.<br/><Bullet/> Every successful kill does result in a reduction to critical hit chance and damage, however.<br/><Bullet/> Serial has a <Ability:SelfCooldown_LW/> turn cooldown.<br/>"
+LocFriendlyName="Serial"
+LocLongDescription="A powerful passive chained shot ability. For every kill made with your <Ability:WeaponName/>, your actions will be refunded."
+LocHelpText="A powerful passive chained shot ability. For every kill made with your <Ability:WeaponName/>, your actions will be refunded."
+LocFlyOverText="Serial"
+LocPromotionPopupText="<Bullet/> Serial is meant to chain enemy kills in a single action, as every kill is essentially free.<br/>"
 
 ;LWOTC needs translation
 [Fuse X2AbilityTemplate]
@@ -8089,23 +8093,23 @@ LocFlyOverText="One For All"
 [GreaterPadding_CV X2AbilityTemplate]
 LocFriendlyName="Greater Padding"
 LocFlyOverText="Greater Padding"
-LocLongDescription="Reduce wound recovery times for this soldier by <Ability:GREATER_PADDING_CV/> HP. Doesn't work if the soldier bleeds out."
+LocLongDescription="Reduce wound recovery times for this soldier by <Ability:GREATER_PADDING_CV/>% of max HP. Doesn't work if the soldier bleeds out."
 LocHelpText="Reduce wound recovery times for your soldier."
-LocPromotionPopupText="<Bullet/> Greater Padding reduces the number of hit points a soldier must heal after being wounded in battle by <Ability:GREATER_PADDING_CV/>.<br/><Bullet/> It does not affect soldiers who suffered killing wounds and are stabilized from bleeding out."
+LocPromotionPopupText="<Bullet/> Greater Padding reduces the number of hit points a soldier must heal after being wounded in battle by <Ability:GREATER_PADDING_CV/>% of max HP.<br/><Bullet/> It does not affect soldiers who suffered killing wounds and are stabilized from bleeding out."
 
 [GreaterPadding_MG X2AbilityTemplate]
 LocFriendlyName="Greater Padding"
 LocFlyOverText="Greater Padding"
-LocLongDescription="Reduce wound recovery times for this soldier by <Ability:GREATER_PADDING_MG/> HP. Doesn't work if the soldier bleeds out."
+LocLongDescription="Reduce wound recovery times for this soldier by <Ability:GREATER_PADDING_MG/>% of max HP. Doesn't work if the soldier bleeds out."
 LocHelpText="Reduce wound recovery times for most soldiers."
-LocPromotionPopupText="<Bullet/> Greater Padding reduces the number of hit points a soldier must heal after being wounded in battle by <Ability:GREATER_PADDING_MG/>.<br/><Bullet/> It does not affect soldiers who suffered killing wounds and are stabilized from bleeding out."
+LocPromotionPopupText="<Bullet/> Greater Padding reduces the number of hit points a soldier must heal after being wounded in battle by <Ability:GREATER_PADDING_MG/>% of max HP.<br/><Bullet/> It does not affect soldiers who suffered killing wounds and are stabilized from bleeding out."
 
 [GreaterPadding_BM X2AbilityTemplate]
 LocFriendlyName="Greater Padding"
 LocFlyOverText="Greater Padding"
-LocLongDescription="Reduce wound recovery times for this soldier by <Ability:GREATER_PADDING_BM/> HP. Doesn't work if the soldier bleeds out."
+LocLongDescription="Reduce wound recovery times for this soldier by <Ability:GREATER_PADDING_BM/>% of max HP. Doesn't work if the soldier bleeds out."
 LocHelpText="Reduce wound recovery times for most soldiers."
-LocPromotionPopupText="<Bullet/> Greater Padding reduces the number of hit points a soldier must heal after being wounded in battle by <Ability:GREATER_PADDING_BM/>.<br/><Bullet/> It does not affect soldiers who suffered killing wounds and are stabilized from bleeding out."
+LocPromotionPopupText="<Bullet/> Greater Padding reduces the number of hit points a soldier must heal after being wounded in battle by <Ability:GREATER_PADDING_BM/>% of max HP.<br/><Bullet/> It does not affect soldiers who suffered killing wounds and are stabilized from bleeding out."
 
 [Indomitable X2AbilityTemplate]
 LocFriendlyName="Indomitable"
@@ -8148,8 +8152,8 @@ LocPromotionPopupText="<Bullet/> Amplify will last for two damage instances.<br/
 
 [CrusaderRage_LW X2AbilityTemplate]
 LocFriendlyName="Crusader's Rage"
-LocHelpText="Gain a 50% damage boost when at 50% hp or less. Reduce wound recovery times for this soldier by 6 HP"
-LocLongDescription="Gain a 50% damage boost when at 50% hp or less. Reduce wound recovery times for this soldier by 6 HP."
+LocHelpText="Gain a 50% damage boost when at 50% hp or less. Reduce wound recovery times for this soldier by <Ability:CRUSADER_WOUND_HP_REDUCTION/>% of max HP"
+LocLongDescription="Gain a 50% damage boost when at 50% hp or less. Reduce wound recovery times for this soldier by <Ability:CRUSADER_WOUND_HP_REDUCTION/>% of max HP."
 LocPromotionPopupText="<Bullet/> Wound reduction does not work if the soldier entered a bleeding out state during the mission.<br/>"
 LocFlyOverText="Psychotic Rage"
 
@@ -8228,10 +8232,10 @@ ShortSummaryText="Our covert actions have been delayed by 2 weeks!"
 ; End Translation
 
 [FreeGrenades X2AbilityTemplate]
-LocFriendlyName="Devastation"
-LocLongDescription="Throwing grenades is a free action."
-LocHelpText="Throwing grenades is a free action."
-LocPromotionPopupText="Throwing grenades is a free action."
+LocFriendlyName="Grenadier"
+LocLongDescription="Once per turn, throwing a grenade is a free action."
+LocHelpText="Once per turn, throwing a grenade is a free action."
+LocPromotionPopupText="Once per turn, throwing a grenade is a free action."
 
 [ParalyzingBlowsPassive X2AbilityTemplate]
 LocFriendlyName="Paralyzing Blows"
@@ -8347,8 +8351,8 @@ LocFlyOverText="Grit"
 [ProtectiveServos X2AbilityTemplate]
 LocFriendlyName="Protective Servos"
 LocFlyOverText="Protective Servos"
-LocLongDescription="After taking damage, gain Stackable 1 armor through the end of the turn."
-LocHelpText="After taking damage, gain Stackable 1 armor through the end of the turn."
+LocLongDescription="After taking damage, gain Stackable 2 armor through the end of the turn."
+LocHelpText="After taking damage, gain Stackable 2 armor through the end of the turn."
 LocPromotionPopupText="<Bullet/> Your armor hardens temporarily after an impact. After taking damage, gain 1 armor through the end of the next turn.
 
 [SuperiorHolyWarrior X2AbilityTemplate]

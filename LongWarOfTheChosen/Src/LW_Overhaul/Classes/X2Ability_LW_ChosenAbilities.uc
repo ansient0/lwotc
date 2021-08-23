@@ -1611,7 +1611,7 @@ static function X2DataTemplate FreeGrenades()
 	local X2Effect_FreeGrenades GrenadeEffect;
 
 	`CREATE_X2ABILITY_TEMPLATE(Template, 'FreeGrenades');
-	Template.IconImage = "img:///UILibrary_XPerkIconPack.UIPerk_adrenaline_defense";
+	Template.IconImage = "img:///UILibrary_XPerkIconPack.UIPerk_aliengrenade_cycle";
 	Template.Hostility = eHostility_Neutral;
 	Template.AbilitySourceName = 'eAbilitySource_Perk';
 	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_NeverShow;
@@ -1622,6 +1622,7 @@ static function X2DataTemplate FreeGrenades()
 
 	GrenadeEffect = new class'X2Effect_FreeGrenades';
 	GrenadeEffect.BuildPersistentEffect(1, true, true);
+	GrenadeEffect.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, true,,Template.AbilitySourceName);
 
 	Template.AddTargetEffect(GrenadeEffect);
 

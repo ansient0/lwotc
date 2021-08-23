@@ -70,7 +70,7 @@ static function UpdateBaseGameOverwatchShot()
 	local X2AbilityTemplateManager			AbilityTemplateManager;
 	local X2AbilityTemplate					OverwatchAbilityTemplate;
 	local X2Condition_RequiredToHitChance	RequiredHitChanceCondition;
-	local X2Condition_OverwatchLimit		OWLimitCondition;
+	//local X2Condition_OverwatchLimit		OWLimitCondition;
 	local name AbilityName;
 
 	AbilityTemplateManager = class'X2AbilityTemplateManager'.static.GetAbilityTemplateManager();
@@ -82,27 +82,27 @@ static function UpdateBaseGameOverwatchShot()
 		RequiredHitChanceCondition.ExcludedAbilities.AddItem(AbilityName);
 	}
 	
-	OWLimitCondition = new class 'X2Condition_OverwatchLimit';
+	//OWLimitCondition = new class 'X2Condition_OverwatchLimit';
 
 	`PPDEBUG("Updating OverwatchShot for REQUIRED_TO_HIT_FOR_OVERWATCH");
 	OverwatchAbilityTemplate = AbilityTemplateManager.FindAbilityTemplate('OverwatchShot');
 	OverwatchAbilityTemplate.AbilityTargetConditions.AddItem(RequiredHitChanceCondition);
-	OverwatchAbilityTemplate.AbilityTargetConditions.AddItem(OWLimitCondition);
+	//OverwatchAbilityTemplate.AbilityTargetConditions.AddItem(OWLimitCondition);
 
 	`PPDEBUG("Updating KillzoneShot for REQUIRED_TO_HIT_FOR_OVERWATCH");
 	OverwatchAbilityTemplate = AbilityTemplateManager.FindAbilityTemplate('KillzoneShot');
-	OverwatchAbilityTemplate.AbilityTargetConditions.AddItem(RequiredHitChanceCondition);
+	//OverwatchAbilityTemplate.AbilityTargetConditions.AddItem(RequiredHitChanceCondition);
 	// Kill Zone (and Gunslinger) polices multi-shots against hte same target already
 
 	`PPDEBUG("Updating LongWatchShot for REQUIRED_TO_HIT_FOR_OVERWATCH");
 	OverwatchAbilityTemplate = AbilityTemplateManager.FindAbilityTemplate('LongWatchShot');
 	OverwatchAbilityTemplate.AbilityTargetConditions.AddItem(RequiredHitChanceCondition);
-	OverwatchAbilityTemplate.AbilityTargetConditions.AddItem(OWLimitCondition);
+	//OverwatchAbilityTemplate.AbilityTargetConditions.AddItem(OWLimitCondition);
 
 	`PPDEBUG("Updating PistolOverwatchShot for REQUIRED_TO_HIT_FOR_OVERWATCH");
 	OverwatchAbilityTemplate = AbilityTemplateManager.FindAbilityTemplate('PistolOverwatchShot');
 	OverwatchAbilityTemplate.AbilityTargetConditions.AddItem(RequiredHitChanceCondition);
-	OverwatchAbilityTemplate.AbilityTargetConditions.AddItem(OWLimitCondition);
+	//OverwatchAbilityTemplate.AbilityTargetConditions.AddItem(OWLimitCondition);
 }
 
 static function bool AbilityTagExpandHandler_CH(string InString, out string OutString, Object ParseObj, Object StrategyParseObj, XComGameState GameState)
@@ -163,6 +163,15 @@ static function bool AbilityTagExpandHandler_CH(string InString, out string OutS
 		case 'CUTTHROAT_BONUS_CRIT_CHANCE':
 			Outstring = string(class'X2Ability_PerkPackAbilitySet'.default.CUTTHROAT_BONUS_CRIT_CHANCE);
 			return true;
+		case 'WILLTOSURVIVE_DEF_PENALTY':
+			Outstring = string(class'X2Ability_PerkPackAbilitySet'.default.WILLTOSURVIVE_DEF_PENALTY);
+			return true;
+		case 'WTS_COVER_DR_PCT':
+			Outstring = string(int(class'X2Ability_PerkPackAbilitySet'.default.WTS_COVER_DR_PCT * 100));
+			return true;
+		case 'WTS_WOUND_REDUCTION':
+			Outstring = string(int(class'X2Ability_PerkPackAbilitySet'.default.WTS_WOUND_REDUCTION * 100));
+			return true;	
 		case 'CUTTHROAT_BONUS_CRIT_DAMAGE':
 			Outstring = string(class'X2Ability_PerkPackAbilitySet'.default.CUTTHROAT_BONUS_CRIT_DAMAGE);
 			return true;
@@ -192,6 +201,9 @@ static function bool AbilityTagExpandHandler_CH(string InString, out string OutS
 			return true;
 		case 'MAIM_COOLDOWN':
 			OutString = string(class'X2Ability_XMBPerkAbilitySet'.default.MAIM_COOLDOWN);
+			return true;
+		case 'CRUSADER_WOUND_HP_REDUCTION':
+			OutString = string(int(class'X2Ability_XMBPerkAbilitySet'.default.CRUSADER_WOUND_HP_REDUCTION * 100));
 			return true;
 		case 'LICKYOURWOUNDS_HEALAMOUNT':
 			OutString = string(class'X2Ability_XMBPerkAbilitySet'.default.LICKYOURWOUNDS_HEALAMOUNT);

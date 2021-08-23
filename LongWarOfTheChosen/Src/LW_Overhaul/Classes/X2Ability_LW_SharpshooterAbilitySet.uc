@@ -8,7 +8,7 @@ class X2Ability_LW_SharpshooterAbilitySet extends X2Ability config(LW_SoldierSki
 
 var config int RAPID_TARGETING_COOLDOWN;
 var config int MULTI_TARGETING_COOLDOWN;
-var config int ALPHAMIKEFOXTROT_DAMAGE;
+var config float ALPHAMIKEFOXTROT_DAMAGE;
 var config int DOUBLE_TAP_2_COOLDOWN;
 
 var name DoubleTapActionPoint;
@@ -275,7 +275,7 @@ static function X2AbilityTemplate AddMultiTargeting()
 static function X2AbilityTemplate AddAlphaMikeFoxtrot()
 {
 	local X2AbilityTemplate						Template;
-	local X2Effect_PrimaryHitBonusDamage        DamageEffect;
+	local X2Effect_PrimaryPCTBonusDamage        DamageEffect;
 
 	`CREATE_X2ABILITY_TEMPLATE (Template, 'AlphaMikeFoxtrot');
 	Template.IconImage = "img:///UILibrary_LW_Overhaul.LW_AbilityAMF";
@@ -286,10 +286,8 @@ static function X2AbilityTemplate AddAlphaMikeFoxtrot()
 	Template.AbilityTargetStyle = default.SelfTarget;
 	Template.AbilityTriggers.AddItem(default.UnitPostBeginPlayTrigger);
 	Template.bIsPassive = true;
-	DamageEffect = new class'X2Effect_PrimaryHitBonusDamage';
+	DamageEffect = new class'X2Effect_PrimaryPCTBonusDamage';
 	DamageEffect.BonusDmg = default.ALPHAMIKEFOXTROT_DAMAGE;
-	DamageEffect.includepistols = false;
-	DamageEffect.includesos = false;
 	DamageEffect.BuildPersistentEffect(1, true, false, false);
 	DamageEffect.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, true,,Template.AbilitySourceName);
 	Template.AddTargetEffect(DamageEffect);

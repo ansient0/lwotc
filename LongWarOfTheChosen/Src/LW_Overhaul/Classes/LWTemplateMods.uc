@@ -295,6 +295,7 @@ var config WeaponDamageValue WARLOCKPSIM2_BASEDAMAGE;
 var config WeaponDamageValue WARLOCKPSIM3_BASEDAMAGE;
 var config WeaponDamageValue WARLOCKPSIM4_BASEDAMAGE;
 
+var config float HUNTERS_INSTINCT_DAMAGE_PCT;
 static function array<X2DataTemplate> CreateTemplates()
 {
 	local array<X2DataTemplate> Templates;
@@ -1191,8 +1192,7 @@ function ModifyAbilitiesGeneral(X2AbilityTemplate Template, int Difficulty)
 	{
 		Template.AbilityTargetEffects.length = 0;
 		DamageModifier = new class'X2Effect_HuntersInstinctDamage_LW';
-		DamageModifier.BonusDamage = class'X2Ability_RangerAbilitySet'.default.INSTINCT_DMG;
-		DamageModifier.BonusCritChance = class'X2Ability_RangerAbilitySet'.default.INSTINCT_CRIT;
+		DamageModifier.HUNTERS_INSTINCT_DAMAGE_PCT = default.HUNTERS_INSTINCT_DAMAGE_PCT;
 		DamageModifier.BuildPersistentEffect(1, true, false, true);
 		DamageModifier.SetDisplayInfo(0, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, true,, Template.AbilitySourceName);
 		Template.AddTargetEffect(DamageModifier);

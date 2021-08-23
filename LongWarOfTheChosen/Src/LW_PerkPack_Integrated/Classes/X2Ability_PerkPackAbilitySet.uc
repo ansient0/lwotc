@@ -128,6 +128,7 @@ var config array<name> CE_ABILITYNAMES;
 
 var config int WILLTOSURVIVE_DEF_PENALTY;
 var config float WTS_COVER_DR_PCT;
+var config float WTS_WOUND_REDUCTION;
 
 
 var localized string LocCoveringFire;
@@ -183,6 +184,7 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(AddSteadyWeaponAbility());
 	Templates.AddItem(AddLockedOnAbility());
 	Templates.AddItem(AddSentinel_LWAbility());
+	Templates.AddItem(AddSentinelAbility());
 	Templates.AddItem(AddRapidReactionAbility());
 	Templates.AddItem(AddLightningReflexes_LWAbility());
 	Templates.AddItem(AddCutthroatAbility());
@@ -358,7 +360,8 @@ static function X2AbilityTemplate CloseCombatSpecialistAttack()
 	local X2Condition_Visibility						TargetVisibilityCondition;
 	local X2AbilityCost_Ammo							AmmoCost;
 	local X2AbilityTarget_Single_CCS					SingleTarget;
-	//local X2AbilityCooldown								Cooldown;	
+	//local X2AbilityCooldown								Cooldown;
+	local X2Condition_NotItsOwnTurn 					NotItsOwnTurnCondition;
 
 	`CREATE_X2ABILITY_TEMPLATE(Template, 'CloseCombatSpecialistAttack');
 
@@ -432,6 +435,9 @@ static function X2AbilityTemplate CloseCombatSpecialistAttack()
 
 	Template.bAllowBonusWeaponEffects = true;
 	Template.AddTargetEffect(class 'X2Ability_GrenadierAbilitySet'.static.ShredderDamageEffect());
+
+	NotItsOwnTurnCondition = new class'X2Condition_NotItsOwnTurn';
+	Template.AbilityShooterConditions.AddItem(NotItsOwnTurnCondition);
 
 	//Prevent repeatedly hammering on a unit when CCS triggers.
 	//(This effect does nothing, but enables many-to-many marking of which CCS attacks have already occurred each turn.)
@@ -735,7 +741,7 @@ static function X2AbilityTemplate AddDepthPerceptionAbility()
 	local X2AbilityTemplate						Template;
 	local X2Effect_WilltoSurvive				ArmorBonus;
 	local X2Effect_PersistentStatChange			WillBonus;
-
+	local X2Effect_GreaterPadding				GreaterPaddingEffect;
 	`CREATE_X2ABILITY_TEMPLATE (Template, 'WilltoSurvive');
 	Template.IconImage = "img:///UILibrary_LW_PerkPack.LW_AbilityWilltoSurvive";
 	Template.AbilitySourceName = 'eAbilitySource_Perk';
@@ -756,6 +762,12 @@ static function X2AbilityTemplate AddDepthPerceptionAbility()
 	WillBonus.AddPersistentStatChange(eStat_Defense, default.WILLTOSURVIVE_DEF_PENALTY);
 	WillBonus.BuildPersistentEffect (1, true, false, false, 7);
 	Template.AddTargetEffect(WillBonus);
+
+	GreaterPaddingEffect = new class 'X2Effect_GreaterPadding';
+	GreaterPaddingEffect.BuildPersistentEffect (1, true, false);
+	GreaterPaddingEffect.Padding_HealHP = default.WTS_WOUND_REDUCTION;	
+	Template.AddTargetEffect(GreaterPaddingEffect);
+
 	Template.bCrossClassEligible = true;
 	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
 	//  No visualization
@@ -2113,6 +2125,31 @@ static function X2AbilityTemplate AddSentinel_LWAbility()
 	return Template;
 }
 
+
+static function X2AbilityTemplate AddSentinelAbility()
+{
+	local X2AbilityTemplate                 Template;	
+	local X2Effect_Sentinel_LW				PersistentEffect;
+
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'Sentinel');
+	Template.IconImage = "img:///UILibrary_LW_PerkPack.LW_AbilitySentinel";
+	Template.Hostility = eHostility_Neutral;
+	Template.AbilitySourceName = 'eAbilitySource_Perk';
+	Template.eAbilityIconBehaviorHUD = EAbilityIconBehavior_NeverShow;
+	Template.Hostility = eHostility_Neutral;
+	Template.AbilityToHitCalc = default.DeadEye;
+	Template.AbilityTargetStyle = default.SelfTarget;
+	Template.AbilityTriggers.AddItem(default.UnitPostBeginPlayTrigger);
+	Template.bIsPassive = true;
+	PersistentEffect = new class'X2Effect_Sentinel_LW';
+	PersistentEffect.BuildPersistentEffect(1, true, false);
+	PersistentEffect.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, true,, Template.AbilitySourceName);
+	Template.AddTargetEffect(PersistentEffect);
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+	Template.bCrossClassEligible = false;
+	return Template;
+}
+
 static function X2AbilityTemplate AddRapidReactionAbility()
 {
 	local X2AbilityTemplate                 Template;	
@@ -2844,7 +2881,7 @@ static function X2Effect_Persistent CoveringFireMalusEffect()
     Effect.bRemoveWhenTargetDies = false;
     Effect.bUseSourcePlayerState = true;
 	Effect.bApplyOnMiss = true;
-	Effect.DuplicateResponse=eDupe_Allow;
+	Effect.DuplicateResponse=eDupe_Refresh;
     AbilityCondition = new class'X2Condition_AbilityProperty';
     AbilityCondition.OwnerHasSoldierAbilities.AddItem('CoveringFire');
     Effect.TargetConditions.AddItem(AbilityCondition);

@@ -115,7 +115,7 @@ var const name QuickZapEffectName;
 var const name VampUnitValue;
 var const string CombatReadinessBonusText;
 
-var config int CRUSADER_WOUND_HP_REDUCTTION;
+var config float CRUSADER_WOUND_HP_REDUCTION;
 
 var config array<name> COMBAT_READINESS_EFFECTS_TO_REMOVE;
 var config array<name> BANZAI_EFFECTS_TO_REMOVE;
@@ -227,6 +227,11 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(AddSuperiorHolyWarrior());
 	Templates.AddItem(AddSuperDuperRobot());
 	Templates.AddItem(ShredderRoundsDamagePenalty());
+
+
+	Templates.AddItem(PrimaryGrenadeLauncherPassive('PrimaryGrenadeLauncher_CV'));
+	Templates.AddItem(PrimaryGrenadeLauncherPassive('PrimaryGrenadeLauncher_MG'));
+	Templates.AddItem(PrimaryGrenadeLauncherPassive('PrimaryGrenadeLauncher_BM'));
 	
 	
 	return Templates;
@@ -2985,7 +2990,7 @@ static function X2AbilityTemplate CrusaderRage()
 
 	GreaterPaddingEffect = new class 'X2Effect_GreaterPadding';
 	GreaterPaddingEffect.BuildPersistentEffect (1, true, false);
-	GreaterPaddingEffect.Padding_HealHP = default.CRUSADER_WOUND_HP_REDUCTTION;	
+	GreaterPaddingEffect.Padding_HealHP = default.CRUSADER_WOUND_HP_REDUCTION;	
 	
 	// Create the template using a helper function
 	Template = Passive('CrusaderRage_LW', "img:///UILibrary_XPerkIconPack.UIPerk_melee_adrenaline", true, Effect);
@@ -3348,11 +3353,9 @@ static function X2AbilityTemplate AddProtectiveServosAbility()
 	DamageControlEffect.SetDisplayInfo(ePerkBuff_Bonus, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, true,,Template.AbilitySourceName);
 	DamageControlEffect.DuplicateResponse = eDupe_Allow;
 	DamageControlEffect.EffectName = 'ProtectiveServos';
-	DamageControlEffect.BonusArmor = 1;
+	DamageControlEffect.BonusArmor = 2;
 	Template.AddTargetEffect(DamageControlEffect);
 
-
-	Template.AddTargetEffect(DamageControlEffect);
 
 	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
 	Template.BuildVisualizationFn = TypicalAbility_BuildVisualization;
@@ -3437,6 +3440,12 @@ static function X2AbilityTemplate ShredderRoundsDamagePenalty()
 	return Passive('ShredderRoundsPenalty', "img:///UILibrary_XPerkIconPack.UIPerk_melee_adrenaline", true, Effect, false);
 }
 
+	static function X2AbilityTemplate PrimaryGrenadeLauncherPassive(name TemplateName)
+{	
+	return Passive(TemplateName, "img:///UILibrary_XPerkIconPack.UIPerk_melee_adrenaline", true, , false);
+}
+
+	
 defaultproperties
 {
 	LeadTheTargetReserveActionName = "leadthetarget"

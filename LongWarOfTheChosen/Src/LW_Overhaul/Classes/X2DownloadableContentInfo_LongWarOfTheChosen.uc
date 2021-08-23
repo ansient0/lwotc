@@ -3418,6 +3418,11 @@ static function bool AbilityTagExpandHandler(string InString, out string OutStri
 		case 'AP_ROUNDS_CRIT_PENALTY':
 			Outstring = string(-1 * class'X2Ability_LW_GearAbilities'.default.AP_ROUNDS_CRIT_PENALTY);
 			return true;
+		case 'HUNTERS_INSTINCT_DAMAGE_PCT':
+			Outstring = string(int(class'LWTemplateMods'.default.HUNTERS_INSTINCT_DAMAGE_PCT * 100));
+		return true;
+
+			
 		default:
 			return false;
 	}

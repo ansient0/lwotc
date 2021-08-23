@@ -53,6 +53,11 @@ var config int BIND_M2_BONUSDAMAGE;
 var config int BIND_M3_BONUSDAMAGE;
 var config int BIND_M4_BONUSDAMAGE;
 var config int BIND_M5_BONUSDAMAGE;
+
+var config float SUPPRESSION_DAMAGE_MOD;
+var config float REAPER_PCT_DMG_REDUCTION;
+
+
 // Data structure for multi-shot abilities that need patching
 struct MultiShotAbility
 {
@@ -258,7 +263,35 @@ static function UpdateAbilities(X2AbilityTemplate Template, int Difficulty)
 		case 'Reload':
 			MakeAbilityTurnEnding(Template);
 			break;
-			
+		case 'Suppression_LW':
+		case 'AreaSuppression':
+			AddSharedSuppressionCooldown(Template);
+			break;
+
+		case 'SuppressionShot_LW':
+		case 'AreaSuppressionShot_LW':
+			MakeTheShotCoveringFire(Template);
+			break;
+		case 'EverVigilant':
+			Template.AdditionalAbilities.Removeitem('EverVigilantTrigger');
+			Template.AdditionalAbilities.AddItem('NewEverVigilantTrigger');
+			break;
+		case 'SectopodLightningField':
+			class'Helpers_LW'.static.MakeFreeAction(Template);
+			break;
+		case 'Reaper':
+			ReworkReaper(Template);
+			break;
+		case 'InTheZone':
+			ReworkSerial(Template);
+			break;
+
+		case 'DevastatingPunch':
+		case 'DevastatingPunchM2':
+		case 'DevastatingPunchM3':
+		case 'DevastatingPunchM4':
+			class'Helpers_LW'.static.RemoveAbilityTargetEffects(Template,'X2Effect_ImmediateAbilityActivation');
+			break;
 
 		default:
 			break;
@@ -1476,6 +1509,79 @@ static function AddSuperiorHolyWarrior(X2AbilityTemplate Template)
 
 
 }
+
+static function AddSharedSuppressionCooldown(X2AbilityTemplate Template)
+{
+	local X2AbilityCooldown_Shared	Cooldown;
+
+	Cooldown = new class'X2AbilityCooldown_Shared';
+	Cooldown.iNumTurns = 2;
+	Cooldown.SharingCooldownsWith.AddItem('Suppression_LW'); //Now shares the cooldown with Bayonet
+	Cooldown.SharingCooldownsWith.AddItem('AreaSuppression'); //Now shares the cooldown with Bayonet
+	Template.AbilityCooldown = Cooldown;
+}
+
+static function MakeTheShotCoveringFire(X2AbilityTemplate Template)
+{
+	local X2AbilityTrigger_EventListener Trigger;
+	local X2Effect_GeneralDamageModifier DamageModifier;
+
+	Trigger = new class'X2AbilityTrigger_EventListener';
+	Trigger.ListenerData.EventID = 'AbilityActivated';
+	Trigger.ListenerData.Deferral = ELD_OnStateSubmitted;
+	Trigger.ListenerData.Filter = eFilter_None;
+	Trigger.ListenerData.EventFn = class'XComGameState_Ability'.static.TypicalAttackListener;
+	Template.AbilityTriggers.AddItem(Trigger);
+
+	DamageModifier = new class'X2Effect_GeneralDamageModifier';
+	DamageModifier.AbilityTemplate = Template.DataName;
+	DamageModifier.DamageModifier = default.SUPPRESSION_DAMAGE_MOD;
+
+	Template.AbilityShooterEffects.AddItem(DamageModifier);
+}
+
+static function ReworkSerial(X2AbilityTemplate Template)
+{
+	local X2Effect_Serial SerialEffect;
+	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_NeverShow;
+
+	class'Helpers_LW'.static.RemoveAbilityTargetEffects(Template, 'X2Effect_Serial');
+
+	SerialEffect = new class'X2Effect_Serial';
+	SerialEffect.BuildPersistentEffect(1, true, true, false, eGameRule_PlayerTurnEnd);
+	SerialEffect.SetDisplayInfo(ePerkBuff_Bonus, Template.LocFriendlyName, Template.GetMyHelpText(), Template.IconImage, true, , Template.AbilitySourceName);
+	Template.AddTargetEffect(SerialEffect);
+
+
+	Template.AbilityTriggers.Length = 0;
+	Template.AbilityTriggers.AddItem(new class'X2AbilityTrigger_UnitPostBeginPlay');
+	Template.AbilityCooldown = none;
+
+	class'Helpers_LW'.static.RemoveAbilityShooterEffects(Template, 'X2Effect_SetUnitValue');
+	class'Helpers_LW'.static.RemoveAbilityShooterConditions(Template, 'X2Condition_UnitValue');
+}
+	
+static function ReworkReaper(X2AbilityTemplate Template)
+{
+	local X2Effect_Reaper_LW ReaperEffect;
+
+	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_NeverShow;
+
+	Template.AbilityTriggers.Length = 0;
+	Template.AbilityTriggers.AddItem(new class'X2AbilityTrigger_UnitPostBeginPlay');
+	Template.AbilityCooldown = none;
+
+	class'Helpers_LW'.static.RemoveAbilityTargetEffects(Template, 'X2Effect_Reaper');
+
+	ReaperEffect = new class'X2Effect_Reaper_LW';
+	ReaperEffect.PCT_DMG_Reduction = default.REAPER_PCT_DMG_REDUCTION;
+	ReaperEffect.BuildPersistentEffect(1, true, true, false, eGameRule_PlayerTurnEnd);
+	ReaperEffect.SetDisplayInfo(ePerkBuff_Bonus, Template.LocFriendlyName, Template.GetMyHelpText(), Template.IconImage, true, , Template.AbilitySourceName);
+	Template.AddTargetEffect(ReaperEffect);
+
+	class'Helpers_LW'.static.RemoveAbilityShooterEffects(Template, 'X2Effect_SetUnitValue');
+	class'Helpers_LW'.static.RemoveAbilityShooterConditions(Template, 'X2Condition_UnitValue');
+}	
 defaultproperties
 {
 	AbilityTemplateModFn=UpdateAbilities
