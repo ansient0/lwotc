@@ -1285,26 +1285,7 @@ function ModifyAbilitiesGeneral(X2AbilityTemplate Template, int Difficulty)
 		}
 	}
 
-	// Removes Threat Assessment increase
-	if (Template.DataName == 'AidProtocol')
-	{
-		Cooldown = new class'X2AbilityCooldown';
-		Cooldown.iNumTurns = default.AID_PROTOCOL_COOLDOWN;
-		Template.AbilityCooldown = Cooldown;
 
-		RemoveEffects = new class'X2Effect_RemoveEffectsByDamageType';
-		foreach class'X2Ability_XMBPerkAbilitySet'.default.AgentsHealEffectTypes(HealType)
-		{
-			RemoveEffects.DamageTypesToRemove.AddItem(HealType);
-		}
-		AbilityCondition = new class'X2Condition_AbilityProperty';
-		AbilityCondition.OwnerHasSoldierAbilities.AddItem('NeutralizingAgents_LW');
-		RemoveEffects.TargetConditions.AddItem(AbilityCondition);
-
-		Template.AssociatedPassives.AddItem('NeutralizingAgents_LW');
-		Template.AddTargetEffect(RemoveEffects);
-	
-	}
 
 	if (Template.DataName == 'KillZone' || Template.DataName == 'Deadeye' || Template.DataName == 'BulletShred')
 	{

@@ -122,6 +122,8 @@ var config bool NO_MELEE_ATTACKS_WHEN_ON_FIRE;
 var config int BOMBARD_BONUS_RANGE_TILES;
 var config int SHARPSHOOTERAIM_CRITBONUS;
 
+var config int Overexertion_COOLDOWN;
+
 var config int CE_USES_PER_TURN;
 var config int CE_MAX_TILES;
 var config array<name> CE_ABILITYNAMES;
@@ -227,6 +229,8 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(AddShadowstrike_LWAbility());
 	Templates.AddItem(AddFormidableAbility());
 	Templates.AddItem(AddSoulStealTriggered2());
+	Templates.AddItem(AddOverexertion());
+
 	return Templates;
 }
 
@@ -2287,6 +2291,67 @@ static function X2AbilityTemplate AddRunAndGun_LWAbility()
 	return Template;
 }
 
+
+	static function X2AbilityTemplate AddOverexertion()
+{
+	local X2AbilityTemplate					Template;
+	local X2AbilityCooldown	Cooldown;
+	local X2Effect_GrantActionPoints		ActionPointEffect;
+	local X2AbilityCost_ActionPoints		ActionPointCost;
+	local X2Effect_KillerInstinct			DamageEffect;
+	local X2Condition_UnitValue				CECondition;
+
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'Overexertion');
+
+	// Icon Properties
+	Template.DisplayTargetHitChance = false;
+	Template.AbilitySourceName = 'eAbilitySource_Perk';                                       // color of the icon
+	Template.IconImage = "img:///UILibrary_XPerkIconPack.UIPerk_loot_move";
+	Template.ShotHUDPriority = class'UIUtilities_Tactical'.const.CLASS_LIEUTENANT_PRIORITY;
+	Template.Hostility = eHostility_Neutral;
+	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_AlwaysShow;
+	Template.AbilityConfirmSound = "TacticalUI_Activate_Ability_Run_N_Gun";
+
+	Cooldown = new class'X2AbilityCooldown';
+	Cooldown.iNumTurns = default.Overexertion_COOLDOWN;
+	Template.AbilityCooldown = Cooldown;
+
+	ActionPointCost = new class'X2AbilityCost_ActionPoints';
+	ActionPointCost.iNumPoints = 1;
+	ActionPointCost.bFreeCost = true;
+	Template.AbilityCosts.AddItem(ActionPointCost);
+
+	Template.AbilityToHitCalc = default.DeadEye;
+
+	Template.AbilityShooterConditions.AddItem(default.LivingShooterProperty);
+	Template.AddShooterEffectExclusions();
+
+	CECondition = new class 'X2Condition_UnitValue';
+	Template.AbilityShooterConditions.AddItem(CECondition); 
+
+	ActionPointEffect = new class'X2Effect_GrantActionPoints';
+	ActionPointEffect.NumActionPoints = 1;
+	ActionPointEffect.PointType = class'X2CharacterTemplateManager'.default.StandardActionPoint;
+	Template.AddTargetEffect(ActionPointEffect);
+
+	Template.AbilityTargetStyle = default.SelfTarget;	
+	Template.AbilityTriggers.AddItem(default.PlayerInputTrigger);
+
+	Template.bShowActivation = true;
+	Template.bSkipFireAction = true;
+
+	Template.ActivationSpeech = 'RunAndGun';
+	
+		
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+	Template.BuildVisualizationFn = TypicalAbility_BuildVisualization;
+
+	Template.bCrossClassEligible = true;
+
+	return Template;
+}
+
+
 static function X2AbilityTemplate AddKillerInstinctAbility()
 {
 	local X2AbilityTemplate                 Template;	
@@ -3868,6 +3933,8 @@ static function X2AbilityTemplate AddSlash_LWAbility()
 	// VGamepliz matters
 	Template.SourceMissSpeech = 'SwordMiss';
 	Template.bSkipMoveStop = true;
+
+	Template.ConcealmentRule = eConceal_Always;
 
 	Template.CinescriptCameraType = "Ranger_Reaper";
     Template.BuildNewGameStateFn = TypicalMoveEndAbility_BuildGameState;

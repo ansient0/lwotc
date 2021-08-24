@@ -292,6 +292,13 @@ static function UpdateAbilities(X2AbilityTemplate Template, int Difficulty)
 		case 'DevastatingPunchM4':
 			class'Helpers_LW'.static.RemoveAbilityTargetEffects(Template,'X2Effect_ImmediateAbilityActivation');
 			break;
+		case 'AidProtocol':
+			UpdateAidProtocol(Template);
+		case 'CombatProtocol':
+			UpdateCombatProtocol(Template);
+			
+		case 'LongWatch':
+			Template.AdditionalAbilities.AddItem('CoolUnderPressure');
 
 		default:
 			break;
@@ -1582,6 +1589,53 @@ static function ReworkReaper(X2AbilityTemplate Template)
 	class'Helpers_LW'.static.RemoveAbilityShooterEffects(Template, 'X2Effect_SetUnitValue');
 	class'Helpers_LW'.static.RemoveAbilityShooterConditions(Template, 'X2Condition_UnitValue');
 }	
+
+static function UpdateAidProtocol(X2AbilityTemplate Template)
+{
+	local X2AbilityCooldown_ABCProtocol 	Cooldown;
+	local X2Condition_AbilityProperty AbilityCondition;
+	local X2Effect_RemoveEffectsByDamageType RemoveEffects;
+	local name HealType;
+
+	Cooldown = new class'X2AbilityCooldown_ABCProtocol';
+	Template.AbilityCooldown = Cooldown;
+
+	RemoveEffects = new class'X2Effect_RemoveEffectsByDamageType';
+	foreach class'X2Ability_XMBPerkAbilitySet'.default.AgentsHealEffectTypes(HealType)
+	{
+		RemoveEffects.DamageTypesToRemove.AddItem(HealType);
+	}
+	AbilityCondition = new class'X2Condition_AbilityProperty';
+	AbilityCondition.OwnerHasSoldierAbilities.AddItem('NeutralizingAgents_LW');
+	RemoveEffects.TargetConditions.AddItem(AbilityCondition);
+
+	Template.AssociatedPassives.AddItem('NeutralizingAgents_LW');
+	Template.AddTargetEffect(RemoveEffects);
+}
+
+
+static function UpdateCombatProtocol(X2AbilityTemplate Template)
+{
+	local X2AbilityCooldown_ABCProtocol 	Cooldown;
+	local X2AbilityCost_ActionPoints ActionPointCost;
+
+
+	Cooldown = new class'X2AbilityCooldown_ABCProtocol';
+	Template.AbilityCooldown = Cooldown;
+
+	Template.AbilityCharges = none;
+	Template.AbilityCosts.Length = 0;
+
+	ActionPointCost = new class'X2AbilityCost_ActionPoints';
+	ActionPointCost.iNumPoints = 1;
+	ActionPointCost.bConsumeAllPoints = false;
+	Template.AbilityCosts.AddItem(ActionPointCost);
+}
+
+
+
+
+
 defaultproperties
 {
 	AbilityTemplateModFn=UpdateAbilities

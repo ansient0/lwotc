@@ -100,7 +100,9 @@ static function X2AbilityTemplate Setup_FireRocketAbility(name TemplateName, opt
 	local X2Condition_AbilitySourceWeapon   GrenadeCondition;
 	local X2Condition_RocketArmedCheck		RocketArmedCheck;
 	local X2Effect_IRI_PersistentSquadViewer    ViewerEffect;
+	local X2AbilityCooldown_RocketLauncher	Cooldown;
 
+	
 	`CREATE_X2ABILITY_TEMPLATE(Template, TemplateName);
 
 	//	Ability icon
@@ -110,6 +112,13 @@ static function X2AbilityTemplate Setup_FireRocketAbility(name TemplateName, opt
 	Template.HideErrors.AddItem('AA_WeaponIncompatible');
 	Template.HideErrors.AddItem('AA_CannotAfford_AmmoCost');
 
+
+	Cooldown = new class'X2AbilityCooldown_RocketLauncher';
+	Cooldown.iNumTurns = default.ROCKETLAUNCHER_COOLDOWN;
+	Cooldown.SharingCooldownsWith.AddItem('IRI_FireRocketLauncher'); //Now shares the cooldown with Bayonet charge
+	Cooldown.SharingCooldownsWith.AddItem('IRI_FireRocket'); //Now shares the cooldown with Bayonet charge
+	Template.AbilityCooldown = Cooldown;
+	
 	Template.ShotHUDPriority = class'UIUtilities_Tactical'.const.STANDARD_GRENADE_PRIORITY - 1;
 
 	Template.bDisplayInUITooltip = false;
@@ -1484,12 +1493,12 @@ static function X2AbilityTemplate Create_FireRocketLauncherAbility()
 	local X2AbilityMultiTarget_Radius       RadiusMultiTarget;
 	local X2Condition_IRI_HasOneAbilityFromList	HasAbilityCondition;
 	//local X2Condition_UnitEffects			SuppressedCondition;
-	local X2AbilityCooldown_Shared	Cooldown;
+	local X2AbilityCooldown_RocketLauncher	Cooldown;
 
 	Template = class'X2Ability_HeavyWeapons'.static.RocketLauncherAbility('IRI_FireRocketLauncher');
 
 
-	Cooldown = new class'X2AbilityCooldown_Shared';
+	Cooldown = new class'X2AbilityCooldown_RocketLauncher';
 	Cooldown.iNumTurns = default.ROCKETLAUNCHER_COOLDOWN;
 	Cooldown.SharingCooldownsWith.AddItem('IRI_FireRocketLauncher'); //Now shares the cooldown with Bayonet charge
 	Cooldown.SharingCooldownsWith.AddItem('IRI_FireRocket'); //Now shares the cooldown with Bayonet charge

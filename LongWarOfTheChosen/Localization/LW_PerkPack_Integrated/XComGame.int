@@ -95,10 +95,10 @@ LocPromotionPopupText="<Bullet/> Cannot be used on the same turn as Run and Gun.
 LocFriendlyName="Close Combat Specialist"
 LocFlyOverText="Close Combat Specialist"
 ; LWOTC Needs Translation (3)
-LocLongDescription="Fire a free reaction shot with your <Ability:BOUND_WEAPON_NAME/> at any visible enemy within four tiles who moves or fires."
-LocHelpText="Fire a free reaction shot at any visible enemy within four tiles who moves or fires."
+LocLongDescription="During enemy turns, Fire a free reaction shot with your <Ability:BOUND_WEAPON_NAME/> at any visible enemy within four tiles who moves or fires."
+LocHelpText="During enemy turns, Fire a free reaction shot at any visible enemy within four tiles who moves or fires."
 ; End Translation (3)
-LocPromotionPopupText="<Bullet/> Will not trigger if soldier is concealed.<br/><Bullet/> You may shoot at each enemy with this ability once per turn.<br/><Bullet/> Each shot requires 2 ammo.<br/>""
+LocPromotionPopupText="<Bullet/> Will not trigger if soldier is concealed.<br/><Bullet/> You may shoot at each enemy with this ability once per turn.<br/><Bullet/> Each shot requires 1 ammo.<br/>""
 
 [CloseCombatSpecialistAttack X2AbilityTemplate]
 LocFriendlyName="Close Combat Specialist"
@@ -404,6 +404,14 @@ LocHelpText="Take an action after dashing."
 ; LWOTC Needs Translation
 LocPromotionPopupText="<Bullet/> Run and Gun allows soldiers to close the distance to their targets rapidly, or to easily take a flanking position.<br/><Bullet/> Run and Gun has a <Ability:RUN_AND_GUN_COOLDOWN/> turn cooldown.<br/>"
 ; End translation
+
+[Overexertion X2AbilityTemplate]
+LocFriendlyName="Overexertion"
+LocFlyOverText="Overexertion"
+LocLongDescription="Gain an action point. Has <Ability:SelfCooldown_LW/> turn cooldown."
+LocHelpText="Gain an action point. Has <Ability:SelfCooldown_LW/> turn cooldown"
+; LWOTC Needs Translation
+LocPromotionPopupText="<Bullet/>Is a free action.<br/>"
 
 [Suppression_LW X2AbilityTemplate]
 LocFriendlyName="Suppression"
@@ -931,6 +939,20 @@ LocLongDescription="When the squad is revealed, this soldier remains concealed."
 LocHelpText="When the squad is revealed, this soldier remains concealed."
 LocFlyOverText="Phantom"
 LocPromotionPopupText="<Bullet/> Even if the squad does not start a mission concealed, soldiers with Phantom will still begin the mission with concealment.<br/><Bullet/> If the soldier with Phantom is the one who breaks squad concealment, then Phantom does not apply.<br/>"
+
+[Phantom_LW X2AbilityTemplate]
+LocFriendlyName="Phantom"
+LocLongDescription="Temporarily conceal yourself for 1 turn with no detection radius. Standard Slash attack does not reveal you."
+LocHelpText="Temporarily conceal yourself for 1 turn with no detection radius. Standard Slash attack does not reveal you."
+LocFlyOverText="Phantom"
+LocPromotionPopupText="<Bullet/> 3 charges, <Ability:SelfCooldown_LW/> turn cooldown.<br/>"
+
+[Stealth_LW X2AbilityTemplate]
+LocFriendlyName="Conceal"
+LocLongDescription="Gain Additional 2 charges of phantom."
+LocHelpText="Gain Additional 2 charges of phantom."
+LocFlyOverText="Conceal"
+LocPromotionPopupText=""
 
 [XComGame.Shadowstep X2AbilityTemplate]
 [Shadowstep X2AbilityTemplate]

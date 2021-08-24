@@ -9,6 +9,7 @@ var config array<int> SCATTER_REDUCTION_MODIFIERS;
 var config array<name> OFFENSE_INCREASE_ABILITIES;
 var config array<int> OFFENSE_INCREASE_MODIFIERS;
 
+var config int STEADY_TILE_MODIFIER;
 var localized string strMaxScatter;
 
 var UIScrollingTextField ScatterAmountText;
@@ -399,7 +400,12 @@ static function int GetNumAimRolls(XComGameState_Unit Unit)
     local int NumAimRolls;
     local name AbilityName;
     local int Idx;
+	local StateObjectReference EffectRef;
+	local XComGameState_Effect EffectState;
+	local X2Effect EffectTemplate;
+	local XComGameStateHistory History;
 
+	History = `XCOMHISTORY;
     //set up baseline value
     NumAimRolls = default.NUM_AIM_SCATTER_ROLLS;
 
@@ -415,6 +421,20 @@ static function int GetNumAimRolls(XComGameState_Unit Unit)
     if(Unit.ActionPoints.Length <= 1)
 	{
         NumAimRolls += default.ONE_ACTION_SCATTER_TILE_MODIFIER;
+	}
+
+	foreach Unit.AffectedByEffects(EffectRef)
+	{
+		EffectState = XComGameState_Effect(History.GetGameStateForObjectID(EffectRef.ObjectID));
+		EffectTemplate = EffectState.GetX2Effect();
+		if(EffectTemplate.IsA('X2Effect_SteadyWeapon') && Unit.HasSoldierAbility('PlatformStability') )
+		{
+			NumAimRolls = 0;
+		}
+		else if (EffectTemplate.IsA('X2Effect_SteadyWeapon'))
+		{
+			NumAimRolls += default.STEADY_TILE_MODIFIER;
+		}
 	}
 
     return NumAimRolls;

@@ -244,9 +244,9 @@ LocPromotionPopupText="<Bullet/> This unit is immune to fire damage.<br/>"
 [ShockAndAwe X2AbilityTemplate]
 LocFriendlyName="Shock and Awe"
 LocFlyOverText="Shock and Awe"
-LocLongDescription="You equip one additional rocket."
-LocHelpText="You equip one additional rocket."
-LocPromotionPopupText="<Bullet/> You equip one additional rocket.<br/>"
+LocLongDescription="Rocket Cooldown is decreased by 1."
+LocHelpText="Rocket Cooldown is decreased by 1.."
+LocPromotionPopupText="<Bullet/> Rocket Cooldown is decreased by 1.<br/>"
 
 [FireInTheHole X2AbilityTemplate]
 LocFriendlyName="Fire In The Hole"
@@ -403,12 +403,12 @@ LocPromotionPopupText="<Bullet/> You have received extra training that enables y
 ; End Translation (2)
 
 [HEATWarheads X2AbilityTemplate]
-LocFriendlyName="HEAT Warheads"
+LocFriendlyName="HEAT Ordnance"
 ; LWOTC Needs Translation
-LocLongDescription="Your grenades now pierce up to <ABILITY:HEAT_WARHEADS_PIERCE_LW/> point(s) of armor and shred <ABILITY:HEAT_WARHEADS_SHRED_LW/> additional point(s) of armor."
-LocHelpText="Your grenades now pierce up to <ABILITY:HEAT_WARHEADS_PIERCE_LW/> point(s) of armor and shred <ABILITY:HEAT_WARHEADS_SHRED_LW/> additional point(s) of armor."
-LocFlyOverText="HEAT Warheads"
-LocPromotionPopupText="<Bullet/> Your grenades now pierce (ignore) up to <ABILITY:HEAT_WARHEADS_PIERCE_LW/> point(s) of armor and shred <ABILITY:HEAT_WARHEADS_SHRED_LW/> additional point(s) of armor.<br/>"
+LocLongDescription="Your explosives and Primary Weapons now pierce up to <ABILITY:HEAT_WARHEADS_PIERCE_LW/> points of armor."
+LocHelpText="Your explosives and Primary Weapons now pierce up to <ABILITY:HEAT_WARHEADS_PIERCE_LW/> points of armor."
+LocFlyOverText="HEAT Ordnance"
+LocPromotionPopupText="<Bullet/> Your grenades now pierce (ignore) up to <ABILITY:HEAT_WARHEADS_PIERCE_LW/> point(s) of armor.<br/>"
 ; End Translation
 
 [Bombard_LW X2AbilityTemplate]
@@ -559,15 +559,15 @@ LocLongDescription="Holotarget your enemy to grant an aim bonus to all attacks o
 LocHelpText="Holotarget an enemy to grant a bonus to attacks against this target."
 LocFlyOverText="Holotarget"
 ; LWOTC Needs Translation
-LocPromotionPopupText="<Bullet/> Holotargeting takes a single action.<br/><Bullet/> The Holotargeting effect lasts until the start of your next turn.<br/><Bullet/> Multiple holotarget effects do not stack with each other.<br/><Bullet/> The aim bonus is +<Ability:HOLO_CV_AIM_BONUS_LW/> for the basic Holotargeter, and improves to +<Ability:HOLO_MG_AIM_BONUS_LW/> and +<Ability:HOLO_BM_AIM_BONUS_LW/> with better technology.<br/><Bullet/> Holotargeting does not break concealment for you or your squad."
+LocPromotionPopupText="<Bullet/> Holotargeting is a free action, with <Ability:SelfCooldown_LW/> turn cooldown.<br/><Bullet/> The Holotargeting effect lasts until the start of your next turn.<br/><Bullet/> Multiple holotarget effects do not stack with each other.<br/><Bullet/> The aim bonus is +<Ability:HOLO_CV_AIM_BONUS_LW/> for the basic Holotargeter, and improves to +<Ability:HOLO_MG_AIM_BONUS_LW/> and +<Ability:HOLO_BM_AIM_BONUS_LW/> with better technology.<br/><Bullet/> Holotargeting does not break concealment for you or your squad."
 ; End Translation 
 
 [RapidTargeting X2AbilityTemplate]
 LocFriendlyName="Rapid Targeting"
-LocLongDescription="You may Holotarget an enemy as a free action with a <Ability:SelfCooldown_LW/> turn cooldown. In addition, Holotargeting no longer ends your turn."
-LocHelpText="Activate to Holotarget an enemy as a free action."
+LocLongDescription="Holotargeting Cooldown is reduced by 1 turn."
+LocHelpText="Holotargeting Cooldown is reduced by 1 turn."
 LocFlyOverText="Holotarget"
-LocPromotionPopupText="<Bullet/> Using your Holotargeter no longer ends your turn.<br/><Bullet/> In addition, Rapid Targeting lets you periodically use Holotargeting against a single enemy as a free action.<br/><Bullet/> This works with HiDef Holo, Independent Tracking, and Vital Point Targeting.<br/><Bullet/> This does not stack with Multitargeting.<br/><Bullet/> Rapid Targeting has a <Ability:SelfCooldown_LW/> turn cooldown.<br/><Bullet/> Holotargeting does not break concealment for your squad."
+LocPromotionPopupText=""
 
 [RapidTargeting_Passive X2AbilityTemplate]
 LocFriendlyName="Rapid Targeting"
@@ -596,10 +596,10 @@ LocPromotionPopupText="<Bullet/> The Vital Point Targeting damage bonus is +<Abi
 
 [Multitargeting X2AbilityTemplate]
 LocFriendlyName="Multitargeting"
-LocLongDescription="You may Holotarget multiple enemies with a <Ability:SelfCooldown_LW/> turn cooldown."
+LocLongDescription="Holotargeting now affects multiple enemies in a radius."
 LocHelpText="Holotarget multiple enemies in an area of effect."
 LocFlyOverText="Multitargeting"
-LocPromotionPopupText="<Bullet/> HiDef Holo, Independent Tracking, and Vital Point Targeting apply to all targets.<br/><Bullet/> Area of effect radius is <Ability:MULTI_HOLO_CV_RADIUS_LW/> tiles for the basic Holotargeter and improves to <Ability:MULTI_HOLO_MG_RADIUS_LW/> and <Ability:MULTI_HOLO_BM_RADIUS_LW/> tiles with better technology.<br/><Bullet/> Multitargeting has a <Ability:SelfCooldown_LW/> turn cooldown.<br/><Bullet/> Holotargeting does not break concealment for your squad."
+LocPromotionPopupText="<Bullet/> Holotargeting is a free action, with <Ability:SelfCooldown_LW/> turn cooldown.<br/><Bullet/> Area of effect radius is <Ability:MULTI_HOLO_CV_RADIUS_LW/> tiles for the basic Holotargeter and improves to <Ability:MULTI_HOLO_MG_RADIUS_LW/> and <Ability:MULTI_HOLO_BM_RADIUS_LW/> tiles with better technology.<br/><Bullet/> Multitargeting has a <Ability:SelfCooldown_LW/> turn cooldown.<br/><Bullet/> Holotargeting does not break concealment for your squad."
 
 [AlphaMikeFoxtrot X2AbilityTemplate]
 LocFriendlyName="Alpha Mike Foxtrot"
@@ -6338,9 +6338,21 @@ LocPromotionPopupText="<Bullet/> Generate an explosive field of Psionic energy t
 LocLongDescription="Reaction shots confer an aim malus on enemies and can now be triggered by any enemy action, not just movement."
 LocPromotionPopupText="<Bullet/> If triggered by an enemy action, Covering Fire will trigger before the enemy action completes.<br/><Bullet/> In addition, having the Covering Fire ability confers a temporary aim penalty upon any units you take a reaction shot at, regardless of whether it was a covering fire shot or not.<br/>"
 
-[GrenadeLauncher_MG X2GrenadeLauncherTemplate]
+[PrimaryGrenadeLauncher_CV X2GrenadeLauncherTemplate]
+FriendlyName="Grenade Launcher"
+FriendlyNamePlural="Grenade Launchers"
+BriefSummary="A Grenade Launcher allows the Grenadier to launch Grenades much further than other soldiers, and increase the radius of their explosive attacks."
+TacticalText="<Bullet/> The grenade launcher is the Grenadier's specialty weapon.\n<Bullet/> It has a substantially increased range relative to throwing.\n<Bullet/> Grenadiers can train several abilities that enhance their use of the Grenade Launcher."
+AbilityDescName="grenade launcher"
+
+[PrimaryGrenadeLauncher_MG X2GrenadeLauncherTemplate]
+FriendlyName="Advanced Grenade Launcher"
+FriendlyNamePlural="Advanced Grenade Launchers"
 BriefSummary="Our Advanced Grenade Launcher uses magnetic technology to propel grenades further than our conventional launcher."
 TacticalText="<Bullet/> The Advanced Grenade Launcher has an increased range over the standard Grenade Launcher.\n."
+AbilityDescName="grenade launcher"
+
+
 
 ; LWOTC Needs Translation
 [GrenadeLauncher_BM X2GrenadeLauncherTemplate]
@@ -6349,6 +6361,12 @@ FriendlyNamePlural="Beam Grenade Launchers"
 BriefSummary="The Beam Grenade Launcher combines our latest breakthroughs in beam technology-based propulsion and AI-assisted targeting systems to deliver payloads with unprecedented precision."
 TacticalText="<Bullet/> The Beam Grenade Launcher transforms any grenade into an autonomous projectile that can navigate around obstacles with ease."
 ; End Translation
+
+[PrimaryGrenadeLauncher_BM X2GrenadeLauncherTemplate]
+FriendlyName="Beam Grenade Launcher"
+FriendlyNamePlural="Beam Grenade Launchers"
+BriefSummary="The Beam Grenade Launcher combines our latest breakthroughs in beam technology-based propulsion and AI-assisted targeting systems to deliver payloads with unprecedented precision."
+TacticalText="<Bullet/> The Beam Grenade Launcher transforms any grenade into an autonomous projectile that can navigate around obstacles with ease."
 
 [FlashbangGrenade X2GrenadeTemplate]
 TacticalText="<Bullet/> Flashbang grenades don't do damage, but disorient and disrupt enemies in a large radius.<br><Bullet/> Friendly squad members will not be affected.<br/><Bullet/> Some powerful enemies may be able to resist their effects."
@@ -6483,9 +6501,8 @@ LocPromotionPopupText="<Bullet/> If an enemy begins their turn in an adjacent ti
 ; LWOTC Needs Translation
 [Battlemaster X2AbilityTemplate]
 LocFriendlyName="Battlemaster"
-LocLongDescription="Skirmishers are elite soldiers, due to their past as ADVENT, granting them a grenade slot."
-LocHelpText="Skirmishers are elite soldiers, due to their past as ADVENT, granting them a grenade slot."
-LocPromotionPopupText="<Bullet/> An additional grenade can be equipped in a unique grenade-only slot.<br/>"
+LocLongDescription="Unlock Justice And Wrath."
+LocHelpText="Unlock Justice And Wrath."
 
 [SkirmisherGrapple X2AbilityTemplate]
 LocPromotionPopupText="<Bullet/> Grapple allows the Skirmisher to get into position without using an action.<br/><Bullet/> Grapple has a <Ability:SelfCooldown_LW/> turn cooldown."
@@ -8248,6 +8265,42 @@ LocFriendlyName="Paralyzing Blows"
 LocLongDescription="Melee Attacks now Stun For 1 more action."
 LocHelpText="Melee Attacks now Stun For 1 more action."
 LocPromotionPopupText="Melee Attacks now Stun For 1 more action."
+
+[HighVolumeFire X2AbilityTemplate]
+LocFriendlyName="High Volume Fire"
+LocLongDescription="Your Primary weapon Shots will decrease target's aim by <Ability:HIGH_VOLUME_FIRE_MALUS/> until the next turn, Stackable."
+LocHelpText="Your Primary weapon Shots will decrease target's aim."
+LocPromotionPopupText=""
+
+[HighVolumeFirePassive X2AbilityTemplate]
+LocFriendlyName="High Volume Fire"
+LocLongDescription="Your Primary weapon Shots will decrease target's aim by <Ability:HIGH_VOLUME_FIRE_MALUS/> until the next turn, Stackable."
+LocHelpText="Your Primary weapon Shots will decrease target's aim."
+LocPromotionPopupText=""
+
+[Impact X2AbilityTemplate]
+LocFriendlyName="Impact"
+LocLongDescription="Your Attacks can now remove enemy overwatch on hit."
+LocHelpText="Your Attacks can now remove enemy overwatch on hit."
+LocPromotionPopupText=""
+
+[PlatformStability X2AbilityTemplate]
+LocFriendlyName="Platform Stability"
+LocLongDescription="Steady weapon now completely removes rocket scatter."
+LocHelpText="Steady weapon now completely removes rocket scatter."
+LocPromotionPopupText=""
+
+[ImprovedProtocols X2AbilityTemplate]
+LocFriendlyName="Improved Protocols"
+LocLongDescription="Cooldown Of ABC Protocols are reduced by 1."
+LocHelpText="Cooldown Of ABC Protocols are reduced by 1."
+LocPromotionPopupText=""
+
+[TenaciousDefense X2AbilityTemplate]
+LocFriendlyName="Tenacious Defense"
+LocLongDescription="Gain 3 ablative HP and 40% crit resistance when protected by cover."
+LocHelpText="Gain 3 ablative HP and 40% crit resistance when protected by cover."
+LocPromotionPopupText=""
 
 [Serpentine X2AbilityTemplate]
 LocFriendlyName="Serpentine"

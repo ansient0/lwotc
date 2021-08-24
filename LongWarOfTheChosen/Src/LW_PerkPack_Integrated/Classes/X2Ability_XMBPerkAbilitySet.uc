@@ -646,7 +646,7 @@ static function X2AbilityTemplate BlindingProtocol_LW()
 	local X2AbilityTemplate										Template;
 	local X2Condition_Visibility								VisCondition;
 	local X2AbilityCost_ActionPoints							ActionPointCost;
-	local X2AbilityCooldown										Cooldown;
+	local X2AbilityCooldown_ABCProtocol							Cooldown;
 	local X2Condition_UnitProperty								TargetProperty;
 	local X2AbilityTarget_Single								PrimaryTarget;
 	local X2AbilityMultiTarget_Radius							RadiusMultiTarget;
@@ -719,12 +719,11 @@ static function X2AbilityTemplate BlindingProtocol_LW()
 	// Ability's Action Point cost and Cooldown
 	ActionPointCost = new class'X2AbilityCost_ActionPoints';
 	ActionPointCost.iNumPoints = 1;
-	ActionPointCost.bConsumeAllPoints = true;
+	ActionPointCost.bConsumeAllPoints = false;
 	ActionPointCost.DoNotConsumeAllEffects.AddItem('LW_ABCProtocols_DoNotConsumeAllActionsEffect');
 	Template.AbilityCosts.AddItem(ActionPointCost);
 
-	Cooldown = new class'X2AbilityCooldown';
-	Cooldown.iNumTurns = default.BLINDING_PROTOCOL_COOLDOWN;
+	Cooldown = new class'X2AbilityCooldown_ABCProtocol';
 	Template.AbilityCooldown = Cooldown;
 
 	// Apply the Disoriented effect to valid targets

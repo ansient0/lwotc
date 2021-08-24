@@ -130,7 +130,7 @@ static function X2AbilityTemplate AddHEATWarheads()
 static function X2AbilityTemplate AddHeavyOrdnance_LW()
 {
 	local X2AbilityTemplate						Template;
-	local X2Effect_BonusGrenadeSlotUse			BonusGrenadeEffect;
+	//local X2Effect_BonusGrenadeSlotUse			BonusGrenadeEffect;
 	local X2Effect_BonusClipSize PrimaryAmmoEffect;
 	`CREATE_X2ABILITY_TEMPLATE(Template, 'HeavyOrdnance_LW');
 	Template.IconImage = "img:///UILibrary_PerkIcons.UIPerk_aceinthehole";  // re-use icon from base-game Heavy Ordnance
