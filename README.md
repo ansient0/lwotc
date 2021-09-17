@@ -25,7 +25,7 @@ The Chosen
 Here's a headline list of features of this mod
 
 ### Podless
-* As soon as you are spotted. every enemy in the map activates. Enemy count, XCOM HP, and defensive tools are redesigned with that in mind.
+* As soon as you are spotted, every enemy in the map activates. Enemy count, XCOM HP, and defensive tools are redesigned with that in mind.
 
 ### Revamped concealment
 * With some exceptions, shared concealment now breaks at the start of the 2nd turn.
@@ -67,12 +67,12 @@ Attachments have been rebalanced to:
 ### Overwatch and suppression
 Overwatch has been overhauled:
 
-* Overwatch is now: Fire on the first enemy within line of sight of this soldier (at the time of activating Overwatch) that moves. No aim penalty and ignores cover defense.
+* Overwatch is now: Fire on the first enemy within line of sight of this soldier (at the time of activating Overwatch) that moves. No aim penalty and ignores cover defense. A unit can only go on overwatch if it has an enemy in line of sight
 * Overwatch is no longer removed upon taking damage
 
 Similar to LWR overwatch rules, except it doesn't have covering fire by default. This is an important mechanic change because:
 * Makes sure not every mission is a spawn defense with podless
-* Makes RNF something that you will have to deal with instead of just blowing up instantly
+* Makes reinforcements (RNF) something that you will have to deal with instead of just blowing up instantly
 * Makes overwatch strong without needing multiple overwatch perks beforehand
 
 * Suppression is now: Fire a barrage that pins down a target, reducing their action points by 1 (units unable to take cover are immune), restricting the use of many abilities, and imposing a 15 penalty to the target's aim. Grants an  overwatch shot that deals half damage if the target moves.
@@ -81,7 +81,7 @@ These changes make suppression far more effective at locking down units, and far
 
 ### Soldiers
 
-* All soldiers now basically start as squaddies - Eliminates the boring rookie phase where your toolset was severely limited
+* All soldiers now start as squaddies - Eliminates the boring rookie phase where your toolset was severely limited
 
 * All soldier trees have been redesigned to have their role defining tools/power spikes happen earlier in the tree than later - Makes the builds go online a lot sooner, and decreases the impact of losing higher ranked soldiers, and increases the ability to more easily replace them
 
@@ -104,7 +104,7 @@ sawed-offs are now universal sidearm slot weapons, grenade launchers are now uni
 * New Squaddie set of perks - Suppression, flush, bladestorm knife fighter
 
 ###### Technical Class
-* No longer has gauntlet, instead it's split into a rocket launcher secondary weapon, and a primary flamethrower called an immolator
+* No longer has gauntlet, instead the technical has a rocket launcher secondary weapon, and is the only class that can equip a primary flamethrower called an immolator
 
 * Can Equip several new rocket types, detailed in the weapons section
 * Immolator allows to equip special canisters in the sidearm slot, detailed in the weapons section
@@ -137,19 +137,21 @@ You can find new class trees [here.](https://docs.google.com/spreadsheets/d/1Sdk
 * New tier naming is : Basic, Advanced, Elite, Supreme, With T5 enemies having special names
 * Incorporated over 100 new permament dark events as new and unpredictable enemy scaling
 * Removed Najas - squadsight doesn't fit that well in podless
+* Removed MEC Archers - squadsight doesn't fit and they weren't an interesting enough enemy
 * Removed ADVENT grenadiers, rocketeers, scouts, sergeants, commandos, vanguards and shock troopers - Their variants have been incorporated elsewhere
 
-More detailed enemy changes can be found here, I'll just present some more important here
+More detailed enemy changes can be found here, I'll just present some more important changes here
 #### Troopers
 * Gains Marauder (standard shots are no longer turn ending)
 
 #### Officers
-* Gains Defilade (All enemies in sight of the officer gain 30 crit resistance)
+* Gains Defilade (All allies in sight of the officer gain 30 crit resistance)
 * Mark target is now a free action
 
 #### Sectoids
 * Reworked Mind Spin: Is now a free action, Cannot mind control by default, but will always mind control targets that are disoriented, stunned, or panicked
 * Reduced Psi Offense by a lot so mindspin can now fail sometimes
+* Sectoid Commanders lose Mass Mindspin because it wasn't very effective/working correctly.
 
 #### Drones
 * Repair is now a free action
@@ -303,7 +305,7 @@ Outrider Frame - +1 weapon mobility, at the cost of -35% weapon damage
 * unlocked with Spectre autopsy
 
 #### Bluescreen Canister
-* 150% weapon damage, armor piercing, stuns for 1 action and only affects electricals
+* 150% weapon damage, armor piercing, stuns for 1 action and only affects mechanicals
 * unlocked with Bluescreen Protocol
 
 
@@ -361,12 +363,12 @@ Rocket types:
 * 200% weapon damage
 * single target
 * 4/6 pierce
-* fire only at holo’d targets
+* can only be fired at holo’d targets
 
 #### flechette
 * 175% weapon damage
 * 6 radius
-* Big Damage reduction by cover and armor
+* Damage is reduced a lot against cover and armor
 
 #### Concussion:
 * 50% weapon damage
@@ -629,7 +631,7 @@ LONG_ALL_RANGE[41] = -44
 
 ### Armor
 
-* Removed all platings from the game
+* Removed all ablative plating equipment from the game. Instead armor gives plating and there are PG projects to further increase plating
 
 #### Kevlar
 
@@ -655,7 +657,7 @@ LONG_ALL_RANGE[41] = -44
 
 * 3 HP, 1 armor, 4 ablative,
 * No longer grants a heavy weapon slot
-* Exoskeleton Servos: Set the soldier’s mobility to 14
+* Exoskeleton Servos: Set the soldier’s mobility to 14, regardless of any buff/debuffs
 * -1 Equipment Slot
 
 #### Powered
@@ -673,7 +675,7 @@ LONG_ALL_RANGE[41] = -44
 
 * 8hp, 2 armor, 5 ablative,
 
-* Exoskeleton Servos: Set the soldier’s mobility to 14
+* Exoskeleton Servos: Set the soldier’s mobility to 14, regardless of any buff/debuffs
 
 * -1 equipment slot
 
@@ -728,12 +730,14 @@ Integrated warfare: Unlocked with Priest Autopsy
 
 Lightning Strike: Unlocked with Spectre Autopsy
 
-Stay with me: Unlocked with Chryssalid Autopsy 
+Stay with me: Unlocked with Chryssalid Autopsy
+
+Vulture: Unlocked with Alien Encryption research
 
 ### Officers
 * Air Controller skyranger turn reduction to 1 from 2
 * New ability: Fall Back (Give a free but uncontrolled action to a unit that has spent their action points that causes it to retreat)
-* New ability: Resupply - make all allies within a command range that have spent their action points reload.
+* New ability: Resupply - make all allies within command range that have spent their action points reload.
 
 #### NEW OFFICER TREE
 * Oscar mike vs Focus fire
@@ -792,13 +796,13 @@ The actual list is too long, but here are the few important ones
 * Will To survive Decreases defense by 15, Grants 2 ablative hp, 35% cover damage reduction, and 20% wound time reduction
 * Serial and reaper are now passives
 * Lethal is now 30% damage, and also applies to grenades
-* Chain lightning now replaces normal arc thrower shots, but chained attacks disorient rather than stun, and there are only up to 3 chains
+* Chain lightning now replaces normal arc thrower shots, chained attacks disorient rather than stun, and only hits up to 3 targets
 * Fleche no longer grants any bonus damage, and has a 3 turn cooldown
 * Sentinel, Guardian and RR can now work against the same target
 
 ### New Abilities
 
-Similiarly, only the important ones
+Similarly, only the important ones
 
 * Bullet Wizard: Grants Area suppression. Suppression and Area suppression deal small amount of damage to the targets.
 * Merciless: Once per turn, taking a standard shot with your primary weapon on a disoriented, panicked, or stunned enemy will refund your actions.
@@ -810,6 +814,7 @@ Threat assessment makes Aid protocol target go on overwatch
 Shock therapy makes Blinding protocol have a 50% chance to stun the targets.
 
 Chaining Jolt causes combat protocol to jump to up to 3 additional targets.
+
 ## Installing and playing the mod
 
 Installing the mod works exactly the same as normal lwotc, except you download it from here. You can find general instructions on LWOTC's [wiki page.](https://github.com/long-war-2/lwotc/wiki/Installing-Long-War-of-the-Chosen)
