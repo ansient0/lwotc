@@ -2,18 +2,17 @@
 
 This is a Fundamental Rebalance of Long War Of the Chosen, with the following design goals:
 
-1.  Significantly lower the reliance on alpha striking (more 3-4 + turn engagements than 1-2-turn ones)
+1.  Significantly lower the reliance on alpha striking (more 3-4 + turn engagements than 1-2 turn ones)
 2.  Eliminate the need to manage pod activations
-3.  A wide variety of distinct tools for the player, and a wide range of distinct challenges to deal with
-Meaning:
+3.  A wide variety of distinct tools for the player, and a wide range of distinct challenges to deal with, such as:
 - Much more distinct enemy design
 - Significantly more nuanced perk trees and equipment 
 4. More even pacing and difficulty of the campaign
-5. Repurpose stealth from an ambush and combat avoidance tool to scouting and defensive one.
+5. Repurpose stealth from an ambush and combat avoidance tool to a scouting and defensive one.
 
 
 ## Current State
-Currently the Mod is in alpha, in a playable, but feature incomplete and unpolished state.
+Currently the Mod is in alpha, in a playable but feature incomplete and unpolished state.
 
 Particularly, the not-implemented features (In this case: Not rebalanced/redesigned yet) so far include:
 Psi ops
@@ -23,27 +22,27 @@ The Chosen
 
 ## Features
 
-Here's a headline least of features of this mod
+Here's a headline list of features of this mod
 
 ### Podless
-* As soon as you get spotted. every enemy in the map activates. enemy count, and XCOM HP and defensive tools are redesigned with that in mind.
+* As soon as you are spotted. every enemy in the map activates. Enemy count, XCOM HP, and defensive tools are redesigned with that in mind.
 
 ### Revamped concealment
-* With some exceptions, Shared concealment now breaks at the start of the 2nd turn.
+* With some exceptions, shared concealment now breaks at the start of the 2nd turn.
 
-* Phantom got reworked to temporarily concealing yourself as a free action for 1 turn. (with 3 charges)
+* Phantom is reworked to temporarily concealing yourself as a free action for 1 turn. (with 3 charges)
 
-* Enemy Detection ranges got severely decreased
+* Enemy Detection ranges are severely decreased
 
 * Shadow is keeping its LWOTC Variant
 
 ### Grenade Scatter
 
-* Grenades are overall more powerful, but also more unreliable, and now they can scatter just like rockets.
-* The damage falloff is also quite a bit harsher
+* Grenades are overall more powerful, but also more unreliable, and can now scatter just like rockets.
+* Damage falloff is also quite a bit harsher
 
 ### Cover
-* Cover Defense got further increased to 40/55 from 30/45 - makes cover a lot more important
+* Cover Defense is further increased to 40/55 from 30/45 - significantly raising the value of cover
 * Base Flanking crit bonus increased to 50% from 40%
 
 ### Ammo management
@@ -60,31 +59,31 @@ Attachments have been rebalanced to:
 * Laser sight - Gain 10 crit
 
 * Hair trigger - After a miss, gain +25 aim
-* Stock - missed attacks have a 50% chance to become a graze. Your attacks ignore up to 15 dodge
+* Stock - Missed attacks have a 50% chance to become a graze. Your attacks ignore up to 15 dodge
 
-* Expended magazine - gain +1 weapon capacity
+* Expended magazine - Gain +1 weapon capacity
 * Auto-loader - Grants quick reload - Reload up to 2 ammo, non-turn ending
 
 ### Overwatch and suppression
-Overwatch has been severely overhauled:
+Overwatch has been overhauled:
 
 * Overwatch is now: Fire on the first enemy within line of sight of this soldier (at the time of activating Overwatch) that moves. No aim penalty and ignores cover defense.
-* Overwatch is no longer removed on taking damage
+* Overwatch is no longer removed upon taking damage
 
-It's like lwr overwatch rules, except it doesn't have covering fire by default. It's an important mechanic change because:
+Similar to LWR overwatch rules, except it doesn't have covering fire by default. This is an important mechanic change because:
 * Makes sure not every mission is a spawn defense with podless
 * Makes RNF something that you will have to deal with instead of just blowing up instantly
-* Makes overwatch strong without needing 893128974 ow perks beforehand
+* Makes overwatch strong without needing multiple overwatch perks beforehand
 
 * Suppression is now: Fire a barrage that pins down a target, reducing their action points by 1 (units unable to take cover are immune), restricting the use of many abilities, and imposing a 15 penalty to the target's aim. Grants an  overwatch shot that deals half damage if the target moves.
 
-Makes it far more effective at locking down units, and far less effective at killing them.
+These changes make suppression far more effective at locking down units, and far less effective at killing them.
 
 ### Soldiers
 
 * All soldiers now basically start as squaddies - Eliminates the boring rookie phase where your toolset was severely limited
 
-* All soldier trees have been redesigned to have their role defining tools/power spikes happen earlier in the tree than later - Makes the builds go online a lot sooner, and decreases the impact of losing higher ranked soldiers, generally increases the replacability of them
+* All soldier trees have been redesigned to have their role defining tools/power spikes happen earlier in the tree than later - Makes the builds go online a lot sooner, and decreases the impact of losing higher ranked soldiers, and increases the ability to more easily replace them
 
 * Soldier base stats have been rescaled like this:
 8 base HP
@@ -129,16 +128,16 @@ sawed-offs are now universal sidearm slot weapons, grenade launchers are now uni
 ###### Specialist Class
 * New Squaddie set of perks - Aid Protocol, Blinding Protocol, Combat Protocol
 
-You Can find new class trees [here.](https://docs.google.com/spreadsheets/d/1Sdk8q8FWuxaaPSpgdK1BOIwQZYgUXXFv/edit?usp=sharing&ouid=101693235569137515434&rtpof=true&sd=true)
+You can find new class trees [here.](https://docs.google.com/spreadsheets/d/1Sdk8q8FWuxaaPSpgdK1BOIwQZYgUXXFv/edit?usp=sharing&ouid=101693235569137515434&rtpof=true&sd=true)
 
 ### Enemies
 
-* Enemy Aim And Will growths have been completely removed - Makes sure cover is just as important early game as it is late
+* Enemy Aim and Will growths have been completely removed - Makes sure cover is just as important early game as it is late
 * Rescaled all enemies across 5 tiers, scaled from FL 1 to FL 25
 * New tier naming is : Basic, Advanced, Elite, Supreme, With T5 enemies having special names
-* Incorporated over 100 new permament dark events as new, unpredictable enemy scaling
+* Incorporated over 100 new permament dark events as new and unpredictable enemy scaling
 * Removed Najas - squadsight doesn't fit that well in podless
-* removed ADVENT grenadiers, rocketeers, scouts, sergeants, commandos, vanguards and shock troopers - Their variants have been incorporated elsewhere
+* Removed ADVENT grenadiers, rocketeers, scouts, sergeants, commandos, vanguards and shock troopers - Their variants have been incorporated elsewhere
 
 More detailed enemy changes can be found here, I'll just present some more important here
 #### Troopers
@@ -149,45 +148,45 @@ More detailed enemy changes can be found here, I'll just present some more impor
 * Mark target is now a free action
 
 #### Sectoids
-* Reworked mind spin: Is now a free action, Cannot mind control by default, but will always mind control targets that are disoriented, stunned, or panicked
-* Reduced psi offense by a lot so mindspin can now fail sometimes
+* Reworked Mind Spin: Is now a free action, Cannot mind control by default, but will always mind control targets that are disoriented, stunned, or panicked
+* Reduced Psi Offense by a lot so mindspin can now fail sometimes
 
 #### Drones
 * Repair is now a free action
 * Stunner to 3 actions from 4
 
 #### Stun lancers
-* Stun lance is no longer a dash attack, deals a lot more damage, and will now always stun for 1 action (instead of a random effect including unconscious)
+* Stun Lance is no longer a dash attack, deals a lot more damage, and will now always stun for 1 action (instead of a random effect including unconscious)
 * Gains Whirlwind
-* Gains flashbangs
+* Gains Flashbangs
 
 #### Priests
-* No longer have mind control by default
+* No longer have Mind Control by default
 
 #### Sidewinders
 * Have Hit and Slither by default
 
 #### Mutons
-* Gains Will to survive
+* Gains Will to Survive
 
 #### Mecs
-* Gains damage control by default
+* Gains Damage Control by default
 
 #### Spectres
 * Shadowbind is no longer a dash move
 
 #### Codex
-* Gains evasive
+* Gains Evasive
 
 #### Andromedons
 * Primary Weapon now has short range
-* Acid blob cooldown to 1, but it has severely reduced radius and can now scatter
+* Acid Blob cooldown to 1, but it has severely reduced radius and can now scatter
 
 #### Sectopods
 * Significantly less initial armor and HP
-* Gains Protective servos - gain stackable 2 armor for each damage you take this turn
+* Gains Protective Servos - gain stackable 2 armor for each damage you take this turn
 * It can wrath cannon only as a last action, and will always wrath cannon as a last action
-* Wrath cannon cooldown to 1, and damage to 20
+* Wrath Cannon cooldown to 1, and damage to 20
 
 #### Gatekeeper
 * Significantly Less initial armor and HP
@@ -265,7 +264,7 @@ mid long range
 * 75% base damage, has 100% chance to set someone on fire
 * 7 tile long, 5 tile wide
 * infinite ammo, but 2 only ammo capacity, in addition flamethrower has 2 turns cooldown.
-* T0 is there from the start
+* T0 is availible at game start
 * T1 Is unlocked with purifier autopsy
 * T2 is unlocked with Berserker autopsy
 * T3 is unlocked with Sectopod autopsy
@@ -283,9 +282,9 @@ Heat Resistant Tank - -2 cooldown on flamethrower
 
 Fuel Line - +1 canister charge
 
-Light frame - reduced infiltration time
+Light Frame - reduced infiltration time
 
-Outrider frame - +1 weapon mobility, at the cost of -35% weapon damage
+Outrider Frame - +1 weapon mobility, at the cost of -35% weapon damage
 
 #### Blast canister:
 * 150% base weapon damage, very short range, knocks enemies back
@@ -297,20 +296,20 @@ Outrider frame - +1 weapon mobility, at the cost of -35% weapon damage
 
 #### Gas Canister:
 * 50% weapon damage, longer range, inflicts poison
-* unlocked with viper autopsy
+* unlocked with Viper autopsy
 
 #### Acid Canister:
 * 50% weapon damage, inflicts acid
-* unlocked with spectre autopsy
+* unlocked with Spectre autopsy
 
 #### Bluescreen Canister
 * 150% weapon damage, armor piercing, stuns for 1 action and only affects electricals
-* unlocked with bluescreen protocol
+* unlocked with Bluescreen Protocol
 
 
 #### Medical canister
 * 0% weapon damage, smoke, +2 weapon range, regeneration
-* unlocked with chryssalid autopsy
+* unlocked with Chryssalid autopsy
 
 
 #### GRENADE LAUNCHER
@@ -801,7 +800,7 @@ The actual list is too long, but here are the few important ones
 
 Similiarly, only the important ones
 
-* Bullet wizard: Grants Area suppression. Suppression and Area suppression deal small amount of damage to the targets.
+* Bullet Wizard: Grants Area suppression. Suppression and Area suppression deal small amount of damage to the targets.
 * Merciless: Once per turn, taking a standard shot with your primary weapon on a disoriented, panicked, or stunned enemy will refund your actions.
 * Impact: Your Attacks can now remove enemy overwatch on hit.
 * Advanced Robotics: Upgrades ABC protocols by granting Threat Assessment, Shock Therapy and Chaining Jolt.
