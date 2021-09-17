@@ -657,7 +657,7 @@ LONG_ALL_RANGE[41] = -44
 
 * 3 HP, 1 armor, 4 ablative,
 * No longer grants a heavy weapon slot
-* Exoskeleton Servos: Set the soldier’s mobility to 14, regardless of any buff/debuffs
+* Exoskeleton Servos: This Unit's mobility cannot go below 14
 * -1 Equipment Slot
 
 #### Powered
@@ -675,7 +675,7 @@ LONG_ALL_RANGE[41] = -44
 
 * 8hp, 2 armor, 5 ablative,
 
-* Exoskeleton Servos: Set the soldier’s mobility to 14, regardless of any buff/debuffs
+* Exoskeleton Servos: This Unit's mobility cannot go below 14
 
 * -1 equipment slot
 
