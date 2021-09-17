@@ -211,39 +211,39 @@ Base Damage is 4/5/6/7/8 depending on weapon tier (from 4/5.5/7/8.5/10)
 * Rebalanced Primary weapons the following way
 
 #### AR
-100% weapon damage
-4 ammo capacity
-Medium range
+* 100% weapon damage
+* 4 ammo capacity
+* Medium range
 
 #### SMG
-75% base damage
-30 base crit
-3 ammo capacity
-100% crit damage (from 50)
-+1 mobility
-MidShort Range
+* 75% base damage
+* 30 base crit
+* 3 ammo capacity
+* 100% crit damage (from 50)
+* +1 mobility
+* MidShort Range
 
 #### Bullpup
-100% base damage
-15 base aim
-3 ammo capacity
--50 base crit
-+1 mobility
-MidShort Range
+* 100% base damage
+* 15 base aim
+* 3 ammo capacity
+* -50 base crit
+* +1 mobility
+* MidShort Range
 
 #### Strike Rifle (Vektor)
-100% base damage
-5 base aim
-3 ammo capacity
-30 base crit
-Mid long range
-no more bonus crit damage
+* 100% base damage
+* 5 base aim
+* 3 ammo capacity
+* 30 base crit
+* Mid long range
+* no more bonus crit damage
 
 #### Shotgun
-125% base damae
-0 base crit
-4 ammo capacity
-Short Range
+* 125% base damae
+* 0 base crit
+* 4 ammo capacity
+* Short Range
 
 #### Sniper Rifle
 * 125% base damage
@@ -253,11 +253,11 @@ Short Range
 * Long Range
 
 #### Cannon
-150% base damage
--15 base aim
--1 mobility
-6 ammo capacity
-mid long range
+* 150% base damage
+* -15 base aim
+* -1 mobility
+* 6 ammo capacity
+* mid long range
 
 
 #### Immolator (technical only)
