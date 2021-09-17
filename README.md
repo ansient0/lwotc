@@ -819,6 +819,9 @@ Chaining Jolt causes combat protocol to jump to up to 3 additional targets.
 
 Installing the mod works exactly the same as normal lwotc, except you download it from here. You can find general instructions on LWOTC's [wiki page.](https://github.com/long-war-2/lwotc/wiki/Installing-Long-War-of-the-Chosen)
 
+You can grab a release from either the discord sercver, or release section in this repository (experimental ones get posted on discord, more stable ones here)
+
+If you have some kind of trouble or Want to give feedback you can join [LWOTC-R discord server](https://discord.gg/bNcp2V79FG), Or raise an issue in github
 ## Contributing translations
 
 If you would like to contribute to translations for LWOTC, then check out the
