@@ -209,6 +209,7 @@ Base Damage is 4/5/6/7/8 depending on weapon tier (from 4/5.5/7/8.5/10)
 
 * Significantly decreased the amount of shred in the game - makes armor actually important
 * Rebalanced Primary weapons the following way
+* Critical Damage is now +50% of a weapon's base damage (Ex. Assault rifle with base damage of 4 will have +2 critical damage)
 
 #### AR
 * 100% weapon damage
