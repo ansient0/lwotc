@@ -297,6 +297,7 @@ static function UpdateAbilities(X2AbilityTemplate Template, int Difficulty)
 		case 'Overwatch':
 		case 'PistolOverwatch':
 		case 'SniperRifleOverwatch':
+		case 'LongWatch':
 			UpdateOverwatch(Template);
 			break;
 		case 'LaunchGrenade':
@@ -1592,7 +1593,7 @@ static function UpdateOverwatch(X2AbilityTemplate Template)
 
 	VisibilityCondition = new class'X2Condition_Visibility';
 	VisibilityCondition.bRequireGameplayVisible = true;
-	if(Template.DataName == 'LongWatch')
+	if(Template.DataName == 'LongWatch' || Template.DataName == 'SniperRifleOverWatch')
 	{
 	VisibilityCondition.bAllowSquadsight = true;
 	}
