@@ -1192,6 +1192,12 @@ static function X2DataTemplate CreateTemplate_LWDrone_WPN(name TemplateName)
 		Template.BaseDamage = default.LWDRONEM1_DRONEWEAPON_BASEDAMAGE;
 	if(TemplateName == 'LWDroneM2_WPN')
 		Template.BaseDamage = default.LWDRONEM2_DRONEWEAPON_BASEDAMAGE;
+	if(TemplateName == 'LWDroneM3_WPN')
+		Template.BaseDamage = default.LWDRONEM3_DRONEWEAPON_BASEDAMAGE;
+	if(TemplateName == 'LWDroneM4_WPN')
+		Template.BaseDamage = default.LWDRONEM4_DRONEWEAPON_BASEDAMAGE;
+	if(TemplateName == 'LWDroneM5_WPN')
+		Template.BaseDamage = default.LWDRONEM5_DRONEWEAPON_BASEDAMAGE;
 
 	Template.iRange = default.LWDRONE_DRONEWEAPON_RANGE;
 	Template.iSoundRange = default.LWDRONE_DRONEWEAPON_ISOUNDRANGE;
