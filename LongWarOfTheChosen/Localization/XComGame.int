@@ -6301,8 +6301,8 @@ TimerDefendSubtitle="Turns until Advent arrival"
 
 [InTheZone X2AbilityTemplate]
 LocFriendlyName="Serial"
-LocLongDescription="A powerful passive chained shot ability. For every kill made with your <Ability:WeaponName/>, your actions will be refunded."
-LocHelpText="A powerful passive chained shot ability. For every kill made with your <Ability:WeaponName/>, your actions will be refunded."
+LocLongDescription="A powerful passive chained shot ability. For every kill made with your <Ability:WeaponName/>, your actions will be refunded, but further shots will deal less damage."
+LocHelpText="A powerful passive chained shot ability. For every kill made with your <Ability:WeaponName/>, your actions will be refunded, but further shots will deal less damage."
 LocFlyOverText="Serial"
 LocPromotionPopupText="<Bullet/> Serial is meant to chain enemy kills in a single action, as every kill is essentially free.<br/>"
 

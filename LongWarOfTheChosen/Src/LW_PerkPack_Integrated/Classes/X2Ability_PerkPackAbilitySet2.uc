@@ -24,9 +24,10 @@ var config int PHANTOM_COOLDOWN;
 var config int PHANTOM_CHARGES;
 var config int CONCEAL_BONUS_CHARGES;
 var config float REAPER_PCT_DMG_REDUCTION;
+var config int SERIAL_PCT_DMG_REDUCTION;
+
 var config int SPRAY_AND_PRAY_DODGE;
 var config int STOCK_SPRAY_AND_PRAY_DODGE;
-
 
 const DAMAGED_COUNT_NAME = 'DamagedCountThisTurn';
 
@@ -1406,7 +1407,7 @@ static function X2AbilityTemplate CreateNewConceal()
 static function X2AbilityTemplate InTheZone()
 {
 	local X2AbilityTemplate				Template;
-	local X2Effect_Serial               SerialEffect;
+	local X2Effect_Serial_LW               SerialEffect;
 
 	`CREATE_X2ABILITY_TEMPLATE(Template, 'InTheZone');
 
@@ -1426,6 +1427,7 @@ static function X2AbilityTemplate InTheZone()
 	Template.AddShooterEffectExclusions();
 
 	SerialEffect = new class'X2Effect_Serial_LW';
+	SerialEffect.PCT_DMG_Reduction = default.SERIAL_PCT_DMG_REDUCTION;
 	SerialEffect.BuildPersistentEffect(1, true, true);
 	SerialEffect.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyHelpText(), Template.IconImage, true, , Template.AbilitySourceName);
 	Template.AddTargetEffect(SerialEffect);

@@ -1,5 +1,38 @@
 class X2Effect_Serial_LW extends X2Effect_Serial;
 
+var float PCT_DMG_Reduction;
+
+
+function float GetPostDefaultAttackingDamageModifier_CH(
+	XComGameState_Effect EffectState,
+	XComGameState_Unit SourceUnit,
+	Damageable Target,
+	XComGameState_Ability AbilityState,
+	const out EffectAppliedData ApplyEffectParameters,
+	float WeaponDamage,
+	X2Effect_ApplyWeaponDamage WeaponDamageEffect,
+	XComGameState NewGameState)
+{
+	local UnitValue UnitVal;
+    local float DamageReduction;
+	local float DamageMod;
+	if (AbilityState.SourceWeapon == EffectState.ApplyEffectParameters.ItemStateObjectRef)
+	{
+		SourceUnit.GetUnitValue('SerialKills', UnitVal);
+
+		if(UnitVal.fValue > 0)
+		{
+
+        DamageReduction = WeaponDamage;
+
+		DamageMod = (1- PCT_DMG_Reduction)** UnitVal.fValue;
+
+		DamageReduction = DamageReduction * (1-DamageMod);
+		}
+    }
+
+	return -DamageReduction;
+}
 
 function bool PostAbilityCostPaid(XComGameState_Effect EffectState, XComGameStateContext_Ability AbilityContext, XComGameState_Ability kAbility, XComGameState_Unit SourceUnit, XComGameState_Item AffectWeapon, XComGameState NewGameState, const array<name> PreCostActionPoints, const array<name> PreCostReservePoints)
 {
