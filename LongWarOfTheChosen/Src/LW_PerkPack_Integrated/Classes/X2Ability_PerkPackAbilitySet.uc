@@ -2055,7 +2055,7 @@ static function X2AbilityTemplate GunslingerShot()
 	Trigger = new class'X2AbilityTrigger_Event';
 	Trigger.EventObserverClass = class'X2TacticalGameRuleset_AttackObserver';
 	Trigger.MethodName = 'InterruptGameState';
-	Template.AbilityTriggers.AddItem(Trigger);
+	//Template.AbilityTriggers.AddItem(Trigger);
 	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
 	Template.BuildVisualizationFn = TypicalAbility_BuildVisualization;
 	
