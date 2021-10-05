@@ -53,7 +53,7 @@ simulated function XComGameState_Unit FindNewAreaSuppressionTarget(XComGameState
 		SourceState = XComGameState_Unit(NewGameState.CreateStateObject(class'XComGameState_Unit', RemovedEffect.ApplyEffectParameters.SourceStateObjectRef.ObjectID));
 		NewGameState.AddStateObject(SourceState);
 	}
-	if (ShouldRemoveAreaSuppression(SourceState, NewGameState))
+	if (ShouldRemoveAreaSuppression(SourceState, RemovedEffect, NewGameState))
 		return none;
 
 	if(SourceState != none)
@@ -143,7 +143,7 @@ simulated function CleansedAreaSuppressionVisualization(XComGameState VisualizeG
 }
 
 // this is only for removing from OTHER targets than the one being shot at
-static function bool ShouldRemoveAreaSuppression(XComGameState_Unit SourceUnit, optional XComGameState NewGameState, optional bool bBeforeAmmoReduction = false)
+static function bool ShouldRemoveAreaSuppression(XComGameState_Unit SourceUnit, XComGameState_Effect EffectState,  optional XComGameState NewGameState, optional bool bBeforeAmmoReduction = false)
 {
 	local bool bShouldRemove;
 	local XComGameState_Item WeaponState;
@@ -166,6 +166,11 @@ static function bool ShouldRemoveAreaSuppression(XComGameState_Unit SourceUnit, 
 			}
 		}
 		if(SourceUnit.IsImpaired() || SourceUnit.AffectedByEffectNames.Find(class'X2StatusEffects_LW'.default.LWBurningName) != -1)
+		{
+			bShouldRemove = true;
+		}
+		//Can't believe I have to do this lmao
+		if(EffectState.iTurnsRemaining <= 0) 
 		{
 			bShouldRemove = true;
 		}

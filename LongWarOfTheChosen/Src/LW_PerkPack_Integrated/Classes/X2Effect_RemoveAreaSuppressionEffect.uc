@@ -30,7 +30,7 @@ simulated protected function OnEffectAdded(const out EffectAppliedData ApplyEffe
 				{
 					SourceState = XComGameState_Unit(History.GetGameStateForObjectID(ApplyEffectParameters.SourceStateObjectRef.ObjectID));
 				}
-				if (MatchesTarget || class'X2Effect_AreaSuppression'.static.ShouldRemoveAreaSuppression(SourceState, NewGameState, true)) // remove if either matches target or area suppression is shutting down
+				if (MatchesTarget || class'X2Effect_AreaSuppression'.static.ShouldRemoveAreaSuppression(SourceState, EffectState, NewGameState, true)) // remove if either matches target or area suppression is shutting down
 				{
 					EffectState.RemoveEffect(NewGameState, NewGameState, bCleanse);
 				}
