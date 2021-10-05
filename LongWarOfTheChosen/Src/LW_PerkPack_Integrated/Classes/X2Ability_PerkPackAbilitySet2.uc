@@ -469,7 +469,7 @@ static function X2AbilityTemplate AddSmokeGrenade()
 	TemporaryItemEffect = new class'X2Effect_TemporaryItem';
 	TemporaryItemEffect.EffectName = 'SmokeGrenadeEffect';
 	TemporaryItemEffect.ItemName = 'SmokeGrenade';
-	TemporaryItemEffect.ResearchOptionalItems.AddItem(Conditional);
+	//TemporaryItemEffect.ResearchOptionalItems.AddItem(Conditional);
 	TemporaryItemEffect.AlternativeItemNames.AddItem('DenseSmokeGrenade');
 	TemporaryItemEffect.AlternativeItemNames.AddItem('DenseSmokeGrenadeMk2');
 	TemporaryItemEffect.ForceCheckAbilities.AddItem('LaunchGrenade');
