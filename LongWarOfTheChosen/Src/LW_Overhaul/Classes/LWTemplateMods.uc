@@ -2086,7 +2086,7 @@ function GeneralCharacterMod(X2CharacterTemplate Template, int Difficulty)
 		Template.Abilities.AddItem('Evac');
 	}
 	
-	if(Template.bCanTakeCover && !Template.bIsSoldier)
+	if(Template.bCanTakeCover && !Template.bIsSoldier && !Template.bIsCivilian)
 	{
 		Template.Abilities.AddItem('HunkerDown');
 	}
