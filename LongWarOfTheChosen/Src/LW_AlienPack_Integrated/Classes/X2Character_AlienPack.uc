@@ -532,7 +532,7 @@ static function X2CharacterTemplate CreateTemplate_Sidewinder(name TemplateName)
 	local LootReference Loot;
 
 	`CREATE_X2CHARACTER_TEMPLATE(CharTemplate, TemplateName);
-	CharTemplate.CharacterGroupName = 'Viper';
+	CharTemplate.CharacterGroupName = 'Sidewinder';
 
 	Loot.ForceLevel = 0;
 	if (TemplateName == 'SidewinderM1')
@@ -978,7 +978,7 @@ static function X2CharacterTemplate CreateTemplate_AdvGunner(name TemplateName)
 	local LootReference Loot;
 
 	`CREATE_X2CHARACTER_TEMPLATE(CharTemplate, TemplateName);
-	CharTemplate.CharacterGroupName = 'AdventTrooper'; 
+	CharTemplate.CharacterGroupName = 'AdventGunner'; 
 	if (TemplateName == 'AdvGunnerM2')
 		CharTemplate.DefaultLoadout='AdvGunnerM2_Loadout';
 	if (TemplateName == 'AdvGunnerM3')
@@ -1025,7 +1025,7 @@ static function X2CharacterTemplate CreateTemplate_AdvGunner(name TemplateName)
 	}
 	if (TemplateName == 'AdvGunnerM5')
 	{
-		CharTemplate.DefaultLoadout='AdvGunnerM4_Loadout';
+		CharTemplate.DefaultLoadout='AdvGunnerM5_Loadout';
 		Loot.LootTableName = 'GenericLateAlienLoot_LW'; 
 		CharTemplate.TimedLoot.LootReferences.AddItem(Loot);
 		Loot.LootTableName = 'GenericLateAlienVultureLoot_LW';
@@ -1098,7 +1098,7 @@ static function X2CharacterTemplate CreateTemplate_AdvSentry(name TemplateName)
 	local LootReference Loot;
 
 	`CREATE_X2CHARACTER_TEMPLATE(CharTemplate, TemplateName);
-	CharTemplate.CharacterGroupName = 'AdventTrooper';  
+	CharTemplate.CharacterGroupName = 'AdventSentry';  
 
 	CharTemplate.BehaviorClass=class'XGAIBehavior';
 	//CharTemplate.strPawnArchetypes.AddItem("LWAdvSentry.Archetypes.ARC_GameUnit_AdvSentryM1_M");

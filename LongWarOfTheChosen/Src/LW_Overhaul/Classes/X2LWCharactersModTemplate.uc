@@ -88,6 +88,7 @@ static function DoaGlobalStatModifierByDifficulty(X2CharacterTemplate Template, 
 	TemplateManager = class'X2CharacterTemplateManager'.static.GetCharacterTemplateManager();
 
 	//Get The highest difficulty template
+	Template.Abilities.AddItem('EnemyResearchBonus');
 
 	TemplateManager.FindDataTemplateAllDifficulties(Template.DataName, DiffTemplates);
 
@@ -107,7 +108,8 @@ static function DoaGlobalStatModifierByDifficulty(X2CharacterTemplate Template, 
 		X2CharacterTemplate(DiffTemplates[i]).CharacterBaseStats[eStat_PsiOffense] = HighestDiffTemplate.CharacterBaseStats[eStat_PsiOffense];
 		X2CharacterTemplate(DiffTemplates[i]).CharacterBaseStats[eStat_HackDefense] = HighestDiffTemplate.CharacterBaseStats[eStat_HackDefense];
 		X2CharacterTemplate(DiffTemplates[i]).CharacterBaseStats[eStat_FlankingCritChance] = default.GLOBAL_FLANKING_CRIT_CHANCE;
-	
+		
+
 	}
 
 }
