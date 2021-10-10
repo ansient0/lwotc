@@ -61,7 +61,7 @@ Attachments have been rebalanced to:
 * Laser sight - Gain 10 crit
 
 * Hair trigger - After a miss, gain +25 aim
-* Stock - Missed attacks have a 50% chance to become a graze. Your attacks ignore up to 15 dodge
+* Stock - Missed attacks have a 35% chance to become a graze. Your attacks ignore up to 15 dodge
 
 * Expended magazine - Gain +1 weapon capacity
 * Auto-loader - Grants quick reload - Reload up to 2 ammo, non-turn ending
@@ -90,7 +90,7 @@ These changes make suppression far more effective at locking down units, and far
 * Soldier base stats have been rescaled like this:
 8 base HP
 80 base aim
-16 base mobility
+15 base mobility
 40 base will
 
 * Soldier HP, Aim and Will growths have been completely removed - Makes sure cover is just as important early game as it is late
@@ -115,11 +115,9 @@ sawed-offs are now universal sidearm slot weapons, grenade launchers are now uni
 ###### Shinobi Class
 * New Squaddie set of perks - Phantom, Slash, Whirlwind
 * Phantom has been reworked to: Temporarily conceal yourself for 1 turn with no detection radius. Standard Slash attack does not reveal you. 3 charges
-* Gets +1 mobility at squaddie
 
 ###### Assault Class
 * New Squaddie set of perks - Close encounters, Arc thrower stun
-* Gets +1 mobility at squaddie
 
 
 ###### Sharpshooter Class
