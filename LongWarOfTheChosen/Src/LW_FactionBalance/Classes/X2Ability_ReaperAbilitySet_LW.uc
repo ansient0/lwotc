@@ -148,6 +148,7 @@ static function X2AbilityTemplate AddRemoveShadowOnConcealmentLostTrigger()
 	// concealment being broken.
 	RemoveEffects = new class'X2Effect_RemoveEffects';
 	RemoveEffects.EffectNamesToRemove.AddItem('TemporaryShadowConcealment');
+	RemoveEffects.EffectNamesToRemove.AddItem('GhostEffect');
 	RemoveEffects.bApplyOnHit = true;
 	RemoveEffects.bApplyOnMiss = true;
 	Template.AddShooterEffect(RemoveEffects);

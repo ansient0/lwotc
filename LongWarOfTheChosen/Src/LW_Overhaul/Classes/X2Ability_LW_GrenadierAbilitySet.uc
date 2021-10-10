@@ -304,7 +304,7 @@ static function X2AbilityTemplate AddVanishingActAbility()
 	local X2AbilityCost_Charges				ChargeCost;
 	local X2Condition_UnitEffects			NotCarryingCondition;
 	local X2Effect_PersistentStatChange		StealthyEffect;
-
+	local X2Effect_SilentMelee				GhostEffect;
 	`CREATE_X2ABILITY_TEMPLATE(Template, 'VanishingAct');
 	Template.IconImage = "img:///UILibrary_PerkIcons.UIPerk_ghost"; 
 	Template.AbilitySourceName = 'eAbilitySource_Item';
@@ -391,6 +391,14 @@ static function X2AbilityTemplate AddVanishingActAbility()
 	StealthEffect.SetDisplayInfo(ePerkBuff_Bonus, Template.LocFriendlyName, Template.GetMyHelpText(), Template.IconImage, true);
 	StealthEffect.bRemoveWhenTargetConcealmentBroken = true;
 	Template.AddTargetEffect(StealthEffect);
+
+	GhostEffect = new class'X2Effect_SilentMelee';
+	GhostEffect.EffectName = 'GhostEffect';
+	GhostEffect.BuildPersistentEffect(class'X2Ability_PerkPackAbilitySet2'.default.PHANTOM_DURATION, false, true, false, eGameRule_PlayerTurnBegin);
+	// StealthyEffect.SetDisplayInfo (ePerkBuff_Bonus,Template.LocFriendlyName, Template.GetMyHelpText(), Template.IconImage,,, Template.AbilitySourceName); 
+	GhostEffect.bRemoveWhenTargetConcealmentBroken = true;
+	GhostEffect.DuplicateResponse = eDupe_Refresh;
+	Template.AddTargetEffect(GhostEffect);
 
 	Template.AddTargetEffect(class'X2Effect_Spotted'.static.CreateUnspottedEffect());
 

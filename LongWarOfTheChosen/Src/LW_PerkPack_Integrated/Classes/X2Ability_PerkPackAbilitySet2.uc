@@ -445,7 +445,6 @@ static function X2AbilityTemplate AddSmokeGrenade()
 {
 	local X2AbilityTemplate						Template;
 	local X2Effect_TemporaryItem				TemporaryItemEffect;
-	local ResearchConditional					Conditional;
 	local X2AbilityTrigger_UnitPostBeginPlay	Trigger;
 
 	`CREATE_X2ABILITY_TEMPLATE(Template, 'SmokeGrenade');
@@ -464,8 +463,6 @@ static function X2AbilityTemplate AddSmokeGrenade()
 	Template.bIsPassive = true;
 	Template.bCrossClassEligible = true;
 
-	Conditional.ResearchProjectName = 'AdvancedGrenades';
-	Conditional.ItemName = 'SmokeGrenadeMk2';
 
 	TemporaryItemEffect = new class'X2Effect_TemporaryItem';
 	TemporaryItemEffect.EffectName = 'SmokeGrenadeEffect';
@@ -1252,6 +1249,7 @@ static function X2DataTemplate OverrideStunImpairingAbility()
 	local X2AbilityCharges_BonusCharges                      Charges;
 	local X2Effect_PersistentStatChange StealthyEffect;
 	local X2AbilityCooldown	Cooldown;
+	local X2Effect_SilentMelee GhostEffect;
 	`CREATE_X2ABILITY_TEMPLATE(Template, 'Phantom_LW');
 
 	Template.AbilitySourceName = 'eAbilitySource_Perk';
@@ -1292,6 +1290,14 @@ static function X2DataTemplate OverrideStunImpairingAbility()
 	StealthyEffect.EffectRemovedFn = PhantomExpired;
 	StealthyEffect.EffectRemovedVisualizationFn = VisualizePhantomExpired;
 	Template.AddTargetEffect(StealthyEffect);
+
+	GhostEffect = new class'X2Effect_SilentMelee';
+	GhostEffect.EffectName = 'GhostEffect';
+	GhostEffect.BuildPersistentEffect(default.PHANTOM_DURATION, false, true, false, eGameRule_PlayerTurnBegin);
+	// StealthyEffect.SetDisplayInfo (ePerkBuff_Bonus,Template.LocFriendlyName, Template.GetMyHelpText(), Template.IconImage,,, Template.AbilitySourceName); 
+	GhostEffect.bRemoveWhenTargetConcealmentBroken = true;
+	GhostEffect.DuplicateResponse = eDupe_Refresh;
+	Template.AddTargetEffect(GhostEffect);
 
 	StealthEffect = new class'X2Effect_RangerStealth';
 	StealthEffect.BuildPersistentEffect(1, true, true, false, eGameRule_PlayerTurnEnd);

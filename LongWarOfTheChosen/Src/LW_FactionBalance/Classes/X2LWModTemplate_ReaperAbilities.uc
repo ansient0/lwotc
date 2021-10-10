@@ -97,7 +97,7 @@ static function MakeShadowTemporary(X2AbilityTemplate Template)
 	local X2Condition_UnitProperty SuperConcealedCondition;
 	local int i;
 	local X2Effect_PersistentStatChange StatEffect;
-
+	local X2Effect_SilentMelee GhostEffect;
 	// Kill the charges and the charge cost
 	Template.AbilityCosts.Length = 0;
 	Template.AbilityCharges = none;
@@ -150,6 +150,14 @@ static function MakeShadowTemporary(X2AbilityTemplate Template)
 	StatEffect.AddPersistentStatChange(eStat_Mobility, default.SHADOW_FLAT_MOB_BONUS);
 	Template.AddTargetEffect(StatEffect);
 
+
+	GhostEffect = new class'X2Effect_SilentMelee';
+	GhostEffect.EffectName = 'GhostEffect';
+	GhostEffect.BuildPersistentEffect(class'X2Ability_PerkPackAbilitySet2'.default.PHANTOM_DURATION, false, true, false, eGameRule_PlayerTurnBegin);
+	// StealthyEffect.SetDisplayInfo (ePerkBuff_Bonus,Template.LocFriendlyName, Template.GetMyHelpText(), Template.IconImage,,, Template.AbilitySourceName); 
+	GhostEffect.bRemoveWhenTargetConcealmentBroken = true;
+	GhostEffect.DuplicateResponse = eDupe_Refresh;
+	Template.AddTargetEffect(GhostEffect);
 
 	Template.AddTargetEffect(CreateTemporaryShadowEffect());
 	Template.AdditionalAbilities.AddItem('RemoveShadowOnConcealmentLostTrigger');
