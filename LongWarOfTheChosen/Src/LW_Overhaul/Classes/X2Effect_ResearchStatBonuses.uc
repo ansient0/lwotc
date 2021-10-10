@@ -36,7 +36,7 @@ var array<StatChange> m_aStatChanges;
 simulated protected function OnEffectAdded(const out EffectAppliedData ApplyEffectParameters, XComGameState_BaseObject kNewTargetState, XComGameState NewGameState, XComGameState_Effect NewEffectState)
 {
 	local int ForceLevel;
-	local int Alert;
+	local int Alert, i;
 	local int Doom;
 	local XComGameState_Unit UnitState;
 	local ResearchStatBonus UpgradeData;
@@ -119,6 +119,14 @@ simulated protected function OnEffectAdded(const out EffectAppliedData ApplyEffe
 		}
 	}
 
+	//Make The bonus scale by difficulty
+	for(i = 0; i < m_aStatChanges.Length; i++)
+	{
+		if( m_aStatChanges[i].StatType == eStat_HP )
+		{
+			m_aStatChanges[i].StatAmount = FCeil(1.0f * m_aStatChanges[i].StatAmount * class'X2LWCharactersModTemplate'.default.DIFFICULTY_HP_MODIFIER[`StrategyDifficultySetting]);
+		}
+	}
 	NewEffectState.StatChanges = m_aStatChanges;
 
 	super.OnEffectAdded(ApplyEffectParameters, kNewTargetState, NewGameState, NewEffectState);

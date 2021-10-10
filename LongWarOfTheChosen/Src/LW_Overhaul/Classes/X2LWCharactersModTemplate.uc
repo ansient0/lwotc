@@ -87,11 +87,12 @@ static function DoaGlobalStatModifierByDifficulty(X2CharacterTemplate Template, 
 
 	TemplateManager = class'X2CharacterTemplateManager'.static.GetCharacterTemplateManager();
 
-	//Get The highest difficulty template
 	Template.Abilities.AddItem('EnemyResearchBonus');
-
+	Template.Abilities.AddItem('EnemySighted');
+	
 	TemplateManager.FindDataTemplateAllDifficulties(Template.DataName, DiffTemplates);
-
+	
+	//Get The highest difficulty template
 	HighestDiffTemplate = X2CharacterTemplate(DiffTemplates[3]);
 
 	for (i = 0; i< DiffTemplates.length; i++)
