@@ -6970,6 +6970,11 @@ FriendlyName="Extended Timer"
 Description="If this mission has a timer, it is increased by 4 turns."
 ; End Translation (2)
 
+[StealthMissionEffect X2SitRepEffectTemplate]
+FriendlyName="Stealth Mission"
+Description="The Concealment does not break at the start of the 2nd turn for this mission."
+; End Translation (2)
+
 [CovertActionRisk_Failure_Easy X2CovertActionRiskTemplate]
 RiskName="Failure"
 

@@ -38,6 +38,7 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(CreateSealedArmorDEEffectTemplate());
 	Templates.AddItem(CreateUndyingLoyaltyDEEffectTemplate());
 	Templates.AddItem(CreateVigilanceDEEffectTemplate());
+	Templates.AddItem(CreateStealthMissionEffectTemplate());
 
 	return Templates;
 }
@@ -293,6 +294,16 @@ static function X2SitRepEffectTemplate CreateVigilanceDEEffectTemplate()
 
 	`CREATE_X2TEMPLATE(class'X2SitRepEffectTemplate', Template, 'DarkEventVigilanceEffect');
 	Template.DifficultyModifier = 2;
+
+	return Template;
+}
+
+
+static function X2SitRepEffectTemplate CreateStealthMissionEffectTemplate()
+{
+	local X2SitRepEffectTemplate Template;
+
+	`CREATE_X2TEMPLATE(class'X2SitRepEffectTemplate', Template, 'StealthMissionEffect');
 
 	return Template;
 }
