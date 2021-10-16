@@ -2153,6 +2153,7 @@ function GeneralCharacterMod(X2CharacterTemplate Template, int Difficulty)
 		case 'AdvStunLancerM2':
 		case 'AdvStunLancerM1':
 			Template.Abilities.AddItem('Whirlwind2');
+			Template.Abilities.AddItem('MovingTarget_LW');
 			//Template.Abilities.AddItem('Resilience');
 			break;
 
