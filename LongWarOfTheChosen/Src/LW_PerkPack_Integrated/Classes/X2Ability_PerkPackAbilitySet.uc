@@ -2555,7 +2555,7 @@ static function X2AbilityTemplate AddSuppressionAbility_LW()
 	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
 	Template.BuildVisualizationFn = Suppression_BuildVisualization_LW;
 	Template.BuildAppliedVisualizationSyncFn = class'X2Ability_GrenadierAbilitySet'.static.SuppressionBuildVisualizationSync;
-	Template.CinescriptCameraType = "StandardGunFiring";
+	Template.CinescriptCameraType = "StandardSuppression";
 
 	Template.Hostility = eHostility_Offensive;
 	
@@ -2671,6 +2671,7 @@ static function Suppression_BuildVisualization_LW(XComGameState VisualizeGameSta
 	local X2Action_ApplyWeaponDamageToUnit ApplyWeaponDamageAction;
 	local  name ApplyResult;
 	local XComGameStateVisualizationMgr VisualizationMgr;
+	local XComGameState_Unit TargetUnit;
 	History = `XCOMHISTORY;
 	VisualizationMgr = `XCOMVISUALIZATIONMGR;
 
@@ -2736,7 +2737,13 @@ static function Suppression_BuildVisualization_LW(XComGameState VisualizeGameSta
 			ApplyResult = Context.FindTargetEffectApplyResult(AbilityTemplate.AbilityTargetEffects[EffectIndex]);
 
 			// Target effect visualization
-			if( !Context.bSkipAdditionalVisualizationSteps )
+			TargetUnit = XComGameState_Unit(VisualizeGameState.GetGameStateForObjectID(InteractingUnitRef.ObjectID));
+
+			if(TargetUnit.IsDead())
+			{
+				class'X2Action_Death'.static.AddToVisualizationTree(BuildTrack, Context, false, SyncDamageAction);
+			}
+			else if( !Context.bSkipAdditionalVisualizationSteps )
 			{
 				AbilityTemplate.AbilityTargetEffects[EffectIndex].AddX2ActionsForVisualization(VisualizeGameState, BuildTrack, ApplyResult);
 			}
@@ -2905,9 +2912,9 @@ static function X2AbilityTemplate AddAreaSuppressionAbility()
 	Template.BuildVisualizationFn = AreaSuppression_BuildVisualization_LW;
 	Template.BuildAppliedVisualizationSyncFn = AreaSuppression_BuildVisualizationSync;
 
-	//Template.CinescriptCameraType = "StandardSuppression";
-	Template.CinescriptCameraType = "StandardGunFiring";
-	Template.ActionFireClass = class'X2Action_Fire_SaturationFire';
+	Template.CinescriptCameraType = "StandardSuppression";
+	//Template.CinescriptCameraType = "StandardGunFiring";
+	//Template.ActionFireClass = class'X2Action_Fire_SaturationFire';
 
 	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
 	
@@ -2936,6 +2943,7 @@ simulated function AreaSuppression_BuildVisualization_LW(XComGameState Visualize
 	local Actor                    TargetVisualizer;
 	local X2Action_ApplyWeaponDamageToUnit	ApplyWeaponDamageAction;
 	local XComGameStateVisualizationMgr VisualizationMgr;
+	local XComGameState_Unit TargetUnit;
 
 	History = `XCOMHISTORY;
 	VisualizationMgr = `XCOMVISUALIZATIONMGR;
@@ -2993,13 +3001,18 @@ simulated function AreaSuppression_BuildVisualization_LW(XComGameState Visualize
 		{
 			ApplyResult = Context.FindTargetEffectApplyResult(AbilityTemplate.AbilityTargetEffects[EffectIndex]);
 
-			// Target effect visualization
+			// Apply bullet wizard's Apply weapon damage to unit action
 			if( !Context.bSkipAdditionalVisualizationSteps )
 			{
 				AbilityTemplate.AbilityTargetEffects[EffectIndex].AddX2ActionsForVisualization(VisualizeGameState, BuildTrack, ApplyResult);
 			}
 			TargetVisualizer = History.GetVisualizer(Context.InputContext.PrimaryTarget.ObjectID);
-
+			// For some reason the death action doesn't automatically trigger so we have to do it manually
+			TargetUnit = XComGameState_Unit(VisualizeGameState.GetGameStateForObjectID(Context.InputContext.PrimaryTarget.ObjectID));
+			if(TargetUnit.IsDead())
+			{
+				class'X2Action_Death'.static.AddToVisualizationTree(BuildTrack, Context, false, SyncDamageAction);
+			}
 			ApplyWeaponDamageAction = X2Action_ApplyWeaponDamageToUnit(VisualizationMgr.GetNodeOfType(VisualizationMgr.BuildVisTree, class'X2Action_ApplyWeaponDamageToUnit', TargetVisualizer));
 			if( ApplyWeaponDamageAction != None )
 			{
@@ -3036,14 +3049,20 @@ simulated function AreaSuppression_BuildVisualization_LW(XComGameState Visualize
 					{
 						ApplyResult = Context.FindTargetEffectApplyResult(AbilityTemplate.AbilityMultiTargetEffects[EffectIndex]);
 
-						// Target effect visualization
+						// Apply bullet wizard's Apply weapon damage to unit action
 						if( !Context.bSkipAdditionalVisualizationSteps )
 						{
 							AbilityTemplate.AbilityMultiTargetEffects[EffectIndex].AddX2ActionsForVisualization(VisualizeGameState, BuildTrack, ApplyResult);
 						}
 
 							TargetVisualizer = History.GetVisualizer(InteractingUnitRef.ObjectID);
-
+							
+							// For some reason the death action doesn't automatically trigger so we have to do it manually
+							TargetUnit = XComGameState_Unit(VisualizeGameState.GetGameStateForObjectID(InteractingUnitRef.ObjectID));
+							if(TargetUnit.IsDead())
+							{
+								class'X2Action_Death'.static.AddToVisualizationTree(BuildTrack, Context, false, SyncDamageAction);
+							}
 							ApplyWeaponDamageAction = X2Action_ApplyWeaponDamageToUnit(VisualizationMgr.GetNodeOfType(VisualizationMgr.BuildVisTree, class'X2Action_ApplyWeaponDamageToUnit', TargetVisualizer));
 							if( ApplyWeaponDamageAction != None )
 							{
