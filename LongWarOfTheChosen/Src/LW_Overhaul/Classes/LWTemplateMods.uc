@@ -2224,8 +2224,12 @@ function GeneralCharacterMod(X2CharacterTemplate Template, int Difficulty)
 		Template.Abilities.AddItem('ProtectiveServos');
 		break;
 
+		case 'SpectreM4':
+		case 'SpectreM3':
 		case 'SpectreM2':
 		case 'SpectreM1':
+		Template.Abilities.RemoveItem('LightningReflexes');
+		Template.Abilities.AddItem('MovingTarget_LW');
 			break;
 				// Should turn off tick damage every action
 		case 'ViperKing':
