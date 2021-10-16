@@ -894,7 +894,18 @@ static function EventListenerReturn OnOverrideAbilityIconColor(Object EventData,
 				{
 					IsFree = true;
 				}
+
 			}
+			if(UnitState.HasSoldierAbility('FreeGrenades'))
+			{
+				UnitState.GetUnitValue('GrenadierUses', CountUnitValue);
+			
+				if (CountUnitValue.fValue == 0)
+				{
+					IsFree = true;
+				}	
+			}
+
 			break;
 		case 'LaunchGrenade':
 			if (UnitState.AffectedByEffectNames.Find('RapidDeploymentEffect') != -1)
@@ -903,6 +914,15 @@ static function EventListenerReturn OnOverrideAbilityIconColor(Object EventData,
 				{
 					IsFree = true;
 				}
+			}
+			if(UnitState.HasSoldierAbility('FreeGrenades'))
+			{
+				UnitState.GetUnitValue('GrenadierUses', CountUnitValue);
+			
+				if (CountUnitValue.fValue == 0)
+				{
+					IsFree = true;
+				}	
 			}
 			break;
 		case 'ArcThrowerStun':
@@ -945,6 +965,19 @@ static function EventListenerReturn OnOverrideAbilityIconColor(Object EventData,
 			`LWTRACE ("Attempting to change EVAC color");
 			class'XComGameState_BattleData'.static.HighlightObjectiveAbility(AbilityName, true);
 			return ELR_NoInterrupt;
+			break;
+		case 'MedikitHeal':
+		case 'NanoMedikitHeal':
+		if(UnitState.HasSoldierAbility('Paramedic_LW'))
+		{
+			UnitState.GetUnitValue('ParamedicUses', CountUnitValue);
+		
+			if (CountUnitValue.fValue == 0)
+			{
+				IsFree = true;
+			}	
+		}
+		break;
 		default: break;
 	}
 

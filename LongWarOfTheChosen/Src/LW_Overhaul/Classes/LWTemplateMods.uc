@@ -1716,8 +1716,8 @@ function ModifyAbilitiesGeneral(X2AbilityTemplate Template, int Difficulty)
 
 		switch (Template.DataName)
 		{
-			case 'LaunchGrenade':               // Salvo, Rapid Deployment
-			case 'ThrowGrenade':                // Salvo, Rapid Deployment
+			case 'LaunchGrenade':               // Salvo, Rapid Deployment, Grenadier
+			case 'ThrowGrenade':                // Salvo, Rapid Deployment, Grenadier
 			case 'LWFlamethrower':              // Quickburn
 			case 'Roust':                       // Quickburn
 			case 'Firestorm':                   // Quickburn
@@ -1744,6 +1744,8 @@ function ModifyAbilitiesGeneral(X2AbilityTemplate Template, int Difficulty)
 			case 'ArcthrowerStun':              // Quick Zap
 			case 'EMPulser':              // Quick Zap
 			case 'ChainLightning':              // Quick Zap
+			case 'MedikitHeal':              // Paramedic
+			case 'NanoMedikitHeal':              // Paramedic
 				Template.AbilityIconColor = "Variable"; break; // This calls a function that changes the color on the fly
 			case 'EVAC': 
 				Template.AbilityIconColor = default.ICON_COLOR_FREE; break;
