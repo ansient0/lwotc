@@ -22,11 +22,12 @@ function GetToHitAsTargetModifiers(XComGameState_Effect EffectState, XComGameSta
 				ShotInfo.Value = -1 * (class'X2Ability_DefaultAbilitySet'.default.HUNKERDOWN_DEFENSE);
 				ShotModifiers.AddItem(ShotInfo);
 
-				ShotInfo.ModType = eHit_Graze;
-				ShotInfo.Reason = FriendlyName;
-				ShotInfo.Value = class'X2Ability_DefaultAbilitySet'.default.HUNKERDOWN_DODGE;
-				ShotModifiers.AddItem(ShotInfo);
 			}
+
+			ShotInfo.ModType = eHit_Graze;
+			ShotInfo.Reason = FriendlyName;
+			ShotInfo.Value = class'X2Ability_DefaultAbilitySet'.default.HUNKERDOWN_DODGE;
+			ShotModifiers.AddItem(ShotInfo);
 		}
 	}
 }

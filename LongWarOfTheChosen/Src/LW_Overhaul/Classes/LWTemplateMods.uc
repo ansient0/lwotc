@@ -299,7 +299,7 @@ var config WeaponDamageValue GREMLIN_CV_BASEDAMAGE;
 var config WeaponDamageValue GREMLIN_MG_BASEDAMAGE;
 var config WeaponDamageValue GREMLIN_BM_BASEDAMAGE;
 
-
+var config float HUNKER_EXPLOSIVE_PCT_DR;
 
 var config float HUNTERS_INSTINCT_DAMAGE_PCT;
 static function array<X2DataTemplate> CreateTemplates()
@@ -936,6 +936,8 @@ function ModifyAbilitiesGeneral(X2AbilityTemplate Template, int Difficulty)
 	local X2AbilityMultiTarget_Cone			ConeMultiTarget;
 	local X2AbilityCooldown_AllInstances 	AllInstancesCooldown;
 	local X2Effect_RemoveEffects 			RemoveEffects;
+	local X2Effect_InstantReactionTime		DodgeBonus;
+	local X2Effect_Formidable				FormidableEffect;
 	// WOTC TODO: Trying this out. Should be put somewhere more appropriate.
 	if (Template.DataName == 'ReflexShotModifier')
 	{
@@ -1621,6 +1623,18 @@ function ModifyAbilitiesGeneral(X2AbilityTemplate Template, int Difficulty)
 		RemoveEffects = new class'X2Effect_RemoveEffects';
 		RemoveEffects.EffectNamesToRemove.AddItem(class'X2StatusEffects_LW'.default.LWBurningName);
 		Template.AddTargetEffect(RemoveEffects);
+
+		DodgeBonus = new class 'X2Effect_InstantReactionTime';
+		DodgeBonus.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, true,,Template.AbilitySourceName);
+		DodgeBonus.BuildPersistentEffect(1, false, true, false);
+		Template.AddTargetEffect(DodgeBonus);
+
+		FormidableEffect = new class'X2Effect_Formidable';
+		FormidableEffect.ExplosiveDamageReduction = default.HUNKER_EXPLOSIVE_PCT_DR;
+		DodgeBonus.BuildPersistentEffect(1, false, true, false);
+		Template.AddTargetEffect(FormidableEffect);
+	
+	
 	}
 
 	if (Template.DataName == 'Fuse' && default.FUSE_COOLDOWN > 0)

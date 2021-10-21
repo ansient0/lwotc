@@ -124,7 +124,7 @@ RankIcons[8]="UILibrary_Common.rank_fieldmarshall"
 ; LWOTC: Hunker down doesn't remove burning in this mod
 [HunkerDown X2AbilityTemplate]
 LocFriendlyName="Hunker Down"
-LocHelpText="Increase Defense by <Ability:HUNKERDEFENSEBONUS/>, and Dodge by <Ability:HUNKERDODGEBONUS/>. Only works in cover."
+LocHelpText="Increase defense by 20 when in cover, reduce damage taken from explosives by 25%, and gain 50 dodge + 2 dodge against each attack for every tile away from an attacker."
 LocFlyOverText="Hunker Down"
 
 [ReturnFire X2AbilityTemplate]
