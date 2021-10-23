@@ -9,6 +9,14 @@ var config int MAG_GRENADE_RANGE;
 var config int MAG_GRENADE_RADIUS;
 var config WeaponDamageValue MAG_GRENADE_BASEDAMAGE;
 
+static function array<X2DataTemplate> CreateTemplates()
+{
+	local array<X2DataTemplate> Grenades;
+
+	Grenades.AddItem(CreateMagGrenade());
+	return Grenades;
+}
+
 static function X2DataTemplate CreateMagGrenade()
 {
 	local X2GrenadeTemplate                  Template;
