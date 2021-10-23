@@ -2565,17 +2565,20 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 			WeaponTemplate.Abilities.RemoveItem('MedikitBonus');
 			WeaponTemplate.Abilities.RemoveItem('NanoMedikitBonus');
 		}
-		if (WeaponTemplate.DataName == 'AdvTurretM1_WPN' && default.EARLY_TURRET_SQUADSIGHT)
+		if ((WeaponTemplate.DataName == 'AdvTurretM1_WPN' || WeaponTemplate.DataName == 'AdvShortTurretM1_WPN') && default.EARLY_TURRET_SQUADSIGHT)
 		{
 			WeaponTemplate.Abilities.AddItem('Squadsight');
+			WeaponTemplate.RangeAccuracy = class'X2Item_DefaultWeaponMods_LW'.default.MID_LONG_ALL_RANGE;
 		}
-		if (WeaponTemplate.DataName == 'AdvTurretM2_WPN' && default.MID_TURRET_SQUADSIGHT)
+		if ((WeaponTemplate.DataName == 'AdvTurretM2_WPN' || WeaponTemplate.DataName == 'AdvShortTurretM2_WPN') && default.MID_TURRET_SQUADSIGHT )
 		{
 			WeaponTemplate.Abilities.AddItem('Squadsight');
+			WeaponTemplate.RangeAccuracy = class'X2Item_DefaultWeaponMods_LW'.default.MID_LONG_ALL_RANGE;
 		}
-		if (WeaponTemplate.DataName == 'AdvTurretM3_WPN' && default.LATE_TURRET_SQUADSIGHT)
+		if ((WeaponTemplate.DataName == 'AdvTurretM3_WPN' || WeaponTemplate.DataName == 'AdvShortTurretM1_WPN') && default.LATE_TURRET_SQUADSIGHT )
 		{
 			WeaponTemplate.Abilities.AddItem('Squadsight');
+			WeaponTemplate.RangeAccuracy = class'X2Item_DefaultWeaponMods_LW'.default.MID_LONG_ALL_RANGE;
 		}
 		if (WeaponTemplate.DataName == 'ANDROMEDONROBOT_MELEEATTACK')
 		{
