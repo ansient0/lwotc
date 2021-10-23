@@ -548,9 +548,9 @@ LocPromotionPopUpText="<Bullet/> Combat Fitness provides <ABILITY:COMBAT_FITNESS
 
 [Sprinter X2AbilityTemplate]
 LocFriendlyName="Sprinter"
-LocLongDescription="Gain 1 mobility."
+LocLongDescription="Gain 2 mobility."
 LocHelpText="This soldier has bonus mobility."
-LocPromotionPopUpText="<Bullet/> Sprinter provides 1 bonus mobility."
+LocPromotionPopUpText="<Bullet/> Sprinter provides 2 bonus mobility."
 
 [TakeThis X2AbilityTemplate]
 LocFriendlyName="You'll Need This"
