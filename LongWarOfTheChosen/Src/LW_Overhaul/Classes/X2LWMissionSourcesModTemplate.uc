@@ -23,6 +23,11 @@ static function UpdateMissionSources(X2StrategyElementTemplate Template, int Dif
 			SourceTemplate.OnFailureFn = ChosenAmbushOnFailure;
 			SourceTemplate.OnExpireFn = ChosenAmbushOnExpire;
 			break;
+		case 'MissionSource_BlackSite':
+		case 'MissionSource_Forge':
+		case 'MissionSOurce_PsiGate':
+			SourceTemplate.SpawnUFOChance = 0;
+			break;
 		default:
 			break;
 	}
