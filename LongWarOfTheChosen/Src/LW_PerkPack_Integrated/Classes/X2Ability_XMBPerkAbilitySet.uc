@@ -129,6 +129,8 @@ var config float GRIT_BASE_DR;
 var config float REACTIVE_SENSORS_DAMAGE_REDUCTION;
 
 var config float SHREDDER_ROUNDS_DMG_PENALTY;
+
+var config int IRT_DODGE_PER_TILE;
 static function array<X2DataTemplate> CreateTemplates()
 {
 	local array<X2DataTemplate> Templates;
@@ -2802,6 +2804,7 @@ static function X2AbilityTemplate AddInstantReactionTime()
 	Template.bIsPassive = true;
 
 	DodgeBonus = new class 'X2Effect_InstantReactionTime';
+	DodgeBonus.DodgePerTile = default.IRT_DODGE_PER_TILE;
 	DodgeBonus.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, true,,Template.AbilitySourceName);
 	DodgeBonus.BuildPersistentEffect(1, true, false);
 	Template.AddTargetEffect(DodgeBonus);

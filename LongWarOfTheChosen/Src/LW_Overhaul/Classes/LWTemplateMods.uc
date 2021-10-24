@@ -300,6 +300,7 @@ var config WeaponDamageValue GREMLIN_MG_BASEDAMAGE;
 var config WeaponDamageValue GREMLIN_BM_BASEDAMAGE;
 
 var config float HUNKER_EXPLOSIVE_PCT_DR;
+var config int HUNKER_DODGE_PER_TILE;
 
 var config float HUNTERS_INSTINCT_DAMAGE_PCT;
 static function array<X2DataTemplate> CreateTemplates()
@@ -1625,6 +1626,7 @@ function ModifyAbilitiesGeneral(X2AbilityTemplate Template, int Difficulty)
 		Template.AddTargetEffect(RemoveEffects);
 
 		DodgeBonus = new class 'X2Effect_InstantReactionTime';
+		DodgeBonus.DodgePerTile = default.HUNKER_DODGE_PER_TILE;
 		DodgeBonus.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, true,,Template.AbilitySourceName);
 		DodgeBonus.BuildPersistentEffect(1, false, true, false);
 		Template.AddTargetEffect(DodgeBonus);

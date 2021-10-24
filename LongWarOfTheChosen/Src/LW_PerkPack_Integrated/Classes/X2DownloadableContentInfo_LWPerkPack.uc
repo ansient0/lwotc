@@ -401,7 +401,7 @@ static function bool AbilityTagExpandHandler_CH(string InString, out string OutS
 			OutString = string(class'X2Effect_Infighter'.default.INFIGHTER_DODGE_BONUS);
 			return true;
 		case 'IRT_DODGE_PER_TILE':
-			OutString = string(class'X2Effect_InstantReactionTime'.default.IRT_DODGE_PER_TILE);
+			OutString = string(class'X2Ability_XMBPerkAbilitySet'.default.IRT_DODGE_PER_TILE);
 			return true;
 		case 'BRAWLER_DR_PCT':
 			OutString = string(int(class'X2Effect_Brawler'.default.BRAWLER_DR_PCT));
