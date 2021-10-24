@@ -54,7 +54,6 @@ var config int BIND_M3_BONUSDAMAGE;
 var config int BIND_M4_BONUSDAMAGE;
 var config int BIND_M5_BONUSDAMAGE;
 
-var config float SUPPRESSION_DAMAGE_MOD;
 var config float REAPER_PCT_DMG_REDUCTION;
 
 

@@ -134,6 +134,7 @@ var config int WTS_ABLATIVE;
 var config float WTS_COVER_DR_PCT;
 var config float WTS_WOUND_REDUCTION;
 
+var config float SUPPRESSION_DAMAGE_PENALTY;
 
 var localized string LocCoveringFire;
 var localized string LocCoveringFireMalus;
@@ -235,6 +236,7 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(AddOverexertion());
 	Templates.AddItem(AddFortifiedAbility());
 	Templates.AddItem(AddMerciless());
+	Templates.AddItem(SuppressionDamage());
 	
 	
 	return Templates;
@@ -2545,6 +2547,7 @@ static function X2AbilityTemplate AddSuppressionAbility_LW()
 	Template.AdditionalAbilities.AddItem('SuppressionShot_LW');
 	Template.AdditionalAbilities.AddItem('LockdownBonuses');
 	Template.AdditionalAbilities.AddItem('MayhemBonuses');
+	Template.AdditionalAbilities.AddItem('SuppressionDamage');
 
 	Template.bIsASuppressionEffect = true;
 	//Template.AbilityConfirmSound = "TacticalUI_ActivateAbility";
@@ -2564,6 +2567,41 @@ static function X2AbilityTemplate AddSuppressionAbility_LW()
 	Template.LostSpawnIncreasePerUse = class'X2AbilityTemplateManager'.default.StandardShotLostSpawnIncreasePerUse;
 
 	return Template;	
+}
+
+static function X2AbilityTemplate SuppressionDamage()
+{
+    local X2AbilityTemplate						Template;
+	local X2Effect_AbilityDamageMult			DamagePenalty;
+
+    `CREATE_X2ABILITY_TEMPLATE (Template, 'SuppressionDamage');
+    Template.IconImage = "img:///UILibrary_PerkIcons.UIPerk_momentum";
+    Template.AbilitySourceName = 'eAbilitySource_Perk';
+    Template.eAbilityIconBehaviorHUD = 2;
+    Template.Hostility = 2;
+    Template.AbilityToHitCalc = default.DeadEye;
+    Template.AbilityTargetStyle = default.SelfTarget;
+    Template.AbilityTriggers.AddItem(default.UnitPostBeginPlayTrigger);
+
+	DamagePenalty = new class'X2Effect_AbilityDamageMult';
+	DamagePenalty.Penalty = true;
+	DamagePenalty.Mult = true;
+	DamagePenalty.DamageMod = default.SUPPRESSION_DAMAGE_PENALTY;
+	DamagePenalty.ActiveAbility = 'SuppressionShot_LW';
+    DamagePenalty.BuildPersistentEffect(1, true, false, false);
+    Template.AddTargetEffect(DamagePenalty);
+
+	DamagePenalty = new class'X2Effect_AbilityDamageMult';
+	DamagePenalty.Penalty = true;
+	DamagePenalty.Mult = true;
+	DamagePenalty.DamageMod = default.SUPPRESSION_DAMAGE_PENALTY;
+	DamagePenalty.ActiveAbility = 'AreaSuppressionShot_LW';
+    DamagePenalty.BuildPersistentEffect(1, true, false, false);
+    Template.AddTargetEffect(DamagePenalty);
+
+    Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+
+    return Template;
 }
 
 
