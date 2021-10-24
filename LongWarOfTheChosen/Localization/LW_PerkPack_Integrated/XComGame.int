@@ -424,7 +424,7 @@ LocPromotionPopupText="<Bullet/>Is a free action.<br/>"
 [Suppression X2AbilityTemplate]
 LocFriendlyName="Suppression"
 LocFlyOverText="Suppression"
-LocLongDescription="Fire a barrage that pins down a target, reducing their action points by 1 (units unable to take cover are immune), restricting the use of many abilities, and imposing a <Ability:SUPPRESSIONPENALTY/> penalty to the target's aim. Grants an overwatch shot that deals -<Ability:SUPPRESSION_DAMAGE/>% damage if the target moves. Has <Ability:SelfCooldown_LW/> turn cooldown."
+LocLongDescription="Fire a barrage that pins down a target, reducing their action points by 1 (units unable to take cover are immune), restricting the use of many abilities, and imposing a <Ability:SUPPRESSIONPENALTY/> penalty to the target's aim. Grants an overwatch shot that deals -<Ability:SUPPRESSION_DAMAGE_PENALTY/>% damage if the target moves. Has <Ability:SelfCooldown_LW/> turn cooldown."
 LocHelpText="Penalize target's aim and action points (unless they're unflankable) and shoot them if they move."
 ; LWOTC Needs Translation
 LocPromotionPopupText="<Bullet/> Suppression costs <Ability:SelfAmmoCost/> ammo points to use, and has <Ability:SelfCooldown_LW/> turn cooldown.<br/><Bullet/> Suppression will be canceled if the suppressing unit is damaged.<br/><Bullet/> If multiple units suppress a target, the aim penalty will not stack.<br/><Bullet/> May not be used if sniper rifle or shotgun-class weapons are equipped.<br/><Bullet/> Suppression restricts many of the target's abilities, including the use of rockets and grenades."

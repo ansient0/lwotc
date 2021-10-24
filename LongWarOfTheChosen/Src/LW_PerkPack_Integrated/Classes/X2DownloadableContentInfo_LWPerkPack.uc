@@ -178,8 +178,8 @@ static function bool AbilityTagExpandHandler_CH(string InString, out string OutS
 		case 'WTS_WOUND_REDUCTION':
 			Outstring = string(int(class'X2Ability_PerkPackAbilitySet'.default.WTS_WOUND_REDUCTION * 100));
 			return true;	
-		case 'SUPPRESSION_DAMAGE':
-			Outstring = string(int(class'X2Ability_PerkPackAbilitySet'.default.SUPPRESSION_DAMAGE * 100));
+		case 'SUPPRESSION_DAMAGE_PENALTY':
+			Outstring = string(int(class'X2Ability_PerkPackAbilitySet'.default.SUPPRESSION_DAMAGE_PENALTY * 100));
 			return true;	
 		case 'CUTTHROAT_BONUS_CRIT_DAMAGE':
 			Outstring = string(class'X2Ability_PerkPackAbilitySet'.default.CUTTHROAT_BONUS_CRIT_DAMAGE);
