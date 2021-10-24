@@ -3228,7 +3228,7 @@ static function X2AbilityTemplate CreateAbsorptionFieldsTrigger()
 	Template.AbilityTargetConditions.AddItem(UnitValue);
 
 
-
+	
 	Trigger = new class'X2AbilityTrigger_EventListener';
 	Trigger.ListenerData.Deferral = ELD_OnStateSubmitted;
 	Trigger.ListenerData.EventID = 'UnitTakeEffectDamage';
@@ -3244,10 +3244,10 @@ static function X2AbilityTemplate CreateAbsorptionFieldsTrigger()
 	Template.AbilityShooterConditions.AddItem(UnitPropertyCondition);
 
 	Template.bShowActivation = true;
-	Template.bSkipExitCoverWhenFiring = true;
+//	Template.bSkipExitCoverWhenFiring = true;
 	Template.bSkipFireAction = true;
 
-	Template.FrameAbilityCameraType = eCameraFraming_Always;
+	//Template.FrameAbilityCameraType = eCameraFraming_Always;
 	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
 	Template.BuildVisualizationFn = TypicalAbility_BuildVisualization;
 
