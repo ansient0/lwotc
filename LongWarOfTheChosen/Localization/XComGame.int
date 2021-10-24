@@ -811,8 +811,8 @@ LocHelpText="Does +1 damage to all targets and +2 damage to nonrobotic aliens."
 [AP_Rounds_Ability_PP X2AbilityTemplate]
 LocFriendlyName="Armor Piercing Rounds"
 LocFlyOverText="Armor Piercing Rounds"
-LocLongDescription="Your hits ignore 2 armor."
-LocHelpText="Your hits ignore 2 armor."
+LocLongDescription="Your hits ignore 2 armor at the cost of <Ability:AP_ROUNDS_CRIT_PENALTY/> crit."
+LocHelpText="Your hits ignore 2 armor at the cost of <Ability:AP_ROUNDS_CRIT_PENALTY/> crit."
 
 [Tracer_Rounds_Ability_PP X2AbilityTemplate]
 LocFriendlyName="Tracer Rounds"

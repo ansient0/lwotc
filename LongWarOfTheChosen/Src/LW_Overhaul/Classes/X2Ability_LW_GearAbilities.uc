@@ -916,6 +916,11 @@ static function X2AbilityTemplate AddAPRoundsCritPenalty()
 	Template.AddTargetEffect(ToHitModifier);
 
 	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+
+	Template.bDisplayInUITooltip = false;
+	Template.bDisplayInUITacticalText = false;
+	Template.bDontDisplayInAbilitySummary = true;
+
 	//  NOTE: No visualization on purpose!
 
 	return Template;
