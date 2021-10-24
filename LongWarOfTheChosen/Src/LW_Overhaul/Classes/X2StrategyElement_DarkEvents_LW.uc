@@ -60,7 +60,8 @@ static function array<X2DataTemplate> CreateTemplates()
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('OpenFire_LW','Gunner',TrooperM1,default.T1_UPGRADES_WEIGHT));
 
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('CombatAwareness','Gunner',TrooperM2,default.T2_UPGRADES_WEIGHT));
-	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Mayhem','Gunner',TrooperM2,default.T2_UPGRADES_WEIGHT));
+	//DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Mayhem','Gunner',TrooperM2,default.T2_UPGRADES_WEIGHT));
+	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('SteadFast','Gunner',TrooperM2,default.T2_UPGRADES_WEIGHT));
 
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Holotargeting','Gunner',TrooperM3,default.T3_UPGRADES_WEIGHT));
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Shredder','Gunner',TrooperM3,default.T3_UPGRADES_WEIGHT));

@@ -1362,6 +1362,17 @@ static function X2AbilityTemplate CreateImpact()
 	return Template;
 }
 
+static function X2AbilityTemplate CreateSteadFast()
+{
+	local X2AbilityTemplate		Template;
+
+	Template = PurePassive('SteadFast', "img:///UILibrary_XPerkIconPack.UIPerk_suppression_defense2", , 'eAbilitySource_Perk');
+
+	Template.bDisplayInUITooltip = true;
+	Template.bDisplayInUITacticalText = true;
+
+	return Template;
+}
 static function X2AbilityTemplate CreateBulletStorm()
 {
 	local X2AbilityTemplate		Template;

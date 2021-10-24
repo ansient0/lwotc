@@ -4457,6 +4457,16 @@ PreMissionText="Gunners gain Mayhem."
 PostMissionSuccessText="Gunner Upgrade: Mayhem"
 PostMissionFailureText="Gunner Upgrade: Mayhem"
 
+[DarkEvent_GunnerMayhem X2DarkEventTemplate]
+DisplayName="Gunner Upgrade: Steadfast"
+SummaryText="Gunners gain Steadfast, Meaning that their Suppression is no longer removed by receieving damage."
+QuoteText="\"With the support of the Elders, they are not so easily broken.\""
+QuoteTextAuthor="- Central Officer Bradford"
+PreMissionText="Gunners gain Steadfast."
+PostMissionSuccessText="Gunner Upgrade: Steadfast"
+PostMissionFailureText="Gunner Upgrade: Steadfast"
+
+
 [DarkEvent_GunnerShredder X2DarkEventTemplate]
 DisplayName="Gunner Upgrade: Shredder"
 SummaryText="Gunners gain Shredder, causing attacks to shred armor."
@@ -8311,6 +8321,13 @@ LocFriendlyName="Impact"
 LocLongDescription="Your Attacks can now remove enemy overwatch on hit."
 LocHelpText="Your Attacks can now remove enemy overwatch on hit."
 LocPromotionPopupText=""
+
+
+[SteadFast X2AbilityTemplate]
+LocFriendlyName="Steadfast"
+LocLongDescription="Your Suppression Is no longer removed by recieving damage."
+LocHelpText="Your Suppression Is no longer removed by recieving damage."
+LocPromotionPopupText="Units with impact will still remove it."
 
 [BulletStorm X2AbilityTemplate]
 LocFriendlyName="Bullet Storm"

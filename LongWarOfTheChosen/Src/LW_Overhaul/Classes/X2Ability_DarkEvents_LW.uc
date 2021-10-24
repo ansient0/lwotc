@@ -52,6 +52,9 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(CreateDarkEventAbility('GrazingFire','Gunner'));
 	Templates.AddItem(CreateDarkEventAbility('GrazingFire','Sentry'));
 
+	Templates.AddItem(CreateDarkEventAbility('SteadFast','Gunner'));
+
+
 	Templates.AddItem(CreateDarkEventAbility('Entwine_LW','Viper'));
 
 	Templates.AddItem(CreateDarkEventAbility('Serpentine','Viper'));

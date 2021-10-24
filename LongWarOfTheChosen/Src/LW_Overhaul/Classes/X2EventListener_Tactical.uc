@@ -1504,7 +1504,7 @@ static function EventListenerReturn OverrideReserveActionPoints(Object EventData
 	}
 
 
-	if(IsSuppression)
+	if(IsSuppression && !UnitState.HasSoldierAbility('SteadFast') && Result.DamageAmount > 0)
 	{
 		Tuple.Data[0].b = true;
 	}
