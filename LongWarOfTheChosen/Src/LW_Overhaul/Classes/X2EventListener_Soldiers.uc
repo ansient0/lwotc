@@ -903,6 +903,7 @@ static function EventListenerReturn OnOverrideAbilityIconColor(Object EventData,
 				if (CountUnitValue.fValue == 0)
 				{
 					IsFree = true;
+					IsTurnEnding = false;
 				}	
 			}
 
@@ -922,6 +923,7 @@ static function EventListenerReturn OnOverrideAbilityIconColor(Object EventData,
 				if (CountUnitValue.fValue == 0)
 				{
 					IsFree = true;
+					IsTurnEnding = false;
 				}	
 			}
 			break;
