@@ -119,6 +119,7 @@ static function UpdateAbilities(X2AbilityTemplate Template, int Difficulty)
 		case 'PriestStasis':
 			MakeAbilityNonTurnEnding(Template);
 			MakeAbilitiesUnusableOnLost(Template);
+			GiveGLobalCooldownToPriestStasis(Template);
 			break;
 		case 'Solace':
 			RemoveRoboticsAsValidTargetsOfSolace(Template);
@@ -1787,6 +1788,17 @@ static function ReworkMindSpin(X2AbilityTemplate Template)
 
 
 }
+
+static function GiveGLobalCooldownToPriestStasis(X2AbilityTemplate Template)
+{
+	local X2AbilityCooldown_LocalAndGlobal	Cooldown;
+
+	Cooldown = new class'X2AbilityCooldown_LocalAndGlobal';
+	Cooldown.iNumTurns = 3;
+	Cooldown.NumGlobalTurns = 1;
+	Template.AbilityCooldown = Cooldown;
+}
+
 defaultproperties
 {
 	AbilityTemplateModFn=UpdateAbilities
