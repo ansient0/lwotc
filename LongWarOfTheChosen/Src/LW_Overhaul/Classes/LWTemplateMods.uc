@@ -2161,9 +2161,12 @@ function GeneralCharacterMod(X2CharacterTemplate Template, int Difficulty)
 			Template.Loot.LootReferences.AddItem(Loot);
 			break;
 		case 'Gatekeeper':
+		case 'GatekeeperM2':
+		case 'GatekeeperM3':
 			//Template.ImmuneTypes.AddItem('Poison');
 			//Template.ImmuneTypes.AddItem(class'X2Item_DefaultDamageTypes'.default.ParthenogenicPoisonType);
 			Template.ImmuneTypes.AddItem('Fire');
+			Template.Abilities.AddItem('Mindshield');
 			break;
 		case 'AdvStunLancerM5':
 		case 'AdvStunLancerM4':
