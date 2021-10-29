@@ -150,6 +150,7 @@ static function UpdateAbilities(X2AbilityTemplate Template, int Difficulty)
 		case 'TemplarBladestormAttack':
 			MakeBladestormNotTriggerOnItsTurn(Template);
 			Template.PostActivationEvents.AddItem('BladestormActivated');
+			Template.AdditionalAbilities.AddItem('CoolUnderPressure');
 			break;
 
 		case 'Bind':
