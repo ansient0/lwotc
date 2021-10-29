@@ -131,6 +131,8 @@ var config float REACTIVE_SENSORS_DAMAGE_REDUCTION;
 var config float SHREDDER_ROUNDS_DMG_PENALTY;
 
 var config int IRT_DODGE_PER_TILE;
+
+var config int MAGNUM_BONUS;
 static function array<X2DataTemplate> CreateTemplates()
 {
 	local array<X2DataTemplate> Templates;
@@ -2969,22 +2971,19 @@ static function X2AbilityTemplate MovingTarget()
 
 static function X2AbilityTemplate Magnum()
 {
-	local X2Effect_ModifyRangePenalties Effect;
 	local XMBCondition_AbilityName	NameCondition;
-	// Remove Long range penalties from pistols
-	Effect = new class'X2Effect_ModifyRangePenalties';
-	Effect.RangePenaltyMultiplier = -1;
-	Effect.BaseRange = 11;
-	Effect.bLongRange = true;
-	Effect.EffectName = 'Magnum';
+	local XMBEffect_ConditionalBonus ShootingEffect;
+	ShootingEffect = new class'XMBEffect_ConditionalBonus';
+	ShootingEffect.EffectName = 'Magnum_Bonus';
+	ShootingEffect.AddToHitModifier(default.MAGNUM_BONUS, eHit_Success);
 
 	NameCondition = new class'XMBCondition_AbilityName';
 	NameCondition.IncludeAbilityNames.AddItem('PistolStandardShot');
 	NameCondition.IncludeAbilityNames.AddItem('PistolOverwatchShot');
 
-	Effect.AbilityTargetConditions.AddItem(NameCondition);
+	ShootingEffect.AbilityTargetConditions.AddItem(NameCondition);
 
-	return Passive('Magnum_LW', "img:///UILibrary_XPerkIconPack.UIPerk_pistol_sniper", false, Effect);
+	return Passive('Magnum_LW', "img:///UILibrary_XPerkIconPack.UIPerk_pistol_sniper", false, ShootingEffect);
 }
 
  

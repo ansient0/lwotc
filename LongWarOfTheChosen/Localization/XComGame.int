@@ -4908,7 +4908,7 @@ PostMissionFailureText="Sidewinder Upgrade: Serpentine"
 
 [DarkEvent_PurifierMagnum_LW X2DarkEventTemplate]
 DisplayName="Purifier Upgrade: Magnum"
-SummaryText="Purifiers gain Magnum, causing pistol shots to have no long range penalties."
+SummaryText="Purifiers gain Magnum, causing their standard pistol shots to have +10 accuracy."
 QuoteText="\"Think that's just a sidearm? Think again, dummy.\""
 QuoteTextAuthor="- Unidentified Technical"
 PreMissionText="Purifiers gain Magnum."
@@ -7960,8 +7960,8 @@ KnowledgeGainSecondBullet[eChosenKnowledge_Sentinel]="Chosen can instigate an ad
 
 [Magnum_LW X2AbilityTemplate]
 LocFriendlyName="Magnum"
-LocLongDescription="Standard pistol shots have no long range penalty."
-LocHelpText="Standard pistol shots have no long range penalty."
+LocLongDescription="Your Standard pistol shots Gain +10 Accuracy."
+LocHelpText="Your Standard pistol shots Gain +10 Accuracy."
 LocFlyOverText="Magnum"
 LocPromotionPopupText="<Bullet/> Only applies to standard pistol shot, and pistol overwatch.<br/><Bullet/> Does not apply to special abilities like Lightning Hands, Gunslinger or Faceoff.<br/>"
 
