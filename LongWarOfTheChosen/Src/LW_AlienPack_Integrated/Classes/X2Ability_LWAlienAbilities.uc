@@ -514,7 +514,7 @@ static function X2DataTemplate CreateDroneRepairAbility()
 	local X2Effect_SimpleHeal						RepairEffect;
 	local X2Condition_Visibility					TargetVisibilityCondition;
 	local X2AbilityTarget_Single					SingleTarget;
-	local X2AbilityCooldown							Cooldown;
+	local X2AbilityCooldown_LocalAndGlobal			Cooldown;
 
 	`CREATE_X2ABILITY_TEMPLATE (Template, 'LWDroneRepair');
 	Template.IconImage = "img:///UILibrary_LWAlienPack.LW_AbilityDroneRepair"; //from old EW Repair Servos icon
@@ -536,9 +536,11 @@ static function X2DataTemplate CreateDroneRepairAbility()
 	ActionPointCost.bConsumeAllPoints = false;
 	Template.AbilityCosts.AddItem(ActionPointCost);
 
-	Cooldown = new class'X2AbilityCooldown';
-	Cooldown.iNumTurns = 1; // just to prevent from triggering twice in a turn
+	Cooldown = new class'X2AbilityCooldown_LocalAndGlobal';
+	Cooldown.iNumTurns = 2;
+	Cooldown.NumGlobalTurns = 1;
 	Template.AbilityCooldown = Cooldown;
+
 
 	TargetVisibilityCondition = new class'X2Condition_Visibility';
 	TargetVisibilityCondition.bRequireGameplayVisible = true;
