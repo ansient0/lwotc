@@ -14,11 +14,13 @@ event name CallAbilityMeetsCondition(XComGameState_Ability kAbility, XComGameSta
 	if (AttackingUnit == none)
 	{
 		`LOG (" X2Condition_OverwatchMark: No Attacking Unit Found");
+		return 'AA_AbilityUnavailable';
 	}
 
 	if (TargetUnit == none)
 	{
 		`LOG (" X2Condition_OverwatchMark: No Target Unit Found");
+		return 'AA_AbilityUnavailable';
 	}
 	TestValueName = name("OverwatchMark" $ AttackingUnit.ObjectID);
 	TargetUnit.GetUnitValue(TestValueName, OWMarkValue);
