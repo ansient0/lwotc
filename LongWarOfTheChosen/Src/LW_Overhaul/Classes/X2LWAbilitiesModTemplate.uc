@@ -214,13 +214,14 @@ static function UpdateAbilities(X2AbilityTemplate Template, int Difficulty)
 			break;
 		case 'HunterRifleShot':
 			MakeAbilityWorkWhenBurning(Template);
-			break;
 
+		// case 'FanFire':
+		// case 'LightningHands':
+		// case 'FaceOff':
+		case 'SniperStandardFire':
 		case 'PistolStandardShot':
+		case 'OverwatchShot':
 		case 'PistolOverwatchShot':
-		case 'FanFire':
-		case 'LightningHands':
-		case 'FaceOff':
 			AddDisablingShotEffect(Template);
 			Template.AddTargetEffect(class'X2Ability_Chosen'.static.HoloTargetEffect());
 			Template.AssociatedPassives.AddItem('Disabler');

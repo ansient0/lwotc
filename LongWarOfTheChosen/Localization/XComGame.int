@@ -7978,8 +7978,8 @@ LaunchedAbilityHelpText="Disorient hostile targets in the affected area."
 [Disabler X2AbilityTemplate]
 LocFriendlyName="Disabler"
 LocFlyOverText="Disabler"
-LocLongDescription="Your Pistol Attacks Disable your target's weapons."
-LocHelpText="Your Pistol Attacks Disable your target's weapons."
+LocLongDescription="Your Standard Shots Disable your target's weapons."
+LocHelpText="Your Standard Shots Disable your target's weapons."
 
 
 [AdvPurifierm2Flamethrower X2WeaponTemplate]
