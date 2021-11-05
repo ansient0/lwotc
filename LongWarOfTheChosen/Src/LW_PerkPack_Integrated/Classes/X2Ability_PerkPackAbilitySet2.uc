@@ -1250,6 +1250,7 @@ static function X2DataTemplate OverrideStunImpairingAbility()
 	local X2Effect_PersistentStatChange StealthyEffect;
 	local X2AbilityCooldown	Cooldown;
 	local X2Effect_SilentMelee GhostEffect;
+	local X2Condition_UnitEffects SuppressedCondition;
 	`CREATE_X2ABILITY_TEMPLATE(Template, 'Phantom_LW');
 
 	Template.AbilitySourceName = 'eAbilitySource_Perk';
@@ -1279,6 +1280,10 @@ static function X2DataTemplate OverrideStunImpairingAbility()
 	//Template.AbilityShooterConditions.AddItem(new class'X2Condition_Stealth');
 	Template.AddShooterEffectExclusions();
 
+	SuppressedCondition = new class'X2Condition_UnitEffects';
+	SuppressedCondition.AddExcludeEffect(class'X2Effect_Suppression'.default.EffectName, 'AA_UnitIsSuppressed');
+	SuppressedCondition.AddExcludeEffect(class'X2Effect_AreaSuppression'.default.EffectName, 'AA_UnitIsSuppressed');
+	Template.AbilityShooterConditions.AddItem(SuppressedCondition);
 
 	StealthyEffect = new class'X2Effect_PersistentStatChange';
 	StealthyEffect.EffectName = 'TemporaryPhantomConcealment';
