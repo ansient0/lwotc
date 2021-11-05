@@ -225,6 +225,10 @@ static function array<X2DataTemplate> CreateTemplates()
 
 	Templates.AddItem(CreateDarkEventAbility('Defilade','Gatekeeper'));
 
+
+	Templates.AddItem(CreateDarkEventAbility('Suppression','Trooper'));
+	Templates.AddItem(CreateDarkEventAbility('Suppression','Captain'));
+
 	/*	
 
 	//Templates.AddItem(CreateDarkEventAbility('Cutthroat','StunLancer');

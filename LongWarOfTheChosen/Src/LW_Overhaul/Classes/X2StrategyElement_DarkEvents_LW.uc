@@ -42,6 +42,7 @@ static function array<X2DataTemplate> CreateTemplates()
 
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('LockedOn','Trooper',TrooperM2,default.T2_UPGRADES_WEIGHT));
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('OpenFire_LW','Trooper',TrooperM2,default.T2_UPGRADES_WEIGHT));
+	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Suppression','Trooper',TrooperM2,default.T2_UPGRADES_WEIGHT));
 
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Evasive','Trooper',TrooperM3,default.T3_UPGRADES_WEIGHT));
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('ChosenVenomRounds','Trooper',TrooperM3,default.T3_UPGRADES_WEIGHT));
@@ -81,6 +82,7 @@ static function array<X2DataTemplate> CreateTemplates()
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('ShootingSharp_LW','Captain',TrooperM1,default.T1_UPGRADES_WEIGHT));
 
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('AimAssist_LW','Captain',TrooperM2,default.T2_UPGRADES_WEIGHT));
+	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Suppression','Captain',TrooperM2,default.T2_UPGRADES_WEIGHT));
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('Executioner_LW','Captain',TrooperM2,default.T2_UPGRADES_WEIGHT));
 
 	DarkEvents.AddItem(CreateTacticalUpgradesTemplate('CloseCombatSpecialist','Captain',TrooperM3,default.T3_UPGRADES_WEIGHT));

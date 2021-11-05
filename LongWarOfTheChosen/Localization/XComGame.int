@@ -4345,6 +4345,16 @@ SummaryText="Troopers gain Locked On."
 PostMissionSuccessText="Trooper Upgrade: Locked On"
 PostMissionFailureText="Trooper Upgrade: Locked On"
 
+
+[DarkEvent_TrooperSuppression X2DarkEventTemplate]
+DisplayName="Trooper Upgrade: Suppression"
+PreMissionText="Troopers gain Suppression, giving them an ability to pin down units."
+QuoteText="\" It seems that Advent's new tactics involve very liberal use of ammo.\""
+QuoteTextAuthor="- Chief Officer Bradford"
+SummaryText="Troopers gain Suppression."
+PostMissionSuccessText="Trooper Upgrade: Suppression"
+PostMissionFailureText="Trooper Upgrade: Suppression"
+
 [DarkEvent_TrooperEvasive X2DarkEventTemplate]
 DisplayName="Trooper Upgrade: Evasive"
 SummaryText="Troopers gain Evasive, granting dodge against the first hit each mission."
@@ -4587,6 +4597,15 @@ QuoteTextAuthor="- Central Officer Bradford"
 PreMissionText="Captains gain Executioner."
 PostMissionSuccessText="Captain Upgrade: Executioner"
 PostMissionFailureText="Captain Upgrade: Executioner"
+
+[DarkEvent_CaptainSuppression X2DarkEventTemplate]
+DisplayName="Captain Upgrade: Suppression"
+SummaryText="Captains gain Suppression, giving them an ability to pin down units."
+QuoteText="\" It seems that Advent's new tactics involve very liberal use of ammo.\""
+QuoteTextAuthor="- Central Officer Bradford"
+PreMissionText="Captains gain Suppression."
+PostMissionSuccessText="Captain Upgrade: Suppression"
+PostMissionFailureText="Captain Upgrade: Suppression"
 
 [DarkEvent_CaptainAimAssist_LW X2DarkEventTemplate]
 DisplayName="Captain Upgrade: Aim Assist"
