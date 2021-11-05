@@ -304,6 +304,9 @@ static function UpdateAbilities(X2AbilityTemplate Template, int Difficulty)
 			break;
 		case 'LaunchGrenade':
 			UpdateLaunchGrenade(Template);
+			break;
+		case 'BulletShred':
+			UpdateRupture(Template);
 		default:
 			break;
 
@@ -987,6 +990,20 @@ static function UpdateFuseDetonation(X2AbilityTemplate Template)
 		if (Cost.IsA('X2AbilityCost_Ammo'))
 		{
 			X2AbilityCost_Ammo(Cost).bConsumeAllAmmo = true;
+		}
+	}
+}
+
+
+static function UpdateRupture(X2AbilityTemplate Template)
+{
+	local X2AbilityCost Cost;
+
+	foreach Template.AbilityCosts(Cost)
+	{
+		if (Cost.IsA('X2AbilityCost_Ammo'))
+		{
+			X2AbilityCost_Ammo(Cost).iAmmo = 1;
 		}
 	}
 }
