@@ -1501,7 +1501,7 @@ static function X2DataTemplate CreateTemplate_Archon_Blazing_Pinions_LW_WPN(name
 {
 	local X2WeaponTemplate Template;
 
-	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'ArchonStaff');
+	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, TemplateName);
 
 	Template.ItemCat = 'weapon';
 	Template.WeaponCat = 'baton';
@@ -1579,7 +1579,7 @@ static function X2DataTemplate CreateTemplate_AndromedonRobot_MeleeAttack_LW(nam
 	}
 	if(Templatename == 'AndromedonRobot_MeleeAttack')
 	{
-		Template.BaseDamage = 'X2Item_DefaultWeapons'default.ANDROMEDONROBOT_MELEEATTACK_BASEDAMAGE;
+		Template.BaseDamage = class'X2Item_DefaultWeapons'.default.ANDROMEDONROBOT_MELEEATTACK_BASEDAMAGE;
 	}
 
 	if(Templatename == 'Berserker_MeleeAttack')

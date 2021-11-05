@@ -343,7 +343,7 @@ static function X2CharacterTemplate CreateTemplate_MutonElite_LW(name TemplateNa
 
 	if (TemplateName == 'MutonM4_LW')
 	{
-		CharTemplate.DefaultLoadout='Muton4_LW_Loadout';
+		CharTemplate.DefaultLoadout='MutonM4_LW_Loadout';
 		Loot.LootTableName = 'GenericLateAlienLoot_LW'; 
 		CharTemplate.TimedLoot.LootReferences.AddItem(Loot);
 		Loot.LootTableName = 'GenericLateAlienVultureLoot_LW';
