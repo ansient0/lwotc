@@ -2789,7 +2789,7 @@ static function X2CharacterTemplate CreateTemplate_Berserker(name TemplateName)
 		CharTemplate.TimedLoot.LootReferences.AddItem(Loot);
 		Loot.LootTableName = 'GenericLateAlienVultureLoot_LW';
 		CharTemplate.VultureLoot.LootReferences.AddItem(Loot);
-		CharTemplate.Abilities.AddItem('DevastatingPunch');
+		CharTemplate.Abilities.AddItem('DevastatingPunchM2');
 	}
 	if (TemplateName == 'BerserkerM3')
 	{
@@ -2798,7 +2798,7 @@ static function X2CharacterTemplate CreateTemplate_Berserker(name TemplateName)
 		CharTemplate.TimedLoot.LootReferences.AddItem(Loot);
 		Loot.LootTableName = 'GenericLateAlienVultureLoot_LW';
 		CharTemplate.VultureLoot.LootReferences.AddItem(Loot);
-		CharTemplate.Abilities.AddItem('DevastatingPunch');
+		CharTemplate.Abilities.AddItem('DevastatingPunchM3');
 	}
 	if (TemplateName == 'BerserkerM4')
 	{
@@ -2807,7 +2807,7 @@ static function X2CharacterTemplate CreateTemplate_Berserker(name TemplateName)
 		CharTemplate.TimedLoot.LootReferences.AddItem(Loot);
 		Loot.LootTableName = 'GenericLateAlienVultureLoot_LW';
 		CharTemplate.VultureLoot.LootReferences.AddItem(Loot);
-		CharTemplate.Abilities.AddItem('DevastatingPunch');
+		CharTemplate.Abilities.AddItem('DevastatingPunchM4');
 	}
 
 

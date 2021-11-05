@@ -231,8 +231,8 @@ static function UpdateAbilities(X2AbilityTemplate Template, int Difficulty)
 		case 'MindShield':
 			DisplayMindShieldPassive(Template);
 			break;
-		case 'BidDamnPunch':
-		case 'DevastatingPunch':
+		case 'BigDamnPunch':
+		//case 'DevastatingPunch':
 			RemoveAbilityWeaponDamage(Template);
 			break;
 		case 'MindSpin':
