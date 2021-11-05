@@ -2976,12 +2976,49 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 		{
 			EquipmentTemplate.Abilities.Length = 0;
 			EquipmentTemplate.Abilities.AddItem ('HazmatVestBonus_LW');
+			EquipmentTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, 2);
 		}
 		if (EquipmentTemplate.DataName == 'NanofiberVest') // THIS JUST MAKES IT BETTER
 		{
 			EquipmentTemplate.Abilities.Length = 0;
 			EquipmentTemplate.Abilities.AddItem ('NanofiberVestBonus_LW');
+			//remove the HP bonuses in favor of ablative
+			EquipmentTemplate.UIStatMarkups.Length = 0;
+			EquipmentTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, 2);
 		}
+		if (EquipmentTemplate.DataName == 'NanofiberVest') // THIS JUST MAKES IT BETTER
+		{
+			EquipmentTemplate.Abilities.Length = 0;
+			EquipmentTemplate.Abilities.AddItem ('NanofiberVestBonus_LW');
+			//remove the HP bonuses in favor of ablative
+			EquipmentTemplate.UIStatMarkups.Length = 0;
+			EquipmentTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, 2);
+		}
+		if (EquipmentTemplate.DataName == 'PlatedVest') 
+		{
+			EquipmentTemplate.Abilities.AddItem ('Alloy_Plating_Ability');
+			//remove the HP bonuses in favor of ablative
+			EquipmentTemplate.UIStatMarkups.Length = 0;
+			EquipmentTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, 3);
+			EquipmentTemplate.SetUIStatMarkup(class'XLocalizedData'.default.ArmorLabel, eStat_ArmorMitigation, class'X2Ability_ItemGrantedAbilitySet'.default.PLATED_VEST_MITIGATION_AMOUNT);
+
+		}
+		if (EquipmentTemplate.DataName == 'StasisVest')
+		{
+			EquipmentTemplate.Abilities.AddItem ('Alloy_Plating_Ability');
+			//remove the HP bonuses in favor of ablative
+			EquipmentTemplate.UIStatMarkups.Length = 0;
+			EquipmentTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, 3);
+		}
+		if (EquipmentTemplate.DataName == 'HellWeave')
+		{
+			EquipmentTemplate.Abilities.AddItem ('Chitin_Plating_Ability');
+			//remove the HP bonuses in favor of ablative
+			EquipmentTemplate.UIStatMarkups.Length = 0;
+			EquipmentTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, 4);
+		}
+
+			
 		///Add an ability icon for all of these so people can keep ammo straight
 		if (EquipmentTemplate.DataName == 'APRounds')
 		{
@@ -3047,14 +3084,14 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 				break;
 
 				case 'HeavyPlatedArmor':
-				ArmorTemplate.Abilities.AddItem('Chitin_Plating_Ability');
+				ArmorTemplate.Abilities.AddItem('Predator_Plating_Ability');
 				ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, 4);
 				ArmorTemplate.Abilities.AddItem('ExoskeletonServos');
 				ArmorTemplate.bHeavyWeapon = false;
 				break;
 
 				case 'HeavyPoweredArmor':
-				ArmorTemplate.Abilities.AddItem('Carapace_Plating_Ability');
+				ArmorTemplate.Abilities.AddItem('Warden_Plating_Ability');
 				ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, 5);
 				ArmorTemplate.Abilities.AddItem('ExoskeletonServos');
 				ArmorTemplate.bHeavyWeapon = false;
@@ -3062,13 +3099,13 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 
 				case 'LightPlatedArmor':
 				ArmorTemplate.bAddsUtilitySlot = true;
-				ArmorTemplate.Abilities.AddItem('Mini_Plating_Ability');
+				ArmorTemplate.Abilities.AddItem('Spider_Plating_Ability');
 				ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, 1);
 				break;
 
 
 				case 'LightPoweredArmor':
-				ArmorTemplate.Abilities.AddItem('Ceramic_Plating_Ability');
+				ArmorTemplate.Abilities.AddItem('Wraith_Plating_Ability');
 				ArmorTemplate.bAddsUtilitySlot = true;
 				ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, 2);
 				break;
@@ -3077,7 +3114,7 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 				case 'ReaperArmor':
 				case 'SkirmisherArmor':
 				case 'TemplarArmor':
-					ArmorTemplate.Abilities.AddItem('Alloy_Plating_Ability');
+					ArmorTemplate.Abilities.AddItem('Kevlar_Plating_Ability');
 					ArmorTemplate.bAddsUtilitySlot = true;
 					ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, 3);
 					break;
@@ -3088,7 +3125,7 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 				case 'PoweredSkirmisherArmor':
 				case 'PoweredTemplarArmor':
 					ArmorTemplate.bAddsUtilitySlot = true;
-					ArmorTemplate.Abilities.AddItem('Carapace_Plating_Ability');
+					ArmorTemplate.Abilities.AddItem('Warden_Plating_Ability');
 					ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, 5);
 					break;
 				
@@ -3097,7 +3134,7 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 				case 'PlatedTemplarArmor':
 					ArmorTemplate.bAddsUtilitySlot = true;
 				case 'MediumPlatedArmor':
-					ArmorTemplate.Abilities.AddItem('Chitin_Plating_Ability');
+					ArmorTemplate.Abilities.AddItem('Predator_Plating_Ability');
 					ArmorTemplate.SetUIStatMarkup(class'XLocalizedData'.default.ArmorLabel, 14, default.MEDIUM_PLATED_MITIGATION_AMOUNT);
 					ArmorTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, 4);
 					break;

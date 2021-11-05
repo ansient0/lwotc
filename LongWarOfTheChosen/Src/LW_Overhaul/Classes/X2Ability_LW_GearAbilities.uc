@@ -31,7 +31,17 @@ var config int ALLOY_PLATING_HP;
 var config int CARAPACE_PLATING_HP;
 var config int CHITIN_PLATING_HP;
 
+var config int SPIDER_PLATING_HP;
+var config int WRAITH_PLATING_HP;
+var config int KEVLAR_PLATING_HP;
+var config int PREDATOR_PLATING_HP;
+var config int WARDEN_PLATING_HP;
+
 var config int NANOFIBER_CRITDEF_BONUS;
+var config int NANOFIBER_ABLATIVE_BONUS;
+
+var config int HAZMAT_ABLATIVE_BONUS;
+
 
 var config int BONUS_COILGUN_SHRED;
 
@@ -72,6 +82,12 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(CreateAblativeHPAbility('Chitin_Plating_Ability', default.CHITIN_PLATING_HP));
 	Templates.AddItem(CreateAblativeHPAbility('Carapace_Plating_Ability', default.CARAPACE_PLATING_HP));
 
+	Templates.AddItem(CreateAblativeHPAbility('Spider_Plating_Ability', default.SPIDER_PLATING_HP));
+	Templates.AddItem(CreateAblativeHPAbility('Wraith_Plating_Ability', default.WRAITH_PLATING_HP));
+	Templates.AddItem(CreateAblativeHPAbility('Kevlar_Plating_Ability', default.KEVLAR_PLATING_HP));
+	Templates.AddItem(CreateAblativeHPAbility('Predator_Plating_Ability', default.PREDATOR_PLATING_HP));
+	Templates.AddItem(CreateAblativeHPAbility('Warden_Plating_Ability', default.WARDEN_PLATING_HP));
+
 	Templates.AddItem(CreateHazmatVestBonusAbility_LW());
 	Templates.AddItem(CreateNanofiberBonusAbility_LW());
 	Templates.AddItem(CreateNeurowhipAbility());
@@ -109,6 +125,7 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(AddAPRoundsCritPenalty());
 	Templates.AddItem(Gremlin_T2_Indicator());
 	Templates.AddItem(Gremlin_T3_Indicator());
+	Templates.AddItem(ScorchCircuitsDamage());
 
 	
 	return Templates;
@@ -308,7 +325,7 @@ static function X2AbilityTemplate CreateHazmatVestBonusAbility_LW()
 	PersistentStatChangeEffect = new class'X2Effect_PersistentStatChange';
 	PersistentStatChangeEffect.BuildPersistentEffect(1, true, false, false);
 	PersistentStatChangeEffect.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, false, , Template.AbilitySourceName);
-	PersistentStatChangeEffect.AddPersistentStatChange(eStat_HP, class'X2Ability_ItemGrantedAbilitySet'.default.HAZMAT_VEST_HP_BONUS);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_ShieldHP, default.HAZMAT_ABLATIVE_BONUS);
 	Template.AddTargetEffect(PersistentStatChangeEffect);
 	
 	DamageImmunity = new class'X2Effect_DamageImmunity';
@@ -343,12 +360,11 @@ static function X2AbilityTemplate CreateNanoFiberBonusAbility_LW()
 	Template.AbilityTargetStyle = default.SelfTarget;
 	Template.AbilityTriggers.AddItem(default.UnitPostBeginPlayTrigger);
 	
-	// Bonus to health stat Effect
-	//
+
 	PersistentStatChangeEffect = new class'X2Effect_PersistentStatChange';
 	PersistentStatChangeEffect.BuildPersistentEffect(1, true, false, false);
 	PersistentStatChangeEffect.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, false, , Template.AbilitySourceName);
-	PersistentStatChangeEffect.AddPersistentStatChange(eStat_HP, class'X2Ability_ItemGrantedAbilitySet'.default.NANOFIBER_VEST_HP_BONUS);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_ShieldHP, default.NANOFIBER_ABLATIVE_BONUS);
 	Template.AddTargetEffect(PersistentStatChangeEffect);
 
 	CritDefEffect = new class'X2Effect_Resilience';
@@ -922,6 +938,59 @@ static function X2AbilityTemplate AddAPRoundsCritPenalty()
 	Template.bDontDisplayInAbilitySummary = true;
 
 	//  NOTE: No visualization on purpose!
+
+	return Template;
+}
+
+//override normal hellweave ability
+static function X2AbilityTemplate ScorchCircuitsDamage()
+{
+	local X2AbilityTemplate						Template;
+	local X2Effect_ApplyWeaponDamage            DamageEffect;
+	local X2AbilityTrigger_EventListener        Trigger;
+	local X2Condition_AbilitySourceWeapon       WeaponCondition;
+	local X2Effect_Burning                      BurningEffect;
+
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'ScorchCircuitsDamage');
+
+	Template.AbilitySourceName = 'eAbilitySource_Item';
+	Template.eAbilityIconBehaviorHUD = EAbilityIconBehavior_NeverShow;
+	Template.Hostility = eHostility_Defensive;
+	Template.IconImage = "img:///UILibrary_PerkIcons.UIPerk_hunter";
+
+	Template.AbilityToHitCalc = default.DeadEye;
+	Template.AbilityTargetStyle = default.SimpleSingleTarget;
+	Template.AbilityShooterConditions.AddItem(default.LivingShooterProperty);
+	Template.AbilityTargetConditions.AddItem(default.LivingHostileTargetProperty);
+
+	DamageEffect = new class'X2Effect_ApplyWeaponDamage';
+	DamageEffect.EffectDamageValue.Damage = 4;
+	DamageEffect.EffectDamageValue.Spread = 1;
+	DamageEffect.bIgnoreArmor = true;
+	DamageEffect.DamageTypes.AddItem('Electrical');
+	Template.AddTargetEffect(DamageEffect);
+
+	//  trigger on movement
+	Trigger = new class'X2AbilityTrigger_EventListener';
+	Trigger.ListenerData.EventID = 'ObjectMoved';
+	Trigger.ListenerData.Deferral = ELD_OnStateSubmitted;
+	Trigger.ListenerData.Filter = eFilter_None;
+	Trigger.ListenerData.EventFn = class'XComGameState_Ability'.static.TypicalOverwatchListener;
+	Template.AbilityTriggers.AddItem(Trigger);
+	//  trigger on an attack
+	Trigger = new class'X2AbilityTrigger_EventListener';
+	Trigger.ListenerData.EventID = 'AbilityActivated';
+	Trigger.ListenerData.Deferral = ELD_OnStateSubmitted;
+	Trigger.ListenerData.Filter = eFilter_None;
+	Trigger.ListenerData.EventFn = class'XComGameState_Ability'.static.TypicalAttackListener;
+	Template.AbilityTriggers.AddItem(Trigger);
+
+	Template.bSkipFireAction = true;
+	Template.bShowActivation = true;
+	Template.FrameAbilityCameraType = eCameraFraming_Never;
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+	Template.BuildVisualizationFn = TypicalAbility_BuildVisualization;
+	//Template.MergeVisualizationFn = ScorchCircuits_VisualizationMerge;
 
 	return Template;
 }

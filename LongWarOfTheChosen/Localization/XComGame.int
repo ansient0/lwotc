@@ -1391,26 +1391,26 @@ LootTooltip="This weapon upgrade will allow you to quickly reload a small amount
 [NanofiberVest X2EquipmentTemplate]
 FriendlyName="Nanoscale Vest"
 FriendlyNamePlural="Nanoscale Vests"
-BriefSummary="A light armor underlay derived from ADVENT armor. This vest can be worn with all XCOM armors to increase soldier health by <ABILITY:NANOFIBER_HEALTH_BONUS_LW/> hit points and reduce enemy chances of a critical hit against you by <ABILITY:NANOFIBER_CRITDEF_BONUS_LW/>."
-TacticalText="<Bullet/> Grants a <ABILITY:NANOFIBER_HEALTH_BONUS_LW/> hit point boost to soldier health.\n<Bullet/> Enemies have a -<ABILITY:NANOFIBER_CRITDEF_BONUS_LW/> crit chance against you.\n<Bullet/> Only one plating item and one vest can be equipped at a time."
+BriefSummary="A light armor underlay derived from ADVENT armor. This vest can be worn with all XCOM armors to grant 2 ablative armor points and reduce enemy chances of a critical hit against you by <ABILITY:NANOFIBER_CRITDEF_BONUS_LW/>."
+TacticalText="<Bullet/> Grants 2 ablative armor points.\n<Bullet/> Enemies have a -<ABILITY:NANOFIBER_CRITDEF_BONUS_LW/> crit chance against you.\n<Bullet/> Only one vest can be equipped at a time."
 
 [PlatedVest X2EquipmentTemplate]
 FriendlyName="Tactical Vest"
 FriendlyNamePlural="Tactical Vests"
 BriefSummary="Shen has improved the traditional Nanoscale Vest with armored plating, providing reduced damage from armor protection against enemy attacks."
-TacticalText="<Bullet/> Grants 3 hit points to the soldier.\n<Bullet/> Provides 1 armor.\n<Bullet/> Only one plating item and one vest can be equipped at a time."
+TacticalText="<Bullet/> Grants 3 ablative armor points.\n<Bullet/> Provides 1 armor.\n<Bullet/> Only one vest can be equipped at a time."
 
 [HazmatVest X2EquipmentTemplate]
 FriendlyName="Hazmat Vest"
 FriendlyNamePlural="Hazmat Vests"
 BriefSummary="By reinforcing the Nanoscale Vest with specialized materials, we are able to make our soldiers completely resistant to any environmental hazards like fire, acid or poison."
-TacticalText="<Bullet/> Increases soldier health by 3.\n<Bullet/> Provides immunity to fire, acid and poison.\n<Bullet/> Only one plating item and one vest can be equipped at a time."
+TacticalText="<Bullet/> Grants 2 ablative armor points.\n<Bullet/> Provides immunity to fire, acid and poison.\n<Bullet/> Only one plating item and one vest can be equipped at a time."
 
 [Hellweave X2EquipmentTemplate]
 FriendlyName="Hellweave Vest"
 FriendlyNamePlural="Hellweave Vest"
-BriefSummary="Hellweave not only grants a +6 bonus to soldier health, but will return damage to any enemy melee attackers, and grants a <Ability:HELLWEAVEPROCCHANCE/>% chance to set them afire."
-TacticalText="<Bullet/> In addition to causing direct damage on melee attackers, Hellweave has a chance to set them aflame with the attendant disabling effects.\n<Bullet/> Hellweave also grants 6 hit points. <Bullet/> Only one plating item and one vest can be equipped at a time." 
+BriefSummary="Hellweave grants 4 ablative armor points and will attack any enemy moving or entering melee range, dealing 3-5 armor piercing damage."
+TacticalText="<Bullet/> Hellweave grants 4 ablative armor points. <br/> Hellweave will attack any enemy moving or entering melee range, dealing 3-5 armor piercing damage. <br/>  <Bullet/> Only one vest can be equipped at a time." 
 
 ;;; New
 
@@ -3502,7 +3502,7 @@ Summary="In addition to granting a health bonus, the Stasis vest is designed to 
 
 [HellweaveProject X2TechTemplate]
 DisplayName="Hellweave"
-Summary="The Hellweave is designed to both protect the wearer and inflict damage on enemy melee attackers and set them aflame."
+Summary="The Hellweave is designed to both protect the wearer and inflict damage on any attackers in melee range."
 
 [AlloyPlatingProject X2TechTemplate]
 DisplayName="Alloy Plating"
@@ -8726,3 +8726,7 @@ TacticalText="Despite its utilitarian appearance, Progressive Knife is a deadly 
 
 [CombatKnife_CG_Schematic X2SchematicTemplate]
 m_strClassLabel="SQUAD"
+
+[ScorchCircuits X2AbilityTemplate]
+LocFriendlyName="Scorch Circuits"
+LocHelpText="Free armor piercing attacks on any enemies that enter or attack from melee range."
