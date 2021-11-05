@@ -328,6 +328,7 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(CreateTemplate_PsiZombie_MeleeAttack_LW('PsiZombie_MeleeAttackM4'));
 	Templates.AddItem(CreateTemplate_PsiZombie_MeleeAttack_LW('PsiZombie_MeleeAttackM5'));
 
+	Templates.AddItem(CreateTemplate_AndromedonRobot_MeleeAttack_LW('AndromedonRobot_MeleeAttack'));
 	Templates.AddItem(CreateTemplate_AndromedonRobot_MeleeAttack_LW('AndromedonRobot_MeleeAttackM2'));
 	Templates.AddItem(CreateTemplate_AndromedonRobot_MeleeAttack_LW('AndromedonRobot_MeleeAttackM3'));
 
@@ -1557,7 +1558,7 @@ static function X2DataTemplate CreateTemplate_AndromedonRobot_MeleeAttack_LW(nam
 	Template.InventorySlot = eInvSlot_SecondaryWeapon;
 	Template.StowedLocation = eSlot_RightBack;
 	// This all the resources; sounds, animations, models, physics, the works.
-	Template.GameArchetype = "WP_Sword_CV.WP_Sword_CV";
+	//Template.GameArchetype = "WP_Sword_CV.WP_Sword_CV";
 	Template.RemoveTemplateAvailablility(Template.BITFIELD_GAMEAREA_Multiplayer); //invalidates multiplayer availability
 
 	Template.Aim = class'X2Item_DefaultWeapons'.default.GENERIC_MELEE_ACCURACY;
@@ -1576,6 +1577,11 @@ static function X2DataTemplate CreateTemplate_AndromedonRobot_MeleeAttack_LW(nam
 	{
 		Template.BaseDamage = default.ANDROMEDONROBOT_MELEEATTACKM3_BASEDAMAGE;
 	}
+	if(Templatename == 'AndromedonRobot_MeleeAttack')
+	{
+		Template.BaseDamage = 'X2Item_DefaultWeapons'default.ANDROMEDONROBOT_MELEEATTACK_BASEDAMAGE;
+	}
+
 	if(Templatename == 'Berserker_MeleeAttack')
 	{
 		Template.BaseDamage = default.BERSERKER_MELEEATTACK_BASEDAMAGE;
