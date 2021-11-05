@@ -8322,6 +8322,11 @@ LocLongDescription="Your Attacks can now remove enemy overwatch on hit."
 LocHelpText="Your Attacks can now remove enemy overwatch on hit."
 LocPromotionPopupText=""
 
+[UnstoppableGunFire X2AbilityTemplate]
+LocFriendlyName="Unstoppable Gunfire"
+LocLongDescription="Reload is no longer turn ending."
+LocHelpText="Reload is no longer turn ending."
+LocPromotionPopupText=""
 
 [SteadFast X2AbilityTemplate]
 LocFriendlyName="Steadfast"

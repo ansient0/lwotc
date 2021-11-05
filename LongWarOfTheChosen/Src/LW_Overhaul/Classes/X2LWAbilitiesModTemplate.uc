@@ -263,7 +263,7 @@ static function UpdateAbilities(X2AbilityTemplate Template, int Difficulty)
 			break;
 
 		case 'Reload':
-			MakeAbilityTurnEnding(Template);
+			UpdateReload(Template);
 			break;
 		case 'Suppression':
 		case 'AreaSuppression':
@@ -1800,6 +1800,19 @@ static function GiveGLobalCooldownToPriestStasis(X2AbilityTemplate Template)
 	Template.AbilityCooldown = Cooldown;
 }
 
+static function UpdateReload(X2AbilityTemplate Template)
+{
+	local X2AbilityCost Cost;
+
+	foreach Template.AbilityCosts(Cost)
+	{
+		if (Cost.IsA('X2AbilityCost_ActionPoints'))
+		{
+			X2AbilityCost_ActionPoints(Cost).bConsumeAllPoints = true;
+			X2AbilityCost_ActionPoints(Cost).DoNotConsumeAllSoldierAbilities.AddItem('UnstoppableGunFire');
+		}
+	}
+}
 defaultproperties
 {
 	AbilityTemplateModFn=UpdateAbilities

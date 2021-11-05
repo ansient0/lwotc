@@ -75,7 +75,7 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(CreateAdvancedRobotics());
 	Templates.AddItem(ChainingJolt());
 	Templates.AddItem(CreateBulletStorm());
-	
+	Templates.AddItem(CreateUnstoppableGunfire());
 	
 	return Templates;
 }
@@ -1414,6 +1414,18 @@ static function X2AbilityTemplate CreateNewConceal()
 	local X2AbilityTemplate		Template;
 
 	Template = PurePassive('Stealth_LW', "img:///UILibrary_PerkIcons.UIPerk_stealth", , 'eAbilitySource_Perk');
+
+	Template.bDisplayInUITooltip = true;
+	Template.bDisplayInUITacticalText = true;
+
+	return Template;
+}
+
+static function X2AbilityTemplate CreateUnstoppableGunfire()
+{
+	local X2AbilityTemplate		Template;
+
+	Template = PurePassive('UnstoppableGunfire', "img:///UILibrary_XPerkIconPack.UIPerk_ammo_blaze", , 'eAbilitySource_Perk');
 
 	Template.bDisplayInUITooltip = true;
 	Template.bDisplayInUITacticalText = true;

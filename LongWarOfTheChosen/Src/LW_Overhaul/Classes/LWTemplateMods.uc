@@ -2244,6 +2244,7 @@ function GeneralCharacterMod(X2CharacterTemplate Template, int Difficulty)
 		case 'SectopodM2':
 		case 'SectopodM3':
 		Template.Abilities.AddItem('ProtectiveServos');
+		Template.Abilities.AddItem('UnstoppableGunFire');
 		break;
 
 		case 'SpectreM4':
