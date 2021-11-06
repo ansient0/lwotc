@@ -2976,6 +2976,7 @@ function ReconfigGear(X2ItemTemplate Template, int Difficulty)
 		{
 			EquipmentTemplate.Abilities.Length = 0;
 			EquipmentTemplate.Abilities.AddItem ('HazmatVestBonus_LW');
+			EquipmentTemplate.UIStatMarkups.Length = 0;
 			EquipmentTemplate.SetUIStatMarkup(class'X2Ability_LW_GearAbilities'.default.AblativeHPLabel, eStat_ShieldHP, 2);
 		}
 		if (EquipmentTemplate.DataName == 'NanofiberVest') // THIS JUST MAKES IT BETTER
