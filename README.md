@@ -1,6 +1,6 @@
 # Long War of the Chosen Rebalanced (LWOTC-R)
 
-This is a Fundamental Rebalance of Long War Of the Chosen, with the following design goals:
+This is a fundamental rebalance of Long War of the Chosen, with the following design goals:
 
 1.  Significantly lower the reliance on alpha striking (more 3-4 + turn engagements than 1-2 turn ones)
 2.  Eliminate the need to manage pod activations
@@ -18,7 +18,7 @@ Particularly, the not-implemented features (In this case: Not rebalanced/redesig
 * Psi ops
 * Sparks
 * Alien Hunters DLC
-* The Chosen
+* The Chosen (should disable them in Second Wave options)
 
 Also, Gotcha again overwatch indicators are unreliable for now.
 
@@ -27,7 +27,7 @@ Also, Gotcha again overwatch indicators are unreliable for now.
 Here's a headline list of features of this mod
 
 ### Podless
-* As soon as you are spotted, every enemy in the map activates. Enemy count, XCOM HP, and defensive tools are redesigned with that in mind.
+* As soon as you are spotted, every enemy in the map activates. Enemy count, XCOM HP and injury recovery times, and defensive tools are all redesigned with this in mind. 
 
 ### Revamped concealment
 * With some exceptions, shared concealment now breaks at the start of the 2nd turn.
@@ -41,30 +41,30 @@ Here's a headline list of features of this mod
 ### Grenade Scatter
 
 * Grenades are overall more powerful, but also more unreliable, and can now scatter just like rockets.
-* Damage falloff is also quite a bit harsher
+* Damage falloff is also quite a bit harsher, and grenades and normal rockets do not shred.
 
 ### Cover
 * Cover Defense is further increased to 40/55 from 30/45 - significantly raising the value of cover
 * Base Flanking crit bonus increased to 50% from 40%
 
 ### Ammo management
-* Reloads are now turn ending
+* Reload is now turn ending
 * Pistols and autopistols no longer carry any mobility penalty
 * Sawed-off can now be equipped in a pistol slot 
 
 ### Attachments
-* Attachments now only have 1 tier, and are infinite items available as soon as you get modular weapons
+* Attachments now only have 1 tier, and supply is infinite as soon as you research Modular Weapons (do so early)
 * All weapons now start with only 1 attachment slot, and can gain 2 more slots by researching proving ground projects
 
 Attachments have been rebalanced to:
-* SCOPE - Gain 5 aim
+* Scope - Gain 5 aim
 * Laser sight - Gain 10 crit
 
 * Hair trigger - After a miss, gain +25 aim
 * Stock - Missed attacks have a 35% chance to become a graze. Your attacks ignore up to 15 dodge
 
 * Expended magazine - Gain +1 weapon capacity
-* Auto-loader - Grants quick reload - Reload up to 2 ammo, non-turn ending
+* Auto-loader - Grants quick reload - Reloads up to 2 ammo, non-turn ending
 
 ### Overwatch and suppression
 Overwatch has been overhauled:
@@ -234,7 +234,7 @@ Base Damage is 4/5/6/7/8 depending on weapon tier (from 4/5.5/7/8.5/10)
 * 100% base damage
 * 15 base aim
 * 3 ammo capacity
-* -50 base crit
+* -50 base crit (note this is negative)
 * +1 mobility
 * MidShort Range
 
@@ -274,7 +274,7 @@ Base Damage is 4/5/6/7/8 depending on weapon tier (from 4/5.5/7/8.5/10)
 * 7 tile long, 5 tile wide
 * infinite ammo, but 2 only ammo capacity, in addition flamethrower has 2 turns cooldown.
 * T0 is availible at game start
-* T1 Is unlocked with purifier autopsy
+* T1 Is unlocked with Purifier autopsy
 * T2 is unlocked with Berserker autopsy
 * T3 is unlocked with Sectopod autopsy
 * Allows to equip canisters in the pistol slot
@@ -328,8 +328,9 @@ Outrider Frame - +1 weapon mobility, at the cost of -35% weapon damage
 
 ### Secondary weapons
 * Sword
-* 175% base weapon damage
+* 150% base weapon damage
 * 40 aim
+* 30 crit
 
 #### Arc thrower
 * Arc thrower is no longer turn ending by default, Has the electroshock effect by default
@@ -380,7 +381,7 @@ Rocket types:
 #### Concussion:
 * 50% weapon damage
 * 5 radius
-* Can Disorient And stun
+* can disorient and stun
 
 #### Plasma Ejector:
 * 150% weapon damage in a line - replaces plasma blaster
@@ -710,8 +711,9 @@ Sharpshooter - Shinobi
 
 Gunner - Technical
 
-* Reduced the amount of starting soldiers to 16 from 22 - compensates for the average soldier being far more useful, reduces overall mission density and soldier management, makes recruiting worth more
+* Reduced the amount of starting soldiers to 16 from 22 - compensates for the average soldier being far more useful, reduces overall mission density and soldier management, makes recruiting worth more.
 
+* Injury recovery is faster.
 
 * All Soldiers Autopromote every 24 hours to squaddies
 
@@ -722,7 +724,7 @@ XTP1: All Soldiers Autopromote to Lance Corporals (unlocked with first lieutenan
 
 XTP2: All Soldiers Autopromote to Corporals (unlocked with Major)
 
-XTP3: All Soldiers Autopromote to Sergeants (unlocked with Colotel)
+XTP3: All Soldiers Autopromote to Sergeants (unlocked with Colonel)
 
 XTP4: All Soldiers Autopromote to Staff Sergeants (unlocked with Field Commander)
 
@@ -742,7 +744,7 @@ Stay with me: Unlocked with Chryssalid Autopsy
 Vulture: Unlocked with Alien Encryption research
 
 ### Officers
-* Air Controller skyranger turn reduction to 1 from 2
+* Air Controller skyranger turn reduction to 1 (from 2)
 * New ability: Fall Back (Give a free but uncontrolled action to a unit that has spent their action points that causes it to retreat)
 * New ability: Resupply - make all allies within command range that have spent their action points reload.
 
@@ -833,6 +835,7 @@ Installing the mod works exactly the same as normal lwotc, except you download i
 You can grab a release from either the discord sercver, or release section in this repository (experimental ones get posted on discord, more stable ones here)
 
 If you have some kind of trouble or Want to give feedback you can join [LWOTC-R discord server](https://discord.gg/bNcp2V79FG), Or raise an issue in github
+
 ## Contributing translations
 
 If you would like to contribute to translations for LWOTC, then check out the
@@ -862,9 +865,9 @@ set some things up:
     ```
     or whatever is the equivalent with the git client tool you are using.
 
- 4. Download the LWOTC media assets (video, graphics and sound) from
-    [this Dropbox link](https://www.dropbox.com/s/209rybpdl3khb26/lwotc-content.zip?dl=0)
-    and unpack the resulting zip file into this project's *LongWarOfTheChosen* directory.
+ 4. Obtain the LWOTC-R media assets (video, graphics and sound) from an 
+    ~~[this Dropbox link](https://www.dropbox.com/s/209rybpdl3khb26/lwotc-content.zip?dl=0)~~
+    and unpack the resulting zip file into this project's *LongWarOfTheChosen* directory.  This link is not up to date with assets added in LWOTC-R, so you will also need to copy over the LongWarOfTheChosen/Content directory from one of the released alpha builds.
 
  5. Set up the following environment variables:
     * `XCOM2SDKPATH` — typically &lt;path to Steam&gt;\steamapps\common\XCOM 2 War Of The Chosen SDK
@@ -878,14 +881,12 @@ set some things up:
     ```
     (You can specify `-config debug` to compile with debug info)
  
- 7. You should also build the Community Highlander, which you can do by opening
-    the solution file in X2WOTCCommunityHighlander in Mod Buddy and using that
-    to build the project, or you can open the LWOTC project directory in VS Code
-    and use the "Terminal > Run Task..." menu option and select "Build CHL
-    (final release)" and then "Build DLC2 CHL" once the previous task has finished.
+ 7. Compilation may fail with errors that certain classes variables and functions in the Community Highlander are private/protected, rather than protected/public.  Edit the corresponding file within the *X2WOTCCommunityHighlander* directory and change variables from private->protected and functions from protected->public as needed to resolve each error.
+ 
+ 8. You should also build this modified Community Highlander. Follow [the most up to date instructions in that repository](https://github.com/X2CommunityCore/X2WOTCCommunityHighlander#cooking-a-final-release-automated-method) (CookCommunityHighlander.bat)
 
-Once the highlander and LWOTC are built, you will be able to select them as local
-mods in Alternative Mod Launcher and run Long War of the Chosen.
+Once the highlander and LWOTC-R are built, you will be able to select them as local
+mods in Alternative Mod Launcher and run Long War of the Chosen Rebalanced.
 
 ## Contributing
 
