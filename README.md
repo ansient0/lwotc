@@ -711,9 +711,9 @@ Sharpshooter - Shinobi
 
 Gunner - Technical
 
-* Reduced the amount of starting soldiers to 16 from 22 - compensates for the average soldier being far more useful, reduces overall mission density and soldier management, makes recruiting worth more.
+* Reduced the amount of starting soldiers to 16 from 22 - compensates for the average soldier being far more useful, reduces overall mission density and soldier management, makes recruiting worth more
 
-* Injury recovery is faster.
+* Injury recovery is faster
 
 * All Soldiers Autopromote every 24 hours to squaddies
 
@@ -865,9 +865,8 @@ set some things up:
     ```
     or whatever is the equivalent with the git client tool you are using.
 
- 4. Obtain the LWOTC-R media assets (video, graphics and sound) from an 
-    ~~[this Dropbox link](https://www.dropbox.com/s/209rybpdl3khb26/lwotc-content.zip?dl=0)~~
-    and unpack the resulting zip file into this project's *LongWarOfTheChosen* directory.  This link is not up to date with assets added in LWOTC-R, so you will also need to copy over the LongWarOfTheChosen/Content directory from one of the released alpha builds.
+ 4. Obtain the LWOTC-R media assets (video, graphics and sound) from [this Dropbox link](https://www.dropbox.com/s/209rybpdl3khb26/lwotc-content.zip?dl=0)
+    and unpack the resulting zip file into this project's *LongWarOfTheChosen* directory.  The link is not up to date with assets added in LWOTC-R, so you will also need to copy over the *LongWarOfTheChosen/Content* directory from one of the released alpha builds.
 
  5. Set up the following environment variables:
     * `XCOM2SDKPATH` — typically &lt;path to Steam&gt;\steamapps\common\XCOM 2 War Of The Chosen SDK
